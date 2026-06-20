@@ -502,7 +502,7 @@ display:
               autosubmit_exclude_textfield: false
               autosubmit_textfield_delay: 500
               autosubmit_textfield_minimum_length: 3
-              autosubmit_hide: false
+              autosubmit_hide: true
               input_required: false
               allow_secondary: false
               secondary_label: 'Advanced options'
@@ -512,7 +512,7 @@ display:
               combine:
                 plugin_id: default
                 advanced:
-                  placeholder_text: ''
+                  placeholder_text: Keresés
                   collapsible: false
                   collapsible_disable_automatic_open: false
                   open_by_default: false
@@ -580,7 +580,7 @@ display:
           exposed: true
           expose:
             operator_id: combine_op
-            label: 'Combine fields filter'
+            label: ''
             description: ''
             use_operator: false
             operator: combine_op
@@ -614,8 +614,8 @@ display:
             title: title
             field_shop: field_shop
             field_description: field_description
-            name: name
             title_1: title_1
+            name: name
       style:
         type: default
       row:
