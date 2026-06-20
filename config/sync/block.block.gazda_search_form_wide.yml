@@ -1,0 +1,23 @@
+uuid: 136bb3fc-cf0a-4ebc-b61a-2da3a4b6ca6c
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - gazda
+_core:
+  default_config_hash: imMyHD6LYci0gtXq56qr9ZKGHzbEG9uFydrN5EhKtSU
+id: gazda_search_form_wide
+theme: gazda
+region: header
+weight: -8
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (wide)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

@@ -1,0 +1,60 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a formatted imagefield slideshow field.
+ *
+ * Available variables:
+ * - image: A collection of image data.
+ * - image_style: An optional image style.
+ * - url: An optional URL the image can be linked to.
+ *
+ * @see template_preprocess_image_formatter()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set prev = random() %}
+{% set next = random() %}
+<div class="imagefield_slideshow-wrapper">
+    <div class="cycle-slideshow"
+         data-cycle-pause-on-hover='{{ pause }}'
+         data-cycle-fx="{{ effect }}"
+         data-cycle-speed="{{ speed }}"
+         data-cycle-timeout="{{ timeout }}"
+         data-cycle-prev="#imagefield_slideshow-prev-{{ prev }}"
+         data-cycle-next="#imagefield_slideshow-next-{{ next }}"
+         data-cycle-loader="wait"
+         data-cycle-caption-plugin="caption2"
+         data-cycle-pager="#image-pager"
+         data-cycle-pager-template="">
+        {% if pager %}
+            <div class="cycle-pager"></div>
+        {% endif %}
+        <div class="cycle-overlay"></div>
+        {% for key,value in url %}
+            {% if link_image_to %}
+                {% if link_image_to.type == 'content' %}
+                    <img title="{{ value.title }}" alt="{{ value.alt }}" src="{{ value.uri }}" onclick="window.open('{{ link_image_to.path }}', '_self')" data-cycle-title="{{ value.title }}" data-cycle-desc="" />
+                {% endif %}
+                {% if link_image_to.type == 'file' %}
+                    <img title="{{ value.title }}" alt="{{ value.alt }}" src="{{ value.uri }}" onclick="window.open('{{ value.uri }}', '_self')" data-cycle-title="{{ value.title }}" data-cycle-desc="" />
+                {% endif %}
+            {% else %}
+                <img title="{{ value.title }}" alt="{{ value.alt }}" src="{{ value.uri }}" data-cycle-title="{{ value.title }}" data-cycle-desc="" />
+            {% endif %}
+        {% endfor %}
+        {% if image_pager %}
+          <div id="image-pager" class="cycle-pager external">
+              {% for key,value in url %}
+                <img title="{{ value.title }}" alt="{{ value.alt }}" src="{{ value.uri }}" width="50" height="50" />
+              {% endfor %}
+          </div>
+        {% endif %}
+    </div>
+    {% if prev_next %}
+        <div class="prev-next">
+            <a href=# id="imagefield_slideshow-prev-{{ prev }}">{{ 'Prev'|trans }}</a>
+            <a href=# id="imagefield_slideshow-next-{{ next }}">{{ 'Next'|trans }}</a>
+        </div>
+    {% endif %}
+</div>

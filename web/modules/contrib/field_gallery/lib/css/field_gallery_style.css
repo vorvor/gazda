@@ -1,0 +1,34 @@
+/**
+ * Styling for field_gallery module.
+ */
+@media all and (min-width: 560px) {
+  .node .field--type-image.field-gallery {
+    float: none;
+} }
+.field-gallery-wrapper {
+  text-align: center;
+}
+.field-gallery-wrapper .field-gallery-prev,
+.field-gallery-wrapper .field-gallery-next {
+  width: 48%;
+  display: inline-block;
+  background-color: #bbbbbb;
+}
+.field-gallery-wrapper .field-gallery-thumbs {
+  width: 100%;
+  display: block;
+  margin: 10px;
+}
+.field-gallery-wrapper .field-gallery-thumbs a {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.field-gallery-carousel-bs {
+  text-align: center;
+}
+.field-gallery-carousel-bs .field-gallery-carousel-bs-thumbs .item {
+  display: inline-block;
+}
+
+/*# sourceMappingURL=field_gallery_style.css.map */

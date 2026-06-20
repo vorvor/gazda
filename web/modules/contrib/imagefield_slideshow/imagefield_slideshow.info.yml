@@ -1,0 +1,12 @@
+name: Imagefield Slideshow
+type: module
+description: 'Creates a field formatter for image field, for which that particular field will be rendered as a basic slider.'
+core_version_requirement: '>=8.9 <11.0.0-stable || ^11'
+package: Field
+dependencies:
+  - drupal:image
+
+# Information added by Drupal.org packaging script on 2024-11-14
+version: '2.0.6'
+project: 'imagefield_slideshow'
+datestamp: 1731570815

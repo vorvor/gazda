@@ -16,11 +16,17 @@
     ],
     "require": {
         "composer/installers": "^2.0",
+        "cweagans/composer-patches": "^2.0",
+        "drupal/addtoany": "^2.0",
         "drupal/admin_toolbar": "^3.6",
         "drupal/backup_migrate": "^5.1",
+        "drupal/better_exposed_filters": "^7.1",
         "drupal/core-composer-scaffold": "^10.6",
         "drupal/core-project-message": "^10.6",
         "drupal/core-recommended": "^10.6",
+        "drupal/field_gallery": "^2.0",
+        "drupal/imagefield_slideshow": "^2.0",
+        "drupal/office_hours": "^1.29",
         "drush/drush": "^13.7"
     },
     "conflict": {
@@ -31,11 +37,12 @@
     "config": {
         "allow-plugins": {
             "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
-            "phpstan/extension-installer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "phpstan/extension-installer": true
         },
         "sort-packages": true
     },
@@ -73,6 +80,11 @@
             "web/themes/custom/{$name}": [
                 "type:drupal-custom-theme"
             ]
+        },
+        "patches": {
+            "drupal/core": {
+                "Issue #2815881: Fix Views aggregation SQL error with multi-column fields": "https://www.drupal.org/files/issues/2023-12-29/2815881-172.patch"
+            }
         },
         "drupal-core-project-message": {
             "include-keys": [

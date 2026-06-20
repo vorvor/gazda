@@ -1,0 +1,6 @@
+<?php
+
+/**
+ * @file
+ * A module for testing making node base fields' displays configurable.
+ */

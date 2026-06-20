@@ -1,0 +1,15 @@
+# Carousel base.
+field_gallery_carousel:
+  version: 1.0.0
+  js:
+    lib/js/field_gallery_carousel.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+
+# Field gallery styling.
+field_gallery.style:
+  version: 1.0.0
+  css:
+    theme:
+      lib/css/field_gallery_style.css: {}

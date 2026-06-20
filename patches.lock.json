@@ -1,0 +1,17 @@
+{
+    "_hash": "6fe64034d69f03a7c842d6ccf9d150c805263b7860f1ac778d689e13442b0c99",
+    "patches": {
+        "drupal/core": [
+            {
+                "package": "drupal/core",
+                "description": "Issue #2815881: Fix Views aggregation SQL error with multi-column fields",
+                "url": "https://www.drupal.org/files/issues/2023-12-29/2815881-172.patch",
+                "sha256": "ff20b94456b8641489a069ec1530ff1924a210955503a299383776cfd1e20800",
+                "depth": 2,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}

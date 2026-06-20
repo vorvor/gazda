@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c82651d864afde2ea8953310f1674e9",
+    "content-hash": "2509c3d05ef314a0f34dbd6e95fde5b9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -807,6 +807,129 @@
             "time": "2024-12-13T19:25:56+00:00"
         },
         {
+            "name": "cweagans/composer-configurable-plugin",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cweagans/composer-configurable-plugin.git",
+                "reference": "15433906511a108a1806710e988629fd24b89974"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweagans/composer-configurable-plugin/zipball/15433906511a108a1806710e988629fd24b89974",
+                "reference": "15433906511a108a1806710e988629fd24b89974",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "require-dev": {
+                "codeception/codeception": "~4.0",
+                "codeception/module-asserts": "^2.0",
+                "composer/composer": "~2.0",
+                "php-coveralls/php-coveralls": "~2.0",
+                "php-parallel-lint/php-parallel-lint": "^1.0.0",
+                "phpro/grumphp": "^1.8.0",
+                "sebastian/phpcpd": "^6.0",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "cweagans\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cameron Eagans",
+                    "email": "me@cweagans.net"
+                }
+            ],
+            "description": "Provides a lightweight configuration system for Composer plugins.",
+            "support": {
+                "issues": "https://github.com/cweagans/composer-configurable-plugin/issues",
+                "source": "https://github.com/cweagans/composer-configurable-plugin/tree/2.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/cweagans",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-02-12T04:58:58+00:00"
+        },
+        {
+            "name": "cweagans/composer-patches",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cweagans/composer-patches.git",
+                "reference": "bfa6018a5f864653d9ed899b902ea72f858a2cf7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/bfa6018a5f864653d9ed899b902ea72f858a2cf7",
+                "reference": "bfa6018a5f864653d9ed899b902ea72f858a2cf7",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^2.0",
+                "cweagans/composer-configurable-plugin": "^2.0",
+                "ext-json": "*",
+                "php": ">=8.0.0"
+            },
+            "require-dev": {
+                "codeception/codeception": "~4.0",
+                "codeception/module-asserts": "^2.0",
+                "codeception/module-cli": "^2.0",
+                "codeception/module-filesystem": "^2.0",
+                "composer/composer": "~2.0",
+                "php-coveralls/php-coveralls": "~2.0",
+                "php-parallel-lint/php-parallel-lint": "^1.0.0",
+                "phpro/grumphp": "^1.8.0",
+                "sebastian/phpcpd": "^6.0",
+                "squizlabs/php_codesniffer": "^4.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "_": "The following two lines ensure that composer-patches is loaded as early as possible.",
+                "class": "cweagans\\Composer\\Plugin\\Patches",
+                "plugin-modifies-downloads": true,
+                "plugin-modifies-install-path": true
+            },
+            "autoload": {
+                "psr-4": {
+                    "cweagans\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cameron Eagans",
+                    "email": "me@cweagans.net"
+                }
+            ],
+            "description": "Provides a way to patch Composer packages.",
+            "support": {
+                "issues": "https://github.com/cweagans/composer-patches/issues",
+                "source": "https://github.com/cweagans/composer-patches/tree/2.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/cweagans",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-10-30T23:44:22+00:00"
+        },
+        {
             "name": "dflydev/dot-access-data",
             "version": "v3.0.3",
             "source": {
@@ -1008,6 +1131,58 @@
             "time": "2024-02-05T11:35:39+00:00"
         },
         {
+            "name": "drupal/addtoany",
+            "version": "2.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/addtoany.git",
+                "reference": "2.0.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/addtoany-2.0.7.zip",
+                "reference": "2.0.7",
+                "shasum": "33bfb5f425134705f8208f7c2f6ac23382a87bb6"
+            },
+            "require": {
+                "drupal/core": "^10.1 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.7",
+                    "datestamp": "1731984029",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "AddToAny",
+                    "homepage": "https://www.drupal.org/user/2640913"
+                },
+                {
+                    "name": "micropat",
+                    "homepage": "https://www.drupal.org/user/260224"
+                }
+            ],
+            "description": "Share buttons for Drupal including the AddToAny universal share button, Facebook, Mastodon, Pinterest, WhatsApp and many more.",
+            "homepage": "https://www.drupal.org/project/addtoany",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/addtoany",
+                "issues": "https://www.drupal.org/project/issues/addtoany"
+            }
+        },
+        {
             "name": "drupal/admin_toolbar",
             "version": "3.6.3",
             "source": {
@@ -1169,6 +1344,80 @@
                 "source": "https://git.drupalcode.org/project/backup_migrate",
                 "issues": "https://www.drupal.org/project/issues/backup_migrate",
                 "slack": "https://drupal.slack.com/messages/C7C4M4QJV/details/"
+            }
+        },
+        {
+            "name": "drupal/better_exposed_filters",
+            "version": "7.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/better_exposed_filters.git",
+                "reference": "7.1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/better_exposed_filters-7.1.2.zip",
+                "reference": "7.1.2",
+                "shasum": "44aaa7ba5c95721cbe6ec25bcef0267ec6a9ad15"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11",
+                "drupal/nouislider_js": "^15.8.1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "7.1.2",
+                    "datestamp": "1779237916",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Keran",
+                    "homepage": "https://www.drupal.org/u/mikeker"
+                },
+                {
+                    "name": "Martin Keereman",
+                    "homepage": "https://www.drupal.org/u/etroid"
+                },
+                {
+                    "name": "Neslee Canil Pinto",
+                    "homepage": "https://www.drupal.org/u/neslee-canil-pinto"
+                },
+                {
+                    "name": "mikeker",
+                    "homepage": "https://www.drupal.org/user/192273"
+                },
+                {
+                    "name": "neslee canil pinto",
+                    "homepage": "https://www.drupal.org/user/3580850"
+                },
+                {
+                    "name": "podarok",
+                    "homepage": "https://www.drupal.org/user/116002"
+                },
+                {
+                    "name": "rlhawk",
+                    "homepage": "https://www.drupal.org/user/352283"
+                },
+                {
+                    "name": "smustgrave",
+                    "homepage": "https://www.drupal.org/user/3252890"
+                }
+            ],
+            "description": "Replaces the Views default single- or multi-select boxes with more advanced options.",
+            "homepage": "https://www.drupal.org/project/better_exposed_filters",
+            "support": {
+                "source": "https://git.drupalcode.org/project/better_exposed_filters",
+                "issues": "https://www.drupal.org/project/issues/better_exposed_filters"
             }
         },
         {
@@ -1494,6 +1743,203 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Core and its dependencies with known-compatible minor versions. Require this project INSTEAD OF drupal/core."
+        },
+        {
+            "name": "drupal/field_gallery",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/field_gallery.git",
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/field_gallery-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "d62de4ed03c05fa09a0218b93171958aa01e70f4"
+            },
+            "require": {
+                "drupal/core": "^8.0 || ^9.0 || ^10.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0",
+                    "datestamp": "1690806325",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Nuwantha",
+                    "homepage": "https://www.drupal8.ovh",
+                    "role": "Admin"
+                },
+                {
+                    "name": "NuWans",
+                    "homepage": "https://www.drupal.org/user/3250178"
+                }
+            ],
+            "description": "Drupal 8/9 module to use an image field ad photo gallery.",
+            "homepage": "https://www.drupal.org/project/field_gallery",
+            "support": {
+                "source": "http://git.drupal.org/project/field_gallery.git",
+                "issues": "https://www.drupal.org/project/issues/field_gallery"
+            }
+        },
+        {
+            "name": "drupal/imagefield_slideshow",
+            "version": "2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/imagefield_slideshow.git",
+                "reference": "2.0.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/imagefield_slideshow-2.0.6.zip",
+                "reference": "2.0.6",
+                "shasum": "3b6c5ca768c42a20a8de2f5786e6e84f18747d05"
+            },
+            "require": {
+                "drupal/core": ">=8.9 <11.0.0-stable || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.6",
+                    "datestamp": "1731570814",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Karthik Kumar D K (heykarthikwithu)",
+                    "homepage": "https://www.drupal.org/u/heykarthikwithu"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                }
+            ],
+            "description": "Creates a field formatter for image field, for which that particular field will be rendered as a basic slider.",
+            "homepage": "https://www.drupal.org/project/imagefield_slideshow",
+            "keywords": [
+                "image field",
+                "imagefield slideshow",
+                "slideshow"
+            ],
+            "support": {
+                "source": "https://cgit.drupalcode.org/imagefield_slideshow",
+                "issues": "https://www.drupal.org/project/issues/imagefield_slideshow"
+            }
+        },
+        {
+            "name": "drupal/nouislider_js",
+            "version": "15.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/nouislider_js.git",
+                "reference": "b5610d5842784581e4c766cd1c3852ca0b355ed5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fnouislider_js/repository/archive.zip?sha=b5610d5842784581e4c766cd1c3852ca0b355ed5",
+                "reference": "b5610d5842784581e4c766cd1c3852ca0b355ed5",
+                "shasum": ""
+            },
+            "type": "drupal-library",
+            "extra": {
+                "installer-name": "nouislider"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT License"
+            ],
+            "description": "Mirror of the noUiSlider javascript library tagged as a Drupal library.",
+            "homepage": "https://github.com/leongersen/noUiSlider",
+            "support": {
+                "source": "https://git.drupalcode.org/project/nouislider_js/-/tree/15.8.0"
+            },
+            "time": "2025-01-03T10:53:20+00:00"
+        },
+        {
+            "name": "drupal/office_hours",
+            "version": "1.29.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/office_hours.git",
+                "reference": "8.x-1.29"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/office_hours-8.x-1.29.zip",
+                "reference": "8.x-1.29",
+                "shasum": "231edceb0a308538327aae92f982d17d414f1d0e"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10 || ^11"
+            },
+            "require-dev": {
+                "drupal/diff": "^1 || ^2",
+                "drupal/feeds": "^3",
+                "drupal/webform": "^6"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.29",
+                    "datestamp": "1767129961",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "John Voskuilen",
+                    "homepage": "https://www.drupal.org/user/591042",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "mikl",
+                    "homepage": "https://www.drupal.org/user/58679"
+                },
+                {
+                    "name": "Ozeuss",
+                    "homepage": "https://www.drupal.org/user/167994"
+                },
+                {
+                    "name": "skwashd",
+                    "homepage": "https://www.drupal.org/user/116305"
+                }
+            ],
+            "description": "Defines a 'weekly office hours' field type, allowing you to specify when an Entity is open or closed.",
+            "homepage": "http://drupal.org/project/office_hours",
+            "support": {
+                "source": "http://cgit.drupalcode.org/office_hours",
+                "issues": "http://drupal.org/project/office_hours",
+                "irc": "irc://irc.freenode.org/drupal-contribute"
+            }
         },
         {
             "name": "drush/drush",

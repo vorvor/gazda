@@ -1,0 +1,14 @@
+imagefield_slideshow:
+  version: 1.x
+  js:
+    js/jquery.cycle2.js: {}
+    https://cdnjs.cloudflare.com/ajax/libs/jquery.cycle2/2.1.6/jquery.cycle2.flip.min.js: { type: external, minified: true }
+    https://cdnjs.cloudflare.com/ajax/libs/jquery.cycle2/2.1.6/jquery.cycle2.shuffle.min.js: { type: external, minified: true }
+    https://cdnjs.cloudflare.com/ajax/libs/jquery.cycle2/2.1.6/jquery.cycle2.swipe.min.js: { type: external, minified: true }
+    https://cdnjs.cloudflare.com/ajax/libs/jquery.cycle2/2.1.6/jquery.cycle2.caption2.min.js: { type: external, minified: true }
+#    js/imagefield-slideshow.js: {}
+  css:
+    theme:
+      css/imagefield-slideshow.css: {}
+  dependencies:
+    - core/jquery

@@ -5,6 +5,7 @@ module:
   announcements_feed: 0
   automated_cron: 0
   backup_migrate: 0
+  better_exposed_filters: 0
   big_pipe: 0
   block: 0
   block_content: 0
@@ -19,17 +20,20 @@ module:
   dynamic_page_cache: 0
   editor: 0
   field: 0
+  field_gallery: 0
   field_ui: 0
   file: 0
   filter: 0
   help: 0
   history: 0
   image: 0
+  imagefield_slideshow: 0
   link: 0
   menu_link_content: 0
   menu_ui: 0
   mysql: 0
   node: 0
+  office_hours: 0
   options: 0
   page_cache: 0
   path: 0
@@ -48,4 +52,5 @@ module:
 theme:
   olivero: 0
   claro: 0
+  gazda: 0
 profile: standard

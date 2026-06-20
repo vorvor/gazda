@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a formatted field_gallery field.
+ *
+ * Available variables:
+ * - image: The main image src.
+ * - thumbnails: An optional image style.
+ * - image : 
+ * - thumbnails : Thumbnails list
+ * - - Contains : src, alt, herf
+ * - prev_next : Show Previous and Next buttons
+ * - url : 
+ * - url_next : 
+ * - url_prev : 
+ * - is_fst :  Current image is the first image
+ * - is_lst :  Current image is the last image
+ * - index : Current image index
+ * - settings :  Array, about entity, bundle ...
+ * - TODO
+ *
+ * @see template_preprocess_image_formatter()
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="field-gallery-wrapper">
+    <div class="field-gallery-mainimage">
+        {% if mainimglink %}
+            <a href="{{ url_next }}">
+            {% endif %}
+            <img src="{{ image }}" />
+            {% if mainimglink %}
+            </a>
+        {% endif %}
+    </div>
+
+    {% if prev_next %}
+        <div class="field-gallery-actions">
+            <div class="field-gallery-prev {{ is_fst ? 'current' : '' }}">
+                <a href="{{ url_prev }}">{{ text_prev }}</a>
+            </div>
+            <div class="field-gallery-next {{ is_lst ? 'current' : '' }}">
+                <a href="{{ url_next }}">{{ text_next }}</a>
+            </div>
+        </div>
+    {% endif %}
+    {% if thumbnails %}
+        <div class="field-gallery-thumbs">
+            {% for key,item in thumbnails %}
+                <a href="{{ item.href }}" class="thumb-index-{{ key }} {{ item.class }}">
+                    <img src="{{ item.src }}" alt="{{ item.alt }}" />
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+

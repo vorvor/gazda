@@ -1,0 +1,19 @@
+name: Gazda
+type: theme
+description: Custom theme.
+core_version_requirement: ^9 || ^10 || ^11
+package: other
+libraries:
+  - gazda/styles
+base theme: claro
+regions:
+  header: 'Header'
+  pre_content: 'Pre-content'
+  breadcrumb: Breadcrumb
+  highlighted: Highlighted
+  help: Help
+  content: Content
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  sidebar_first: 'First sidebar'
+  footer: 'Footer'

@@ -1,0 +1,5 @@
+Display ad Slideshow
+--------------------
+
+Display gallery as slider / carrousel usin jQuery or another drupal lib.
+https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_carousel_js&stacked=h

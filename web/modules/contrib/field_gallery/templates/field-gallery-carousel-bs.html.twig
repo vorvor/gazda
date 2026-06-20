@@ -1,0 +1,89 @@
+{#
+/**
+ * @file
+ * Bootstrap carousel implementation for field_gallery field.
+ *
+ * Available variables:
+ * - images : The main images list.
+ * - - Contains : src, alt, herf
+ * - thumbnails: An optional image style.
+ * - thumbnails : Thumbnails list
+ * - - Contains : src, alt, herf
+ * - prev_next : Show Previous and Next buttons
+ * - settings :  Array, about entity, bundle ...
+ *
+ * @see template_preprocess_image_formatter()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{{ attach_library('field_gallery/field_gallery_carousel') }}
+<div class="field-gallery-carousel-bs">
+    <div id="fieldGalleryCarouselBS" class="carousel slide"
+         data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            {% if images %}
+                {% for key,item in images %}
+                    <li data-target="#fieldGalleryCarouselBS"
+                        data-slide-to="{{ key }}"
+                        class="{{ (key == 0) ? 'active' : '' }}"></li>
+                {% endfor %}
+            {% endif %}
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+
+            {% if images %}
+                {% for key,item in images %}
+                    <div class="item {{ (key == 0) ? 'active' : '' }}">
+                        <img src="{{ item.src }}" alt="{{ item.alt }}"/>
+
+                        <div class="carousel-caption">
+                            <h3>{{ item.alt }}</h3>
+
+                            <p>{{ item.title }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <!-- Left and right controls -->
+        {% if prev_next %}
+            <a class="left carousel-control" href="#fieldGalleryCarouselBS"
+               role="button"
+               data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"
+                  aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#fieldGalleryCarouselBS"
+               role="button"
+               data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"
+                  aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        {% endif %}
+    </div>
+
+    <!-- Extra Thumbnails -->
+    {% if thumbnails %}
+        <div class="field-gallery-carousel-bs-thumbs">
+            {% for key,item in thumbnails %}
+                <div data-target="#fieldGalleryCarouselBS"
+                     data-slide-to="{{ key }}"
+                     class="item {{ (key == 0) ? 'active' : '' }}">
+                    <img src="{{ item.src }}" alt="{{ item.alt }}"
+                         title="{{ item.title }}"/>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+
+

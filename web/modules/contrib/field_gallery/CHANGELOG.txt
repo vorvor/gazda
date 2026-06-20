@@ -1,0 +1,39 @@
+2020-07-25  2.0.1
+-----------------
+- Port unit tests
+
+2020-07-01  2.0.0
+-----------------
+- Drupal 9 ready.
+
+
+2018-03-03  1.1.0
+-----------------
+- Add slider for bootstrap theme.
+
+
+2018-03-02  1.0.3
+-----------------
+- Correction of the pagination system.
+- Add alt text for thumnails
+- Add class for thumnails including index
+
+
+2018-01-23  1.0.2
+-----------------
+- Add link on main image (to next).
+- Drupal coding standard and best practice.
+
+
+2017-12-31  1.0.1
+-----------------
+- Add unlimited thumbnails option (number = 0)
+- Correction on thumb start / stop selection
+- Add next / Previous buttons text customisation.
+
+
+2017-11-30  1.0.0-dev
+---------------------
+- First usable version
+RC1
+- Override unwanted defaut styling.

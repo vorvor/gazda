@@ -1,0 +1,15 @@
+field_gallery_test.fgt_entity.settings:
+  path: '/admin/structure/field_gallery_test/overview'
+  defaults:
+    _form: '\Drupal\field_gallery_test\Entity\SettingsForm'
+    _title: 'Settings'
+  requirements:
+    _permission: 'access administration pages'
+
+entity.fgt_entity.canonical:
+  path: '/admin/content/field_gallery_test/{fgt_entity}'
+  defaults:
+    _entity_view: 'fgt_entity'
+    _title: 'Entity'
+  requirements:
+    _permission: 'access administration pages'

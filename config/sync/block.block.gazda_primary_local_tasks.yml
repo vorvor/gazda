@@ -1,0 +1,22 @@
+uuid: 287bd72c-0ad4-4ae2-8c4a-dea7e00ba790
+langcode: en
+status: true
+dependencies:
+  theme:
+    - gazda
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: gazda_primary_local_tasks
+theme: gazda
+region: highlighted
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

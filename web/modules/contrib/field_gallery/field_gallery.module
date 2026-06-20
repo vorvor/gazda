@@ -1,0 +1,123 @@
+<?php
+
+/**
+ * @file
+ * Field gallery hooks and functions.
+ *
+ * This file provide drupal hooks.
+ */
+
+use Drupal\Core\Url;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ *
+ * Display help page.
+ */
+function field_gallery_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case $route_match->getRouteName() . '.field_gallery':
+      $variables = [
+        ':module' => Url::fromUri('https://www.drupal.org/project/field_gallery')->toString(),
+        ':doc' => Url::fromUri('https://www.drupal.org/docs/contributed-modules/field-gallery')->toString(),
+      ];
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Field Gallery provide a field formatter for image fields to render as an image gallery.') . '</p>';
+      $output .= '<p>' . t('See the module page for more information. Field gallery <a href=":module">Module</a>. <a href=":doc">Documentation</a>', $variables) . '</p>';
+      $output .= '<h3>' . t('Usage') . '</h3>';
+      $output .= '<p>';
+      $output .= '1. Create our use an existence  an images field for multiple images.';
+      $output .= '<br>2. Select display format \'Field Gallery\' (on Manage display) for the images field.';
+      $output .= '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ *
+ * Add field_gallery template.
+ */
+function field_gallery_theme($existing, $type, $theme, $path) {
+
+  return [
+    // HTML gallery.
+    'field_gallery' => [
+      'variables' => [
+        'image' => NULL,
+        'thumbnails' => NULL,
+        'prev_next' => NULL,
+        'url' => NULL,
+        'url_next' => NULL,
+        'url_prev' => NULL,
+        // Current image is the first image.
+        'is_fst' => NULL,
+        // Current image is the last image.
+        'is_lst' => NULL,
+        // Current image index.
+        'index' => 0,
+        // Previous button text.
+        'text_prev' => 'Previous',
+        // Next button text.
+        'text_next' => 'Next',
+        // Next link on main image.
+        'mainimglink' => TRUE,
+        // Entity settings.
+        'settings' => [],
+      ],
+    ],
+    // Bootstrap carousel.
+    'field_gallery_carousel_bs' => [
+      'variables' => [
+        'images' => NULL,
+        'thumbnails' => NULL,
+        'prev_next' => NULL,
+        // Previous button text.
+        'text_prev' => 'Previous',
+        // Next button text.
+        'text_next' => 'Next',
+        // Entity settings.
+        'settings' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ *
+ * Add template suggestions.
+ */
+function field_gallery_theme_suggestions_field_gallery($variables) {
+
+  $suggestions = _field_gallery_theme_suggestions_field_gallery($variables, 'field_gallery');
+  return $suggestions;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ *
+ * Add template suggestions.
+ */
+function field_gallery_theme_suggestions_field_gallery_carousel_bs($variables) {
+
+  $suggestions = _field_gallery_theme_suggestions_field_gallery($variables, 'field_gallery_carousel_bs');
+  return $suggestions;
+}
+
+/**
+ * Add template suggestions for filed gallery themes.
+ */
+function _field_gallery_theme_suggestions_field_gallery($variables, $name) {
+
+  $suggestions = [];
+  $sett = $variables['settings'];
+
+  $suggestions[] = $name . '__' . $sett['#field_name'];
+  $suggestions[] = $name . '__' . $sett['#entity_type'];
+  $suggestions[] = $name . '__' . $sett['#bundle'];
+  $suggestions[] = $name . '__' . $sett['#field_name'] . '__' . $sett['#entity_type'] . '__' . $sett['#bundle'];
+
+  return $suggestions;
+}

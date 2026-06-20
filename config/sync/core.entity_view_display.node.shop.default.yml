@@ -1,0 +1,109 @@
+uuid: 44cfd08c-6aa2-49e4-989a-bacea8c935c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.shop.field_address
+    - field.field.node.shop.field_description
+    - field.field.node.shop.field_email
+    - field.field.node.shop.field_images
+    - field.field.node.shop.field_open_hours
+    - field.field.node.shop.field_phone
+    - node.type.shop
+  module:
+    - imagefield_slideshow
+    - office_hours
+    - user
+id: node.shop.default
+targetEntityType: node
+bundle: shop
+mode: default
+content:
+  field_address:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_email:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_images:
+    type: imagefield_slideshow_field_formatter
+    label: hidden
+    settings:
+      imagefield_slideshow_style: large
+      imagefield_slideshow_style_effects: fade
+      imagefield_slideshow_style_pause: 'true'
+      imagefield_slideshow_prev_next: '1'
+      imagefield_slideshow_transition_speed: '100'
+      imagefield_slideshow_timeout: '7000'
+      imagefield_slideshow_pager: '1'
+      imagefield_slideshow_link_image_to: ''
+      imagefield_slideshow_pager_image: 0
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_open_hours:
+    type: office_hours_table
+    label: hidden
+    settings:
+      day_format: long
+      time_format: G
+      compress: false
+      grouped: false
+      show_empty: false
+      show_closed: all
+      closed_format: Closed
+      all_day_format: 'All day open'
+      separator:
+        days: '<br />'
+        grouped_days: ' - '
+        day_hours: ': '
+        hours_hours: '-'
+        more_hours: ', '
+      current_status:
+        position: ''
+        open_text: 'Currently open!'
+        closed_text: 'Currently closed'
+      exceptions:
+        title: 'Exception hours'
+        replace_exceptions: false
+        restrict_exceptions_to_num_days: 7
+        restrict_seasons_to_num_days: 366
+        date_format: long
+        all_day_format: 'All day open'
+      timezone_field: ''
+      office_hours_first_day: ''
+      schema:
+        enabled: false
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_phone:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

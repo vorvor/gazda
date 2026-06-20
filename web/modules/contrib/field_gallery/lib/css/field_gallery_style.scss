@@ -1,0 +1,43 @@
+/**
+ * Styling for field_gallery module.
+ */
+
+// Override default styles.
+@media all and (min-width: 560px) {
+  .node .field--type-image.field-gallery {
+    float: none;
+  }
+}
+
+//Field-gallery styling.
+.field-gallery-wrapper {
+  text-align: center;
+  // Action buttons
+  .field-gallery-prev, .field-gallery-next {
+    width: 48%;
+    display: inline-block;
+    background-color: #BBBBBB;
+  }
+
+  //Thumbnails
+  .field-gallery-thumbs {
+
+    width: 100%;
+    display: block;
+    margin: 10px;
+    a {
+      display: inline-flex;
+      vertical-align: middle;
+    }
+  }
+}
+
+// Styling for carousel-bs.
+.field-gallery-carousel-bs {
+  text-align: center;
+  .field-gallery-carousel-bs-thumbs {
+    .item {
+      display: inline-block;
+    }
+  }
+}

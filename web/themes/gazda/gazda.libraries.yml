@@ -1,0 +1,11 @@
+styles:
+  css:
+    component:
+      css/style.css: {}
+  js:
+    js/script.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+    - core/drupalSettings
