@@ -10,4 +10,5 @@ tags:
   keywords: 'test, keywords, lets, see'
   og_description: '[node:field_description]'
   og_title: '[node:title]'
+  og_type: Product
   title: '[node:title]'

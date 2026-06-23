@@ -1,0 +1,49 @@
+uuid: e8c0d263-687d-49a2-8ab1-8cb5ad1ca1af
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_effects
+name: fb_post_image
+label: 'FB post image'
+effects:
+  9827234c-c2f3-4cd2-bd5a-f1f1bd0d132f:
+    uuid: 9827234c-c2f3-4cd2-bd5a-f1f1bd0d132f
+    id: image_scale
+    weight: -9
+    data:
+      width: 600
+      height: null
+      upscale: false
+  8b7c4c55-90de-45d6-a74b-b2e693f25d7f:
+    uuid: 8b7c4c55-90de-45d6-a74b-b2e693f25d7f
+    id: image_crop
+    weight: -8
+    data:
+      width: 600
+      height: 315
+      anchor: center-center
+  f7ca8c1c-126c-4035-98dc-27f8383f2ebb:
+    uuid: f7ca8c1c-126c-4035-98dc-27f8383f2ebb
+    id: image_effects_background
+    weight: -10
+    data:
+      background_image: sites/default/files/white.png
+      background_image_width: '1920'
+      background_image_height: '1080'
+      placement: center-center
+      x_offset: 0
+      y_offset: 0
+      opacity: 100
+  c5bcf39b-623e-4fc0-bb79-b6ac7f74f772:
+    uuid: c5bcf39b-623e-4fc0-bb79-b6ac7f74f772
+    id: image_effects_watermark
+    weight: 4
+    data:
+      watermark_image: themes/gazda/gazda-logo.png
+      watermark_width: 20%
+      watermark_height: ''
+      placement: right-bottom
+      x_offset: ''
+      y_offset: ''
+      opacity: 100

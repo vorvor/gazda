@@ -14,8 +14,8 @@ class ComposerStaticInit912487cae028eb1c5b00467a134e77d4
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
-        'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '89efb1254ef2d1c5d80096acd12c4098' => __DIR__ . '/..' . '/twig/twig/src/Resources/core.php',
         'ffecb95d45175fd40f75be8a23b34f90' => __DIR__ . '/..' . '/twig/twig/src/Resources/debug.php',
@@ -35,6 +35,10 @@ class ComposerStaticInit912487cae028eb1c5b00467a134e77d4
             'phpowermove\\docblock\\' => 21,
             'phootwork\\lang\\' => 15,
             'phootwork\\collection\\' => 21,
+        ),
+        'l' =>
+        array (
+            'lsolesen\\pel\\' => 13,
         ),
         'c' =>
         array (
@@ -109,6 +113,10 @@ class ComposerStaticInit912487cae028eb1c5b00467a134e77d4
             'Grasmash\\YamlCli\\' => 17,
             'Grasmash\\Expander\\' => 18,
         ),
+        'F' =>
+        array (
+            'FontLib\\' => 8,
+        ),
         'E' =>
         array (
             'Egulias\\EmailValidator\\' => 23,
@@ -155,6 +163,10 @@ class ComposerStaticInit912487cae028eb1c5b00467a134e77d4
         'phootwork\\collection\\' =>
         array (
             0 => __DIR__ . '/..' . '/phootwork/collection',
+        ),
+        'lsolesen\\pel\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/fileeye/pel/src',
         ),
         'cweagans\\Composer\\' =>
         array (
@@ -353,6 +365,10 @@ class ComposerStaticInit912487cae028eb1c5b00467a134e77d4
         'Grasmash\\Expander\\' =>
         array (
             0 => __DIR__ . '/..' . '/grasmash/expander/src',
+        ),
+        'FontLib\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/php-font-lib/src/FontLib',
         ),
         'Egulias\\EmailValidator\\' =>
         array (

@@ -41,7 +41,7 @@ content:
     type: imagefield_slideshow_field_formatter
     label: hidden
     settings:
-      imagefield_slideshow_style: large
+      imagefield_slideshow_style: fb_post_image
       imagefield_slideshow_style_effects: fade
       imagefield_slideshow_style_pause: 'true'
       imagefield_slideshow_prev_next: '1'

@@ -25,6 +25,7 @@
         "drupal/core-project-message": "^10.6",
         "drupal/core-recommended": "^10.6",
         "drupal/field_gallery": "^2.0",
+        "drupal/image_effects": "^4.0",
         "drupal/imagefield_slideshow": "^2.0",
         "drupal/metatag": "^2.2",
         "drupal/office_hours": "^1.29",
