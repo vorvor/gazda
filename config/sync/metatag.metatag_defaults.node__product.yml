@@ -8,4 +8,6 @@ tags:
   description: '[node:field_description]'
   image_src: '[node:field_images:0]'
   keywords: 'test, keywords, lets, see'
+  og_description: '[node:field_description]'
+  og_title: '[node:title]'
   title: '[node:title]'
