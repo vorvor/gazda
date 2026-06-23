@@ -1,5 +1,5 @@
 uuid: 9dc2c209-1ec8-49f3-b70f-ba45891ebea9
-langcode: en
+langcode: hu
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: system_branding_block
 settings:
   id: system_branding_block
-  label: 'Site branding'
+  label: 'Webhely márkázása'
   label_display: '0'
   provider: system
   use_site_logo: true

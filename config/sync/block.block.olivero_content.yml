@@ -1,5 +1,5 @@
 uuid: 2ab3f862-3f44-4ea0-9c46-2054de6fe4be
-langcode: en
+langcode: hu
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: system_main_block
 settings:
   id: system_main_block
-  label: 'Main page content'
+  label: 'Az oldal fő tartalma'
   label_display: '0'
   provider: system
 visibility: {  }

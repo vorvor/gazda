@@ -1,5 +1,5 @@
 uuid: 52990a7b-7e22-4eaa-b391-1e2ce0ed8cc1
-langcode: en
+langcode: hu
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: search_form_block
 settings:
   id: search_form_block
-  label: 'Search form (narrow)'
+  label: 'Keresési űrlap (keskeny)'
   label_display: '0'
   provider: search
   page_id: ''

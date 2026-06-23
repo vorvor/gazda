@@ -1,5 +1,5 @@
 uuid: 26d45bb3-d0f3-40db-8451-f1580ca27c47
-langcode: en
+langcode: hu
 status: true
 dependencies:
   config:
@@ -15,7 +15,7 @@ dependencies:
 _core:
   default_config_hash: cFrlqjtkTfvY3RGccjJkPf1SGIfJ942IrxTLWAO4mgA
 id: authenticated
-label: 'Authenticated user'
+label: 'Azonosított felhasználó'
 weight: 1
 is_admin: false
 permissions:

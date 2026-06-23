@@ -1,5 +1,5 @@
 uuid: a72a296e-fe15-4309-bbdb-896a3ea67b98
-langcode: en
+langcode: hu
 status: true
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: RZ-bcSekNSsAbIPLW7Gmyd3uUjIOSrPvnb8RCCZYJm8
 id: help_search
-label: Help
+label: Súgó
 path: help
 weight: 0
 plugin: help_search

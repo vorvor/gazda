@@ -1,5 +1,5 @@
 uuid: b51bfd38-bcae-4e16-a02d-cb83dd1143f9
-langcode: en
+langcode: hu
 status: true
 dependencies:
   config:
@@ -18,7 +18,7 @@ provider: null
 plugin: 'system_menu_block:main'
 settings:
   id: 'system_menu_block:main'
-  label: 'Main navigation'
+  label: 'Fő navigáció'
   label_display: '0'
   provider: system
   level: 1

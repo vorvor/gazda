@@ -1,5 +1,5 @@
 uuid: 46c32ffa-8f66-4e6e-9ebc-04bd5f169a77
-langcode: en
+langcode: hu
 status: true
 dependencies:
   theme:
@@ -14,7 +14,7 @@ provider: null
 plugin: local_tasks_block
 settings:
   id: local_tasks_block
-  label: 'Secondary tabs'
+  label: 'Másodlagos fülek'
   label_display: '0'
   provider: core
   primary: false

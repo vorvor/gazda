@@ -1,0 +1,11 @@
+display:
+  default:
+    display_title: Alapértelmezés
+    display_options:
+      empty:
+        area_text_custom:
+          content: 'Nincs megjeleníthető hozzászólás.'
+  block_1:
+    display_title: Blokk
+    display_options:
+      block_category: 'Listák (Nézetek)'

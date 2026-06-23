@@ -1,0 +1,12 @@
+uuid: afe259de-0be4-4cbb-97ae-370a6c28ae8f
+langcode: hu
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: RDCkFL0NDt75Gwioooxo1iuA1S50xTVsBOgX__c6wTw
+id: '403'
+label: '403 – A hozzáférés megtagadva'
+tags:
+  robots: noindex
+  canonical_url: '[site:url]'
+  shortlink: '[site:url]'

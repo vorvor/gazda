@@ -1,10 +1,10 @@
 uuid: b30f40f8-0f17-452c-862f-105ba2f93f5f
-langcode: en
+langcode: hu
 status: true
 dependencies: {  }
 _core:
   default_config_hash: 5VpawMrKPEPCkoO4YpPa0TDFO2dgiIHfTziJtwlmUxc
 id: html_yearless_date
-label: 'HTML Yearless date'
+label: 'HTML dátum évszám nélkül'
 locked: true
 pattern: m-d

@@ -1,10 +1,10 @@
 uuid: 77555e09-e3a5-41f9-ab30-94522cf61617
-langcode: en
+langcode: hu
 status: true
 dependencies: {  }
 _core:
   default_config_hash: Q2Ra3jfoIVk0f3SjxJX61byRQFVBAbpzYDQOiY-kno8
 id: main
-label: 'Main navigation'
-description: 'Site section links'
+label: 'Fő navigáció'
+description: 'Webhely alegységeire mutató hivatkozások'
 locked: true

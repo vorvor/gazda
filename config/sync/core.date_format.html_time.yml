@@ -1,10 +1,10 @@
 uuid: 6d287f46-0d1f-40ee-869a-088b88b509fb
-langcode: en
+langcode: hu
 status: true
 dependencies: {  }
 _core:
   default_config_hash: M7yqicYkU36hRy5p9drAaGBBihhUD1OyujFrAaQ93ZE
 id: html_time
-label: 'HTML Time'
+label: 'HTML idő'
 locked: true
 pattern: 'H:i:s'

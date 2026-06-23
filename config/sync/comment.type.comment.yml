@@ -1,10 +1,10 @@
 uuid: e0f0dbf5-cd8d-46a5-a5bd-24b7bc55eb2c
-langcode: en
+langcode: hu
 status: true
 dependencies: {  }
 _core:
   default_config_hash: bqZsN31T2n0UjcbyCpOPi9D2iO0sAOHR7FnEs9qMvaA
 id: comment
-label: 'Default comments'
+label: 'Alapértelmezett hozzászólások'
 target_entity_type_id: node
-description: 'Allows commenting on content'
+description: 'Lehetővé teszi a hozzászólást a tartalmakhoz'

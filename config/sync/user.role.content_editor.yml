@@ -1,5 +1,5 @@
 uuid: 3a540610-9e2c-4e56-a976-1cea9d088b81
-langcode: en
+langcode: hu
 status: true
 dependencies:
   config:
@@ -18,7 +18,7 @@ dependencies:
 _core:
   default_config_hash: e_wG1u7SrGaJbY2-Szgbgl-c8T3kdirU3uTNq2c_QJQ
 id: content_editor
-label: 'Content editor'
+label: Tartalomszerkesztő
 weight: 2
 is_admin: false
 permissions:

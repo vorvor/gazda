@@ -1,0 +1,14 @@
+display:
+  default:
+    display_title: Alapértelmezés
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Alkalmaz
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növ
+          sort_desc_label: Csökk
+  block_1:
+    display_options:
+      block_category: Felhasználó

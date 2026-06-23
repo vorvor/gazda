@@ -1,5 +1,5 @@
 uuid: 2c99ac6b-45f7-4781-8ada-b68e9e69eb99
-langcode: en
+langcode: hu
 status: true
 dependencies:
   config:
@@ -13,7 +13,7 @@ id: node.article.comment
 field_name: comment
 entity_type: node
 bundle: article
-label: Comments
+label: Hozzászólások
 description: ''
 required: false
 translatable: true

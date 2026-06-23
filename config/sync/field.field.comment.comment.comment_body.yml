@@ -1,5 +1,5 @@
 uuid: 2c7e4c14-38b9-459c-961f-f8e996d451f1
-langcode: en
+langcode: hu
 status: true
 dependencies:
   config:
@@ -13,7 +13,7 @@ id: comment.comment.comment_body
 field_name: comment_body
 entity_type: comment
 bundle: comment
-label: Comment
+label: Hozzászólás
 description: ''
 required: true
 translatable: true

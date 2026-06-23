@@ -1,5 +1,5 @@
 uuid: 797713ef-c83e-42ff-b12d-8ad923a7d2c8
-langcode: en
+langcode: hu
 status: false
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: N4mUjXpPckUkVRY1PbKw4GGoL1i2ECU7PL3EreiKStk
 id: comment.full
-label: 'Full comment'
+label: 'Teljes hozzászólás'
 description: ''
 targetEntityType: comment
 cache: true

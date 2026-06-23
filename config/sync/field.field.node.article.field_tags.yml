@@ -1,5 +1,5 @@
 uuid: 741c61c3-a72f-48ce-84a7-9408253c2ffd
-langcode: en
+langcode: hu
 status: true
 dependencies:
   config:
@@ -12,8 +12,8 @@ id: node.article.field_tags
 field_name: field_tags
 entity_type: node
 bundle: article
-label: Tags
-description: 'Enter a comma-separated list. For example: Amsterdam, Mexico City, "Cleveland, Ohio"'
+label: Címkék
+description: 'Egy vesszővel elválasztott felsorolás, mint például Esztergom, Tapolca, "Székesfehérvár, Fejér megye".'
 required: false
 translatable: true
 default_value: {  }

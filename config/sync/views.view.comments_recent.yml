@@ -1,5 +1,5 @@
 uuid: 2e4ff195-ff41-4ea7-b862-6f6fbaff5317
-langcode: en
+langcode: hu
 status: true
 dependencies:
   module:
@@ -18,7 +18,7 @@ base_field: cid
 display:
   default:
     id: default
-    display_title: Default
+    display_title: Alapértelmezés
     display_plugin: default
     position: 0
     display_options:
@@ -158,7 +158,7 @@ display:
           plugin_id: text_custom
           label: ''
           empty: true
-          content: 'No comments available.'
+          content: 'Nincs megjeleníthető hozzászólás.'
           tokenize: false
       sorts:
         created:
@@ -252,13 +252,13 @@ display:
       tags: {  }
   block_1:
     id: block_1
-    display_title: Block
+    display_title: Blokk
     display_plugin: block
     position: 1
     display_options:
       display_extenders: {  }
       block_description: 'Recent comments'
-      block_category: 'Lists (Views)'
+      block_category: 'Listák (Nézetek)'
       allow:
         items_per_page: true
     cache_metadata:

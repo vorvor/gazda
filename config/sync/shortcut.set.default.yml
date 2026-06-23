@@ -1,8 +1,8 @@
 uuid: 4ea6d232-b3b0-40bd-ac08-636975b2f739
-langcode: en
+langcode: hu
 status: true
 dependencies: {  }
 _core:
   default_config_hash: U5VlGjd_SfV0Qm_EfnaynOfc549cNscFAx48JfYoMRI
 id: default
-label: Default
+label: Alapértelmezés

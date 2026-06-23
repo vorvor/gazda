@@ -1,5 +1,5 @@
 uuid: 615c0b38-74af-46dd-8e1f-897e62fe3cd2
-langcode: en
+langcode: hu
 status: true
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: LhdsoZPL_pFas2fjaAWue4zvrQ_tEVofLYtcNec-JGM
 id: node_save_action
-label: 'Save content'
+label: 'Tartalom mentése'
 type: node
 plugin: 'entity:save_action:node'
 configuration: {  }

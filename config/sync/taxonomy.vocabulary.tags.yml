@@ -1,11 +1,11 @@
 uuid: 2688d3ac-664a-4f56-8937-72d310332bea
-langcode: en
+langcode: hu
 status: true
 dependencies: {  }
 _core:
   default_config_hash: iTEzwrEQ_4JIb-OYGiqzyF2TmMgWyWayresXcWgwGWM
-name: Tags
+name: Címkék
 vid: tags
-description: 'Use tags to group articles on similar topics into categories.'
+description: 'Címkék használata a hasonló témájú tartalmak csoportosításához.'
 weight: 0
 new_revision: false

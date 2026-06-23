@@ -1,12 +1,12 @@
 uuid: 22bd1d0a-cb72-4454-b5d6-105e062895bd
-langcode: en
+langcode: hu
 status: true
 dependencies:
   module:
     - editor
 _core:
   default_config_hash: mclCbTlJwWJORez4Y1eX2MqA0aGjSMAoJb3TaBABcK8
-name: 'Basic HTML'
+name: 'Alap HTML'
 format: basic_html
 weight: 0
 filters:

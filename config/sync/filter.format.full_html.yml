@@ -1,12 +1,12 @@
 uuid: fa9a7292-231d-4fb6-b8f6-a170a6094f20
-langcode: en
+langcode: hu
 status: true
 dependencies:
   module:
     - editor
 _core:
   default_config_hash: vpZysv3RHJjhYzq7O_q5q8mVlHdrSzKELmXyiX6RtV0
-name: 'Full HTML'
+name: 'Teljes HTML'
 format: full_html
 weight: 2
 filters:

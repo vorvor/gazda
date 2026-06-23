@@ -1,5 +1,5 @@
 uuid: 7c7bc5dd-f5ab-491d-91a0-97cc7d875598
-langcode: en
+langcode: hu
 status: true
 dependencies:
   module:
@@ -20,7 +20,7 @@ provider: null
 plugin: search_form_block
 settings:
   id: search_form_block
-  label: 'Search help'
+  label: 'Keresés a Súgóban'
   label_display: visible
   provider: search
   page_id: help_search

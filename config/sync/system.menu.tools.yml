@@ -1,10 +1,10 @@
 uuid: f84e68a7-d49d-404f-a2b1-55b1af976a74
-langcode: en
+langcode: hu
 status: true
 dependencies: {  }
 _core:
   default_config_hash: BCM-vV1zzRaLHN18dqAR_CuGOj8AFJvTx7BKl_8Gcxc
 id: tools
-label: Tools
-description: 'User tool links, often added by modules'
+label: Eszközök
+description: 'Műveletek felhasználóknak, gyakran más modulok révén'
 locked: true

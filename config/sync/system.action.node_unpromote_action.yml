@@ -1,5 +1,5 @@
 uuid: bf485d93-1889-43f3-af09-b472f00100ef
-langcode: en
+langcode: hu
 status: true
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: JBptjnfuOMtsdKygklXxoOgeOCTMtQxlkymjnnj-cC0
 id: node_unpromote_action
-label: 'Remove content from front page'
+label: 'Tartalom levétele a címlapról'
 type: node
 plugin: node_unpromote_action
 configuration: {  }

@@ -1,0 +1,11 @@
+uuid: e2de2b75-52fe-4ccf-b3de-bf964c441ab3
+langcode: en
+status: true
+dependencies: {  }
+id: node__product
+label: 'Content: Product'
+tags:
+  description: '[node:field_description]'
+  image_src: '[node:field_images:0]'
+  keywords: 'test, keywords, lets, see'
+  title: '[node:title]'

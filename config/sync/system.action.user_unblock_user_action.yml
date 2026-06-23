@@ -1,5 +1,5 @@
 uuid: 27bdafd3-c808-4f35-af16-b60def47585a
-langcode: en
+langcode: hu
 status: true
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: SPsUXsR3Rc8d1y3gewzaAKWa1ncea_ywXX3f7LTn7k0
 id: user_unblock_user_action
-label: 'Unblock the selected user(s)'
+label: 'A kiválasztott felhasználó tiltásának feloldása'
 type: user
 plugin: user_unblock_user_action
 configuration: {  }

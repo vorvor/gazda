@@ -1,5 +1,5 @@
 uuid: 7bae3523-64ab-4f67-a699-009c34600b81
-langcode: en
+langcode: hu
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: system_messages_block
 settings:
   id: system_messages_block
-  label: 'Status messages'
+  label: Állapotüzenetek
   label_display: '0'
   provider: system
 visibility: {  }

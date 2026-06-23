@@ -31,7 +31,9 @@ content:
     weight: 100
     region: content
 hidden:
+  addtoany: true
   field_category: true
   field_description: true
   field_images: true
   field_shop: true
+  langcode: true

@@ -1,5 +1,5 @@
 uuid: 33e99e9d-76b9-4fe3-94e3-643a54d84455
-langcode: en
+langcode: hu
 status: true
 dependencies:
   theme:
@@ -14,7 +14,7 @@ provider: null
 plugin: local_tasks_block
 settings:
   id: local_tasks_block
-  label: 'Primary tabs'
+  label: 'Elsődleges fülek'
   label_display: '0'
   provider: core
   primary: true

@@ -1,5 +1,5 @@
 uuid: 697d8e2a-7c42-4d11-87ee-712e885c537b
-langcode: en
+langcode: hu
 status: true
 dependencies:
   theme:
@@ -14,7 +14,7 @@ provider: null
 plugin: page_title_block
 settings:
   id: page_title_block
-  label: 'Page title'
+  label: 'Oldal címe'
   label_display: '0'
   provider: core
 visibility: {  }

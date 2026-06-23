@@ -1,0 +1,12 @@
+uuid: eec0c701-68c4-4463-8f9f-35dbb94b926b
+langcode: hu
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 92bXZdyYJ5xqukdfmGRr_CYcwm1vfuS8b8aJ7X_G7E0
+id: taxonomy_term
+label: Taxonómiakifejezés
+tags:
+  canonical_url: '[term:url]'
+  description: '[term:description]'
+  title: '[term:name] | [site:name]'
