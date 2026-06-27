@@ -8,6 +8,8 @@ dependencies:
     - field.field.node.shop.field_description
     - field.field.node.shop.field_email
     - field.field.node.shop.field_images
+    - field.field.node.shop.field_location
+    - field.field.node.shop.field_map
     - field.field.node.shop.field_open_hours
     - field.field.node.shop.field_phone
     - node.type.shop
@@ -24,10 +26,13 @@ content:
     weight: 100
     region: content
 hidden:
+  addtoany: true
   field_address: true
   field_description: true
   field_email: true
   field_images: true
+  field_location: true
+  field_map: true
   field_open_hours: true
   field_phone: true
   langcode: true

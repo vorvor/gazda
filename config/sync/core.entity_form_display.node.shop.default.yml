@@ -7,11 +7,15 @@ dependencies:
     - field.field.node.shop.field_description
     - field.field.node.shop.field_email
     - field.field.node.shop.field_images
+    - field.field.node.shop.field_location
+    - field.field.node.shop.field_map
     - field.field.node.shop.field_open_hours
     - field.field.node.shop.field_phone
     - image.style.thumbnail
     - node.type.shop
   module:
+    - geofield
+    - google_map_field
     - image
     - office_hours
     - path
@@ -57,6 +61,19 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_location:
+    type: geofield_latlon
+    weight: 128
+    region: content
+    settings:
+      html5_geolocation: false
+    third_party_settings: {  }
+  field_map:
+    type: google_map_field_default
+    weight: 129
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_open_hours:
     type: office_hours_exceptions

@@ -1,0 +1,23 @@
+uuid: ee48d746-e2ad-496b-81ce-33e5548370e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.product
+  module:
+    - node
+id: product_alias
+label: product-alias
+type: 'canonical_entities:node'
+pattern: '/termek/[node:field_shop:entity:title]/[node:title]'
+selection_criteria:
+  ade86eb3-fa32-4711-b061-1344f4059117:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      product: product
+selection_logic: and
+weight: -5
+relationships: {  }

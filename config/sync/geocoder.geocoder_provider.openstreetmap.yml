@@ -1,0 +1,16 @@
+uuid: a8af543d-ea40-45d2-94c8-2a63fff8578b
+langcode: en
+status: true
+dependencies: {  }
+id: openstreetmap
+label: OpenStreetMap
+plugin: openstreetmap
+configuration:
+  throttle:
+    period: 2
+    limit: 1
+  geocoder:
+    locale: ''
+  rootUrl: 'https://nominatim.openstreetmap.org'
+  userAgent: setaljbe.com
+  referer: setaljbe.com

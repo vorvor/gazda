@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.product.field_category
     - field.field.node.product.field_description
     - field.field.node.product.field_images
     - field.field.node.product.field_shop
     - field.field.node.product.field_tags
+    - image.style.fb_post_image
     - node.type.product
   module:
-    - imagefield_slideshow
+    - colorbox
     - user
 id: node.product.default
 targetEntityType: node
@@ -22,14 +22,6 @@ content:
     third_party_settings: {  }
     weight: 6
     region: content
-  field_category:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 3
-    region: content
   field_description:
     type: basic_string
     label: hidden
@@ -38,18 +30,16 @@ content:
     weight: 4
     region: content
   field_images:
-    type: imagefield_slideshow_field_formatter
+    type: colorbox
     label: hidden
     settings:
-      imagefield_slideshow_style: fb_post_image
-      imagefield_slideshow_style_effects: fade
-      imagefield_slideshow_style_pause: 'true'
-      imagefield_slideshow_prev_next: '1'
-      imagefield_slideshow_transition_speed: '100'
-      imagefield_slideshow_timeout: '7000'
-      imagefield_slideshow_pager: '1'
-      imagefield_slideshow_link_image_to: ''
-      imagefield_slideshow_pager_image: 0
+      colorbox_image_style: ''
+      colorbox_gallery: post
+      colorbox_gallery_custom: ''
+      colorbox_caption: auto
+      colorbox_caption_custom: ''
+      colorbox_node_style: fb_post_image
+      colorbox_node_style_first: fb_post_image
     third_party_settings: {  }
     weight: 2
     region: content

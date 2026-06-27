@@ -1,0 +1,23 @@
+uuid: f691e4fc-4550-46fb-aa47-a5cc9e83eec2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.shop
+  module:
+    - node
+id: shop_alias
+label: shop-alias
+type: 'canonical_entities:node'
+pattern: '/bolt/[node:title]'
+selection_criteria:
+  14daa17b-58a0-4fa3-a7bc-7a089e645fb8:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      shop: shop
+selection_logic: and
+weight: -5
+relationships: {  }

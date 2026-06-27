@@ -6,6 +6,8 @@ dependencies:
     - field.storage.node.field_shop
     - node.type.product
     - node.type.shop
+  content:
+    - 'node:shop:c118eccd-7161-4749-b170-bf5f9e898afe'
 id: node.product.field_shop
 field_name: field_shop
 entity_type: node
@@ -14,7 +16,9 @@ label: Shop
 description: ''
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    target_uuid: c118eccd-7161-4749-b170-bf5f9e898afe
 default_value_callback: ''
 settings:
   handler: 'default:node'

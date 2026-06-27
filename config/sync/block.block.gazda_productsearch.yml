@@ -1,0 +1,28 @@
+uuid: 6a4d509f-49ea-464e-a8ff-8c50ff3b65fb
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - product_search
+  theme:
+    - gazda
+id: gazda_productsearch
+theme: gazda
+region: content
+weight: 0
+provider: null
+plugin: product_search_block
+settings:
+  id: product_search_block
+  label: 'Product search'
+  label_display: '0'
+  provider: product_search
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      shop: shop
