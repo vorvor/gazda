@@ -1,0 +1,14 @@
+.product-search-input {
+  max-width: 480px;
+}
+
+.product-search-results {
+  margin-top: 1rem;
+}
+
+.product-search-loading,
+.product-search-help,
+.product-search-no-results,
+.product-search-error {
+  margin: 1rem 0;
+}

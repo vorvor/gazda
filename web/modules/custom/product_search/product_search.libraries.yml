@@ -1,0 +1,9 @@
+search:
+  js:
+    js/product-search.js: {}
+  css:
+    theme:
+      css/product-search.css: {}
+  dependencies:
+    - core/drupal
+    - core/once

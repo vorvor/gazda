@@ -1,3 +1,7 @@
+:root {
+  --primary-color: #5a9632;
+}
+
 a {
   text-decoration: none;
   color: #111;
@@ -9,31 +13,82 @@ body {
   font-style: normal;
 }
 
+#block-gazda-main-menu {
+  ul.menu {
+    display: flex;
+    gap: 12px;
+    list-style: none;
+
+    li {
+      list-style: none;
+    }
+  }
+}
+
 #block-gazda-site-branding {
   img {
     width: 250px;
   }
 }
 
-.view-products {
+.region-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  color: #fff;
+}
+
+.site-name {
+  display: none;
+}
+
+.view-products, .view-taxonomy-term {
   .view-content {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     .views-row {
       width: 30%;
       padding: 1rem;
       border-radius: 10px;
       box-shadow: 0 0 10px #aaa;
+      margin-bottom: 24px;
     }
 
     .views-field-title {
-      color: #5a9632;
+      display: inline-block;
+      color: var(--primary-color);
       font-size: 1.75rem;
       font-weight: 800;
 
       a {
         color: #5a9632;
+      }
+    }
+
+    .views-field-field-shop {
+      background: var(--primary-color);
+      border-radius: 4px;
+      padding: 0.1rem 0.4rem;
+
+      a {
+        color: #fff;
+      }
+    }
+
+    .views-field-field-tags {
+      display:flex;
+      gap: 12px;
+
+      a {
+        display: inline-block;
+        margin-right: 12px;
+        background: var(--primary-color);
+        border-radius: 4px;
+        padding: 0.1rem 0.4rem;
+        color: #fff;
       }
     }
 
@@ -45,7 +100,30 @@ body {
   }
 }
 
-.product-full {
+.product-full, .shop-full {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
+  gap: 24px;
+
+  .field--name-field-tags {
+    display:flex;
+    gap: 12px;
+
+    .field__item {
+      background: var(--primary-color);
+      border-radius: 4px;
+      padding: 0.1rem 0.4rem;
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.office-hours-status {
+  color: #fff;
+  background: orange;
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
 }

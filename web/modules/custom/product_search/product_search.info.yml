@@ -1,0 +1,9 @@
+name: Product Search
+type: module
+description: 'AJAX product search page that renders matching products through a Views display.'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:node
+  - drupal:taxonomy
+  - drupal:views

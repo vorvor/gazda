@@ -65,4 +65,5 @@ return array(
     'SebastianBergmann\\Diff\\Parser' => $vendorDir . '/sebastian/diff/src/Parser.php',
     'SebastianBergmann\\Diff\\TimeEfficientLongestCommonSubsequenceCalculator' => $vendorDir . '/sebastian/diff/src/TimeEfficientLongestCommonSubsequenceCalculator.php',
     'System' => $vendorDir . '/pear/pear-core-minimal/src/System.php',
+    'geoPHP' => $vendorDir . '/itamair/geophp/geoPHP.inc',
 );

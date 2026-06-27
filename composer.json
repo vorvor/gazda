@@ -21,15 +21,25 @@
         "drupal/admin_toolbar": "^3.6",
         "drupal/backup_migrate": "^5.1",
         "drupal/better_exposed_filters": "^7.1",
+        "drupal/colorbox": "^2.1",
         "drupal/core-composer-scaffold": "^10.6",
         "drupal/core-project-message": "^10.6",
         "drupal/core-recommended": "^10.6",
         "drupal/field_gallery": "^2.0",
+        "drupal/geocoder": "^4.34",
+        "drupal/geofield": "^10.3",
+        "drupal/google_map_field": "^2.0",
         "drupal/image_effects": "^4.0",
         "drupal/imagefield_slideshow": "^2.0",
+        "drupal/leaflet": "^10.4",
         "drupal/metatag": "^2.2",
         "drupal/office_hours": "^1.29",
-        "drush/drush": "^13.7"
+        "drupal/pathauto": "^1.15",
+        "drupal/synonyms": "^2.1",
+        "drupal/views_fields_combine": "^10.0",
+        "drupal/visitors": "^2.32",
+        "drush/drush": "^13.7",
+        "geocoder-php/nominatim-provider": "^5.8"
     },
     "conflict": {
         "drupal/drupal": "*"

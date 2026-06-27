@@ -1,0 +1,11 @@
+<div class="shop-full">
+  <div class="shop-image">
+    {{ content.field_images }}
+  </div>
+  <div class="shop-open-hours">
+    {{ content.field_open_hours }}
+  </div>
+  <div class="shop-details">
+    {{ content|without('field_images', 'field_open_hours') }}
+  </div>
+</div>

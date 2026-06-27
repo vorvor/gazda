@@ -1,0 +1,15 @@
+product_search.page:
+  path: '/search-product'
+  defaults:
+    _controller: '\Drupal\product_search\Controller\ProductSearchController::page'
+    _title: ''
+  requirements:
+    _permission: 'access content'
+
+product_search.ajax:
+  path: '/search-product/ajax'
+  defaults:
+    _controller: '\Drupal\product_search\Controller\ProductSearchController::ajaxSearch'
+  requirements:
+    _permission: 'access content'
+  methods: [GET]
