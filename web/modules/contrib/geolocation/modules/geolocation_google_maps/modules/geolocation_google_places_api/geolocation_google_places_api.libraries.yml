@@ -1,0 +1,6 @@
+# Google places geocoder function.
+geolocation_google_places_api.googleplacesicons:
+  version: 4.x
+  css:
+    theme:
+      css/geolocation-google-places-api-geocoder.css: {}

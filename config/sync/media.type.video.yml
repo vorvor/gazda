@@ -1,0 +1,16 @@
+uuid: 1c56b1c4-10dd-45ca-a2ab-291979e423b3
+langcode: hu
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: hzgvcRgZHltqWf8hBmttoWh95tCJoPL25lPq9YSIRsY
+id: video
+label: Videó
+description: 'Egy helyileg tárolt videófájl.'
+source: video_file
+queue_thumbnail_downloads: false
+new_revision: true
+source_configuration:
+  source_field: field_media_video_file
+field_map:
+  name: name

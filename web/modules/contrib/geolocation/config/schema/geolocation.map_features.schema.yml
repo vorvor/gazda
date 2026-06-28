@@ -1,0 +1,118 @@
+plugin.plugin_configuration.geolocation.map_feature.control_loading_indicator:
+  type: geolocation.map_feature_settings
+  label: 'Map Control - Loading Indicator'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        position:
+          type: string
+          label: 'Position'
+        loading_label:
+          type: string
+          label: 'Loading Label'
+
+plugin.plugin_configuration.geolocation.map_feature.control_tile_layers:
+  type: geolocation.map_feature_settings
+  label: 'Map Control - Tile Layers'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        position:
+          type: string
+          label: 'Position'
+
+plugin.plugin_configuration.geolocation.map_feature.client_location_indicator:
+  type: geolocation.map_feature_settings
+  label: 'Client Location Indicator'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        icon_path:
+          type: string
+          label: 'Icon Path'
+
+plugin.plugin_configuration.geolocation.map_feature.geolocation_shapes:
+  type: geolocation.map_feature_settings
+  label: 'Draw Shapes'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        remove_markers:
+          type: boolean
+          label: 'Remove markers'
+        polyline:
+          type: boolean
+          label: 'Draw polyline'
+        polyline_title:
+          type: string
+          label: 'Polyline title'
+        strokeColor:
+          type: string
+          label: 'Stroke Color'
+        strokeOpacity:
+          type: float
+          label: 'Stroke Opacity'
+        strokeWidth:
+          type: string
+          label: 'Stroke width'
+        polygon:
+          type: boolean
+          label: 'Draw polygon'
+        polygon_title:
+          type: string
+          label: 'Polygon title'
+        fillColor:
+          type: string
+          label: 'Fill Color'
+        fillOpacity:
+          type: float
+          label: 'Fill Opacity'
+
+plugin.plugin_configuration.geolocation.map_feature.control_recenter:
+  type: geolocation.map_feature_settings
+  label: 'Control Recenter'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        position:
+          type: string
+          label: 'Position'
+
+plugin.plugin_configuration.geolocation.map_feature.control_locate:
+  type: geolocation.map_feature_settings
+  label: 'Control Locate'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        position:
+          type: string
+          label: 'Position'
+
+plugin.plugin_configuration.geolocation.map_feature.control_geocoder:
+  type: geolocation.map_feature_settings
+  label: 'Control Geocoder'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        position:
+          type: string
+          label: 'Position'
+        geocoder:
+          type: string
+          label: 'Geocoder'
+        geocoder_settings:
+          type: geolocation.geocoder.[%parent.geocoder]

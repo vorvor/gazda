@@ -1,0 +1,207 @@
+geolocation.map_feature_settings.leaflet.control:
+  type: geolocation.map_feature_settings
+  label: 'Control Element'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        position:
+          type: string
+          label: 'Position'
+
+plugin.plugin_configuration.geolocation.map_feature.leaflet_control_zoom:
+  type: geolocation.map_feature_settings.leaflet.control
+  label: 'Control Zoom'
+
+plugin.plugin_configuration.geolocation.map_feature.leaflet_control_fullscreen:
+  type: geolocation.map_feature_settings.leaflet.control
+  label: 'Control Fullscreen'
+
+plugin.plugin_configuration.geolocation.map_feature.leaflet_control_attribution:
+  type: geolocation.map_feature_settings.leaflet.control
+  label: 'Control Attribution'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        prefix:
+          type: string
+          label: 'Prefix'
+
+plugin.plugin_configuration.geolocation.map_feature.leaflet_control_scale:
+  type: geolocation.map_feature_settings.leaflet.control
+  label: 'Control Scale'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        metric:
+          type: boolean
+          label: 'Metric'
+        imperial:
+          type: boolean
+          label: 'Imperial'
+
+plugin.plugin_configuration.geolocation.map_feature.leaflet_control_layer:
+  type: geolocation.map_feature_settings.leaflet.control
+  label: 'Control Layer'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        default_label:
+          type: string
+          label: 'Label'
+        tile_layer_providers:
+          type: sequence
+          label: 'Providers'
+          sequence:
+            type: sequence
+            label: 'MapType'
+            sequence:
+              type: mapping
+              label: 'Enabled'
+              mapping:
+                checkbox:
+                  type: boolean
+                  label: 'Enabled'
+                label:
+                  type: string
+                  label: 'Label'
+        tile_providers_options:
+          type: sequence
+          label: 'Providers'
+          sequence:
+            type: geolocation.map_feature_settings.leaflet.tile_layer_provider.[%key]
+            label: 'Provider Options'
+
+plugin.plugin_configuration.geolocation.map_feature.leaflet_max_bounds:
+  type: geolocation.map_feature_settings
+  label: 'Max Bounds'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        north:
+          type: float
+          label: 'North'
+        south:
+          type: float
+          label: 'South'
+        east:
+          type: float
+          label: 'East'
+        west:
+          type: float
+          label: 'West'
+
+plugin.plugin_configuration.geolocation.map_feature.leaflet_custom_tile_layer:
+  type: geolocation.map_feature_settings
+  label: 'Custom Tile Layer'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        tile_layer_url:
+          type: string
+          label: 'Url'
+        tile_layer_attribution:
+          type: string
+          label: 'Attribution'
+        tile_layer_subdomains:
+          type: string
+          label: 'Subdomains'
+        tile_layer_zoom:
+          type: integer
+          label: 'Zoom'
+
+plugin.plugin_configuration.geolocation.map_feature.leaflet_tile_layer:
+  type: geolocation.map_feature_settings
+  label: 'Tile Layer'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        tile_layer_provider:
+          type: string
+          label: 'Overlay'
+        tile_provider_options:
+          type: sequence
+          label: 'Provider Options'
+          sequence:
+            type: geolocation.map_feature_settings.leaflet.tile_layer_provider.[%key]
+            label: 'Provider Options'
+
+plugin.plugin_configuration.geolocation.map_feature.leaflet_tile_layer_overlay:
+  type: geolocation.map_feature_settings
+  label: 'Tile Layer Overlay'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        tile_layer_overlay:
+          type: string
+          label: 'Overlay'
+        tile_overlay_options:
+          type: mapping
+          label: 'Options'
+          mapping:
+            apiKey:
+              type: string
+              label: 'API key'
+
+plugin.plugin_configuration.geolocation.map_feature.leaflet_wms:
+  type: geolocation.map_feature_settings
+  label: 'Leaflet WMS'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        url:
+          type: string
+          label: 'Url'
+        version:
+          type: string
+          label: 'Version'
+        layers:
+          type: string
+          label: 'Layers'
+        styles:
+          type: string
+          label: 'Styles'
+        srs:
+          type: string
+          label: 'SRS'
+        format:
+          type: string
+          label: 'Format'
+        transparent:
+          type: boolean
+          label: 'Transparent'
+        identify:
+          type: boolean
+          label: 'Identify'
+
+plugin.plugin_configuration.geolocation.map_feature.leaflet_rotate:
+  type: geolocation.map_feature_settings
+  label: 'Leaflet Rotate'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Rotation Settings'
+      mapping:
+        display_control:
+          type: boolean
+          label: 'Display Rotation Control'
+        bearing:
+          type: float
+          label: 'Bearing'

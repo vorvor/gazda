@@ -57,7 +57,7 @@ final class ProductSearchBlock extends BlockBase {
    * /search-product page. The AJAX endpoint is shared with the page.
    */
   private function buildProductsView(): mixed {
-    return views_embed_view('products', 'page_1');
+    return views_embed_view('products', 'block_1');
   }
 
 }

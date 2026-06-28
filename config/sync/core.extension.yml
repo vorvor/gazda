@@ -8,6 +8,7 @@ module:
   backup_migrate: 0
   better_exposed_filters: 0
   big_pipe: 0
+  blazy: 0
   block: 0
   block_content: 0
   breakpoint: 0
@@ -35,6 +36,9 @@ module:
   geocoder_field: 0
   geocoder_geofield: 0
   geofield: 0
+  geolocation: 0
+  geolocation_google_maps: 0
+  geolocation_google_static_maps: 0
   google_map_field: 0
   help: 0
   history: 0
@@ -45,6 +49,7 @@ module:
   leaflet: 0
   link: 0
   locale: 0
+  media: 0
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
@@ -61,6 +66,8 @@ module:
   product_search: 0
   search: 0
   shortcut: 0
+  slick: 0
+  slick_views: 0
   synonyms: 0
   system: 0
   taxonomy: 0
@@ -70,6 +77,8 @@ module:
   update: 0
   user: 0
   views_fields_combine: 0
+  views_slideshow: 0
+  views_slideshow_cycle: 0
   views_ui: 0
   visitors: 0
   pathauto: 1

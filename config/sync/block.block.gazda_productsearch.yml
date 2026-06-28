@@ -10,7 +10,7 @@ dependencies:
 id: gazda_productsearch
 theme: gazda
 region: content
-weight: 0
+weight: -5
 provider: null
 plugin: product_search_block
 settings:

@@ -1,0 +1,19 @@
+geolocation.map_feature_settings.yandex.control:
+  type: geolocation.map_feature_settings
+  label: 'Control Element'
+  mapping:
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        position:
+          type: string
+          label: 'Position'
+
+plugin.plugin_configuration.geolocation.map_feature.yandex_control_geolocation:
+  type: geolocation.map_feature_settings.yandex.control
+  label: 'Geolocation'
+
+plugin.plugin_configuration.geolocation.map_feature.yandex_control_zoom:
+  type: geolocation.map_feature_settings.yandex.control
+  label: 'Zoom'

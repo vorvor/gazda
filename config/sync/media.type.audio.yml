@@ -1,0 +1,16 @@
+uuid: f9f48f10-f623-4d6f-84d8-ca3be8962682
+langcode: hu
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: eJw8n6Tk2tO3ZysuEeGR1gZa1yRffaZzR4t0Q7iNurs
+id: audio
+label: Hanganyag
+description: 'Egy helyileg tárolt hangfájl.'
+source: audio_file
+queue_thumbnail_downloads: false
+new_revision: true
+source_configuration:
+  source_field: field_media_audio_file
+field_map:
+  name: name

@@ -1,0 +1,12 @@
+parameters:
+  level: 6
+
+  excludePaths:
+    -  */node_modules/*
+
+  ignoreErrors:
+    # best practice in Drupal, so we cannot fix that.
+    - identifier: new.static
+    - identifier: globalDrupalDependencyInjection.useDependencyInjection
+    - identifier: missingType.iterableValue
+    - identifier: missingType.generics

@@ -2,6 +2,7 @@ styles:
   css:
     component:
       css/style.css: {}
+      css/style-mobile.css: {}
   js:
     js/script.js: {}
   dependencies:

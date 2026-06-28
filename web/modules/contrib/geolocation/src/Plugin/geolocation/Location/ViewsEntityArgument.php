@@ -1,0 +1,66 @@
+<?php
+
+namespace Drupal\geolocation\Plugin\geolocation\Location;
+
+use Drupal\geolocation\Attribute\Location;
+use Drupal\geolocation\LocationBase;
+use Drupal\geolocation\LocationInterface;
+use Drupal\geolocation\ViewsContextTrait;
+
+/**
+ * Derive center from proximity argument.
+ */
+#[Location(
+  id: 'views_entity_argument',
+  name: new \Drupal\Core\StringTranslation\TranslatableMarkup('Entity ID argument'),
+  description: new \Drupal\Core\StringTranslation\TranslatableMarkup('Location from entity ID argument.')
+)]
+class ViewsEntityArgument extends LocationBase implements LocationInterface {
+
+  use ViewsContextTrait;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getAvailableLocationOptions(array $context = []): array {
+    $options = [];
+
+    if ($displayHandler = self::getViewsDisplayHandler($context)) {
+
+      /** @var \Drupal\views\Plugin\views\argument\ArgumentPluginBase $argument */
+      foreach ($displayHandler->getHandlers('argument') as $argument_id => $argument) {
+        if ($argument->getPluginId() == 'geolocation_entity_argument') {
+          $options[$argument_id] = $this->t('Entity argument') . ' - ' . $argument->adminLabel();
+        }
+      }
+    }
+
+    return $options;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCoordinates($location_option_id, array $location_option_settings, $context = NULL): ?array {
+    if (!($displayHandler = self::getViewsDisplayHandler($context))) {
+      return parent::getCoordinates($location_option_id, $location_option_settings, $context);
+    }
+
+    /** @var \Drupal\geolocation\Plugin\views\argument\EntityArgument|null $handler */
+    $handler = $displayHandler->getHandler('argument', $location_option_id);
+    if (empty($handler)) {
+      return NULL;
+    }
+    if ($values = $handler->getParsedReferenceLocation()) {
+      if (isset($values['lat']) && isset($values['lng'])) {
+        return [
+          'lat' => $values['lat'],
+          'lng' => $values['lng'],
+        ];
+      }
+    }
+
+    return parent::getCoordinates($location_option_id, $location_option_settings, $context);
+  }
+
+}

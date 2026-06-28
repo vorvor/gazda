@@ -1,0 +1,28 @@
+@media screen and (max-width: 800px) {
+  .view-products, .view-taxonomy-term {
+    .view-content {
+      display: block;
+
+      .views-row {
+        width: 100%;
+        box-sizing: border-box;
+
+        .views-field-title {
+
+        }
+      }
+    }
+  }
+
+  .product-full, .shop-full {
+    display: block;
+
+    .product-details {
+      max-width: 100%;
+    }
+
+    .field--name-field-tags {
+      margin-bottom: 12px;
+    }
+  }
+}

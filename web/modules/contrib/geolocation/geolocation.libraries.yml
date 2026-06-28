@@ -1,0 +1,48 @@
+geolocation.shared:
+  version: 4.x
+  js:
+    js/geolocation-shared.js: {}
+
+geolocation.widget.map:
+  version: 4.x
+  js:
+    js/geolocation-widget-map.js: {}
+
+geolocation.map:
+  version: 4.x
+  css:
+    theme:
+      css/geolocation-map.css: {}
+  js:
+    js/geolocation-map.js: {}
+  dependencies:
+    - geolocation/geolocation.shared
+    - core/drupal
+    - core/drupalSettings
+    - core/drupal.ajax
+
+geolocation.location.input:
+  version: 4.x
+  js:
+    js/geolocation-location-input.js: { }
+  dependencies:
+    - geolocation/geolocation.shared
+    - core/drupal
+    - core/drupalSettings
+    - core/drupal.ajax
+
+geolocation.views.filter.geocoder:
+  version: 4.x
+  js:
+    js/geolocation-views-filter-geocoder.js: { }
+  dependencies:
+    - geolocation/geolocation.shared
+    - core/drupal
+    - core/drupalSettings
+    - core/drupal.ajax
+
+geolocation.geo-spatial-icon:
+  version: 4.x
+  css:
+    theme:
+      css/geo-spatial-icon.css: {}

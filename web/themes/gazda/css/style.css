@@ -13,6 +13,10 @@ body {
   font-style: normal;
 }
 
+.page-title {
+  line-height: 1.75rem;
+}
+
 #block-gazda-main-menu {
   ul.menu {
     display: flex;
@@ -27,15 +31,18 @@ body {
 
 #block-gazda-site-branding {
   img {
-    width: 250px;
+    width: 120px;
   }
+}
+
+.content-header {
+  padding: 0;
 }
 
 .region-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
   color: #fff;
 }
 
@@ -50,6 +57,10 @@ body {
     flex-wrap: wrap;
 
     .views-row {
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      flex-wrap: wrap;
       width: 30%;
       padding: 1rem;
       border-radius: 10px;
@@ -61,7 +72,9 @@ body {
       display: inline-block;
       color: var(--primary-color);
       font-size: 1.75rem;
+      line-height: 1.75rem;
       font-weight: 800;
+      width: 100%;
 
       a {
         color: #5a9632;
@@ -69,18 +82,26 @@ body {
     }
 
     .views-field-field-shop {
-      background: var(--primary-color);
-      border-radius: 4px;
-      padding: 0.1rem 0.4rem;
 
-      a {
-        color: #fff;
+      .field-content {
+        background: var(--primary-color);
+        border-radius: 4px;
+        padding: 0.1rem 0.4rem;
+
+        a {
+          color: #fff;
+        }
       }
+    }
+
+    .views-field-field-description {
+      width: 100%;
     }
 
     .views-field-field-tags {
       display:flex;
       gap: 12px;
+      align-self: end;
 
       a {
         display: inline-block;
@@ -97,13 +118,142 @@ body {
         list-style: none;
       }
     }
+
+    .views-field-promote.promoted-0 {
+      display: none;
+    }
+
+    .views-field-promote.promoted-1 {
+      position: absolute;
+      top: 20px;
+      right: -35px;
+      background: #ef4444;
+      color: white;
+      width: 120px;
+      padding: 3px 0;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      transform: rotate(45deg);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 10;
+
+      &:before {
+        content: "TOP";
+      }
+
+      .field-content {
+        display: none;
+      }
+    }
   }
 }
+
+.view-popular {
+  .view-content {
+    padding-left: 25px;
+
+    .views-row {
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      flex-wrap: wrap;
+      width: 28%;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #aaa;
+      margin-bottom: 24px;
+    }
+
+    .views-field-title {
+      display: inline-block;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      font-weight: 800;
+      width: 100%;
+
+      a {
+        color: #5a9632;
+      }
+    }
+
+    .views-field-field-shop {
+
+      .field-content {
+        background: var(--primary-color);
+        border-radius: 4px;
+        padding: 0.1rem 0.4rem;
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .views-field-field-description {
+      width: 100%;
+    }
+
+    .views-field-field-tags {
+      display:flex;
+      gap: 12px;
+      align-self: end;
+
+      a {
+        display: inline-block;
+        margin-right: 12px;
+        background: var(--primary-color);
+        border-radius: 4px;
+        padding: 0.1rem 0.4rem;
+        color: #fff;
+      }
+    }
+
+    .views-field-field-images {
+      ul, li {
+        list-style: none;
+      }
+    }
+
+    .views-field-promote.promoted-0 {
+      display: none;
+    }
+
+    .views-field-promote.promoted-1 {
+      position: absolute;
+      top: 20px;
+      right: -35px;
+      background: #ef4444;
+      color: white;
+      width: 120px;
+      padding: 3px 0;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      transform: rotate(45deg);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 10;
+
+      &:before {
+        content: "TOP";
+      }
+
+      .field-content {
+        display: none;
+      }
+    }
+  }
+}
+
 
 .product-full, .shop-full {
   display: flex;
   justify-content: left;
   gap: 24px;
+
+  .product-details {
+    max-width: 60%;
+  }
 
   .field--name-field-tags {
     display:flex;
@@ -121,9 +271,50 @@ body {
   }
 }
 
-.office-hours-status {
+.views-slideshow-controls-bottom {
+  position: absolute;
+  top: 50%;
+  z-index: 1000;
+  width: 100%;
+
+  #views_slideshow_controls_text_previous_popular-block_1 {
+    left: -26px;
+    position: absolute;
+    color: #fff;
+    background: orange;
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+  }
+
+  #views_slideshow_controls_text_pause_popular-block_1 {
+    display: none;
+  }
+
+  #views_slideshow_controls_text_next_popular-block_1 {
+    position: absolute;
+    right: 130px;
+    color: #fff;
+    background: orange;
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+  }
+}
+
+.office-hours-status, .shop-on-map {
   color: #fff;
   background: orange;
   border-radius: 4px;
   padding: 0.1rem 0.4rem;
+}
+
+.views_slideshow_cycle_slide {
+  padding: 12px;
+  .views-row {
+    float: left;
+    margin-right: 24px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }

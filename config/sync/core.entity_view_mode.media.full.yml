@@ -1,0 +1,13 @@
+uuid: 7ca34acd-a6ab-4a2e-9c4b-77cc157d94ef
+langcode: hu
+status: false
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: dTfAUHooYV0uOVPO3saGpgv-c5PppJXDwxvwRTJOycM
+id: media.full
+label: 'Teljes tartalom'
+description: ''
+targetEntityType: media
+cache: true
