@@ -3,6 +3,7 @@
     {{ content|without('field_shop') }}
   </div>
   <div class="shop-details">
+    <a class="shop-on-map" target="_blank" href="https://www.google.com/maps/place/{{ content.field_address[0]['#context']['value'] }}">Térkép</a>
     {{ content.field_shop }}
   </div>
 </div>
