@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function product_search_theme($existing, $type, $theme, $path) {
+  return [
+    'product_search' => [
+      'variables' => [
+        'placeholder' => NULL,
+        'results' => NULL,
+      ],
+      'template' => 'product_search',
+    ],
+  ];
+}

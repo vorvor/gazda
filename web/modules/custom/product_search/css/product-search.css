@@ -1,9 +1,42 @@
-.product-search-input {
-  max-width: 480px;
+
+.product-search-widget {
+  background: url("/themes/gazda/images/header-bg.png");
+  background-size: 100%;
+  padding: 12px 48px;
+  margin-left:-50px;
+  width: 100%;
+  height: 240px;
+  margin-bottom: 24px;
+}
+
+.product-search-form {
+
+    #product-search-input {
+      width: 300px;
+      border-color: #ccc;
+      border-radius: 22px;
+      max-width: 1000px;
+      padding: 4px 18px;
+      height: 33px;
+    }
+
+
+  .search-icon {
+    position: absolute;
+    color: #fff;
+    background-color: green;
+    margin-left: -36px;
+    height: 45px;
+    width: fit-content;
+    padding: 11px 19px 7px;
+    box-sizing: border-box;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+  }
 }
 
 .product-search-results {
-  margin-top: 1rem;
+  margin-top: 8rem;
 }
 
 .product-search-loading,

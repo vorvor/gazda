@@ -26,8 +26,19 @@ final class ProductSearchBlock extends BlockBase {
       '#attributes' => [
         'class' => ['product-search-widget', 'product-search-block'],
       ],
+      'prefix' => [
+        '#type' => 'container',
+        '#attributes' => [
+          'class' => ['product-search-results'],
+          'aria-live' => 'polite',
+        ],
+        'view' => [
+          '#markup' => '<div class="product-search-prefix">AAA</div>',
+        ],
+      ],
       'search' => [
         '#type' => 'textfield',
+        '#title' => $this->t('Search'),
         '#attributes' => [
           'class' => ['product-search-input'],
           'autocomplete' => 'off',

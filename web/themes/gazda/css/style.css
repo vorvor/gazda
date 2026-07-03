@@ -1,5 +1,6 @@
 :root {
   --primary-color: #5a9632;
+  --primary-color-light: #93c96f;
 }
 
 a {
@@ -13,8 +14,51 @@ body {
   font-style: normal;
 }
 
+.page-content {
+  margin-top: 0;
+}
+
 .page-title {
   line-height: 1.75rem;
+}
+
+.layout-container {
+  margin-top: -26px;
+}
+
+.content-header {
+  margin: 0;
+}
+
+header .layout-container {
+  margin-top: 0;
+}
+
+#block-gazda-content {
+  position: relative;
+
+  #inside-block {
+    position: absolute;
+    width: 33%;
+    right: 143px;
+    top: 36px;
+
+    #header-texts {
+      display: flex;
+      gap: 12px;
+      justify-content: space-around;
+      position: absolute;
+      top: 100px;
+      width: 100%;
+
+      div {
+        font-size: 20px;
+        width: 110px;
+        text-align: center;
+        line-height: 23px;
+      }
+    }
+  }
 }
 
 #block-gazda-main-menu {
@@ -57,15 +101,28 @@ body {
     flex-wrap: wrap;
 
     .views-row {
-      display: flex;
       position: relative;
       overflow: hidden;
       flex-wrap: wrap;
       width: 30%;
       padding: 1rem;
+      padding-bottom: 44px;
       border-radius: 10px;
       box-shadow: 0 0 10px #aaa;
       margin-bottom: 24px;
+    }
+
+    .views-field-field-images {
+      position: absolute;
+      z-index: -1000;
+      text-align: right;
+      width: 50%;
+      right: 12px;
+      top: 12px;
+
+      img {
+
+      }
     }
 
     .views-field-title {
@@ -74,7 +131,7 @@ body {
       font-size: 1.75rem;
       line-height: 1.75rem;
       font-weight: 800;
-      width: 100%;
+      width: 50%;
 
       a {
         color: #5a9632;
@@ -82,6 +139,7 @@ body {
     }
 
     .views-field-field-shop {
+      width: fit-content;
 
       .field-content {
         background: var(--primary-color);
@@ -95,18 +153,18 @@ body {
     }
 
     .views-field-field-description {
-      width: 100%;
+      width: 50%;
     }
 
     .views-field-field-tags {
-      display:flex;
-      gap: 12px;
-      align-self: end;
+      position: absolute;
+      bottom: 6px;
 
       a {
+        margin-bottom: 6px;
         display: inline-block;
         margin-right: 12px;
-        background: var(--primary-color);
+        background: var(--primary-color-light);
         border-radius: 4px;
         padding: 0.1rem 0.4rem;
         color: #fff;
@@ -116,6 +174,17 @@ body {
     .views-field-field-images {
       ul, li {
         list-style: none;
+      }
+    }
+
+    .views-field-link-flag {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+
+      a {
+        font-size: 30px;
+        color: red;
       }
     }
 

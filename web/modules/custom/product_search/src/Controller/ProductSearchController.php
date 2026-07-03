@@ -44,28 +44,10 @@ final class ProductSearchController extends ControllerBase {
     $default_view = $this->buildProductsView();
 
     return [
-      '#type' => 'container',
-      '#attributes' => [
-        'class' => ['product-search-widget', 'product-search-block'],
-      ],
-      'search' => [
-        '#type' => 'textfield',
-        '#attributes' => [
-          'class' => ['product-search-input'],
-          'autocomplete' => 'off',
-          'placeholder' => $this->t('Search product'),
-        ],
-      ],
-      'results' => [
-        '#type' => 'container',
-        '#attributes' => [
-          'id' => 'product-search-results',
-          'class' => ['product-search-results'],
-          'aria-live' => 'polite',
-        ],
-        'view' => $default_view ?: [
-          '#markup' => '<p class="product-search-error">' . $this->t('The products view could not be rendered.') . '</p>',
-        ],
+      '#theme' => 'product_search',
+      '#placeholder' => $this->t('Search product'),
+      '#results' => $default_view ?: [
+        '#markup' => '<p class="product-search-error">' . $this->t('The products view could not be rendered.') . '</p>',
       ],
       '#attached' => [
         'library' => ['product_search/search'],

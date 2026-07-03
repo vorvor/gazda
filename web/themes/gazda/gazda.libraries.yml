@@ -3,10 +3,10 @@ styles:
     component:
       css/style.css: {}
       css/style-mobile.css: {}
-  js:
-    js/script.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupal
-    - core/once
-    - core/drupalSettings
+#  js:
+#    js/script.js: {}
+#  dependencies:
+#    - core/jquery
+#    - core/drupal
+#    - core/once
+#    - core/drupalSettings
