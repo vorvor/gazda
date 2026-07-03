@@ -1,0 +1,13 @@
+uuid: ee269640-843d-4591-b5fb-128204fcbdf6
+langcode: hu
+status: true
+dependencies:
+  module:
+    - flag
+_core:
+  default_config_hash: Z9dGFmjyQgZjDwdsI-Mmgd2tZkUsjYi7cOSUPqjXPtw
+id: flag_delete_flagging
+label: 'Jelölés törlése'
+type: flagging
+plugin: flag_delete_flagging
+configuration: {  }
