@@ -6,17 +6,8 @@
  */
 #}
 {% block content %}
-  {% if content %}
-    <div id="inside-block">
-      <div><img src="/themes/gazda/images/header-inside-block.png" alt="Inside Block"></div>
-      <div id="header-texts">
-        <div>Személyes kiszolgálás</div>
-        <div>Spórolj időt</div>
-        <div>Ötleteket adunk</div>
-      </div>
+  {% if is_front %}
 
-    </div>
-
-    {{ content }}
-  {% endif %}
+    {% endif %}
+  {{ content }}
 {% endblock %}

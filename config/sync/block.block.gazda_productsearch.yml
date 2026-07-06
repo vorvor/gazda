@@ -5,6 +5,7 @@ dependencies:
   module:
     - node
     - product_search
+    - system
   theme:
     - gazda
 id: gazda_productsearch
@@ -26,3 +27,7 @@ visibility:
       node: '@node.node_route_context:node'
     bundles:
       shop: shop
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

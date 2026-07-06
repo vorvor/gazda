@@ -22,30 +22,26 @@ final class ProductSearchBlock extends BlockBase {
     $default_view = $this->buildProductsView();
 
     return [
-      '#type' => 'container',
-      '#attributes' => [
-        'class' => ['product-search-widget', 'product-search-block'],
-      ],
-      'prefix' => [
+      '#theme' => 'product_search',
+      '#placeholder' => $this->t('Search product'),
+      '#marketingblock' => [
         '#type' => 'container',
         '#attributes' => [
-          'class' => ['product-search-results'],
+          'class' => ['marketing-block'],
           'aria-live' => 'polite',
         ],
         'view' => [
-          '#markup' => '<div class="product-search-prefix">AAA</div>',
+          '#markup' => '<div id="inside-block">
+            <div><img src="/themes/gazda/images/header-inside-block.png" alt="Inside Block"></div>
+            <div id="header-texts">
+              <div>Személyes kiszolgálás</div>
+              <div>Spórolj időt</div>
+              <div>Ötleteket adunk</div>
+            </div>
+          </div>',
         ],
       ],
-      'search' => [
-        '#type' => 'textfield',
-        '#title' => $this->t('Search'),
-        '#attributes' => [
-          'class' => ['product-search-input'],
-          'autocomplete' => 'off',
-          'placeholder' => $this->t('Search product'),
-        ],
-      ],
-      'results' => [
+      '#results' => [
         '#type' => 'container',
         '#attributes' => [
           'class' => ['product-search-results'],

@@ -8,6 +8,7 @@ function product_search_theme($existing, $type, $theme, $path) {
     'product_search' => [
       'variables' => [
         'placeholder' => NULL,
+        'marketingblock' => NULL,
         'results' => NULL,
       ],
       'template' => 'product_search',

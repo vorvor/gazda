@@ -46,6 +46,23 @@ final class ProductSearchController extends ControllerBase {
     return [
       '#theme' => 'product_search',
       '#placeholder' => $this->t('Search product'),
+      '#marketingblock' => [
+        '#type' => 'container',
+        '#attributes' => [
+          'class' => ['marketing-block'],
+          'aria-live' => 'polite',
+        ],
+        'view' => [
+          '#markup' => '<div id="inside-block">
+            <div><img src="/themes/gazda/images/header-inside-block.png" alt="Inside Block"></div>
+            <div id="header-texts">
+              <div>Személyes kiszolgálás</div>
+              <div>Spórolj időt</div>
+              <div>Ötleteket adunk</div>
+            </div>
+          </div>',
+        ],
+      ],
       '#results' => $default_view ?: [
         '#markup' => '<p class="product-search-error">' . $this->t('The products view could not be rendered.') . '</p>',
       ],
