@@ -30,3 +30,7 @@
 #inside-block {
   display: none;
 }
+
+.product-search-results {
+  margin-top: 1rem;
+}
