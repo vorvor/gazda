@@ -6,7 +6,8 @@
     {{ content.field_open_hours }}
   </div>
   <div class="shop-details">
-    {{ content|without('field_images', 'field_open_hours') }}
+    {{ content|without('field_images', 'field_open_hours', 'daily_coupon') }}
+    {{ content.daily_coupon }}
     <a class="shop-on-map" target="_blank" href="https://www.google.com/maps/place/{{ content.field_address[0]['#context']['value'] }}">Térkép</a>
   </div>
 </div>

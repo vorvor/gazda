@@ -1,5 +1,5 @@
 
-.product-search-widget {
+body.path-search-product .product-search-widget {
   background: url("/themes/gazda/images/header-bg.png");
   background-size: 100%;
   padding: 12px 48px;
@@ -45,3 +45,9 @@
 .product-search-error {
   margin: 1rem 0;
 }
+
+#marketing-block {
+  display: none;
+}
+
+body.path-search-product #marketing-block { display: block; }

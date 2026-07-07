@@ -1,0 +1,8 @@
+name: Generate Marketing Text
+type: module
+description: Generates marketing text using ChatGPT API for product nodes.
+package: Custom
+core_version_requirement: ^9 || ^10 || ^11
+dependencies:
+  - drupal:node
+  - drupal:taxonomy

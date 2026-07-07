@@ -1,6 +1,7 @@
 <div class="product-full">
   <div class="product-details">
-    {{ content|without('field_shop') }}
+    {{ content|without('field_shop', 'daily_coupon') }}
+    {{ content.daily_coupon }}
   </div>
   <div class="shop-details">
     <a class="shop-on-map" target="_blank" href="https://www.google.com/maps/place/{{ content.field_address[0]['#context']['value'] }}">Térkép</a>

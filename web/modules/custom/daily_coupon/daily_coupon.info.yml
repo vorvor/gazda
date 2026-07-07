@@ -1,0 +1,5 @@
+name: Daily Coupon
+type: module
+description: Generates and displays daily coupons for shops and products.
+core_version_requirement: ^9 || ^10 || ^11
+package: Custom

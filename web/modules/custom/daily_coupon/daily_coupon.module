@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @file
+ * Contains daily_coupon.module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_node_view().
+ */
+function daily_coupon_node_view(array &$build, EntityInterface $node, EntityViewDisplayInterface $display, $view_mode) {
+  if ($view_mode !== 'full') {
+    return;
+  }
+
+  $shop_node = NULL;
+  if ($node->bundle() === 'shop') {
+    $shop_node = $node;
+  }
+  elseif ($node->bundle() === 'product' && $node->hasField('field_shop') && !$node->get('field_shop')->isEmpty()) {
+    $shop_node = $node->get('field_shop')->entity;
+  }
+
+  if ($shop_node instanceof NodeInterface) {
+    $coupon = daily_coupon_generate($shop_node);
+    if ($coupon) {
+      $build['daily_coupon'] = [
+        '#type' => 'container',
+        '#attributes' => [
+          'class' => ['daily-coupon-wrapper'],
+        ],
+        'label' => [
+          '#markup' => '<div class="coupon-label">' . t('Daily Coupon:') . '</div>',
+        ],
+        'code' => [
+          '#markup' => '<div class="coupon-code">' . $coupon . '</div>',
+        ],
+        '#weight' => 10,
+        '#cache' => [
+          'max-age' => 86400, // Cache for a day.
+          'contexts' => ['url.path'], // Different coupon might be needed if path varies, but day is global.
+          // We should ideally include a cache context for the current day.
+        ],
+      ];
+    }
+  }
+}
+
+/**
+ * Generates a daily coupon for a given shop.
+ *
+ * @param \Drupal\node\NodeInterface $shop
+ *   The shop node.
+ *
+ * @return string|null
+ *   The generated coupon code.
+ */
+function daily_coupon_generate(NodeInterface $shop) {
+  $title = $shop->getTitle();
+  if (empty($title)) {
+    return NULL;
+  }
+
+  // Get the first 3 letters of the shop title (uppercase).
+  // Using mb_substr for multibyte support.
+  $prefix = mb_strtoupper(mb_substr(trim($title), 0, 3));
+
+  // Get the number of the current day in the month.
+  $day = (int) date('j');
+
+  // Math trick: (day * 7 + 123) / 3 and take some digits.
+  // Or something that feels "random" but is deterministic for the day.
+  $seed = ($day * 31) + 7;
+  $random_val = ($seed * 123) % 1000;
+
+  // Ensure it is 3 digits.
+  $suffix = str_pad($random_val, 3, '0', STR_PAD_LEFT);
+
+  return $prefix . $suffix;
+}
