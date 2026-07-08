@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.product.field_description
     - field.field.node.product.field_images
+    - field.field.node.product.field_marketing_text
     - field.field.node.product.field_shop
     - field.field.node.product.field_tags
     - node.type.product
@@ -24,6 +25,11 @@ content:
     third_party_settings: {  }
     weight: 10
     region: content
+  flag_like:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -33,5 +39,6 @@ hidden:
   addtoany: true
   field_description: true
   field_images: true
+  field_marketing_text: true
   field_shop: true
   langcode: true

@@ -5,12 +5,14 @@ dependencies:
   config:
     - field.field.node.product.field_description
     - field.field.node.product.field_images
+    - field.field.node.product.field_marketing_text
     - field.field.node.product.field_shop
     - field.field.node.product.field_tags
     - image.style.fb_post_image
     - node.type.product
   module:
     - colorbox
+    - text
     - user
 id: node.product.default
 targetEntityType: node
@@ -27,7 +29,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 4
+    weight: 3
     region: content
   field_images:
     type: colorbox
@@ -42,6 +44,13 @@ content:
       colorbox_node_style_first: fb_post_image
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_marketing_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
     region: content
   field_shop:
     type: entity_reference_entity_view
@@ -59,6 +68,11 @@ content:
       link: true
     third_party_settings: {  }
     weight: 0
+    region: content
+  flag_like:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
     region: content
   links:
     settings: {  }

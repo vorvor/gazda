@@ -1,0 +1,7 @@
+generate_marketing_text.settings:
+  path: '/admin/config/services/generate-marketing-text'
+  defaults:
+    _form: '\Drupal\generate_marketing_text\Form\SettingsForm'
+    _title: 'Marketing Text Generator Settings'
+  requirements:
+    _permission: 'administer site configuration'

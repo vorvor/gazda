@@ -6,7 +6,7 @@ config:
   database: 'mysql:8.0'
   webroot: web
   drush: ^11
-  xdebug: false
+  xdebug: true
 env_file:
   - ./lando/vars.env
 
@@ -34,7 +34,7 @@ tooling:
     description: Enable xdebug for apache.
     cmd:
       - |
-        rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && docker-php-ext-enable xdebug && /etc/init.d/apache2 reload && echo "Xdebug enabled"
+        docker-php-ext-enable xdebug && /etc/init.d/apache2 reload && echo "Xdebug enabled"
     user: root
   xdebug-off:
     service: appserver

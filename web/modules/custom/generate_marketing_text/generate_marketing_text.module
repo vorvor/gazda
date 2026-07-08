@@ -92,7 +92,23 @@ function generate_marketing_text_entity_presave(EntityInterface $entity) {
  * Calls ChatGPT API to generate marketing text.
  */
 function generate_marketing_text_from_chatgpt($category, $product_title, $shop_name = '') {
-  $api_key = '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';
+  $config = \Drupal::config('generate_marketing_text.settings');
+  $api_key = trim($config->get('chatgpt_api_key') ?? '');
+
+  if (empty($api_key)) {
+    \Drupal::logger('generate_marketing_text')->error('ChatGPT API Key is not configured.');
+    return '';
+  }
+
+  \Drupal::logger('generate_marketing_text')->notice('API Key fetched: @key_length chars. Starts with: "@start"', [
+    '@key_length' => strlen($api_key),
+    '@start' => substr($api_key, 0, 7) . '...',
+  ]);
+
+  if (strpos($api_key, 'sk-') !== 0) {
+    \Drupal::logger('generate_marketing_text')->warning('API Key does not start with "sk-". This is likely an invalid key format.');
+  }
+
   $client = \Drupal::httpClient();
 
   $prompt = "You are the copywriter of the \"Sétálj be!\" platform.
@@ -278,13 +294,17 @@ Do not use markdown.";
 
 
   try {
+    \Drupal::logger('generate_marketing_text')->notice('Calling ChatGPT API with model gpt-4o-mini');
+
+    $headers = [
+      'Authorization' => 'Bearer ' . $api_key,
+      'Content-Type' => 'application/json',
+    ];
+
     $response = $client->post('https://api.openai.com/v1/chat/completions', [
-      'headers' => [
-        'Authorization' => 'Bearer ' . $api_key,
-        'Content-Type' => 'application/json',
-      ],
+      'headers' => $headers,
       'json' => [
-        'model' => 'gpt-3.5-turbo',
+        'model' => 'gpt-4o-mini',
         'messages' => [
           ['role' => 'system', 'content' => 'You are an expert ecommerce copywriter specialized in professional product descriptions.'],
           ['role' => 'user', 'content' => $prompt],
@@ -293,13 +313,26 @@ Do not use markdown.";
       ],
     ]);
 
-    $data = Json::decode($response->getBody()->getContents());
+    $contents = $response->getBody()->getContents();
+    \Drupal::logger('generate_marketing_text')->notice('ChatGPT API response received.');
+    $data = Json::decode($contents);
     if (isset($data['choices'][0]['message']['content'])) {
       return trim($data['choices'][0]['message']['content']);
     }
+    else {
+      \Drupal::logger('generate_marketing_text')->error('ChatGPT API response structure unexpected: @data', ['@data' => json_encode($data)]);
+    }
   }
   catch (GuzzleException $e) {
-    \Drupal::logger('generate_marketing_text')->error('ChatGPT API error: @message', ['@message' => $e->getMessage()]);
+    $error_msg = $e->getMessage();
+    \Drupal::logger('generate_marketing_text')->error('ChatGPT API error: @message', ['@message' => $error_msg]);
+
+    // Check for specific common causes of 401.
+    if (strpos($error_msg, '401') !== FALSE) {
+      if (strpos($api_key, 'sk-proj-') === 0 && strlen($api_key) < 20) {
+        \Drupal::logger('generate_marketing_text')->error('API key starts with "sk-proj-" but is very short. Project keys might have different permissions or require different usage.');
+      }
+    }
   }
 
   return NULL;

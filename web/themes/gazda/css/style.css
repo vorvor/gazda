@@ -31,7 +31,7 @@ body {
 }
 
 body.path-frontpage .layout-container {
-  margin-top: -26px;
+  /* margin-top: -26px; */
 }
 
 .content-header {

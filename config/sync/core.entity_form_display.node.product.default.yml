@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.product.field_description
     - field.field.node.product.field_images
+    - field.field.node.product.field_marketing_text
     - field.field.node.product.field_shop
     - field.field.node.product.field_tags
     - image.style.thumbnail
@@ -12,6 +13,7 @@ dependencies:
   module:
     - image
     - path
+    - text
 id: node.product.default
 targetEntityType: node
 bundle: product
@@ -38,6 +40,14 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_marketing_text:
+    type: text_textarea
+    weight: 125
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_shop:
     type: entity_reference_autocomplete
