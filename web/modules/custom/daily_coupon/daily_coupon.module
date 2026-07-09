@@ -26,26 +26,29 @@ function daily_coupon_node_view(array &$build, EntityInterface $node, EntityView
   }
 
   if ($shop_node instanceof NodeInterface) {
-    $coupon = daily_coupon_generate($shop_node);
-    if ($coupon) {
-      $build['daily_coupon'] = [
-        '#type' => 'container',
-        '#attributes' => [
-          'class' => ['daily-coupon-wrapper'],
-        ],
-        'label' => [
-          '#markup' => '<div class="coupon-label">' . t('Daily Coupon:') . '</div>',
-        ],
-        'code' => [
-          '#markup' => '<div class="coupon-code">' . $coupon . '</div>',
-        ],
-        '#weight' => 10,
-        '#cache' => [
-          'max-age' => 86400, // Cache for a day.
-          'contexts' => ['url.path'], // Different coupon might be needed if path varies, but day is global.
-          // We should ideally include a cache context for the current day.
-        ],
-      ];
+    // Show coupon only if field_coupon is TRUE.
+    if ($shop_node->hasField('field_coupon') && $shop_node->get('field_coupon')->value) {
+      $coupon = daily_coupon_generate($shop_node);
+      if ($coupon) {
+        $build['daily_coupon'] = [
+          '#type' => 'container',
+          '#attributes' => [
+            'class' => ['daily-coupon-wrapper'],
+          ],
+          'label' => [
+            '#markup' => '<div class="coupon-label">' . t('Daily Coupon:') . '</div>',
+          ],
+          'code' => [
+            '#markup' => '<div class="coupon-code">' . $coupon . '</div>',
+          ],
+          '#weight' => 10,
+          '#cache' => [
+            'max-age' => 86400, // Cache for a day.
+            'contexts' => ['url.path'], // Different coupon might be needed if path varies, but day is global.
+            // We should ideally include a cache context for the current day.
+          ],
+        ];
+      }
     }
   }
 }

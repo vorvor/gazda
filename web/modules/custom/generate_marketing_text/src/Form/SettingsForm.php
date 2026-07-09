@@ -35,7 +35,23 @@ class SettingsForm extends ConfigFormBase {
       '#title' => $this->t('ChatGPT API Key'),
       '#default_value' => $config->get('chatgpt_api_key'),
       '#required' => TRUE,
-      '#maxlength' => 256,
+      '#maxlength' => 512,
+    ];
+
+    $form['chatgpt_prompt_marketing'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Prompt marketing'),
+      '#default_value' => $config->get('chatgpt_prompt_marketing'),
+      '#required' => TRUE,
+      '#rows' => 100,
+    ];
+
+    $form['chatgpt_prompt_desc'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Prompt description'),
+      '#default_value' => $config->get('chatgpt_prompt_desc'),
+      '#required' => TRUE,
+      '#rows' => 100,
     ];
 
     return parent::buildForm($form, $form_state);
@@ -46,8 +62,12 @@ class SettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $api_key = trim($form_state->getValue('chatgpt_api_key') ?? '');
+    $prompt_marketing = trim($form_state->getValue('chatgpt_prompt_marketing') ?? '');
+    $prompt_desc = trim($form_state->getValue('chatgpt_prompt_desc') ?? '');
     $this->config('generate_marketing_text.settings')
       ->set('chatgpt_api_key', $api_key)
+      ->set('chatgpt_prompt_marketing', $prompt_marketing)
+      ->set('chatgpt_prompt_desc', $prompt_desc)
       ->save();
 
     parent::submitForm($form, $form_state);

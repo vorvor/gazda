@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.shop.field_address
+    - field.field.node.shop.field_coupon
     - field.field.node.shop.field_description
     - field.field.node.shop.field_email
     - field.field.node.shop.field_images
@@ -28,6 +29,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_coupon:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 8
     region: content
   field_description:
     type: basic_string

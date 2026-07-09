@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.shop.field_address
+    - field.field.node.shop.field_coupon
     - field.field.node.shop.field_description
     - field.field.node.shop.field_email
     - field.field.node.shop.field_images
@@ -28,6 +29,7 @@ content:
 hidden:
   addtoany: true
   field_address: true
+  field_coupon: true
   field_description: true
   field_email: true
   field_images: true
