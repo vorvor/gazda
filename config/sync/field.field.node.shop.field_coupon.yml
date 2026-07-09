@@ -1,0 +1,21 @@
+uuid: 27e35343-aeaf-45bb-bee4-e6a8dd04cef2
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_coupon
+    - node.type.shop
+id: node.shop.field_coupon
+field_name: field_coupon
+entity_type: node
+bundle: shop
+label: 'Show Coupon'
+description: ''
+required: false
+translatable: null
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean
