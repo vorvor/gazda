@@ -715,7 +715,17 @@ display:
           user_scope: current
       use_ajax: true
       group_by: false
-      header: {  }
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: '@total products.'
       footer: {  }
       display_extenders: {  }
     cache_metadata:
