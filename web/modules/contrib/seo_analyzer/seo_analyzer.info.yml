@@ -1,0 +1,14 @@
+name: 'SEO analyzer'
+description: 'Check SEO metrics for a given node.'
+type: 'module'
+package: SEO
+core_version_requirement: ^8 || ^9 || ^10 || ^11
+# Information added by Drupal.org packaging script on 2024-06-19
+# version: '1.0.0'
+# project: 'seo_analyzer'
+# datestamp: 1718809689
+
+# Information added by Drupal.org packaging script on 2024-08-26
+version: '1.0.3'
+project: 'seo_analyzer'
+datestamp: 1724678105

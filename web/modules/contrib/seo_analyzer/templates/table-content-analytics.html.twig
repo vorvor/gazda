@@ -1,0 +1,116 @@
+<table class="seo-analyzer-table">
+	<tr>
+		<th>{{'Description'|t}}</th>
+		<th>{{'Value'|t}}</th>
+		<th>{{'Analysis'|t}}</th>
+		<th>{{'Negative impact'|t}}</th>
+	</tr>
+
+	{# Length of Title and Description meta tags #}
+	{% set item = data.meta_tag_length %}
+	<tr class="{{bgclasses[item.negative_impact]}}">
+		<td>
+			{{item.description}}
+		</td>
+		<td class="text-small">
+			<div class="scroll-container">
+				{{'Meta title'|t}}:<br>
+                <span class="badge">{{item.value.title}}</span><br>
+                {{'Meta description'|t}}:<br>
+                <span class="badge">{{item.value.meta.description}}</span><br>
+			</div>
+		</td>
+        <td>
+            {{item.analysis | raw}}
+        </td>
+        <td>
+            {{item.negative_impact}}
+        </td>
+	</tr>
+    
+    {# Html headers metric #}
+    {% set item = data.heading_structure %}
+    <tr class="{{bgclasses[item.negative_impact]}}">
+        <td>
+            {{item.description}}
+        </td>
+        <td class="text-small">
+            <div class="scroll-container">
+                {% for key, value in item.value %}
+                    <strong>{{key}}</strong><br>
+                    {% for text in value %}
+                        <span class="badge">{{text|raw}}</span>
+                    {% endfor %}
+                    <br>
+                {% endfor %}
+            </div>
+        </td>
+        <td>
+            {{item.analysis}}
+        </td>
+        <td>
+            {{item.negative_impact}}
+        </td>
+    </tr>
+    
+    {# The ratio of page content to page code [%] #}
+    {% set item = data.page_content_ratio %}
+    <tr class="{{bgclasses[item.negative_impact]}}">
+        <td>
+            {{item.description}}
+        </td>
+        <td>{{item.value|number_format(1, '.', ' ')}} %</td>
+        <td>
+            {{item.analysis}}
+        </td>
+        <td>
+            {{item.negative_impact}}
+        </td>
+    </tr>
+    
+    {# Alternate texts for images #}
+    {% set item = data.image_alt_texts %}
+    <tr class="{{bgclasses[item.negative_impact]}}">
+        <td>
+            {{item.description}}
+        </td>
+        <td class="text-small">
+            <div class="scroll-container">
+                {% for image in item.value.images %}
+                    <div class="preview-image__container">
+                        <div class="preview-image__alt">
+                            Alt: <span class="badge">{{image.alt}}</span>
+                        </div>
+                        <img src="{{image.src}}" class="preview-image">
+                    </div>
+                    
+                {% endfor %}
+            </div>
+        </td>
+        <td>
+            {{item.analysis}}
+        </td>
+        <td>
+            {{item.negative_impact}}
+        </td>
+    </tr>
+    
+    {# The size of the page URL #}
+    {% set item = data.page_url_size %}
+    <tr class="{{bgclasses[item.negative_impact]}}">
+        <td>
+            {{item.description}}
+        </td>
+        <td>
+            {{item.value}}
+            {{'characters'|t}}:
+            <span class="badge text-small">{{page_url}}</span>
+        </td>
+        <td>
+            {{item.analysis}}
+        </td>
+        <td>
+            {{item.negative_impact}}
+        </td>
+    </tr>
+</table>

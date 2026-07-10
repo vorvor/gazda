@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the SEO Audit module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function seo_audit_install() {
+  \Drupal::database()->schema()->createTable('seo_audit_crawl_result', [
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary key for crawl results',
+      ],
+      'user_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'User ID who submitted the crawl',
+      ],
+      'url' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'The URL that was crawled',
+      ],
+      'results' => [
+        'type' => 'text',
+        'mysql_type' => 'mediumtext',
+        'not null' => TRUE,
+        'description' => 'Crawl results',
+      ],
+      'created' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Timestamp when the crawl was requested',
+      ],
+      'completed' => [
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Timestamp when the crawl was completed',
+      ],
+      'status' => [
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+        'default' => 'pending',
+        'description' => 'Status of the crawl (pending/completed)',
+      ],
+      'checked_options' => [
+        'type' => 'text',
+        'mysql_type' => 'mediumtext',
+        'not null' => TRUE,
+        'description' => 'JSON-encoded array of SEO checks enabled during this crawl',
+      ],
+    ],
+    'primary key' => ['id'],
+  ]);
+
+  \Drupal::logger('seo_audit')->info("Created 'seo_audit_crawl_result' table.");
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function seo_audit_uninstall() {
+  \Drupal::database()->schema()->dropTable('seo_audit_crawl_result');
+  \Drupal::logger('seo_audit')->info("Removed 'seo_audit_crawl_result' table.");
+}

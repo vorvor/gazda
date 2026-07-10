@@ -1,0 +1,18 @@
+uuid: 03f6e98d-86c5-456c-bad8-4542a45f78fe
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_featured_shop
+field_name: field_featured_shop
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

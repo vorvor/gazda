@@ -1,0 +1,28 @@
+{
+    "name": "drupal/seo_audit",
+    "description": "Provides an seo report for sites.",
+    "type": "drupal-module",
+    "homepage": "https://www.drupal.org/project/seo_audit",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Keshav Patel",
+            "homepage": "https://www.drupal.org/u/keshav-patel",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "drupal/core": "^10 || ^11",
+        "spatie/crawler": "^8.0",
+        "symfony/dom-crawler": "^6.4 || ^7.2",
+        "symfony/css-selector": "^6.4 || ^7.2",
+        "t1gor/robots-txt-parser": "^0.2.5",
+        "dompdf/dompdf": "^3.1",
+        "drupal/queue_ui": "^3.2"
+    },
+    "extra": {
+        "drupal": {
+            "package": "SEO"
+        }
+    }
+}

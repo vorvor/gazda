@@ -1,0 +1,129 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Gazda SEO module.
+ */
+
+use Drupal\node\Entity\Node;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Function to update all empty image alt and title fields with the node label.
+ */
+function gazda_seo_update_image_alt_title() {
+  $storage = \Drupal::entityTypeManager()->getStorage('node');
+  $query = $storage->getQuery()
+    ->accessCheck(FALSE);
+  $nids = $query->execute();
+
+  if (empty($nids)) {
+    \Drupal::messenger()->addStatus(t('No nodes found to update.'));
+    return;
+  }
+
+  $batch = [
+    'title' => t('Updating image alt and title fields...'),
+    'operations' => [
+      ['gazda_seo_update_image_alt_title_batch_process', [array_values($nids)]],
+    ],
+    'finished' => 'gazda_seo_update_image_alt_title_batch_finished',
+  ];
+
+  batch_set($batch);
+}
+
+/**
+ * Batch process callback for updating image alt and title fields.
+ */
+function gazda_seo_update_image_alt_title_batch_process($nids, &$context) {
+  if (!isset($context['sandbox']['progress'])) {
+    $context['sandbox']['progress'] = 0;
+    $context['sandbox']['max'] = count($nids);
+    $context['sandbox']['nodes'] = $nids;
+    $context['results']['updated'] = 0;
+  }
+
+  $storage = \Drupal::entityTypeManager()->getStorage('node');
+  $chunk = array_slice($context['sandbox']['nodes'], $context['sandbox']['progress'], 50);
+
+  $nodes = $storage->loadMultiple($chunk);
+  foreach ($nodes as $node) {
+    if (gazda_seo_update_node_images($node)) {
+      $node->save();
+      $context['results']['updated']++;
+    }
+    $context['sandbox']['progress']++;
+  }
+
+  if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+    $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+  }
+}
+
+/**
+ * Batch finished callback.
+ */
+function gazda_seo_update_image_alt_title_batch_finished($success, $results, $operations) {
+  if ($success) {
+    $message = \Drupal::translation()->formatPlural(
+      $results['updated'],
+      'One node updated.',
+      '@count nodes updated.'
+    );
+    \Drupal::messenger()->addStatus($message);
+  }
+  else {
+    \Drupal::messenger()->addError(t('An error occurred during the update process.'));
+  }
+}
+
+/**
+ * Updates image alt and title fields for a single node.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $node
+ *   The node to update.
+ *
+ * @return bool
+ *   TRUE if any field was updated, FALSE otherwise.
+ */
+function gazda_seo_update_node_images(EntityInterface $node) {
+  if (!$node instanceof Node) {
+    return FALSE;
+  }
+
+  $updated = FALSE;
+  $node_label = $node->label();
+
+  foreach ($node->getFieldDefinitions() as $field_name => $field_definition) {
+    if ($field_definition->getType() == 'image') {
+      $field_values = $node->get($field_name)->getValue();
+      $changed = FALSE;
+
+      foreach ($field_values as &$value) {
+        if (empty($value['alt'])) {
+          $value['alt'] = $node_label;
+          $changed = TRUE;
+        }
+        if (empty($value['title'])) {
+          $value['title'] = $node_label;
+          $changed = TRUE;
+        }
+      }
+
+      if ($changed) {
+        $node->set($field_name, $field_values);
+        $updated = TRUE;
+      }
+    }
+  }
+
+  return $updated;
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function gazda_seo_node_presave(EntityInterface $node) {
+  gazda_seo_update_node_images($node);
+}

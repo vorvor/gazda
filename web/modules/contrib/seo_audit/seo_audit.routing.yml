@@ -1,0 +1,55 @@
+seo_audit.crawl_form:
+  path: '/admin/config/search/seo-audit/crawl'
+  defaults:
+    _form: '\Drupal\seo_audit\Form\SeoCrawlForm'
+    _title: 'SEO Crawler'
+  requirements:
+    _permission: 'administer site configuration'
+
+seo_audit.settings:
+  path: '/admin/config/search/seo-audit/settings'
+  defaults:
+    _form: '\Drupal\seo_audit\Form\SeoAuditSettingsForm'
+    _title: 'SEO Audit Configuration'
+  requirements:
+    _permission: 'administer site configuration'
+
+seo_audit.results_dashboard:
+  path: '/admin/config/search/seo-audit/results'
+  defaults:
+    _controller: 'Drupal\seo_audit\Controller\CrawlResultsController::resultsDashboard'
+    _title: 'SEO Audit Results'
+  requirements:
+    _permission: 'access admin pages'
+
+seo_audit.view_results:
+  path: '/admin/config/search/seo-audit/results/{id}'
+  defaults:
+    _controller: 'Drupal\seo_audit\Controller\CrawlResultsController::viewCrawlResults'
+    _title: 'Crawl Results Details'
+  requirements:
+    _permission: 'access admin pages'
+
+seo_audit.download_json:
+  path: '/admin/config/search/seo-audit/results/{id}/download/json'
+  defaults:
+    _controller: '\Drupal\seo_audit\Controller\CrawlResultsController::downloadJson'
+    _title: 'Download JSON'
+  requirements:
+    _permission: 'administer site configuration'
+
+seo_audit.download_csv:
+  path: '/admin/config/search/seo-audit/results/{id}/download/csv'
+  defaults:
+    _controller: '\Drupal\seo_audit\Controller\CrawlResultsController::downloadCsv'
+    _title: 'Download CSV'
+  requirements:
+    _permission: 'administer site configuration'
+
+seo_audit.download_pdf:
+  path: '/admin/config/search/seo-audit/results/{id}/download/pdf'
+  defaults:
+    _controller: '\Drupal\seo_audit\Controller\CrawlResultsController::downloadPdf'
+    _title: 'Download PDF'
+  requirements:
+    _permission: 'administer site configuration'

@@ -1,0 +1,8 @@
+name: Gazda SEO
+type: module
+description: 'Module for SEO improvements, such as automatically filling image alt and title fields.'
+package: Custom
+core_version_requirement: ^9 || ^10 || ^11
+dependencies:
+  - drupal:node
+  - drupal:image

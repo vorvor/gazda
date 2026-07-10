@@ -436,8 +436,10 @@ header .layout-container {
 
 .views_slideshow_cycle_slide {
   padding: 12px;
+
   .views-row {
     float: left;
+    width: 18%;
     margin-right: 24px;
 
     &:last-child {

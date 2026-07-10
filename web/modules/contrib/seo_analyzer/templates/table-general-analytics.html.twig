@@ -1,0 +1,108 @@
+<table class="seo-analyzer-table">
+    <tr>
+        <th>{{'Description'|t}}</th>
+        <th>{{'Value'|t}}</th>
+        <th>{{'Analysis'|t}}</th>
+        <th>{{'Negative impact'|t}}</th>
+    </tr>
+    
+    {# Does the site use an encrypted connection? #}
+    {% set item = data.is_encrypted %}
+    <tr class="{{bgclasses[item.negative_impact]}}">
+        <td>
+            {{item.description}}
+        </td>
+        <td>{{item.value}}</td>
+        <td>
+            {{item.analysis}}
+        </td>
+        <td>
+            {{item.negative_impact}}
+        </td>
+    </tr>
+    
+    {# Does the page redirects to another url? #}
+    {% set item = data.has_redirect %}
+    <tr class="{{bgclasses[item.negative_impact]}}">
+        <td>
+            {{item.description}}
+        </td>
+        <td class="text-small">
+            <span class="badge">{{item.value.source}}</span> -> <span class="badge">{{item.value.destination}}</span>
+        </td>
+        <td>
+            {{item.analysis}}
+        </td>
+        <td>
+            {{item.negative_impact}}
+        </td>
+    </tr>
+    
+    {# The size of the page #}
+    {% set item = data.content_size %}
+    <tr class="{{bgclasses[item.negative_impact]}}">
+        <td>
+            {{item.description}}
+        </td>
+        <td>{{item.value}} {{'characters in html source'|t}}</td>
+        <td>
+            {{item.analysis}}
+        </td>
+        <td>
+            {{item.negative_impact}}
+        </td>
+    </tr>
+    
+    {# Time used to load the page [sec.] #}
+    {% set item = data.page_load_time %}
+    <tr class="{{bgclasses[item.negative_impact]}}">
+        <td>
+            {{item.description}}
+        </td>
+        <td>{{item.value}} {{'seconds'|t}}</td>
+        <td>
+            {{item.analysis}}
+        </td>
+        <td>
+            {{item.negative_impact}}
+        </td>
+    </tr>
+    
+    {# Does the site use proper robots.txt file? #}
+    {% set item = data.robots_txt %}
+    <tr class="{{bgclasses[item.negative_impact]}}">
+        <td>
+            {{item.description}}
+        </td>
+        <td class="text-small">
+            <div class="scroll-container">
+                {{item.value |nl2br}}
+            </div>
+        </td>
+        <td>
+            {{item.analysis}}
+        </td>
+        <td>
+            {{item.negative_impact}}
+        </td>
+    </tr>
+    
+    {# Does the site use a site map file "sitemap.xml"? #}
+    {% set item = data.sitemap %}
+    <tr class="{{bgclasses[item.negative_impact]}}">
+        <td>
+            {{item.description}}
+        </td>
+        <td class="text-small">
+            <div class="scroll-container">
+                {{item.value |nl2br}}
+            </div>
+        </td>
+        <td>
+            {{item.analysis}}
+        </td>
+        <td>
+            {{item.negative_impact}}
+        </td>
+    </tr>
+</table>

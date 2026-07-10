@@ -1,0 +1,10 @@
+services:
+  seo_audit.crawler_queue_worker:
+    class: Drupal\seo_audit\Queue\CrawlerQueueWorker
+    arguments: ['@queue']
+    tags:
+      - { name: 'queue_worker', queue_name: 'seo_audit_crawl_queue' }
+
+  seo_audit.breadcrumb_analyzer:
+    class: Drupal\seo_audit\BreadcrumbAnalyzer
+    arguments: []

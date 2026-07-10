@@ -1,0 +1,13 @@
+entity.node.seo_analyzer:
+  path: '/node/{node}/seo-analyzer'
+  defaults:
+    _controller: 'Drupal\seo_analyzer\Controller\SeoAnalyzerController::generateAnalyzerPage'
+    _title: 'SEO analyzer'
+  options:
+    parameters:
+      node:
+        type: entity:node
+    _node_operation_route: TRUE
+    _admin_route: TRUE
+  requirements:
+    _permission: 'access seo analyzer'

@@ -1,0 +1,79 @@
+<?php
+
+/**
+ * @file
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function seo_analyzer_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.seo_analyzer':
+      return '<p>' . t('Analyze a nodes SEO') . '</p>';
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function seo_analyzer_theme() {
+  return [
+    'page_seo_analyzer' => [
+      'variables' => [
+        'search_form' => [],
+        'keyword_analytics' => [],
+        'content_analytics' => [],
+        'general_analytics' => [],
+        'data' => [],
+        'bgclasses' => [],
+        'url' => NULL,
+        'page_url' => NULL,
+        'keyword' => NULL,
+      ],
+    ],
+    'table_keyword_analytics' => [
+      'variables' => [
+        'data' => [],
+        'bgclasses' => [],
+      ],
+    ],
+    'table_content_analytics' => [
+      'variables' => [
+        'data' => [],
+        'bgclasses' => [],
+        'page_url' => NULL,
+      ],
+    ],
+    'table_general_analytics' => [
+      'variables' => [
+        'data' => [],
+        'bgclasses' => [],
+        'page_url' => NULL,
+      ],
+    ],
+    'page_seo_analyzer_error' => [
+      'variables' => [
+        'message' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_entity_operation().
+ */
+function seo_analyzer_entity_operation(\Drupal\Core\Entity\EntityInterface $entity) {
+  $operations = [];
+  if ($entity->getEntityTypeId() == 'node' && !$entity->isNew()) {
+    $operations['seo_analyzer'] = [
+      'title' => t('SEO Analyzer'),
+      'url' => Url::fromRoute('entity.node.seo_analyzer', ['node' => $entity->id()]),
+      'weight' => 100,
+    ];
+  }
+  return $operations;
+}

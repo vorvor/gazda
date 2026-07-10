@@ -1,0 +1,5 @@
+# CSS for the analyzer page.
+styling:
+  css:
+    theme:
+      css/seo-analyzer.css: {}

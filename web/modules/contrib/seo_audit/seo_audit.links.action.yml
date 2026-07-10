@@ -1,0 +1,5 @@
+seo_audit.crawl_form_shortcut:
+  route_name: seo_audit.crawl_form
+  title: 'Crawl site'
+  appears_on:
+    - seo_audit.results_dashboard

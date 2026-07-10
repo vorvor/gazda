@@ -1,0 +1,13 @@
+name: 'SEO Audit'
+type: module
+description: 'Performs SEO audits by crawling sites.'
+core_version_requirement: ^10 || ^11
+configure: seo_audit.settings
+package: SEO
+dependencies:
+  - drupal:queue_ui
+
+# Information added by Drupal.org packaging script on 2026-03-04
+version: '1.0.1'
+project: 'seo_audit'
+datestamp: 1772600787

@@ -1,0 +1,33 @@
+<div class="seo-audit-meta">
+  <p><strong>URL:</strong> {{ url }}</p>
+  <p><strong>Requested:</strong> {{ created }}</p>
+  <p><strong>Completed:</strong> {{ completed }}</p>
+  <p><strong>Status:</strong> {{ status }}</p>
+<div class="download-links">
+  <a href="{{ path('seo_audit.download_json', {'id': id}) }}" class="button button--primary">Download JSON</a>
+  <a href="{{ path('seo_audit.download_csv', {'id': id}) }}" class="button button--secondary">Download CSV</a>
+  <a href="{{ path('seo_audit.download_pdf', {'id': id}) }}" class="button button--secondary">Download PDF</a>
+</div>
+</div>
+{% if crawl_data is not empty %}
+  <table class="seo-crawl-results">
+    <thead>
+      <tr>
+        <th>Check</th>
+        <th style="width: 70%;">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for url, item in crawl_data %}
+      <table style="width: 100%; table-layout: fixed;">
+      <tr>
+        <td>{{ url }}</td>
+        <td style="width: 70%; word-wrap: break-word;">{{ dump(item) }}</td>
+      </tr>
+    </table>   
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No detailed crawl data available.</p>
+{% endif %}

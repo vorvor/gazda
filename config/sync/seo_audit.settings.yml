@@ -1,0 +1,13 @@
+crawl_concurrency: '1'
+crawl_limit: '100'
+crawl_depth: '5'
+check_h1: 1
+check_title: 1
+check_meta_description: 1
+check_meta_robots: 1
+check_img_alt: 1
+check_broken_links: 1
+visual_breadcrumb: 1
+jsonld_breadcrumb: 1
+crawl_notify_enabled: 0
+crawl_notify_emails: ''

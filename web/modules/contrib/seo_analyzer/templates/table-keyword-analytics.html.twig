@@ -1,0 +1,268 @@
+<table class="seo-analyzer-table">
+	<tr>
+		<th>{{'Description'|t}}</th>
+		<th>{{'Value'|t}}</th>
+		<th>{{'Analysis'|t}}</th>
+		<th>{{'Negative impact'|t}}</th>
+	</tr>
+
+    {# Does the meta title contain the keyword? #}
+	{% set item = data.meta_title %}
+	<tr class="{{bgclasses[item.negative_impact]}}">
+		<td>
+			{{item.description}}
+		</td>
+		<td class="text-small">
+            <span class="badge">{{item.value.text|raw}}</span>
+        </td>
+		<td>
+			{{item.analysis}}
+		</td>
+		<td>
+			{{item.negative_impact}}
+		</td>
+	</tr>
+
+	{# Does the meta description contain the keyword? #}
+	{% set item = data.meta_description %}
+	<tr class="{{bgclasses[item.negative_impact]}}">
+		<td>
+			{{item.description}}
+		</td>
+		<td class="text-small">
+            <span class="badge">{{item.value.text|raw}}</span>
+        </td>
+		<td>
+			{{item.analysis}}
+		</td>
+		<td>
+			{{item.negative_impact}}
+		</td>
+	</tr>
+
+	{# Do the page headings (H1, H2, ..) contain the keyword? #}
+	{% set item = data.heading_keywords %}
+	<tr class="{{bgclasses[item.negative_impact]}}">
+		<td>
+			{{item.description}}
+		</td>
+		<td class="text-small">
+			<div class="scroll-container">
+				{% for key, value in item.value.headers %}
+					<strong>{{key}}</strong><br>
+					{% for text in value %}
+						<span class="badge">{{text|raw}}</span>
+					{% endfor %}
+					<br>
+				{% endfor %}
+			</div>
+		</td>
+		<td>
+			{{item.analysis}}
+		</td>
+		<td>
+			{{item.negative_impact}}
+		</td>
+	</tr>
+
+	{# Keyword density in page headers #}
+	{% set item = data.heading_keyword_density %}
+	<tr class="{{bgclasses[item.negative_impact]}}">
+		<td>
+			{{item.description}}
+		</td>
+		<td class="text-small">
+            <div class="scroll-container">
+
+            {% if item.value.overused %}
+					<table class="keywords-table">
+						<tr>
+							<th>{{'Overused keyword'|t}}</th>
+                            <th>{{'Frequency'|t}}</th>
+						    <th>{{'Percentage'|t}}</th>
+						</tr>
+						{% for itemdata in item.value.overused %}
+							<tr>
+								<td>{{itemdata.keyword|raw}}</td>
+								<td>{{itemdata.count}}</td>
+								<td>{{itemdata.percentage|number_format(1, '.', ' ')}}</td>
+							</tr>
+						{% endfor %}
+					</table>
+			{% endif %}
+                
+                <p>{{'Heading keyword use overview'|t}}:</p>
+                {% if item.value.h1 %}
+                    <table class="keywords-table">
+                    {% for wordcount, headingdata in item.value.h1 %}
+                        <tr>
+                            <th>{{ 'Keywords (%wordcount%-word) in H1 tags'|trans({'%wordcount%': wordcount}) }}</th>
+                            <th>{{'Frequency'|t}}</th>
+						    <th>{{'Percentage'|t}}</th>
+                        </tr>
+						{% for keyworddata in headingdata %}
+							<tr>
+								<td>{{keyworddata.keyword|raw}}</td>
+								<td>{{keyworddata.count}} {{'times'|t}}</td>
+								<td>{{keyworddata.percentage|number_format(1, '.', ' ')}} %</td>
+							</tr>
+						{% endfor %}
+					{% endfor %}
+                    </table>
+                {% endif %}
+
+                {% if item.value.h2 %}
+                    <table class="keywords-table">
+                    {% for wordcount, headingdata in item.value.h2 %}
+                        <tr>
+                            <th>{{ 'Keywords (%wordcount%-word) in H2 tags'|trans({'%wordcount%': wordcount}) }}</th>
+                            <th>{{'Frequency'|t}}</th>
+						    <th>{{'Percentage'|t}}</th>
+                        </tr>
+						{% for keyworddata in headingdata %}
+							<tr>
+								<td>{{keyworddata.keyword|raw}}</td>
+								<td>{{keyworddata.count}} {{'times'|t}}</td>
+								<td>{{keyworddata.percentage|number_format(1, '.', ' ')}} %</td>
+							</tr>
+						{% endfor %}
+					{% endfor %}
+                    </table>
+                {% endif %}
+
+                {% if item.value.h3 %}
+                    <table class="keywords-table">
+                    {% for wordcount, headingdata in item.value.h3 %}
+                        <tr>
+                            <th>{{ 'Keywords (%wordcount%-word) in H3 tags'|trans({'%wordcount%': wordcount}) }}</th>
+                            <th>{{'Frequency'|t}}</th>
+						    <th>{{'Percentage'|t}}</th>
+                        </tr>
+						{% for keyworddata in headingdata %}
+							<tr>
+								<td>{{keyworddata.keyword|raw}}</td>
+								<td>{{keyworddata.count}} {{'times'|t}}</td>
+								<td>{{keyworddata.percentage|number_format(1, '.', ' ')}} %</td>
+							</tr>
+						{% endfor %}
+					{% endfor %}
+                    </table>
+                {% endif %}
+
+                {% if item.value.h4 %}
+                    <table class="keywords-table">
+                    {% for wordcount, headingdata in item.value.h4 %}
+                        <tr>
+                            <th>{{ 'Keywords (%wordcount%-word) in H4 tags'|trans({'%wordcount%': wordcount}) }}</th>
+                            <th>{{'Frequency'|t}}</th>
+						    <th>{{'Percentage'|t}}</th>
+                        </tr>
+						{% for keyworddata in headingdata %}
+							<tr>
+								<td>{{keyworddata.keyword|raw}}</td>
+								<td>{{keyworddata.count}} {{'times'|t}}</td>
+								<td>{{keyworddata.percentage|number_format(1, '.', ' ')}} %</td>
+							</tr>
+						{% endfor %}
+					{% endfor %}
+                    </table>
+                {% endif %}
+
+                {% if item.value.h5 %}
+                    <table class="keywords-table">
+                    {% for wordcount, headingdata in item.value.h5 %}
+                        <tr>
+                            <th>{{ 'Keywords (%wordcount%-word) in H5 tags'|trans({'%wordcount%': wordcount}) }}</th>
+                            <th>{{'Frequency'|t}}</th>
+						    <th>{{'Percentage'|t}}</th>
+                        </tr>
+						{% for keyworddata in headingdata %}
+							<tr>
+								<td>{{keyworddata.keyword|raw}}</td>
+								<td>{{keyworddata.count}} {{'times'|t}}</td>
+								<td>{{keyworddata.percentage|number_format(1, '.', ' ')}} %</td>
+							</tr>
+						{% endfor %}
+					{% endfor %}
+                    </table>
+                {% endif %}
+            </div>
+		</td>
+		<td>
+			{{item.analysis}}
+		</td>
+		<td>
+			{{item.negative_impact}}
+		</td>
+	</tr>
+
+    {# Keyword density in page content #}
+	{% set item = data.content_keyword_density %}
+	<tr class="{{bgclasses[item.negative_impact]}}">
+		<td>
+			{{item.description}}
+		</td>
+		<td class="text-small">
+			<div class="scroll-container">
+				<table class="keywords-table">
+					{% for wordcount, keywordgroup in item.value.keywords %}
+                        <tr>
+                            <th>{{ 'Keywords (%wordcount%-word) in content'|trans({'%wordcount%': wordcount}) }}</th>
+                            <th>{{'Frequency'|t}}</th>
+						    <th>{{'Percentage'|t}}</th>
+                        </tr>
+						{% for keyworddata in keywordgroup %}
+							<tr>
+								<td>{{keyworddata.keyword|raw}}</td>
+								<td>{{keyworddata.count}} {{'times'|t}}</td>
+								<td>{{keyworddata.percentage|number_format(1, '.', ' ')}} %</td>
+							</tr>
+						{% endfor %}
+					{% endfor %}
+				</table>
+			</div>
+
+		</td>
+		<td>
+			{{item.analysis}}
+		</td>
+		<td>
+			{{item.negative_impact}}
+		</td>
+	</tr>
+
+    {# Does the page path contain the keyword? #}
+	{% set item = data.path_keyword %}
+	<tr class="{{bgclasses[item.negative_impact]}}">
+		<td>
+			{{item.description}}
+		</td>
+		<td class="text-small">
+            <span class="badge">{{item.value.text|raw}}</span>
+        </td>
+		<td>
+			{{item.analysis}}
+		</td>
+		<td>
+			{{item.negative_impact}}
+		</td>
+	</tr>
+
+    {# Does the website domain contain the keyword? #}
+	{% set item = data.domain_keyword %}
+	<tr class="{{bgclasses[item.negative_impact]}}">
+		<td>
+			{{item.description}}
+		</td>
+		<td class="text-small">
+            <span class="badge">{{item.value.text|raw}}</span>
+        </td>
+		<td>
+			{{item.analysis}}
+		</td>
+		<td>
+			{{item.negative_impact}}
+		</td>
+	</tr>
+
+</table>

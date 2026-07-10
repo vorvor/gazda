@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.shop.field_coupon
     - field.field.node.shop.field_description
     - field.field.node.shop.field_email
+    - field.field.node.shop.field_featured_shop
     - field.field.node.shop.field_images
     - field.field.node.shop.field_location
     - field.field.node.shop.field_map
@@ -61,6 +62,13 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_featured_shop:
+    type: boolean_checkbox
+    weight: 131
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_images:
     type: image_image

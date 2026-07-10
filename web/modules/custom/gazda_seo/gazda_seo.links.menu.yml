@@ -1,0 +1,6 @@
+gazda_seo.bulk_update:
+  title: 'Gazda SEO Bulk Update'
+  description: 'Update empty image alt and title fields for all nodes.'
+  parent: system.admin_config_search
+  route_name: gazda_seo.bulk_update_form
+  weight: 10

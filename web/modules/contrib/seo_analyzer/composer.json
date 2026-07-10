@@ -1,0 +1,25 @@
+{
+    "name": "drupal/seo_analyzer",
+    "type": "drupal-module",
+    "description": "Check SEO metrics for a given node.",
+    "keywords": ["Drupal"],
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://www.drupal.org/project/seo_analyzer",
+    "support": {
+      "issues": "https://www.drupal.org/project/issues/seo_analyzer",
+      "source": "https://git.drupalcode.org/project/seo_analyzer"
+    },
+    "repositories": [
+      {
+        "type": "composer",
+        "url":  "https://packages.drupal.org/8"
+      }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+      "drupal/core": "^8.9 || ^9.0 || ^10 || ^11",
+      "php": ">=8.0"
+    }
+  }
+  

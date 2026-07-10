@@ -1,0 +1,20 @@
+seo_audit.crawl:
+  title: 'SEO crawler'
+  description: 'Crawls sites to generate SEO reports.'
+  route_name: seo_audit.crawl_form
+  parent: system.admin_config_search
+  weight: -100
+
+seo_audit.crawl_settings:
+  title: 'Crawler settings'
+  description: 'Manage crawler settings.'
+  route_name: seo_audit.settings
+  parent: seo_audit.crawl
+  weight: -110
+
+seo_audit.crawl_results:
+  title: 'Crawl results'
+  description: 'Lists SEO reports.'
+  route_name: seo_audit.results_dashboard
+  parent: seo_audit.crawl
+  weight: -90

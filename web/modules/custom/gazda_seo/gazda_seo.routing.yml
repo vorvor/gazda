@@ -1,0 +1,7 @@
+gazda_seo.bulk_update_form:
+  path: '/admin/config/search/gazda-seo-bulk-update'
+  defaults:
+    _form: '\Drupal\gazda_seo\Form\BulkUpdateForm'
+    _title: 'Gazda SEO Bulk Update'
+  requirements:
+    _permission: 'administer nodes'

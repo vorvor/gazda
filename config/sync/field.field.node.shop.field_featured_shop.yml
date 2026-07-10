@@ -1,0 +1,21 @@
+uuid: 8cc2fc23-a8bc-4185-aca6-c2660aea5386
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured_shop
+    - node.type.shop
+id: node.shop.field_featured_shop
+field_name: field_featured_shop
+entity_type: node
+bundle: shop
+label: 'Featured shop'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

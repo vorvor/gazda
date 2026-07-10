@@ -1,0 +1,5 @@
+services:
+  gazda_seo.commands:
+    class: \Drupal\gazda_seo\Commands\GazdaSeoCommands
+    tags:
+      - { name: drush.command }
