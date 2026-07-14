@@ -25,6 +25,7 @@
         "drupal/core-composer-scaffold": "^10.6",
         "drupal/core-project-message": "^10.6",
         "drupal/core-recommended": "^10.6",
+        "drupal/editablefields": "^1.0",
         "drupal/field_gallery": "^2.0",
         "drupal/flag": "^5.0",
         "drupal/flag_anon": "^1.1",

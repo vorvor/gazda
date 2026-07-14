@@ -3,7 +3,7 @@
         'name' => 'drupal/recommended-project',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f761cffa0ff5e6c9ddaf4906f21455b2238c6156',
+        'reference' => 'e7a7166e21674a132dd4b6b9871d0bd24b936ee8',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -478,6 +478,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/editablefields' => array(
+            'pretty_version' => '1.0.2',
+            'version' => '1.0.2.0',
+            'reference' => '1.0.2',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/editablefields',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/field_gallery' => array(
             'pretty_version' => '2.0.0',
             'version' => '2.0.0.0',
@@ -652,7 +661,7 @@
         'drupal/recommended-project' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f761cffa0ff5e6c9ddaf4906f21455b2238c6156',
+            'reference' => 'e7a7166e21674a132dd4b6b9871d0bd24b936ee8',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
