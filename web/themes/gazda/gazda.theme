@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the Gazda theme.
+ */
+
+use Drupal\node\NodeInterface;
+use Drupal\Component\Utility\Html;
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function gazda_preprocess_html(&$variables) {
+  $shop_name = '';
+
+  // 1. Try to get shop from the current route (if it's a shop node page).
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof NodeInterface) {
+    if ($node->bundle() === 'shop') {
+      $shop_name = $node->label();
+    }
+    elseif ($node->bundle() === 'product' && $node->hasField('field_shop') && !$node->get('field_shop')->isEmpty()) {
+      $shop_node = $node->get('field_shop')->entity;
+      if ($shop_node instanceof NodeInterface) {
+        $shop_name = $shop_node->label();
+      }
+    }
+  }
+
+  // 2. Fallback to site name if no shop context found.
+  if (empty($shop_name)) {
+    $shop_name = \Drupal::config('system.site')->get('name');
+  }
+
+  if (!empty($shop_name)) {
+    // Take the first 5 characters.
+    // Use mb_substr for multibyte safety.
+    $short_name = mb_substr($shop_name, 0, 5);
+
+    // Clean it for use as a CSS class.
+    $clean_class = Html::getClass($short_name);
+
+    // Add to body classes.
+    $variables['attributes']['class'][] = 'shop-' . $clean_class;
+  }
+}

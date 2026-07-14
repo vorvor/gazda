@@ -103,6 +103,11 @@ header .layout-container {
 }
 
 .view-products, .view-taxonomy-term {
+
+  .view-header {
+    margin-bottom: 12px;
+  }
+
   .view-content {
     display: flex;
     justify-content: space-between;
