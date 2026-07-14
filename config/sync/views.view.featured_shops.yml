@@ -142,7 +142,7 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_link: ''
+            image_link: content
             image_style: fb_post_image
             image_loading:
               attribute: lazy
@@ -307,7 +307,7 @@ display:
           views_slideshow_cycle:
             effect: scrollHorz
             transition_advanced: 1
-            timeout: '5000'
+            timeout: '8000'
             speed: '700'
             delay: '0'
             sync: 1

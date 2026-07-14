@@ -1,0 +1,39 @@
+.product-tags-wrapper {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.product-tags-wrapper h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #444;
+  padding-bottom: 8px;
+}
+
+ul.product-tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+ul.product-tags li.tag-item {
+  background-color: #94c17e;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+ul.product-tags li.tag-item:hover {
+  background-color: #7fb366;
+}

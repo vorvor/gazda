@@ -1,0 +1,28 @@
+uuid: daa6c2de-4171-4066-9002-fb9525573277
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - product_tags
+  theme:
+    - gazda
+id: gazda_producttags
+theme: gazda
+region: content
+weight: -6
+provider: null
+plugin: product_tags_block
+settings:
+  id: product_tags_block
+  label: 'Product Tags'
+  label_display: '0'
+  provider: product_tags
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      shop: shop

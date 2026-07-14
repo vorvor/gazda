@@ -441,6 +441,17 @@ header .layout-container {
     float: left;
     width: 18%;
     margin-right: 24px;
+    text-align: center;
+    box-shadow: 0 0 10px #aaa;
+    border-radius: 10px;
+    padding: 1rem;
+    box-sizing: border-box;
+
+    .views-field-title {
+      font-size: 1.3rem;
+      line-height: 1.3rem;
+      margin-bottom: 1.3rem;
+    }
 
     &:last-child {
       margin-right: 0;

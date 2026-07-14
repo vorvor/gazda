@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for product_tags module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function product_tags_theme() {
+  return [
+    'product_tags_list' => [
+      'variables' => [
+        'tags' => [],
+        'shop' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for product_tags_list.
+ */
+function product_tags_preprocess_product_tags_list(&$variables) {
+  $variables['#attached']['library'][] = 'product_tags/product-tags';
+}
