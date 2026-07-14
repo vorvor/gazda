@@ -1,0 +1,8 @@
+{
+  "name": "drupal/advanced_block_visibility",
+  "description": "Allows hiding selected blocks for mobile users.",
+  "type": "drupal-module",
+  "require": {
+    "mobiledetect/mobiledetectlib": "^4.8"
+  }
+}

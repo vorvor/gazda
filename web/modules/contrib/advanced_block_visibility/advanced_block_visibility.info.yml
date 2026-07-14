@@ -1,0 +1,12 @@
+name: 'Advanced Block Visibility'
+description: 'Allows hiding or displaying selected blocks for mobile, tablet or PC users.'
+package: Block
+type: module
+core_version_requirement: ^10 | ^11
+dependencies:
+  - drupal:block
+
+# Information added by Drupal.org packaging script on 2025-02-27
+version: '1.0.0'
+project: 'advanced_block_visibility'
+datestamp: 1740679610

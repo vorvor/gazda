@@ -19,6 +19,7 @@
         "cweagans/composer-patches": "^2.0",
         "drupal/addtoany": "^2.0",
         "drupal/admin_toolbar": "^3.6",
+        "drupal/advanced_block_visibility": "^1.0",
         "drupal/backup_migrate": "^5.1",
         "drupal/better_exposed_filters": "^7.1",
         "drupal/colorbox": "^2.1",

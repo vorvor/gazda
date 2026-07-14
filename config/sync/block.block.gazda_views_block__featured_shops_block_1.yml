@@ -5,6 +5,7 @@ dependencies:
   config:
     - views.view.featured_shops
   module:
+    - advanced_block_visibility
     - system
     - views
   theme:
@@ -27,3 +28,9 @@ visibility:
     id: request_path
     negate: false
     pages: '<front>'
+  mobile_device:
+    id: mobile_device
+    negate: 0
+    display_mobile: false
+    display_tablet: true
+    display_desktop: true

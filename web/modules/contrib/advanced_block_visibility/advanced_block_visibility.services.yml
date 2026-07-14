@@ -1,0 +1,5 @@
+services:
+  cache_context.device_type:
+    class: Drupal\advanced_block_visibility\Cache\DeviceTypeCacheContext
+    tags:
+      - { name: cache.context }

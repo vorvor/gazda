@@ -261,6 +261,7 @@ class ComposerStaticInit912487cae028eb1c5b00467a134e77d4
             'Doctrine\\Common\\Lexer\\' => 22,
             'Dflydev\\DotAccessData\\' => 22,
             'DeviceDetector\\' => 15,
+            'Detection\\' => 10,
         ),
         'C' =>
         array (
@@ -662,6 +663,10 @@ class ComposerStaticInit912487cae028eb1c5b00467a134e77d4
         'DeviceDetector\\' =>
         array (
             0 => __DIR__ . '/..' . '/matomo/device-detector',
+        ),
+        'Detection\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/src',
         ),
         'Consolidation\\SiteProcess\\' =>
         array (

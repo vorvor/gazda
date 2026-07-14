@@ -1,4 +1,16 @@
 @media screen and (max-width: 800px) {
+
+  body.path-search-product .product-search-widget {
+    background-size: 322%;
+    background-position-x: 98%;
+  }
+
+  .views_slideshow_cycle_slide {
+    .views-row {
+      width: 100%;
+    }
+  }
+
   .view-products, .view-taxonomy-term {
     .view-content {
       display: block;
