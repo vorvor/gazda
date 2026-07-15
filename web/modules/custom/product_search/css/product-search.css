@@ -52,9 +52,12 @@ body.path-search-product #marketing-block { display: block; }
 
 body.searching {
   .product-search-widget {
+    background: none;
     background-position: 0 -120px;
 
     .search-widget-header {
+      display: none;
+
       h2 {
         font-size: 20px;
         margin: 0 0 6px 0;
@@ -74,7 +77,7 @@ body.searching {
     }
 
     #product-search-results {
-      margin-top: 50px;
+      margin-top: 30px;
     }
   }
 }
