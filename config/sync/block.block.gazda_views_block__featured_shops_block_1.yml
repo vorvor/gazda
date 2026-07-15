@@ -12,7 +12,7 @@ dependencies:
     - gazda
 id: gazda_views_block__featured_shops_block_1
 theme: gazda
-region: pre_content
+region: content
 weight: -7
 provider: null
 plugin: 'views_block:featured_shops-block_1'

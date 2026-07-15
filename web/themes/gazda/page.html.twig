@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * Gazda's theme implementation to display a single Drupal page.
+ */
+#}
+<header class="site-header">
+  <div class="layout-container">
+    {{ page.header }}
+  </div>
+</header>
+
+<main>
+  <div class="visually-hidden"><a id="main-content" tabindex="-1"></a></div>
+
+  {% if page.breadcrumb %}
+    <div class="breadcrumb-wrapper">
+      <div class="layout-container">
+        {{ page.breadcrumb }}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="layout-container">
+    {{ page.pre_content }}
+    <div class="page-content clearfix">
+      {{ page.highlighted }}
+      {% if page.help %}
+        <div class="help">
+          {{ page.help }}
+        </div>
+      {% endif %}
+      {{ page.content }}
+    </div>
+  </div>
+</main>
+
+{% if page.footer %}
+  <footer class="site-footer">
+    <div class="layout-container">
+      {{ page.footer }}
+    </div>
+  </footer>
+{% endif %}

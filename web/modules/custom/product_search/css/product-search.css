@@ -1,12 +1,10 @@
 
 body.path-search-product .product-search-widget {
-  background: url("/themes/gazda/images/header-bg.png");
+  background: url("/themes/gazda/images/header-bg.png") no-repeat;
   background-size: 100%;
   padding: 12px 48px;
   margin-left:-50px;
   width: 100%;
-  height: 240px;
-  margin-bottom: 24px;
 }
 
 .product-search-form {
@@ -36,7 +34,7 @@ body.path-search-product .product-search-widget {
 }
 
 .product-search-results {
-  margin-top: 8rem;
+ 
 }
 
 .product-search-loading,
@@ -51,3 +49,25 @@ body.path-search-product .product-search-widget {
 }
 
 body.path-search-product #marketing-block { display: block; }
+
+.view-shops {
+  margin-top: 120px;
+}
+
+.product-search-widget {
+  .views-element-container {
+
+
+    .view-content {
+      display: flex;
+      gap: 12px;
+
+      .views-field-field-logo {
+        img {
+          height: 100px;
+          width: auto;
+        }
+      }
+    }
+  }
+}

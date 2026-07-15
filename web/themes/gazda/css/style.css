@@ -1,6 +1,9 @@
 :root {
   --primary-color: #5a9632;
   --primary-color-light: #93c96f;
+
+  --secondary-color: #0292f1;
+  --secondary-color-light: #59b9f8;
 }
 
 a {
@@ -20,6 +23,7 @@ body {
 
 .page-content {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 .page-title {
@@ -146,11 +150,18 @@ header .layout-container {
       width: 50%;
 
       a {
-        color: #5a9632;
+        color: var(--primary-color);
+      }
+    }
+
+    .views-row.shop-balint .views-field-title {
+      a {
+        color: var(--secondary-color);
       }
     }
 
     .views-field-field-shop {
+      max-width: 226px;
       width: fit-content;
 
       .field-content {
@@ -162,6 +173,10 @@ header .layout-container {
           color: #fff;
         }
       }
+    }
+
+    .views-row.shop-balint .views-field-field-shop .field-content {
+      background: var(--secondary-color);
     }
 
     .views-field-field-description {
@@ -181,6 +196,10 @@ header .layout-container {
         padding: 0.1rem 0.4rem;
         color: #fff;
       }
+    }
+
+    .views-row.shop-balint .views-field-field-tags a {
+      background: var(--secondary-color-light);
     }
 
     .views-field-field-images {

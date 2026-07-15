@@ -9,7 +9,7 @@ _core:
 id: gazda_page_title
 theme: gazda
 region: pre_content
-weight: -6
+weight: -9
 provider: null
 plugin: page_title_block
 settings:

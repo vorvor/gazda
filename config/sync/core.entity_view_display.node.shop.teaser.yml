@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.shop.field_featured_shop
     - field.field.node.shop.field_images
     - field.field.node.shop.field_location
+    - field.field.node.shop.field_logo
     - field.field.node.shop.field_map
     - field.field.node.shop.field_open_hours
     - field.field.node.shop.field_phone
@@ -36,6 +37,7 @@ hidden:
   field_featured_shop: true
   field_images: true
   field_location: true
+  field_logo: true
   field_map: true
   field_open_hours: true
   field_phone: true
