@@ -1,4 +1,13 @@
 <div class="shop-full">
+  <div class="shop-header">
+    {% if node.field_logo.entity %}
+      <div class="shop-logo">
+        <img src="{{ file_url(node.field_logo.entity.fileuri) }}" alt="{{ node.field_logo.alt }}" />
+      </div>
+    {% endif %}
+    <h1 class="shop-title">{{ label }}</h1>
+  </div>
+
   <div class="shop-image">
     {{ content.field_images }}
   </div>
@@ -6,7 +15,7 @@
     {{ content.field_open_hours }}
   </div>
   <div class="shop-details">
-    {{ content|without('field_images', 'field_open_hours', 'daily_coupon') }}
+    {{ content|without('field_images', 'field_open_hours', 'daily_coupon', 'field_logo') }}
     {{ content.daily_coupon }}
     <a class="shop-on-map" target="_blank" href="https://www.google.com/maps/place/{{ content.field_address[0]['#context']['value'] }}">Térkép</a>
   </div>

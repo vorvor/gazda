@@ -24,7 +24,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Shops
+      title: 'Ők már velünk vannak'
       fields:
         field_logo:
           id: field_logo
@@ -126,7 +126,7 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: date
-          order: DESC
+          order: ASC
           expose:
             label: ''
             field_identifier: ''

@@ -16,7 +16,6 @@ dependencies:
     - field.field.node.shop.field_phone
     - node.type.shop
   module:
-    - image
     - imagefield_slideshow
     - office_hours
     - user
@@ -62,17 +61,6 @@ content:
       imagefield_slideshow_pager_image: 0
     third_party_settings: {  }
     weight: 1
-    region: content
-  field_logo:
-    type: image
-    label: above
-    settings:
-      image_link: ''
-      image_style: ''
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: 7
     region: content
   field_open_hours:
     type: office_hours_table
@@ -128,5 +116,6 @@ hidden:
   field_coupon: true
   field_featured_shop: true
   field_location: true
+  field_logo: true
   field_map: true
   langcode: true

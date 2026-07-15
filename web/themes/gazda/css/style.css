@@ -21,6 +21,10 @@ body {
   font-style: normal;
 }
 
+header.site-header {
+  height: 44px;
+}
+
 .page-content {
   margin-top: 0;
   margin-bottom: 0;
@@ -350,8 +354,31 @@ header .layout-container {
   display: flex;
   justify-content: left;
   gap: 24px;
+  flex-wrap: wrap;
 
-  .product-details {
+  .shop-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    .shop-logo {
+      max-width: 100px;
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    .shop-title {
+      margin: 0;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+    }
+  }
+
+  .product-details, .shop-details {
     max-width: 60%;
   }
 
@@ -479,6 +506,34 @@ header .layout-container {
 
     &:last-child {
       margin-right: 0;
+    }
+  }
+}
+
+.views-shops-block {
+  margin-top: 120px;
+}
+
+.view-shops {
+
+  .view-content {
+    display: flex;
+    gap: 24px;
+
+    .views-field-field-logo {
+      img {
+        height: 100px;
+        width: auto;
+      }
+    }
+
+    .shop-balint {
+      .views-field-field-logo {
+        img {
+          height: 90px;
+          width: auto;
+        }
+      }
     }
   }
 }
