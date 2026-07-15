@@ -52,8 +52,7 @@ body.path-search-product #marketing-block { display: block; }
 
 body.searching {
   .product-search-widget {
-    height: 130px;
-    background-position: center center;
+    background-position: 0 -120px;
 
     .search-widget-header {
       h2 {
@@ -68,6 +67,14 @@ body.searching {
 
     #marketing-block {
       display: none;
+    }
+
+    .views-shops-block {
+      display: none;
+    }
+
+    #product-search-results {
+      margin-top: 50px;
     }
   }
 }
