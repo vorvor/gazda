@@ -389,6 +389,12 @@ header .layout-container {
     margin-bottom: 24px;
   }
 
+  .shop-phone a {
+    display: flex;
+    gap: 12px;
+    font-size: 1.6rem;
+  }
+
   .field--name-field-tags {
     margin-bottom: 12px;
   }
