@@ -17,8 +17,24 @@
         let timer = null;
         let controller = null;
 
+        input.addEventListener('focus', () => {
+          document.body.classList.add('searching');
+        });
+
+        input.addEventListener('blur', () => {
+          if (!input.value.trim()) {
+            document.body.classList.remove('searching');
+          }
+        });
+
         const runSearch = () => {
           const keyword = input.value.trim();
+
+          if (keyword) {
+            document.body.classList.add('searching');
+          } else {
+            document.body.classList.remove('searching');
+          }
 
           if (controller) {
             controller.abort();

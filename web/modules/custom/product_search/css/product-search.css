@@ -23,7 +23,7 @@ body.path-search-product .product-search-widget {
     position: absolute;
     color: #fff;
     background-color: green;
-    margin-left: -36px;
+    margin-left: -54px;
     height: 45px;
     width: fit-content;
     padding: 11px 19px 7px;
@@ -49,3 +49,25 @@ body.path-search-product .product-search-widget {
 }
 
 body.path-search-product #marketing-block { display: block; }
+
+body.searching {
+  .product-search-widget {
+    height: 130px;
+    background-position: center center;
+
+    .search-widget-header {
+      h2 {
+        font-size: 20px;
+        margin: 0 0 6px 0;
+      }
+
+      p {
+        margin: 0 0 12px 0;
+      }
+    }
+
+    #marketing-block {
+      display: none;
+    }
+  }
+}
