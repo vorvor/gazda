@@ -101,6 +101,7 @@ header .layout-container {
 
 .region-header {
   display: flex;
+  padding-top: 4px;
   justify-content: space-between;
   align-items: center;
   color: #fff;
@@ -127,7 +128,7 @@ header .layout-container {
       flex-wrap: wrap;
       width: 30%;
       padding: 1rem;
-      padding-bottom: 44px;
+      padding-bottom: 80px;
       border-radius: 10px;
       box-shadow: 0 0 10px #aaa;
       margin-bottom: 24px;
