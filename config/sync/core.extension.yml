@@ -48,6 +48,7 @@ module:
   geolocation: 0
   geolocation_google_maps: 0
   geolocation_google_static_maps: 0
+  google_analytics: 0
   google_map_field: 0
   help: 0
   history: 0
