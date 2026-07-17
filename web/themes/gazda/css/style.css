@@ -529,6 +529,7 @@ header .layout-container {
     align-items: center;
 
     .views-field-field-logo {
+      padding: 12px;
       img {
         height: 100px;
         width: auto;
