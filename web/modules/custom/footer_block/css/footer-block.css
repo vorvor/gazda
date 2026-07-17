@@ -1,0 +1,24 @@
+.footer-block-wrapper {
+  padding: 40px 0;
+  text-align: center;
+  background: url(../src/images/szentendre-footer.jpg);
+  background-size: 100%;
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  margin-top: 40px;
+  background-position: 0px 30%;
+  height: 300px;
+
+  .footer-block-top {
+    img {
+      max-width: 10%;
+    }
+  }
+}
+
+.footer-block-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #6c757d;
+  font-size: 0.9rem;
+}

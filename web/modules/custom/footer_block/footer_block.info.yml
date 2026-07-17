@@ -1,0 +1,5 @@
+name: Footer Block
+type: module
+description: 'Creates a custom footer block with a template.'
+package: Custom
+core_version_requirement: ^9 || ^10 || ^11

@@ -1,0 +1,4 @@
+footer-block:
+  css:
+    theme:
+      css/footer-block.css: {}
