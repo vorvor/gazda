@@ -526,6 +526,7 @@ header .layout-container {
   .view-content {
     display: flex;
     gap: 24px;
+    align-items: center;
 
     .views-field-field-logo {
       img {
@@ -537,7 +538,7 @@ header .layout-container {
     .shop-balint {
       .views-field-field-logo {
         img {
-          height: 90px;
+          height: 85px;
           width: auto;
         }
       }
