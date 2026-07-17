@@ -1,0 +1,20 @@
+uuid: fcb168f5-2f3c-49e1-867a-56b72317791f
+langcode: en
+status: true
+dependencies:
+  module:
+    - footer_block
+  theme:
+    - gazda
+id: gazda_footerblock
+theme: gazda
+region: footer
+weight: -7
+provider: null
+plugin: footer_block
+settings:
+  id: footer_block
+  label: 'Footer Block'
+  label_display: '0'
+  provider: footer_block
+visibility: {  }

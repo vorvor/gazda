@@ -19,6 +19,7 @@ module:
   colorbox: 0
   comment: 0
   config: 0
+  config_ignore: 0
   contact: 0
   contextual: 0
   daily_coupon: 0
@@ -37,6 +38,7 @@ module:
   filter: 0
   flag: 0
   fontawesome: 0
+  footer_block: 0
   gazda_seo: 0
   generate_marketing_text: 0
   geocoder: 0
