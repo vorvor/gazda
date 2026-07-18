@@ -10,10 +10,23 @@ function product_search_theme($existing, $type, $theme, $path) {
         'placeholder' => NULL,
         'marketingblock' => NULL,
         'results' => NULL,
+        'is_front' => FALSE,
       ],
       'template' => 'product_search',
     ],
   ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for product_search.
+ */
+function product_search_preprocess_product_search(&$variables) {
+  try {
+    $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+  }
+  catch (\Exception $e) {
+    $variables['is_front'] = FALSE;
+  }
 }
 
 /**

@@ -1,0 +1,33 @@
+uuid: 3128e635-0926-47ee-bdb0-bf362765dadb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_shop
+    - node.type.service
+    - node.type.shop
+  content:
+    - 'node:shop:c118eccd-7161-4749-b170-bf5f9e898afe'
+id: node.service.field_shop
+field_name: field_shop
+entity_type: node
+bundle: service
+label: Shop
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: c118eccd-7161-4749-b170-bf5f9e898afe
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      shop: shop
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

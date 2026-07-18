@@ -1,0 +1,49 @@
+uuid: aad1187a-0834-4929-a48b-6439562e6b48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.service.field_service_description
+    - field.field.node.service.field_shop
+    - field.field.node.service.field_tags
+    - node.type.service
+  module:
+    - text
+    - user
+id: node.service.default
+targetEntityType: node
+bundle: service
+mode: default
+content:
+  field_service_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_shop:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_tags:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  addtoany: true
+  langcode: true

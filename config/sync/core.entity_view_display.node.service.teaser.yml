@@ -1,0 +1,35 @@
+uuid: 6ca52cb6-f333-4092-8218-f697ebb9d1b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.service.field_service_description
+    - field.field.node.service.field_shop
+    - field.field.node.service.field_tags
+    - node.type.service
+  module:
+    - user
+id: node.service.teaser
+targetEntityType: node
+bundle: service
+mode: teaser
+content:
+  field_tags:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  addtoany: true
+  field_service_description: true
+  field_shop: true
+  langcode: true

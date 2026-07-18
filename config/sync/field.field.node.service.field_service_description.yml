@@ -1,0 +1,24 @@
+uuid: 59f98fb9-a246-4c1b-b07a-dd17f27bc591
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_description
+    - filter.format.basic_html
+    - node.type.service
+  module:
+    - text
+id: node.service.field_service_description
+field_name: field_service_description
+entity_type: node
+bundle: service
+label: 'Service description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

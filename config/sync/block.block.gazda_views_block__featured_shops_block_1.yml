@@ -13,7 +13,7 @@ dependencies:
 id: gazda_views_block__featured_shops_block_1
 theme: gazda
 region: content
-weight: -7
+weight: -8
 provider: null
 plugin: 'views_block:featured_shops-block_1'
 settings:

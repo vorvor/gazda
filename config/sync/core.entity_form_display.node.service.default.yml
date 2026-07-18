@@ -1,22 +1,18 @@
-uuid: 118b0442-8829-4985-bf43-611457a38532
+uuid: b7ffd35b-04a5-4e58-ab23-38d9e3b340d4
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.product.field_description
-    - field.field.node.product.field_images
-    - field.field.node.product.field_marketing_text
-    - field.field.node.product.field_shop
-    - field.field.node.product.field_tags
-    - image.style.thumbnail
-    - node.type.product
+    - field.field.node.service.field_service_description
+    - field.field.node.service.field_shop
+    - field.field.node.service.field_tags
+    - node.type.service
   module:
-    - image
     - path
     - text
-id: node.product.default
+id: node.service.default
 targetEntityType: node
-bundle: product
+bundle: service
 mode: default
 content:
   created:
@@ -25,25 +21,9 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_description:
-    type: string_textarea
-    weight: 123
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  field_images:
-    type: image_image
-    weight: 121
-    region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-  field_marketing_text:
+  field_service_description:
     type: text_textarea
-    weight: 125
+    weight: 121
     region: content
     settings:
       rows: 5
