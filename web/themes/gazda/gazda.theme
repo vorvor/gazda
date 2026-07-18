@@ -87,12 +87,12 @@ function gazda_preprocess_views_view_unformatted(&$variables) {
   if ($view->id() === 'products') {
     foreach ($variables['rows'] as $id => $row) {
       $node = $row['content']['#row']->_entity;
-      if ($node instanceof NodeInterface && $node->bundle() === 'product' && $node->hasField('field_shop') && !$node->get('field_shop')->isEmpty()) {
+      if ($node instanceof NodeInterface && in_array($node->bundle(), ['product', 'service']) && $node->hasField('field_shop') && !$node->get('field_shop')->isEmpty()) {
         $shop_node = $node->get('field_shop')->entity;
         if ($shop_node instanceof NodeInterface) {
           $shop_name = $shop_node->label();
           $clean_class = _gazda_clean_string($shop_name);
-          $variables['rows'][$id]['attributes']->addClass('shop-' . $clean_class);
+          $variables['rows'][$id]['attributes']->addClass('shop-' . $clean_class)->addClass($node->bundle());
         }
       }
     }

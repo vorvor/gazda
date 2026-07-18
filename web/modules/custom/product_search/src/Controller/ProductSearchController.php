@@ -151,7 +151,7 @@ final class ProductSearchController extends ControllerBase {
 
     $query = $this->productSearchDatabase->select('node_field_data', 'nfd')
       ->fields('nfd', ['nid'])
-      ->condition('nfd.type', 'product')
+      ->condition('nfd.type', ['product', 'service'], 'IN')
       ->condition('nfd.status', 1)
       ->groupBy('nfd.nid')
       ->range(0, self::MAX_RESULTS);
@@ -169,6 +169,16 @@ final class ProductSearchController extends ControllerBase {
     if ($schema->tableExists('node__field_description')) {
       $query->leftJoin('node__field_description', 'fd', 'fd.entity_id = nfd.nid AND fd.deleted = 0');
       $or->condition('fd.field_description_value', $like, 'LIKE');
+    }
+
+    if ($schema->tableExists('node__field_service_description')) {
+      $query->leftJoin('node__field_service_description', 'fsd', 'fsd.entity_id = nfd.nid AND fsd.deleted = 0');
+      $or->condition('fsd.field_service_description_value', $like, 'LIKE');
+    }
+
+    if ($schema->tableExists('node__field_marketing_text')) {
+      $query->leftJoin('node__field_marketing_text', 'fmt', 'fmt.entity_id = nfd.nid AND fmt.deleted = 0');
+      $or->condition('fmt.field_marketing_text_value', $like, 'LIKE');
     }
 
     if ($schema->tableExists('node__field_tags')) {
@@ -190,6 +200,8 @@ final class ProductSearchController extends ControllerBase {
     }
 
     $query->condition($or);
+
+    $a = array_map('intval', $query->execute()->fetchCol());
 
     return array_map('intval', $query->execute()->fetchCol());
   }

@@ -134,6 +134,10 @@ header .layout-container {
       margin-bottom: 24px;
     }
 
+    .views-row.service {
+      background: #a0d7fa;
+    }
+
     .views-field-field-images {
       position: absolute;
       text-align: right;
