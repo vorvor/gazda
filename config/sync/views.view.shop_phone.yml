@@ -128,14 +128,16 @@ display:
           exposed: false
           granularity: second
       arguments:
-        field_shop_target_id:
-          id: field_shop_target_id
-          table: node__field_shop
-          field: field_shop_target_id
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: entity_target_id
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
           default_action: default
           exception:
             value: all
