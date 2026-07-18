@@ -55,7 +55,7 @@ header .layout-container {
 
   #inside-block {
     position: absolute;
-    width: 33%;
+    width: 26%;
     right: 143px;
     top: 36px;
 
@@ -64,12 +64,12 @@ header .layout-container {
       gap: 12px;
       justify-content: space-around;
       position: absolute;
-      top: 100px;
+      top: 78px;
       width: 100%;
 
       div {
-        font-size: 20px;
-        width: 110px;
+        font-size: 14px;
+        width: 70px;
         text-align: center;
         line-height: 23px;
       }
@@ -518,7 +518,7 @@ header .layout-container {
 }
 
 .views-shops-block {
-  margin-top: 120px;
+  margin-top: 60px;
 }
 
 .view-shops {

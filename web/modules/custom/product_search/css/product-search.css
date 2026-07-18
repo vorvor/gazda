@@ -1,6 +1,7 @@
 
 body.path-search-product .product-search-widget {
   background: url("/themes/gazda/images/header-bg.png") no-repeat;
+  background-position: 0 -60px;
   background-size: 100%;
   padding: 12px 48px;
   margin-left:-50px;

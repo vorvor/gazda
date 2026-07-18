@@ -2,7 +2,7 @@
 
   body.path-search-product .product-search-widget {
     background-size: 322%;
-    background-position-x: 98%;
+    background-position: 98% -50px;
   }
 
   .views_slideshow_cycle_slide {
@@ -39,7 +39,7 @@
   }
 
   .product-search-results {
-    margin-top: 2rem;
+    margin-top: 0rem;
   }
 
   .product-search-widget {
@@ -48,6 +48,7 @@
 
     h2 {
       font-size: 1.4rem;
+      margin-bottom: 0;
     }
   }
 
@@ -56,9 +57,16 @@
   }
 
   .views-shops-block {
-    margin-top: 46px;
+    margin-top: -26px;
   }
 
+  .view-shops {
+    & .view-content {
+      .views-field-field-logo {
+        padding: 0;
+      }
+    }
+  }
 
 
 }
