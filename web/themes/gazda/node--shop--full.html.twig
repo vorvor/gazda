@@ -17,7 +17,9 @@
   <div class="shop-details">
     {{ content|without('field_images', 'field_open_hours', 'daily_coupon', 'field_logo', 'field_phone') }}
     <div class="shop-phone">
-      <a href="tel: {{ content.field_phone[0]['#context']['value']|striptags }}"><i class="fa-solid fa-phone"></i>{{ content.field_phone }}</a>
+      {% for item in content.field_phone if item['#context'] %}
+        <a href="tel:{{ item['#context']['value']|striptags|trim }}"><i class="fa-solid fa-phone"></i> {{ item['#context']['value'] }}</a>
+      {% endfor %}
     </div>
     {{ content.daily_coupon }}
     <a class="shop-on-map" target="_blank" href="https://www.google.com/maps/place/{{ content.field_address[0]['#context']['value'] }}">Térkép</a>
