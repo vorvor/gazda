@@ -17,8 +17,10 @@
   <div class="shop-details">
     {{ content|without('field_images', 'field_open_hours', 'daily_coupon', 'field_logo', 'field_phone') }}
     <div class="shop-phone">
-      {% for item in content.field_phone if item['#context'] %}
-        <a href="tel:{{ item['#context']['value']|striptags|trim }}"><i class="fa-solid fa-phone"></i> {{ item['#context']['value'] }}</a>
+      {% for key, item in content.field_phone %}
+        {% if key|first != '#' %}
+          <a href="tel:{{ item['#context']['value']|striptags|trim }}"><i class="fa-solid fa-phone"></i> {{ item['#context']['value'] }}</a>
+        {% endif %}
       {% endfor %}
     </div>
     {{ content.daily_coupon }}
