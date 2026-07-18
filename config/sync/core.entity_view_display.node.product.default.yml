@@ -12,7 +12,6 @@ dependencies:
     - node.type.product
   module:
     - colorbox
-    - text
     - user
 id: node.product.default
 targetEntityType: node
@@ -22,7 +21,7 @@ content:
   addtoany:
     settings: {  }
     third_party_settings: {  }
-    weight: 6
+    weight: 5
     region: content
   field_description:
     type: basic_string
@@ -45,13 +44,6 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
-  field_marketing_text:
-    type: text_default
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 4
-    region: content
   field_shop:
     type: entity_reference_entity_view
     label: hidden
@@ -59,7 +51,7 @@ content:
       view_mode: default
       link: true
     third_party_settings: {  }
-    weight: 5
+    weight: 4
     region: content
   field_tags:
     type: entity_reference_label
@@ -72,7 +64,7 @@ content:
   flag_like:
     settings: {  }
     third_party_settings: {  }
-    weight: 7
+    weight: 6
     region: content
   links:
     settings: {  }
@@ -80,4 +72,5 @@ content:
     weight: 1
     region: content
 hidden:
+  field_marketing_text: true
   langcode: true
