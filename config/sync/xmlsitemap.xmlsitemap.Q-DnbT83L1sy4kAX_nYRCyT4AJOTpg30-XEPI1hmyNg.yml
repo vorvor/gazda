@@ -1,0 +1,8 @@
+uuid: 8b0e2f2a-686f-462f-bc0d-e170ee1726fb
+langcode: hu
+status: true
+dependencies: {  }
+id: Q-DnbT83L1sy4kAX_nYRCyT4AJOTpg30-XEPI1hmyNg
+label: 'https://gazda.lndo.site'
+context:
+  language: hu

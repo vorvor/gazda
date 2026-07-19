@@ -52,6 +52,7 @@
         "drupal/views_fields_combine": "^10.0",
         "drupal/views_slideshow": "^5.0",
         "drupal/visitors": "^2.32",
+        "drupal/xmlsitemap": "^2.0",
         "drupal/youtube": "^2.0",
         "drush/drush": "^13.7",
         "geocoder-php/nominatim-provider": "^5.8"
