@@ -16,6 +16,7 @@
   </div>
   <div class="shop-details">
     {{ content|without('field_images', 'field_open_hours', 'daily_coupon', 'field_logo', 'field_phone') }}
+    <a class="shop-on-map" target="_blank" href="https://www.google.com/maps/place/{{ content.field_address[0]['#context']['value'] }}">Térkép</a>
     <div class="shop-phone">
       {% for key, item in content.field_phone %}
         {% if key|first != '#' %}
@@ -24,6 +25,5 @@
       {% endfor %}
     </div>
     {{ content.daily_coupon }}
-    <a class="shop-on-map" target="_blank" href="https://www.google.com/maps/place/{{ content.field_address[0]['#context']['value'] }}">Térkép</a>
   </div>
 </div>

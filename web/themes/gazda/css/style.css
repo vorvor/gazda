@@ -577,7 +577,7 @@ header .layout-container {
 .view-services {
   .view-content {
     display: flex;
-    gap: 12px;
+    gap: 32px;
     flex-wrap: wrap;
 
     .views-row {
