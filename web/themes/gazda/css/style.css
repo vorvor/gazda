@@ -565,9 +565,37 @@ header .layout-container {
       border-radius: 12px;
       box-shadow: 0 0 10px #aaa;
 
+      .views-field-field-images {
+        width: 50px;
+        float: left;
+
+        ul {
+          margin: 0;
+
+          li {
+            margin: 0;
+            list-style: none;
+          }
+
+
+        }
+
+
+        img {
+          max-width: 100%;
+        }
+      }
+
       .views-field-title {
+        float: left;
         font-size: 1.2rem;
         font-weight: bold;
+        margin: 20px 0 0 0;
+        padding-left: 10px;
+      }
+
+      .views-field-field-service-description {
+        clear: both;
       }
     }
   }

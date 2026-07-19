@@ -3,11 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.service.field_icon
+    - field.field.node.service.field_images
     - field.field.node.service.field_service_description
     - field.field.node.service.field_shop
     - field.field.node.service.field_tags
+    - image.style.thumbnail
     - node.type.service
   module:
+    - image
     - path
     - text
 id: node.service.default
@@ -20,6 +24,22 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_icon:
+    type: image_image
+    weight: 125
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_images:
+    type: image_image
+    weight: 121
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   field_service_description:
     type: text_textarea

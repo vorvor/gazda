@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.service.field_icon
+    - field.field.node.service.field_images
     - field.field.node.service.field_service_description
     - field.field.node.service.field_shop
     - field.field.node.service.field_tags
@@ -30,6 +32,8 @@ content:
     region: content
 hidden:
   addtoany: true
+  field_icon: true
+  field_images: true
   field_service_description: true
   field_shop: true
   langcode: true

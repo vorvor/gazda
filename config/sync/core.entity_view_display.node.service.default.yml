@@ -3,11 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.service.field_icon
+    - field.field.node.service.field_images
     - field.field.node.service.field_service_description
     - field.field.node.service.field_shop
     - field.field.node.service.field_tags
+    - image.style.fb_post_image
     - node.type.service
   module:
+    - colorbox
+    - image
     - text
     - user
 id: node.service.default
@@ -15,6 +20,31 @@ targetEntityType: node
 bundle: service
 mode: default
 content:
+  field_icon:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_images:
+    type: colorbox
+    label: hidden
+    settings:
+      colorbox_image_style: ''
+      colorbox_gallery: post
+      colorbox_gallery_custom: ''
+      colorbox_caption: auto
+      colorbox_caption_custom: ''
+      colorbox_node_style: fb_post_image
+      colorbox_node_style_first: fb_post_image
+    third_party_settings: {  }
+    weight: 2
+    region: content
   field_service_description:
     type: text_default
     label: above
