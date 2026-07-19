@@ -16,7 +16,6 @@ dependencies:
     - field.field.node.shop.field_phone
     - node.type.shop
   module:
-    - clipboardjs
     - imagefield_slideshow
     - office_hours
     - user
@@ -40,12 +39,10 @@ content:
     weight: 2
     region: content
   field_email:
-    type: clipboard_textfield
+    type: string
     label: hidden
     settings:
-      label: 'Click to copy'
-      alert_style: tooltip
-      alert_text: Copied!
+      link_to_entity: false
     third_party_settings: {  }
     weight: 4
     region: content
