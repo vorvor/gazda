@@ -559,7 +559,7 @@ header .layout-container {
 
     .views-row {
       width: 31%;
-      background: #a0d7fa;
+      background: #b9dff6;
       box-sizing: border-box;
       padding: 12px 18px;
       border-radius: 12px;
@@ -590,15 +590,48 @@ header .layout-container {
         float: left;
         font-size: 1.2rem;
         font-weight: bold;
-        margin: 20px 0 0 0;
-        padding-left: 10px;
       }
 
       .views-field-field-service-description {
         clear: both;
       }
+
+      .views-field-field-phone {
+        h3 {
+          margin: 0;
+        }
+      }
     }
   }
+}
 
+.view-services .views-row {
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr);
+  grid-template-areas:
+    "image title"
+    "description description"
+    "phone phone"
+    "email email";
+}
 
+.view-services .views-field-field-images {
+  grid-area: image;
+}
+
+.view-services .views-field-title {
+  grid-area: title;
+  align-self: center;
+}
+
+.view-services .views-field-field-service-description {
+  grid-area: description;
+}
+
+.view-services .views-field-field-phone {
+  grid-area: phone;
+}
+
+.view-services .views-field-field-email {
+  grid-area: email;
 }
