@@ -134,10 +134,6 @@ header .layout-container {
       margin-bottom: 24px;
     }
 
-    .views-row.service {
-      background: #a0d7fa;
-    }
-
     .views-field-field-images {
       position: absolute;
       text-align: right;
@@ -153,13 +149,29 @@ header .layout-container {
     .views-field-title {
       display: inline-block;
       color: var(--primary-color);
-      font-size: 1.75rem;
-      line-height: 1.75rem;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
       font-weight: 800;
       width: 50%;
 
       a {
         color: var(--primary-color);
+      }
+    }
+
+    .views-row.service {
+      background: #a0d7fa;
+
+      .views-field-field-images {
+        img {
+          width: 60%;
+        }
+      }
+
+      .views-field-title {
+        a {
+          color: #02446e;
+        }
       }
     }
 
