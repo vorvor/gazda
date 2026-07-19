@@ -1,0 +1,32 @@
+/* Clipboardjs tooltip styles */
+.clipboardjs .tooltip,
+.clipboardjs-button .tooltip {
+  position: relative;
+  display: inline-block;
+}
+.clipboardjs .tooltip .tooltiptext,
+.clipboardjs-button .tooltip .tooltiptext {
+  position: absolute;
+  z-index: 1;
+  bottom: -200%;
+  left: -150%;
+  visibility: hidden;
+  padding: 5px 4px;
+  text-align: center;
+  color: #fff;
+  border-radius: 6px;
+  background-color: black;
+  font-size: medium;
+  font-weight: normal;
+}
+.clipboardjs .tooltip .tooltiptext::after,
+.clipboardjs-button .tooltip .tooltiptext::after {
+  position: absolute;
+  bottom: 100%;  /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  content: " ";
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}

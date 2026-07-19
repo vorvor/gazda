@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Clipboard.js module.
+ */
+
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+
+/**
+ * Implements hook_requirements().
+ */
+function clipboardjs_requirements($phase) {
+  $requirements = [];
+
+  $default = \Drupal::service('library.libraries_directory_file_finder')->find('clipboard/dist/clipboard.js');
+  $wikimedia = \Drupal::service('library.libraries_directory_file_finder')->find('clipboard.js/dist/clipboard.js');
+
+  if (!$default && !$wikimedia) {
+    // The library is not installed.
+    $requirements['clipboardjs'] = [
+      'title' => new TranslatableMarkup('Clipboard.js library'),
+      'description' => new TranslatableMarkup(
+        'Please download version 2.0.11 of the <a href="@library" target="_blank">clipboard.js library</a> and place it in the Drupal root libraries folder. So that the js file is available under DRUPAL_ROOT/libraries/clipboard/dist/clipboard.js.',
+        [
+          '@library' => 'https://github.com/zenorocha/clipboard.js',
+        ]
+      ),
+      'severity' => REQUIREMENT_ERROR,
+    ];
+  }
+  elseif (!$default && $wikimedia) {
+    $requirements['clipboardjs'] = [
+      'title' => new TranslatableMarkup('Clipboard.js library'),
+      'description' => new TranslatableMarkup('Available, but library probably installed with the wikimedia/composer-merge-plugin. You should switch to use default installation. Please see the README for more information.',),
+      'severity' => REQUIREMENT_WARNING,
+    ];
+  }
+  else {
+    $requirements['clipboardjs'] = [
+      'title' => new TranslatableMarkup('Clipboard.js library'),
+      'severity' => REQUIREMENT_OK,
+      'value' => t('Available'),
+    ];
+  }
+
+  return $requirements;
+
+}

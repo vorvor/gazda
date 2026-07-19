@@ -1,0 +1,10 @@
+name: Clipboard.js
+type: module
+description: A modern approach to copy text to clipboard.
+package: Content display
+core_version_requirement: ^8 || ^9 || ^10
+
+# Information added by Drupal.org packaging script on 2025-01-30
+version: '2.0.9'
+project: 'clipboardjs'
+datestamp: 1738241276

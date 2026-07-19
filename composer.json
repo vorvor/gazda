@@ -22,6 +22,7 @@
         "drupal/advanced_block_visibility": "^1.0",
         "drupal/backup_migrate": "^5.1",
         "drupal/better_exposed_filters": "^7.1",
+        "drupal/clipboardjs": "^2.0",
         "drupal/colorbox": "^2.1",
         "drupal/config_ignore": "^3.4",
         "drupal/core-composer-scaffold": "^10.6",

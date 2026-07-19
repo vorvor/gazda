@@ -1,0 +1,23 @@
+{
+    "require": {
+        "zenorocha/clipboard.js": "v2.0.11"
+    },
+    "repositories": {
+        "zenorocha/clipboard.js": {
+            "type": "package",
+            "package": {
+                "name": "zenorocha/clipboard.js",
+                "version": "v2.0.11",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "clipboard.js"
+                },
+                "source": {
+                    "url": "https://github.com/zenorocha/clipboard.js.git",
+                    "type": "git",
+                    "reference": "v2.0.11"
+                }
+            }
+        }
+    }
+}

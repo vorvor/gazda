@@ -1,0 +1,57 @@
+.clipboardjs-button {
+  position: relative;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: #333;
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  background-color: #eee;
+  background-image: linear-gradient(#fcfcfc,#eee);
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+  -webkit-appearance: none;
+}
+input.clipboardjs {
+  min-height: 34px;
+  margin-right: -2px;
+  padding: 7px 8px;
+  cursor: text;
+  -moz-user-select: text;
+  text-align: start;
+  vertical-align: middle;
+  text-indent: 0;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  /* stylelint-disable-next-line */
+  color: -moz-fieldtext;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  outline: none;
+  background-position: right 8px center;
+  /* stylelint-disable-next-line */
+  background-color: -moz-field;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+  text-shadow: none;
+  /* stylelint-disable-next-line */
+  font: -moz-field;
+  font-size: 13px;
+  -moz-appearance: textfield;
+  text-rendering: optimizeLegibility;
+  line-height: normal;
+  -moz-binding: url("chrome://global/content/platformHTMLBindings.xml#inputFields");
+  overflow-clip-box: content-box;
+}
