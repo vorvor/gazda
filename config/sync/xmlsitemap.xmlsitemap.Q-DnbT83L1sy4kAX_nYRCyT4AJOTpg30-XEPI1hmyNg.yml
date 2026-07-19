@@ -3,6 +3,6 @@ langcode: hu
 status: true
 dependencies: {  }
 id: Q-DnbT83L1sy4kAX_nYRCyT4AJOTpg30-XEPI1hmyNg
-label: 'https://setaljbe.hu'
+label: 'https://setaljbe.hu/'
 context:
   language: hu
