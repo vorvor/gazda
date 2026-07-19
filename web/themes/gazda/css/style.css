@@ -657,4 +657,14 @@ header .layout-container {
 
 .view-services .views-field-field-email {
   grid-area: email;
+
+    input.clipboardjs {
+      width: 230px;
+      border: none;
+      box-shadow: none;
+      font-size: 1rem;
+      box-sizing: border-box;
+      background: transparent;
+    }
+
 }

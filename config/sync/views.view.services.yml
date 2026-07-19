@@ -10,6 +10,7 @@ dependencies:
     - image.style.thumbnail
     - node.type.service
   module:
+    - clipboardjs
     - image
     - node
     - text
@@ -334,9 +335,11 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: string
+          type: clipboard_textfield
           settings:
-            link_to_entity: false
+            label: 'Click to copy'
+            alert_style: tooltip
+            alert_text: Copied!
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -345,7 +348,7 @@ display:
           delta_reversed: false
           delta_first_last: false
           multi_type: separator
-          separator: ', '
+          separator: ''
           field_api_classes: false
       pager:
         type: some
