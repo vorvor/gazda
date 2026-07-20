@@ -1,0 +1,24 @@
+uuid: 89980bc9-a3b8-4970-906f-869f5928bcc4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_admin_notes
+    - filter.format.full_html
+    - node.type.shop
+  module:
+    - text
+id: node.shop.field_admin_notes
+field_name: field_admin_notes
+entity_type: node
+bundle: shop
+label: 'Admin notes'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text_long

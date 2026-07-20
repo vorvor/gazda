@@ -1,0 +1,32 @@
+uuid: 0907c128-379b-49ac-bdfd-181b64c32755
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.shop_info_for_admin
+  module:
+    - user
+    - views
+  theme:
+    - gazda
+id: gazda_views_block__shop_info_for_admin_block_1
+theme: gazda
+region: content
+weight: -10
+provider: null
+plugin: 'views_block:shop_info_for_admin-block_1'
+settings:
+  id: 'views_block:shop_info_for_admin-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      administrator: administrator

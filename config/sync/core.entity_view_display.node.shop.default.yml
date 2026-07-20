@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.shop.field_address
+    - field.field.node.shop.field_admin_notes
+    - field.field.node.shop.field_contact_for_admin
     - field.field.node.shop.field_coupon
     - field.field.node.shop.field_description
     - field.field.node.shop.field_email
@@ -116,6 +118,8 @@ content:
     region: content
 hidden:
   addtoany: true
+  field_admin_notes: true
+  field_contact_for_admin: true
   field_coupon: true
   field_featured_shop: true
   field_location: true

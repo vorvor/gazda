@@ -1,0 +1,19 @@
+uuid: 8b977748-b2c1-4df1-8298-d20fd85ae7cf
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_contact_for_admin
+field_name: field_contact_for_admin
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
