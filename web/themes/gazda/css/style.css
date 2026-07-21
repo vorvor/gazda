@@ -407,7 +407,7 @@ header .layout-container {
   }
 
   .product-details, .shop-details {
-    max-width: 60%;
+    max-width: 38%;
   }
 
   .field--name-field-description,
@@ -481,6 +481,7 @@ header .layout-container {
 
 .shop-on-map {
   display: block;
+  margin-bottom: 24px;
   padding: 13px 15px 0 57px;
   background-image: url(../images/icon-google-maps.png);
   background-size: 24px;
