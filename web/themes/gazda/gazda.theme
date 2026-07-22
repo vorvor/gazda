@@ -84,7 +84,7 @@ function gazda_preprocess_html(&$variables) {
  */
 function gazda_preprocess_views_view_unformatted(&$variables) {
   $view = $variables['view'];
-  if ($view->id() === 'products') {
+  if (in_array($view->id(), ['products', 'front_for_flyer'])) {
     foreach ($variables['rows'] as $id => $row) {
       $node = $row['content']['#row']->_entity;
       if ($node instanceof NodeInterface && in_array($node->bundle(), ['product', 'service']) && $node->hasField('field_shop') && !$node->get('field_shop')->isEmpty()) {

@@ -114,7 +114,9 @@ header .layout-container {
   display: none;
 }
 
-.view-products, .view-taxonomy-term {
+.view-products,
+.view-taxonomy-term,
+.view-front-for-flyer {
 
   .view-header {
     margin-bottom: 12px;
@@ -128,11 +130,13 @@ header .layout-container {
     .views-row {
       position: relative;
       overflow: hidden;
+      box-sizing: border-box;
       flex-wrap: wrap;
-      width: 30%;
+      width: 32%;
       padding: 1rem;
       padding-bottom: 80px;
       border-radius: 10px;
+      border-left: 12px solid var(--primary-color);
       box-shadow: 0 0 10px #aaa;
       margin-bottom: 24px;
     }
@@ -151,6 +155,7 @@ header .layout-container {
 
     .views-field-title {
       display: inline-block;
+      margin-bottom: 8px;
       color: var(--primary-color);
       font-size: 1.5rem;
       line-height: 1.5rem;
@@ -158,7 +163,7 @@ header .layout-container {
       width: 50%;
 
       a {
-        color: var(--primary-color);
+        color: #333 !important;
       }
     }
 
@@ -178,21 +183,30 @@ header .layout-container {
       }
     }
 
-    .views-row.shop-balint .views-field-title {
-      a {
-        color: var(--secondary-color);
+    .views-row.shop-balint {
+      border-color: var(--secondary-color);
+      .views-field-title {
+
+        a {
+          color: var(--secondary-color);
+        }
       }
     }
 
-    .views-row.shop-firhan .views-field-title {
-      a {
-        color: var(--third-color);
+    .views-row.shop-firhan {
+      border-color: var(--third-color);
+      .views-field-title {
+
+        a {
+          color: var(--third-color);
+        }
       }
     }
 
     .views-field-field-shop {
       max-width: 226px;
       width: fit-content;
+      margin-bottom: 8px;
 
       .field-content {
         background: var(--primary-color);
