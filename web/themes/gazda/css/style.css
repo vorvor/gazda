@@ -4,6 +4,9 @@
 
   --secondary-color: #0292f1;
   --secondary-color-light: #59b9f8;
+
+  --third-color: #ae0000;
+  --third-color-light: #a85252;
 }
 
 a {
@@ -181,6 +184,11 @@ header .layout-container {
       }
     }
 
+    .views-row.shop-firhan .views-field-title {
+      a {
+        color: var(--third-color);
+    }
+
     .views-field-field-shop {
       max-width: 226px;
       width: fit-content;
@@ -198,6 +206,10 @@ header .layout-container {
 
     .views-row.shop-balint .views-field-field-shop .field-content {
       background: var(--secondary-color);
+    }
+
+    .views-row.shop-firhan .views-field-field-shop .field-content {
+      background: var(--third-color);
     }
 
     .views-field-field-description {
@@ -221,6 +233,10 @@ header .layout-container {
 
     .views-row.shop-balint .views-field-field-tags a {
       background: var(--secondary-color-light);
+    }
+
+    .views-row.shop-firhan .views-field-field-tags a {
+      background: var(--third-color-light);
     }
 
     .views-field-field-images {
