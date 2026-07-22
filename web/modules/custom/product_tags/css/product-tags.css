@@ -1,3 +1,14 @@
+:root {
+  --primary-color: #5a9632;
+  --primary-color-light: #93c96f;
+
+  --secondary-color: #0292f1;
+  --secondary-color-light: #59b9f8;
+
+  --third-color: #ae0000;
+  --third-color-light: #a85252;
+}
+
 .product-tags-wrapper {
   margin: 20px 0;
   padding: 15px;
@@ -23,7 +34,7 @@ ul.product-tags {
 }
 
 ul.product-tags li.tag-item {
-  background-color: #94c17e;
+  background-color: var(--primary-color-light);
   color: white;
   padding: 4px 12px;
   border-radius: 4px;
@@ -35,5 +46,17 @@ ul.product-tags li.tag-item {
 }
 
 ul.product-tags li.tag-item:hover {
-  background-color: #7fb366;
+  background-color: var(--primary-color);
+
+  a {
+    color: white;
+  }
+}
+
+body.shop-balint ul.product-tags li.tag-item {
+  background-color: var(--secondary-color-light);
+}
+
+body.shop-firhan ul.product-tags li.tag-item {
+  background-color: var(--third-color-light);
 }

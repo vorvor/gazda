@@ -3,6 +3,7 @@
 namespace Drupal\product_tags\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Link;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -118,7 +119,7 @@ class ProductTagsBlock extends BlockBase implements ContainerFactoryPluginInterf
     foreach ($nodes as $node) {
       if ($node->hasField('field_tags')) {
         foreach ($node->get('field_tags')->referencedEntities() as $term) {
-          $tags[$term->id()] = $term->label();
+          $tags[$term->id()] = Link::fromTextAndUrl($term->label(), $term->toUrl('canonical'));
         }
       }
     }
