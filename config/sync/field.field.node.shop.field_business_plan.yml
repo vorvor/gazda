@@ -1,0 +1,19 @@
+uuid: 90a1ff5c-117b-4728-a846-b4ab35b0aeb7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_business_plan
+    - node.type.shop
+id: node.shop.field_business_plan
+field_name: field_business_plan
+entity_type: node
+bundle: shop
+label: 'Business plan'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.shop.field_address
     - field.field.node.shop.field_admin_notes
+    - field.field.node.shop.field_business_plan
     - field.field.node.shop.field_contact_for_admin
     - field.field.node.shop.field_coupon
     - field.field.node.shop.field_description
@@ -47,6 +48,14 @@ content:
   field_admin_notes:
     type: text_textarea
     weight: 134
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_business_plan:
+    type: string_textarea
+    weight: 135
     region: content
     settings:
       rows: 5

@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.shop.field_address
     - field.field.node.shop.field_admin_notes
+    - field.field.node.shop.field_business_plan
     - field.field.node.shop.field_contact_for_admin
     - field.field.node.shop.field_coupon
     - field.field.node.shop.field_description
@@ -34,6 +35,7 @@ hidden:
   addtoany: true
   field_address: true
   field_admin_notes: true
+  field_business_plan: true
   field_contact_for_admin: true
   field_coupon: true
   field_description: true
