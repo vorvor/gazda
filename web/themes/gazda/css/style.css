@@ -60,7 +60,7 @@ header .layout-container {
     position: absolute;
     width: 26%;
     right: 143px;
-    top: 36px;
+    top: 22px;
 
     #header-texts {
       display: flex;
@@ -578,6 +578,10 @@ header .layout-container {
 
 .views-shops-block {
   margin-top: 60px;
+  display: flex;
+  align-items: center;
+  height: 94px;
+  justify-content: center;
 }
 
 .view-shops {
