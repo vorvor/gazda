@@ -187,6 +187,7 @@ header .layout-container {
     .views-row.shop-firhan .views-field-title {
       a {
         color: var(--third-color);
+      }
     }
 
     .views-field-field-shop {
