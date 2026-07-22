@@ -577,11 +577,18 @@ header .layout-container {
 }
 
 .views-shops-block {
-  margin-top: 60px;
+  margin-top: 70px;
+  margin-bottom: -18px;
   display: flex;
   align-items: center;
   height: 94px;
   justify-content: center;
+  gap: 24px;
+
+  img {
+    max-width: 70%;
+    height: auto;
+  }
 }
 
 .view-shops {
@@ -594,16 +601,16 @@ header .layout-container {
     .views-field-field-logo {
       padding: 12px;
       img {
-        height: 100px;
-        width: auto;
+        /* height: 100px;
+        width: auto; */
       }
     }
 
     .shop-balint {
       .views-field-field-logo {
         img {
-          height: 85px;
-          width: auto;
+          /* height: 85px;
+          width: auto; */
         }
       }
     }

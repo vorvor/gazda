@@ -1,7 +1,7 @@
 @media screen and (max-width: 800px) {
 
   body.path-search-product .product-search-widget {
-    background-size: 322%;
+    background-size: 322% 232px;
     background-position: 98% -50px;
   }
 
@@ -57,7 +57,16 @@
   }
 
   .views-shops-block {
-    margin-top: -26px;
+    margin-top: -16px;
+    text-align: center;
+
+    h2 {
+      display: none;
+    }
+
+    img {
+      max-width: 80%;
+    }
   }
 
   .view-shops {
