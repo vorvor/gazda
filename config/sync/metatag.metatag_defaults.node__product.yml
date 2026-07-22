@@ -6,10 +6,10 @@ id: node__product
 label: 'Content: Product'
 tags:
   description: '[node:field_description]'
-  image_src: '[node:field_images:0]'
+  image_src: '[node:field_images:0:fb_post_image]'
   keywords: 'test, keywords, lets, see'
   og_description: '[node:field_description]'
-  og_image: '[node:field_images:0]'
+  og_image: '[node:field_images:0:fb_post_image]'
   og_image_url: '[node:field_images:0]'
   og_title: '[node:title]'
   og_type: Product
