@@ -29,9 +29,10 @@
   .product-full, .shop-full {
     display: block;
 
-    .product-details {
+    .product-details, .shop-details {
       max-width: 100%;
     }
+     
   }
 
   #inside-block {
