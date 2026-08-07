@@ -219,12 +219,25 @@ header .layout-container {
       }
     }
 
-    .views-row.shop-balint .views-field-field-shop .field-content {
-      background: var(--secondary-color);
+    .views-field-view-node {
+      background: var(--primary-color-light);
+      padding: 2px 12px;
+      width: fit-content;
+      border-radius: 100px;
+
+      a {
+        color: #fff;
+      }
     }
 
-    .views-row.shop-firhan .views-field-field-shop .field-content {
-      background: var(--third-color);
+    .views-row.shop-balint .views-field-field-shop .field-content,
+    .views-row.shop-balint .views-field-view-node {
+      background: var(--secondary-color-light);
+    }
+
+    .views-row.shop-firhan .views-field-field-shop .field-content,
+    .views-row.shop-firhan .views-field-view-node {
+      background: var(--third-color-light);
     }
 
     .views-field-field-description {

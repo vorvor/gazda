@@ -127,3 +127,22 @@ function gazda_seo_update_node_images(EntityInterface $node) {
 function gazda_seo_node_presave(EntityInterface $node) {
   gazda_seo_update_node_images($node);
 }
+
+function getExtraDays($date) {
+  $ch = curl_init();
+
+  curl_setopt($ch, CURLOPT_URL, "https://szunetnapok.hu/api/");
+  curl_setopt($ch, CURLOPT_POST, 1);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, "year=$date&api_key=eb047831e35612a51b880730260a28a40a40a74fa4cdaf09fc07954f35c03d50");
+
+// Inkább így ajánlom:
+// curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('year' => '2026', 'api_key' => 'A1B2C3D4E5F6G7H8I9')));
+
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+  $response = curl_exec($ch);
+
+  curl_close ($ch);
+
+  return $response;
+}
