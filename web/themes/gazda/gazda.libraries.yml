@@ -3,6 +3,7 @@ styles:
     component:
       css/style.css: {}
       css/style-mobile.css: {}
+      css/homepage-discovery.css: {}
 #  js:
 #    js/script.js: {}
 #  dependencies:

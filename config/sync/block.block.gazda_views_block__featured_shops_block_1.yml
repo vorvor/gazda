@@ -1,6 +1,6 @@
 uuid: 9bcd06c5-4a90-48e8-a4fe-0cf405883236
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - views.view.featured_shops

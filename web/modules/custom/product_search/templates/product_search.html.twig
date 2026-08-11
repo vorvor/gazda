@@ -1,38 +1,113 @@
-<div class="product-search-widget product-search-block">
-  <div class="search-widget-header">
-    <h2>Fedezd fel, mi minden kapható Szentendrén helyben!</h2>
-    <p>Helyi üzletek termékei, egy helyen. Nézelődj, inspirálódj, szerezd be!</p>
-  </div>
-  <div class="product-search-form">
-    <input
-      id="product-search-input"
-      class="product-search-input"
-      type="text"
-      autocomplete="off"
-      placeholder="{{ placeholder }}" />
-    <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-  </div>
-  {% if marketingblock %}
-    <div id="marketing-block" class="marketing-block">
-      {{ marketingblock }}
+<div class="product-search-widget product-search-block"{% if is_front %} data-homepage-discovery{% endif %}>
+  {% if is_front %}
+    <section class="discovery-hero" aria-labelledby="discovery-title">
+      <div class="discovery-hero__content">
+        <p class="discovery-eyebrow">Szentendre · helyben jobb</p>
+        <h1 id="discovery-title">Szentendre helyi kincsei, egy keresésre.</h1>
+        <p class="discovery-lead">Találd meg, amit keresel, ismerd meg a boltot, és vásárolj olyan emberektől, akik itt élnek veled.</p>
+
+        <div class="product-search-form" role="search">
+          <label class="visually-hidden" for="product-search-input">Termék vagy szolgáltatás keresése</label>
+          <input
+            id="product-search-input"
+            class="product-search-input"
+            type="search"
+            autocomplete="off"
+            placeholder="Mit keresel Szentendrén?" />
+          <button class="product-search-submit" type="button" aria-label="Keresés indítása">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
+              <path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="discovery-suggestions" aria-label="Népszerű keresések">
+          <span>Próbáld ki:</span>
+          {% for suggestion in search_suggestions %}
+            <button type="button" data-search-suggestion="{{ suggestion }}">{{ suggestion }}</button>
+          {% endfor %}
+        </div>
+
+        {% if local_offering_count or shop_count %}
+          <p class="discovery-counts">
+            <strong>{{ local_offering_count }}</strong> helyi termék és szolgáltatás
+            <span aria-hidden="true">·</span>
+            <strong>{{ shop_count }}</strong> szentendrei üzlet
+          </p>
+        {% endif %}
+      </div>
+
+      <aside class="discovery-story" aria-label="Helyi üzlet története" data-hero-shop="{{ hero_shop_name }}">
+        {% if hero_shop_image_url %}
+          <a href="{{ hero_shop_url }}" class="discovery-story__image-link">
+            <img src="{{ hero_shop_image_url }}" alt="{{ hero_shop_image_alt }}" />
+          </a>
+        {% endif %}
+        <div class="discovery-story__caption">
+          <p>Most őket mutatjuk be</p>
+          <strong>{{ hero_shop_name }}</strong>
+          {% if hero_shop_summary %}
+            <p class="discovery-story__summary">{{ hero_shop_summary }}</p>
+          {% endif %}
+          {% if hero_shop_name %}
+            <a href="{{ hero_shop_url }}">Megnézem az üzletet <span aria-hidden="true">→</span></a>
+          {% endif %}
+        </div>
+      </aside>
+    </section>
+
+    <div class="discovery-proof" aria-label="Miért jó helyben vásárolni?">
+      <p><strong>Személyes tanács</strong><span>Segítség attól, aki ismeri a terméket.</span></p>
+      <p><strong>Kevesebb keresgélés</strong><span>A város kínálata egy helyen.</span></p>
+      <p><strong>Helyi érték</strong><span>Minden vásárlás a környéket erősíti.</span></p>
+    </div>
+
+    <section class="views-shops-block" aria-labelledby="local-shops-title">
+      <div>
+        <p class="discovery-eyebrow">A szomszédság üzletei</p>
+        <h2 id="local-shops-title">Ők már várnak rád</h2>
+      </div>
+      {{ drupal_view('shops', 'block_1') }}
+    </section>
+
+    <section class="discovery-featured" aria-labelledby="featured-offers-title">
+      <div class="discovery-featured__header">
+        <div>
+          <p class="discovery-eyebrow">Most érdemes megnézni</p>
+          <h2 id="featured-offers-title">Kiemelt ajánlatok</h2>
+        </div>
+        <p>Friss ötletek és különleges helyi találatok, ha még nem tudod pontosan, mit keresel.</p>
+      </div>
+      {{ drupal_view('featured_shops', 'block_1') }}
+    </section>
+  {% else %}
+    <div class="search-widget-header">
+      <h2>Keress a helyi kínálatban</h2>
+    </div>
+    <div class="product-search-form" role="search">
+      <label class="visually-hidden" for="product-search-input">Termék vagy szolgáltatás keresése</label>
+      <input id="product-search-input" class="product-search-input" type="search" autocomplete="off" placeholder="{{ placeholder }}" />
+      <button class="product-search-submit" type="button" aria-label="Keresés indítása">
+        <span aria-hidden="true">Keresés</span>
+      </button>
     </div>
   {% endif %}
+
   {% if is_front %}
-  <div class="views-shops-block">
-    <h2>Ők már velünk vannak</h2>
-  {{ drupal_view('shops', 'block_1') }}
-  </div>
+    <div class="discovery-results-intro">
+      <div>
+        <p class="discovery-eyebrow">Fedezd fel a kínálatot</p>
+        <h2>Találj rá valami jóra</h2>
+      </div>
+      <p>Böngéssz a helyi termékek és szolgáltatások között, vagy keress rá arra, amire éppen szükséged van.</p>
+    </div>
   {% endif %}
+
   <div
     id="product-search-results"
     class="product-search-results"
-    aria-live="polite">
-
+    aria-live="polite"
+    aria-busy="false">
     {{ results }}
-
   </div>
 </div>
-
-
-
-

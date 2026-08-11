@@ -4,28 +4,18 @@
   Drupal.behaviors.productSearch = {
     attach(context) {
       once('product-search', '.product-search-widget', context).forEach((widget) => {
-        console.log('heyyyyy!');
         const input = widget.querySelector('.product-search-input');
         const results = widget.querySelector('.product-search-results');
+        const submit = widget.querySelector('.product-search-submit');
+        const suggestions = widget.querySelectorAll('[data-search-suggestion]');
 
         if (!input || !results) {
-          console.log(input);
           return;
         }
 
         const defaultResultsHtml = results.innerHTML;
         let timer = null;
         let controller = null;
-
-        input.addEventListener('focus', () => {
-          document.body.classList.add('searching');
-        });
-
-        input.addEventListener('blur', () => {
-          if (!input.value.trim()) {
-            document.body.classList.remove('searching');
-          }
-        });
 
         const runSearch = () => {
           const keyword = input.value.trim();
@@ -44,9 +34,12 @@
           // all products instead of showing a help message.
           if (!keyword) {
             results.innerHTML = defaultResultsHtml;
+            results.setAttribute('aria-busy', 'false');
+            Drupal.attachBehaviors(results);
             return;
           }
 
+          results.setAttribute('aria-busy', 'true');
           results.innerHTML = '<p class="product-search-loading">' + Drupal.t('Searching...') + '</p>';
 
           controller = new AbortController();
@@ -67,21 +60,40 @@
             })
             .then((data) => {
               results.innerHTML = data.html || '<p class="product-search-no-results">' + Drupal.t('No products found.') + '</p>';
+              Drupal.attachBehaviors(results);
             })
             .catch((error) => {
               if (error.name === 'AbortError') {
                 return;
               }
               results.innerHTML = '<p class="product-search-error">' + Drupal.t('Search failed. Please try again.') + '</p>';
+            })
+            .finally(() => {
+              results.setAttribute('aria-busy', 'false');
             });
         };
 
-        input.addEventListener('keyup', () => {
-          console.log('hey!');
-          // Still runs from keyup, but debounced to avoid a database query for
-          // every very fast keystroke. Set this to 0 if you truly want every keyup.
+        input.addEventListener('input', () => {
           window.clearTimeout(timer);
           timer = window.setTimeout(runSearch, 250);
+        });
+
+        input.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            window.clearTimeout(timer);
+            runSearch();
+          }
+        });
+
+        submit?.addEventListener('click', runSearch);
+
+        suggestions.forEach((suggestion) => {
+          suggestion.addEventListener('click', () => {
+            input.value = suggestion.dataset.searchSuggestion || '';
+            input.focus();
+            runSearch();
+          });
         });
       });
     }

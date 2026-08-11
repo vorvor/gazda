@@ -4,6 +4,8 @@ namespace Drupal\product_search\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Render\RendererInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -25,6 +27,8 @@ final class ProductSearchController extends ControllerBase {
   public function __construct(
     private readonly Connection $productSearchDatabase,
     private readonly RendererInterface $productSearchRenderer,
+    private readonly EntityTypeManagerInterface $productSearchEntityTypeManager,
+    private readonly FileUrlGeneratorInterface $fileUrlGenerator,
   ) {}
 
   /**
@@ -34,6 +38,8 @@ final class ProductSearchController extends ControllerBase {
     return new self(
       $container->get('database'),
       $container->get('renderer'),
+      $container->get('entity_type.manager'),
+      $container->get('file_url_generator'),
     );
   }
 
@@ -42,6 +48,7 @@ final class ProductSearchController extends ControllerBase {
    */
   public function page(): array {
     $default_view = $this->buildProductsView();
+    $discovery = $this->buildHomepageDiscovery();
 
     return [
       '#theme' => 'product_search',
@@ -66,9 +73,112 @@ final class ProductSearchController extends ControllerBase {
       '#results' => $default_view ?: [
         '#markup' => '<p class="product-search-error">' . $this->t('The products view could not be rendered.') . '</p>',
       ],
+      '#local_offering_count' => $discovery['local_offering_count'],
+      '#shop_count' => $discovery['shop_count'],
+      '#hero_shop_name' => $discovery['hero_shop_name'],
+      '#hero_shop_url' => $discovery['hero_shop_url'],
+      '#hero_shop_image_url' => $discovery['hero_shop_image_url'],
+      '#hero_shop_image_alt' => $discovery['hero_shop_image_alt'],
+      '#hero_shop_summary' => $discovery['hero_shop_summary'],
+      '#search_suggestions' => $discovery['search_suggestions'],
       '#attached' => [
         'library' => ['product_search/search'],
       ],
+      '#cache' => [
+        'max-age' => 0,
+        'tags' => [
+          'node_list:product',
+          'node_list:service',
+          'node_list:shop',
+          'taxonomy_term_list:tags',
+        ],
+        'contexts' => ['user.permissions'],
+      ],
+    ];
+  }
+
+  /**
+   * Builds live counts and a randomly selected local-shop story.
+   */
+  private function buildHomepageDiscovery(): array {
+    $node_storage = $this->productSearchEntityTypeManager->getStorage('node');
+    $term_storage = $this->productSearchEntityTypeManager->getStorage('taxonomy_term');
+
+    $local_offering_count = (int) $node_storage->getQuery()
+      ->accessCheck(TRUE)
+      ->condition('type', ['product', 'service'], 'IN')
+      ->condition('status', 1)
+      ->count()
+      ->execute();
+
+    $shop_count = (int) $node_storage->getQuery()
+      ->accessCheck(TRUE)
+      ->condition('type', 'shop')
+      ->condition('status', 1)
+      ->count()
+      ->execute();
+
+    $tag_ids = $term_storage->getQuery()
+      ->accessCheck(TRUE)
+      ->condition('vid', 'tags')
+      ->condition('status', 1)
+      ->execute();
+    $search_suggestions = array_values(array_map(
+      static fn($term): string => $term->label(),
+      $term_storage->loadMultiple($tag_ids),
+    ));
+    shuffle($search_suggestions);
+    $search_suggestions = array_slice($search_suggestions, 0, 4);
+
+    $story = [
+      'hero_shop_name' => '',
+      'hero_shop_url' => '',
+      'hero_shop_image_url' => '',
+      'hero_shop_image_alt' => '',
+      'hero_shop_summary' => '',
+    ];
+
+    $shop_ids = $node_storage->getQuery()
+      ->accessCheck(TRUE)
+      ->condition('type', 'shop')
+      ->condition('status', 1)
+      ->execute();
+
+    if ($shop_ids) {
+      $shop_ids = array_values($shop_ids);
+      $shop_id = $shop_ids[random_int(0, count($shop_ids) - 1)];
+      $shop = $node_storage->load($shop_id);
+
+      if ($shop) {
+        $image_item = NULL;
+        if (!$shop->get('field_images')->isEmpty()) {
+          $image_item = $shop->get('field_images')->first();
+        }
+        elseif (!$shop->get('field_logo')->isEmpty()) {
+          $image_item = $shop->get('field_logo')->first();
+        }
+
+        $image = $image_item?->entity;
+        $description = $shop->get('field_description')->value ?? '';
+        $description_lines = array_values(array_filter(array_map(
+          'trim',
+          preg_split('/\R+/u', strip_tags($description)) ?: [],
+        )));
+
+        $story = [
+          'hero_shop_name' => $shop->label(),
+          'hero_shop_url' => $shop->toUrl()->toString(),
+          'hero_shop_image_url' => $image ? $this->fileUrlGenerator->generateString($image->getFileUri()) : '',
+          'hero_shop_image_alt' => trim($image_item?->alt ?? '') ?: $shop->label(),
+          'hero_shop_summary' => $description_lines[0] ?? 'Helyi üzlet Szentendrén.',
+        ];
+      }
+    }
+
+    return $story + [
+      'local_offering_count' => $local_offering_count,
+      'shop_count' => $shop_count,
+      'search_suggestions' => $search_suggestions,
     ];
   }
 
