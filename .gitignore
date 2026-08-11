@@ -1,3 +1,4 @@
 /web/sites/default/files/
 /web/sites/default/settings.*
 .idea/
+.lando/hermes/hermes.env

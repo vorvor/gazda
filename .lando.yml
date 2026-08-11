@@ -27,6 +27,29 @@ services:
         # Support debugging CLI with XDEBUG.
         PHP_IDE_CONFIG: "serverName=appserver"
         XDEBUG_SESSION_START: lando
+  hermes:
+    api: 4
+    type: l337
+
+    image: ./.lando/hermes/Dockerfile
+
+    command: sleep infinity
+
+    working_dir: /workspace
+
+    stdin_open: true
+    tty: true
+
+    environment:
+      HERMES_UID: "501"
+      HERMES_GID: "20"
+      HERMES_HOME: /opt/data
+      HERMES_WRITE_SAFE_ROOT: /workspace:/opt/data
+      COMPOSER_HOME: /opt/data/composer
+
+    volumes:
+      - ./:/workspace
+      - hermes-data:/opt/data
 
 tooling:
   xdebug-on:
@@ -53,4 +76,17 @@ tooling:
     cmd:
       - |
         composer run lint-be
+  hermes:
+    service: hermes
+    cmd: hermes
+    dir: /workspace
+    user: hermes
 
+  hermes-shell:
+    service: hermes
+    cmd: bash
+    dir: /workspace
+    user: hermes
+
+volumes:
+  hermes-data:
