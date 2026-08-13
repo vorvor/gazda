@@ -1,0 +1,9 @@
+name: Email Octopus
+description: This creates a connection between Email Octopus Third-party API and Drupal.
+type: module
+core_version_requirement:  ^10|| ^11
+
+# Information added by Drupal.org packaging script on 2025-10-15
+version: '2.0.3'
+project: 'email_octopus'
+datestamp: 1760525248

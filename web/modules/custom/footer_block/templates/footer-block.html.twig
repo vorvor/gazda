@@ -3,10 +3,11 @@
     <img src="/modules/custom/footer_block/src/images/gazda-logo-mono.png" alt="Szentendre">
   </div>
   <div class="footer-block-bottom">
-    {% if content %}
-      <div class="footer-block-content">
-        <a href="/contact">Kapcsolat</a>
-      </div>
-    {% endif %}
+    <div class="footer-block-newsletter">
+      {{ newsletter_form }}
+    </div>
+    <div class="footer-block-content">
+      <a href="/contact">Kapcsolat</a>
+    </div>
   </div>
 </div>

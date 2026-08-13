@@ -1,0 +1,10 @@
+email_octopus:
+  version: 1.x
+  css:
+    theme:
+      css/email_octopus.css: {}
+  js:
+    js/email_octopus.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

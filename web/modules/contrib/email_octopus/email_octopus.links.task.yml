@@ -1,0 +1,10 @@
+email_octopus.configuration_form:
+  route_name: email_octopus.configuration_form
+  title: API Key
+  base_route: email_octopus.configuration_form
+  weight: 0
+email_octopus.list_form:
+  route_name: email_octopus.list_form
+  title: Subscriber / Unsubscriber List
+  base_route: email_octopus.configuration_form
+  weight: 2

@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Email Octopus module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implement email_octopus_theme().
+ */
+function email_octopus_theme($existing, $type, $theme, $path) {
+  return [
+    'octopus_subscribe_form' => [
+      'render element' => 'form',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_help().
+ */
+function email_octopus_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.email_octopus':
+      $output = '';
+      $output .= '<p>';
+      $output .= t('The Email Octopus module provides a connection between Email Octopus Third-party API and Drupal');
+      $output .= '</p>';
+      $output .= '<p>' . t('Visit the <a href=":project_link">Project page</a> on Drupal.org for more information.', [
+        ':project_link' => 'https://www.drupal.org/project/email_octopus',
+      ]);
+
+      return $output;
+  }
+}

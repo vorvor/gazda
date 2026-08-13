@@ -1,0 +1,6 @@
+email_octopus.form:
+  title: 'Email Octopus Settings'
+  route_name: email_octopus.configuration_form
+  description: 'For Email Octopus API Key and User list'
+  parent: system.admin_config_system
+  weight: 99

@@ -1,0 +1,27 @@
+email_octopus.subscribe_form:
+  path: '/admin/config/susbcribe'
+  defaults:
+    _form: 'Drupal\email_octopus\Form\OctopusSubscribeForm'
+    _title: 'Capture User Email'
+  requirements:
+    _permission: 'administer'
+  options:
+    _admin_route: TRUE
+email_octopus.configuration_form:
+  path: '/admin/config/credentials'
+  defaults:
+    _form: '\Drupal\email_octopus\Form\OctopusConfigurationForm'
+    _title: 'Configuration Form'
+  requirements:
+    _permission: 'administer'
+  options:
+    _admin_route: TRUE
+email_octopus.list_form:
+  path: '/admin/config/users-list'
+  defaults:
+    _form: '\Drupal\email_octopus\Form\OctopusListForm'
+    _title: 'List Form'
+  requirements:
+    _permission: 'administer'
+  options:
+    _admin_route: TRUE

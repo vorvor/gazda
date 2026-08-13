@@ -3,7 +3,7 @@
         'name' => 'drupal/recommended-project',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f444b21e93e39b791415902fc9f5e11d83b20954',
+        'reference' => '55698174aba942f7403660dc6336a150c2382e5d',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -514,6 +514,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/email_octopus' => array(
+            'pretty_version' => '2.0.3',
+            'version' => '2.0.3.0',
+            'reference' => '2.0.3',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/email_octopus',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/field_gallery' => array(
             'pretty_version' => '2.0.0',
             'version' => '2.0.0.0',
@@ -697,7 +706,7 @@
         'drupal/recommended-project' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f444b21e93e39b791415902fc9f5e11d83b20954',
+            'reference' => '55698174aba942f7403660dc6336a150c2382e5d',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

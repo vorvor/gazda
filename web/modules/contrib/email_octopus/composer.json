@@ -1,0 +1,30 @@
+{
+  "name": "drupal/email_octopus",
+  "description": "This module contains API Integration for POST and GET requests.",
+  "type": "drupal-module",
+  "keywords": [
+    "Drupal",
+    "Mail"
+  ],
+  "homepage": "https://www.drupal.org/project/email_octopus",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Akshay Singh (akshay.singh)",
+      "homepage": "https://www.drupal.org/u/akshaysingh",
+      "role": "Maintainer"
+    },
+    {
+      "name": "Jitendra verma",
+      "homepage": "https://www.drupal.org/u/jitendra-verma",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/email_octopus",
+    "source": "http://cgit.drupalcode.org/email_octopus"
+  },
+  "require": {
+    "drupal/core": "^8.8 || ^9 || ^10|| ^11"
+  }
+}
