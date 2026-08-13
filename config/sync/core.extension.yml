@@ -29,6 +29,7 @@ module:
   dynamic_page_cache: 0
   editablefields: 0
   editor: 0
+  email_octopus: 0
   field: 0
   field_gallery: 0
   field_ui: 0
