@@ -1,29 +1,40 @@
-<div class="shop-full">
-  <div class="shop-header">
+<article{{ attributes.addClass('shop-full', 'shop-detail') }}>
+  <header class="shop-header shop-detail-hero">
     {% if node.field_logo.entity %}
       <div class="shop-logo">
         <img src="{{ file_url(node.field_logo.entity.fileuri) }}" alt="{{ node.field_logo.alt }}" />
       </div>
     {% endif %}
-    <h1 class="shop-title">{{ label }}</h1>
-  </div>
-
-  <div class="shop-image">
-    {{ content.field_images }}
-  </div>
-  <div class="shop-open-hours">
-    {{ content.field_open_hours }}
-  </div>
-  <div class="shop-details">
-    {{ content|without('field_images', 'field_open_hours', 'daily_coupon', 'field_logo', 'field_phone') }}
-    <a class="shop-on-map" target="_blank" href="https://www.google.com/maps/place/{{ content.field_address[0]['#context']['value'] }}">Térkép</a>
-    <div class="shop-phone">
-      {% for key, item in content.field_phone %}
-        {% if key|first != '#' %}
-          <a href="tel:{{ item['#context']['value']|striptags|trim }}"><i class="fa-solid fa-phone"></i> {{ item['#context']['value'] }}</a>
-        {% endif %}
-      {% endfor %}
+    <div class="shop-detail-heading">
+      <p class="shop-detail-eyebrow">{{ 'Helyi üzlet Szentendrén'|t }}</p>
+      <h1 class="shop-title">{{ label }}</h1>
     </div>
-    {{ content.daily_coupon }}
+  </header>
+
+  <div class="shop-detail-grid">
+    <section class="shop-image shop-detail-card shop-detail-card--media" aria-label="{{ 'Üzlet képei'|t }}">
+      {{ content.field_images }}
+    </section>
+
+    <div class="shop-detail-sidebar">
+      <section class="shop-open-hours shop-detail-card shop-detail-card--hours">
+        <h2>{{ 'Nyitvatartás'|t }}</h2>
+        {{ content.field_open_hours }}
+      </section>
+
+      <section class="shop-details shop-detail-card shop-detail-card--contact">
+        <h2>{{ 'Elérhetőségek'|t }}</h2>
+        {{ content|without('field_images', 'field_open_hours', 'daily_coupon', 'field_logo', 'field_phone') }}
+        <a class="shop-on-map" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/{{ content.field_address[0]['#context']['value'] }}">{{ 'Megnyitás térképen'|t }}</a>
+        <div class="shop-phone">
+          {% for key, item in content.field_phone %}
+            {% if key|first != '#' %}
+              <a href="tel:{{ item['#context']['value']|striptags|trim }}"><i class="fa-solid fa-phone" aria-hidden="true"></i> {{ item['#context']['value'] }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {{ content.daily_coupon }}
+      </section>
+    </div>
   </div>
-</div>
+</article>

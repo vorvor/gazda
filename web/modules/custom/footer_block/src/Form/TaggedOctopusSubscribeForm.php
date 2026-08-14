@@ -4,12 +4,59 @@ declare(strict_types=1);
 
 namespace Drupal\footer_block\Form;
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\footer_block\EmailOctopusContactPayload;
 
 /**
  * Adds the setaljbe tag to footer newsletter subscribers.
  */
 final class TaggedOctopusSubscribeForm extends \Drupal\email_octopus\Form\OctopusSubscribeForm {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function buildForm(
+    array $form,
+    FormStateInterface $form_state,
+    $listid = NULL,
+    $title = NULL,
+    $body = NULL,
+    $message = NULL,
+  ) {
+    $form = parent::buildForm(
+      $form,
+      $form_state,
+      $listid,
+      $title,
+      $body,
+      $message,
+    );
+
+    $form['content'] = [
+      '#type' => 'container',
+      '#attributes' => ['class' => ['newsletter-sub']],
+      'title' => [
+        '#type' => 'html_tag',
+        '#tag' => 'h3',
+        '#value' => $title,
+      ],
+      'body' => [
+        '#type' => 'html_tag',
+        '#tag' => 'p',
+        '#value' => $body,
+      ],
+      'subscribe' => [
+        '#type' => 'html_tag',
+        '#tag' => 'span',
+        '#value' => $this->t('Feliratkozom'),
+        '#attributes' => [
+          'class' => ['button', 'subscribe-button'],
+        ],
+      ],
+    ];
+
+    return $form;
+  }
 
   /**
    * {@inheritdoc}

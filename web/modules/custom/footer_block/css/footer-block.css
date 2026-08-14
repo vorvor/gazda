@@ -48,7 +48,6 @@
 .footer-block-newsletter #octopus-subscribe-form .subscribe-button,
 .footer-block-newsletter #octopus-subscribe-form .form-submit {
   display: inline-block;
-  min-height: 44px;
   padding: 10px 20px;
   color: #fff;
   background: #18623b;

@@ -4,6 +4,7 @@ styles:
       css/style.css: {}
       css/style-mobile.css: {}
       css/homepage-discovery.css: {}
+      css/node-detail.css: {}
 #  js:
 #    js/script.js: {}
 #  dependencies:

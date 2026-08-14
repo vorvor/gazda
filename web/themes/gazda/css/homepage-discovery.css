@@ -593,7 +593,6 @@ body.path-frontpage .product-search-results .view-products .views-field-view-nod
 
 body.path-frontpage .product-search-results .view-products .views-field-view-node a {
   display: inline-flex;
-  min-height: 40px;
   padding: 8px 16px;
   align-items: center;
   color: #fff;
