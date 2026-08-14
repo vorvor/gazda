@@ -24,7 +24,6 @@ body.path-frontpage header.site-header {
 body.path-frontpage header.site-header .layout-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 10px 28px;
 }
 
 body.path-frontpage header.site-header a {
@@ -39,7 +38,6 @@ body.path-frontpage header.site-header .menu {
 body.path-frontpage main > .layout-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 28px;
 }
 
 body.path-frontpage .page-content {
@@ -116,7 +114,7 @@ body.path-frontpage header.site-header a:focus-visible {
 
 .discovery-hero h1 {
   max-width: 730px;
-  margin: 0;
+  margin: 0 0 12px 0;
   font-size: clamp(2.8rem, 5.8vw, 5.25rem);
   font-weight: 700;
   line-height: 0.98;
