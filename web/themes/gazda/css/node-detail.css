@@ -321,7 +321,7 @@ body.path-node .page-title {
 body.path-node .block-views-blockservices-block-1,
 body.path-node .product-search-block,
 body.path-node .product-tags-wrapper {
-  
+
 }
 
 body.path-node .block-views-blockservices-block-1 > h2,
@@ -699,7 +699,7 @@ body.page-node-type-product .page-title {
 
 body.page-node-type-product .field--name-field-tags .field__item {
   color: var(--detail-forest);
-  background: #f0f3ec;
+  background: #486e16;
   border-radius: 100px;
 }
 

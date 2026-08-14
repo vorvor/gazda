@@ -478,7 +478,7 @@ header .layout-container {
     .field__item {
       background: var(--primary-color);
       border-radius: 4px;
-      padding: 0.1rem 0.4rem;
+      padding: 0.1rem 1rem;
 
       a {
         color: #fff;
