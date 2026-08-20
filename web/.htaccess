@@ -1,3 +1,22 @@
+# Canonical production origin for setaljbe.hu.
+#
+# Keep this rule in a Composer scaffold prepend so Drupal core scaffold updates
+# do not remove it. Local development hosts are intentionally unaffected.
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+
+  # Redirect both HTTP+www and HTTPS+www directly to the canonical HTTPS URL.
+  RewriteCond %{HTTP_HOST} ^www\.setaljbe\.hu$ [NC]
+  RewriteRule ^ https://setaljbe.hu%{REQUEST_URI} [R=301,L,NE]
+
+  # Enforce HTTPS on the canonical host. X-Forwarded-Proto prevents redirect
+  # loops when TLS is terminated by a trusted hosting proxy.
+  RewriteCond %{HTTP_HOST} ^setaljbe\.hu$ [NC]
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+  RewriteRule ^ https://setaljbe.hu%{REQUEST_URI} [R=301,L,NE]
+</IfModule>
+
 #
 # Apache/PHP/Drupal settings:
 #

@@ -45,6 +45,7 @@
         "drupal/metatag": "^2.2",
         "drupal/office_hours": "^1.29",
         "drupal/pathauto": "^1.15",
+        "drupal/redirect": "^1.11",
         "drupal/seo_analyzer": "^1.0",
         "drupal/seo_audit": "^1.0",
         "drupal/slick_views": "^3.0",
@@ -77,6 +78,11 @@
     },
     "extra": {
         "drupal-scaffold": {
+            "file-mapping": {
+                "[web-root]/.htaccess": {
+                    "prepend": "assets/scaffold/files/htaccess-canonical.txt"
+                }
+            },
             "locations": {
                 "web-root": "web/"
             }

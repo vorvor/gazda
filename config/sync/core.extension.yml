@@ -79,6 +79,7 @@ module:
   product_tags: 0
   public_holiday: 0
   queue_ui: 0
+  redirect: 0
   search: 0
   seo_analyzer: 0
   seo_audit: 0
