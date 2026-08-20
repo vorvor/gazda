@@ -4,7 +4,8 @@
     {{ content.daily_coupon }}
   </div>
   <div class="shop-details{% if public_holiday_active %} has-public-holiday{% endif %}">
-    <a class="shop-on-map" target="_blank" href="https://www.google.com/maps/place/{{ content.field_address[0]['#context']['value'] }}">Térkép</a>
+    {% set shop = node.field_shop.entity %}
+    <a class="shop-on-map" target="_blank" href="https://www.google.com/maps/place/{{ shop.field_address.value }}">Térkép</a>
     {{ public_holiday_block }}
     {{ content.field_shop }}
   </div>
