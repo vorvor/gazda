@@ -442,7 +442,7 @@ header .layout-container {
 
   .field--name-field-email {
     input.clipboardjs {
-      width: 230px;
+      width: 300px;
       border: none;
       box-shadow: none;
       font-size: 1rem;

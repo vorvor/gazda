@@ -3,8 +3,9 @@
     {{ content|without('field_shop', 'daily_coupon') }}
     {{ content.daily_coupon }}
   </div>
-  <div class="shop-details">
+  <div class="shop-details{% if public_holiday_active %} has-public-holiday{% endif %}">
     <a class="shop-on-map" target="_blank" href="https://www.google.com/maps/place/{{ content.field_address[0]['#context']['value'] }}">Térkép</a>
+    {{ public_holiday_block }}
     {{ content.field_shop }}
   </div>
 </div>

@@ -197,6 +197,10 @@ body.path-node .page-title {
   display: none;
 }
 
+.shop-details.has-public-holiday .office-hours-status {
+  display: none;
+}
+
 .shop-detail-card--hours .office-hours-status--closed {
   background: #8a4436;
 }
