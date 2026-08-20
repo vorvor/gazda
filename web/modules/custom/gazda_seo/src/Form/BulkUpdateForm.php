@@ -21,9 +21,6 @@ class BulkUpdateForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $days = getExtraDays('2027');
-    print_r($days);
-
     $form['description'] = [
       '#markup' => '<p>' . $this->t('Click the button below to update all nodes and fill empty image alt and title fields with the node title.') . '</p>',
     ];

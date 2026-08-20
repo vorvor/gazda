@@ -17,8 +17,9 @@
     </section>
 
     <div class="shop-detail-sidebar">
-      <section class="shop-open-hours shop-detail-card shop-detail-card--hours">
+      <section class="shop-open-hours shop-detail-card shop-detail-card--hours{% if public_holiday_active %} has-public-holiday{% endif %}">
         <h2>{{ 'Nyitvatartás'|t }}</h2>
+        {{ public_holiday_block }}
         {{ content.field_open_hours }}
       </section>
 

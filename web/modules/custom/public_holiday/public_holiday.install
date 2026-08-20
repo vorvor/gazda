@@ -1,0 +1,103 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall hooks for the Public Holiday module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function public_holiday_schema() {
+  $schema['public_holiday'] = [
+    'description' => 'Stores Hungarian holidays returned by szunetnapok.hu.',
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'year' => [
+        'description' => 'The calendar year.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'date' => [
+        'description' => 'The holiday date in ISO 8601 format.',
+        'type' => 'varchar',
+        'length' => 10,
+        'not null' => TRUE,
+      ],
+      'name' => [
+        'description' => 'The Hungarian holiday name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'type' => [
+        'description' => 'The API day type: 1 is a holiday, 2 is a working day.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'weekday' => [
+        'description' => 'The ISO weekday number, from 1 to 7.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'fetched' => [
+        'description' => 'The UNIX timestamp of the API import.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'unique keys' => [
+      'date_type' => ['date', 'type'],
+    ],
+    'indexes' => [
+      'year' => ['year'],
+      'date' => ['date'],
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function public_holiday_install() {
+  $importer = \Drupal::service('public_holiday.importer');
+
+  if (!$importer->hasApiKey()) {
+    \Drupal::logger('public_holiday')->warning('The initial 2026 holiday import was skipped because no API key is configured.');
+    return;
+  }
+
+  try {
+    $importer->refreshYear(2026);
+  }
+  catch (\Throwable $exception) {
+    \Drupal::logger('public_holiday')->error('The initial 2026 holiday import failed: @message', [
+      '@message' => $exception->getMessage(),
+    ]);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function public_holiday_uninstall() {
+  $state = \Drupal::state();
+  $state->delete('public_holiday.api_key');
+  $state->delete('public_holiday.last_api_request');
+  $state->delete('public_holiday.last_refresh');
+  $state->delete('public_holiday.last_year');
+}

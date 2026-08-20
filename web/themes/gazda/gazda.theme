@@ -26,6 +26,15 @@ function _gazda_clean_string($string) {
  */
 function gazda_preprocess_node(&$variables) {
   if ($variables['node']->bundle() === 'shop' && $variables['view_mode'] === 'full') {
+    $variables['public_holiday_block'] = [];
+    $variables['public_holiday_active'] = FALSE;
+    if (\Drupal::moduleHandler()->moduleExists('public_holiday')) {
+      $variables['public_holiday_block'] = \Drupal::service('plugin.manager.block')
+        ->createInstance('public_holiday_today', [])
+        ->build();
+      $variables['public_holiday_active'] = isset($variables['public_holiday_block']['details']);
+    }
+
     // Ensure the page title is not rendered twice if it's already in the page template.
     // However, since we want the logo NEXT to it, we might want to hide the default page title.
   }

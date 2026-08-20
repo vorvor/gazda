@@ -1,0 +1,5 @@
+name: Public Holiday
+type: module
+description: Stores Hungarian public holidays and displays today's holiday details.
+package: Custom
+core_version_requirement: ^10

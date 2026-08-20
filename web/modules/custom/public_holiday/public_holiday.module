@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Hooks for the Public Holiday module.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function public_holiday_cron() {
+  $importer = \Drupal::service('public_holiday.importer');
+  $current_time = \Drupal::time()->getCurrentTime();
+
+  if (!$importer->isRefreshDue()) {
+    return;
+  }
+
+  $date_formatter = \Drupal::service('date.formatter');
+  $timezone_name = \Drupal::config('system.date')->get('timezone.default') ?: date_default_timezone_get();
+  $year = (int) $date_formatter->format($current_time, 'custom', 'Y', $timezone_name);
+  // Import the following year in the final quarter so New Year's Day is
+  // already available before the first quarterly refresh of that year.
+  if ((int) $date_formatter->format($current_time, 'custom', 'n', $timezone_name) >= 10) {
+    $year++;
+  }
+
+  try {
+    $importer->refreshYear($year);
+  }
+  catch (\Throwable $exception) {
+    \Drupal::logger('public_holiday')->error('The scheduled public holiday import failed: @message', [
+      '@message' => $exception->getMessage(),
+    ]);
+  }
+}

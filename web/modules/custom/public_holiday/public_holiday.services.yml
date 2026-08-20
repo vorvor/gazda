@@ -1,0 +1,16 @@
+services:
+  public_holiday.importer:
+    class: Drupal\public_holiday\PublicHolidayImporter
+    arguments:
+      - '@http_client'
+      - '@database'
+      - '@state'
+      - '@datetime.time'
+      - '@lock'
+      - '@logger.channel.public_holiday'
+      - '@cache_tags.invalidator'
+    public: true
+
+  logger.channel.public_holiday:
+    parent: logger.channel_base
+    arguments: ['public_holiday']
