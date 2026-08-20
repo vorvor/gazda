@@ -5,10 +5,9 @@ styles:
       css/style-mobile.css: {}
       css/homepage-discovery.css: {}
       css/node-detail.css: {}
-#  js:
-#    js/script.js: {}
-#  dependencies:
-#    - core/jquery
-#    - core/drupal
-#    - core/once
-#    - core/drupalSettings
+  js:
+    js/discovery-proof-scroll.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once

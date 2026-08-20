@@ -7,9 +7,9 @@
         <p class="discovery-lead">Találd meg, amit keresel, ismerd meg a boltot, és vásárolj olyan emberektől, akik itt élnek veled.</p>
 
         <div class="product-search-form" role="search">
-          <label class="visually-hidden" for="product-search-input">Termék vagy szolgáltatás keresése</label>
+          <label class="visually-hidden" for="product-search-input-primary">Termék vagy szolgáltatás keresése</label>
           <input
-            id="product-search-input"
+            id="product-search-input-primary"
             class="product-search-input"
             type="search"
             autocomplete="off"
@@ -63,7 +63,7 @@
 
     <section class="views-shops-block" aria-labelledby="local-shops-title">
       <div>
-        <p class="discovery-eyebrow">A szomszédság üzletei</p>
+        <p class="discovery-eyebrow">Szentendre üzletei</p>
         <h2 id="local-shops-title">Ők már várnak rád</h2>
       </div>
       {{ drupal_view('shops', 'block_1') }}
@@ -99,6 +99,20 @@
         <h2>Találj rá valami jóra</h2>
       </div>
       <p>Böngéssz a helyi termékek és szolgáltatások között, vagy keress rá arra, amire éppen szükséged van.</p>
+      <div class="product-search-form" role="search">
+        <label class="visually-hidden" for="product-search-input-secondary">Termék vagy szolgáltatás keresése</label>
+        <input
+          id="product-search-input-secondary"
+          class="product-search-input"
+          type="search"
+          autocomplete="off"
+          placeholder="Mit keresel Szentendrén?" />
+        <button class="product-search-submit" type="button" aria-label="Keresés indítása">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
+            <path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/>
+          </svg>
+        </button>
+      </div>
     </div>
   {% endif %}
 

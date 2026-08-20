@@ -59,7 +59,7 @@ body.path-search-product .product-search-widget {
 
 body.path-search-product #marketing-block { display: block; }
 
-body.searching {
+body.searching-primary {
   .product-search-widget {
     background: none;
     background-position: 0 -120px;

@@ -1,5 +1,5 @@
 /* Discovery-led homepage. */
-.product-search-widget {
+body {
   --discovery-forest: #173f35;
   --discovery-forest-bright: #236652;
   --discovery-cream: #fbf8ef;
@@ -70,18 +70,21 @@ body.path-frontpage header.site-header a:focus-visible {
 
 .discovery-hero {
   position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(330px, 0.85fr);
   gap: clamp(32px, 5vw, 72px);
   align-items: center;
   min-height: 530px;
   padding: clamp(44px, 6vw, 82px);
+  padding-top: 20px;
+  padding-bottom: 10px;
   overflow: hidden;
   border: 1px solid #e7e3d2;
   border-radius: 32px;
   background-color: #f5f5e6;
   background-image: linear-gradient(90deg, rgba(251, 248, 239, 0.18), rgba(251, 248, 239, 0.72)), url("/themes/gazda/images/header-bg.png");
-  background-position: center;
+  background-position: left;
   background-size: cover;
   box-shadow: 0 26px 70px rgba(35, 58, 46, 0.09);
 }
@@ -294,6 +297,8 @@ body.path-frontpage header.site-header a:focus-visible {
 }
 
 .discovery-proof {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 0 clamp(20px, 4vw, 54px);
@@ -339,7 +344,7 @@ body.path-frontpage .views-shops-block {
   grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1.45fr);
   gap: clamp(32px, 6vw, 86px);
   height: auto;
-  margin: clamp(70px, 9vw, 118px) 0 0;
+  margin: clamp(40px, 2vw, 70px) 0 0;
   padding: 0 clamp(8px, 3vw, 36px);
   align-items: center;
   justify-content: normal;
@@ -383,7 +388,7 @@ body.path-frontpage .views-shops-block .view-shops img {
 }
 
 .discovery-featured {
-  margin: clamp(72px, 9vw, 116px) 0 0;
+  margin: clamp(40px, 4vw, 70px) 0 0;
   padding: clamp(30px, 4vw, 52px);
   overflow: hidden;
   background: #f0efe3;
@@ -461,7 +466,7 @@ body.path-frontpage .views-shops-block .view-shops img {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.6fr);
   gap: 60px;
-  margin: clamp(76px, 10vw, 132px) 0 34px;
+  margin: clamp(40px, 4vw, 70px) 0 0;
   align-items: end;
 }
 
@@ -643,25 +648,25 @@ body.path-frontpage .product-search-results .view-products .views-field-promote.
   border-radius: 16px;
 }
 
-body.searching.path-frontpage .discovery-hero {
+body.searching-primary.path-frontpage .discovery-hero {
   min-height: 0;
   grid-template-columns: 1fr;
   padding-top: 42px;
   padding-bottom: 42px;
 }
 
-body.searching.path-frontpage .discovery-hero h1 {
+body.searching-primary.path-frontpage .discovery-hero h1 {
   max-width: 780px;
   font-size: clamp(2.25rem, 4vw, 3.6rem);
 }
 
-body.searching.path-frontpage .discovery-lead,
-body.searching.path-frontpage .discovery-story,
-body.searching.path-frontpage .discovery-proof,
-body.searching.path-frontpage .views-shops-block,
-body.searching.path-frontpage .discovery-featured,
-body.searching.path-frontpage .discovery-results-intro,
-body.searching.path-frontpage .discovery-counts {
+body.searching-primary.path-frontpage .discovery-lead,
+body.searching-primary.path-frontpage .discovery-story,
+body.searching-primary.path-frontpage .discovery-proof,
+body.searching-primary.path-frontpage .views-shops-block,
+body.searching-primary.path-frontpage .discovery-featured,
+body.searching-primary.path-frontpage .discovery-results-intro,
+body.searching-primary.path-frontpage .discovery-counts {
   display: none;
 }
 
@@ -803,7 +808,7 @@ body.searching.path-frontpage .product-search-results {
     width: auto;
   }
 
-  body.searching.path-frontpage .discovery-hero {
+  body.searching-primary.path-frontpage .discovery-hero {
     padding: 36px 22px;
   }
 }
