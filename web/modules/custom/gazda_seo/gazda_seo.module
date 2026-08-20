@@ -5,8 +5,10 @@
  * Primary module hooks for Gazda SEO module.
  */
 
-use Drupal\node\Entity\Node;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 
 /**
  * Function to update all empty image alt and title fields with the node label.
@@ -126,4 +128,33 @@ function gazda_seo_update_node_images(EntityInterface $node) {
  */
 function gazda_seo_node_presave(EntityInterface $node) {
   gazda_seo_update_node_images($node);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ */
+function gazda_seo_node_view(
+  array &$build,
+  EntityInterface $entity,
+  EntityViewDisplayInterface $display,
+  $view_mode,
+) {
+  if (!$entity instanceof NodeInterface || $view_mode !== 'full') {
+    return;
+  }
+
+  $structured_data = \Drupal::service('gazda_seo.structured_data_builder')->build($entity);
+  if ($structured_data === NULL) {
+    return;
+  }
+
+  $build['gazda_seo_structured_data'] = [
+    '#markup' => '',
+    '#attached' => [
+      'html_head' => [
+        [$structured_data, 'gazda_seo_structured_data'],
+      ],
+    ],
+    '#cache' => $structured_data['#cache'],
+  ];
 }

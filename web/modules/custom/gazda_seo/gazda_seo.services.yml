@@ -1,0 +1,5 @@
+services:
+  gazda_seo.structured_data_builder:
+    class: Drupal\gazda_seo\StructuredDataBuilder
+    arguments:
+      - '@file_url_generator'
