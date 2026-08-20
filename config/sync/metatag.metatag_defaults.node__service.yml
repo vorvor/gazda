@@ -1,0 +1,26 @@
+uuid: cc411702-9bf5-4f95-8f92-608914003694
+langcode: hu
+status: true
+dependencies: {  }
+id: node__service
+label: 'Tartalom: Szolgáltatás'
+tags:
+  description: '[node:title] – helyi szolgáltatás Szentendrén. Részletek és elérhetőség a Sétálj be! oldalon.'
+  image_src: '[node:field_images:0:fb_post_image]'
+  og_description: '[node:title] – helyi szolgáltatás Szentendrén. Részletek és elérhetőség a Sétálj be! oldalon.'
+  og_image: '[node:field_images:0:fb_post_image]'
+  og_image_alt: '[node:title]'
+  og_image_height: '315'
+  og_image_width: '600'
+  og_title: '[node:title]'
+  og_type: website
+  og_url: '[node:url]'
+  title: '[node:title] | [site:name]'
+  twitter_cards_description: '[node:title] – helyi szolgáltatás Szentendrén. Részletek és elérhetőség a Sétálj be! oldalon.'
+  twitter_cards_image: '[node:field_images:0:fb_post_image]'
+  twitter_cards_image_alt: '[node:title]'
+  twitter_cards_image_height: '315'
+  twitter_cards_image_width: '600'
+  twitter_cards_page_url: '[node:url]'
+  twitter_cards_title: '[node:title]'
+  twitter_cards_type: summary_large_image

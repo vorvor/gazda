@@ -1,9 +1,9 @@
-uuid: e2de2b75-52fe-4ccf-b3de-bf964c441ab3
-langcode: en
+uuid: 5d510336-13ae-4100-8bd8-325921254653
+langcode: hu
 status: true
 dependencies: {  }
-id: node__product
-label: 'Tartalom: Termék'
+id: node__shop
+label: 'Tartalom: Üzlet'
 tags:
   description: '[node:field_description]'
   image_src: '[node:field_images:0:fb_post_image]'
@@ -12,15 +12,15 @@ tags:
   og_image_alt: '[node:title]'
   og_image_height: '315'
   og_image_width: '600'
-  og_title: '[node:title] – [node:field_shop:entity:title]'
-  og_type: product
+  og_title: '[node:title]'
+  og_type: business.business
   og_url: '[node:url]'
-  title: '[node:title] – [node:field_shop:entity:title], Szentendre | [site:name]'
+  title: '[node:title] | [site:name]'
   twitter_cards_description: '[node:field_description]'
   twitter_cards_image: '[node:field_images:0:fb_post_image]'
   twitter_cards_image_alt: '[node:title]'
   twitter_cards_image_height: '315'
   twitter_cards_image_width: '600'
   twitter_cards_page_url: '[node:url]'
-  twitter_cards_title: '[node:title] – [node:field_shop:entity:title]'
+  twitter_cards_title: '[node:title]'
   twitter_cards_type: summary_large_image

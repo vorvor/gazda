@@ -8,4 +8,23 @@ id: global
 label: Általános
 tags:
   canonical_url: '[current-page:url]'
+  description: 'Fedezd fel Szentendre helyi üzleteit, termékeit és szolgáltatásait. Keress a város kínálatában, és vásárolj helyi vállalkozásoktól.'
   title: '[current-page:title] | [site:name]'
+  og_description: 'Fedezd fel Szentendre helyi üzleteit, termékeit és szolgáltatásait. Keress a város kínálatában, és vásárolj helyi vállalkozásoktól.'
+  og_image: '[site:url]themes/gazda/images/social-share-default.jpg'
+  og_image_alt: 'Sétálj be! – helyi üzletek és termékek Szentendrén'
+  og_image_height: '630'
+  og_image_width: '1200'
+  og_locale: hu_HU
+  og_site_name: '[site:name]'
+  og_title: '[current-page:title] | [site:name]'
+  og_type: website
+  og_url: '[current-page:url]'
+  twitter_cards_description: 'Fedezd fel Szentendre helyi üzleteit, termékeit és szolgáltatásait. Keress a város kínálatában, és vásárolj helyi vállalkozásoktól.'
+  twitter_cards_image: '[site:url]themes/gazda/images/social-share-default.jpg'
+  twitter_cards_image_alt: 'Sétálj be! – helyi üzletek és termékek Szentendrén'
+  twitter_cards_image_height: '630'
+  twitter_cards_image_width: '1200'
+  twitter_cards_page_url: '[current-page:url]'
+  twitter_cards_title: '[current-page:title] | [site:name]'
+  twitter_cards_type: summary_large_image

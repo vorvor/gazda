@@ -8,5 +8,13 @@ id: taxonomy_term
 label: Taxonómiakifejezés
 tags:
   canonical_url: '[term:url]'
-  description: '[term:description]'
-  title: '[term:name] | [site:name]'
+  description: 'Fedezd fel a(z) [term:name] témához kapcsolódó helyi termékeket és szolgáltatásokat Szentendrén a Sétálj be! oldalán.'
+  og_description: 'Fedezd fel a(z) [term:name] témához kapcsolódó helyi termékeket és szolgáltatásokat Szentendrén a Sétálj be! oldalán.'
+  og_title: '[term:name] – helyi kínálat Szentendrén'
+  og_type: website
+  og_url: '[term:url]'
+  title: '[term:name] – helyi kínálat Szentendrén | [site:name]'
+  twitter_cards_description: 'Fedezd fel a(z) [term:name] témához kapcsolódó helyi termékeket és szolgáltatásokat Szentendrén a Sétálj be! oldalán.'
+  twitter_cards_page_url: '[term:url]'
+  twitter_cards_title: '[term:name] – helyi kínálat Szentendrén'
+  twitter_cards_type: summary_large_image

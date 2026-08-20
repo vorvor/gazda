@@ -7,6 +7,6 @@ _core:
 id: '403'
 label: '403 – A hozzáférés megtagadva'
 tags:
-  robots: noindex
-  canonical_url: '[site:url]'
-  shortlink: '[site:url]'
+  canonical_url: ''
+  robots: 'noindex, follow'
+  shortlink: ''

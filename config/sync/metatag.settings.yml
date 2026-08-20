@@ -8,20 +8,36 @@ entity_type_groups:
       open_graph_products: open_graph_products
       open_graph: open_graph
       facebook: facebook
+      twitter_cards: twitter_cards
     shop:
       basic: basic
       advanced: advanced
       facebook: facebook
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+    service:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+  taxonomy_term:
+    tags:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
 separator: ','
 tag_trim_method: beforeValue
 use_maxlength: true
 tag_trim_maxlength:
-  metatag_maxlength_title: null
-  metatag_maxlength_description: null
+  metatag_maxlength_title: 60
+  metatag_maxlength_description: 160
   metatag_maxlength_abstract: null
   metatag_maxlength_og_site_name: null
-  metatag_maxlength_og_title: null
-  metatag_maxlength_og_description: null
+  metatag_maxlength_og_title: 95
+  metatag_maxlength_og_description: 200
+  metatag_maxlength_twitter_cards_title: 70
+  metatag_maxlength_twitter_cards_description: 200
 tag_scroll_max_height: ''
 tag_trim_end: '|.,-:;/+&([{"'''
 trim_suffix: ''
