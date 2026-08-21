@@ -52,6 +52,7 @@
         "drupal/slick_views": "^3.0",
         "drupal/synonyms": "^2.1",
         "drupal/twig_tweak": "^3.4",
+        "drupal/views_bulk_operations": "^4.4",
         "drupal/views_fields_combine": "^10.0",
         "drupal/views_slideshow": "^5.0",
         "drupal/visitors": "^2.32",
