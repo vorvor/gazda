@@ -519,7 +519,7 @@ display:
           admin_label: ''
           plugin_id: result
           empty: false
-          content: '@total results.'
+          content: '@total találat.'
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -545,7 +545,7 @@ display:
       path: other-shops
       menu:
         type: normal
-        title: 'Egyéb szolgáltatás kereső'
+        title: 'Egyéb kereső'
         description: ''
         weight: 0
         expanded: false
