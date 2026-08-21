@@ -125,13 +125,6 @@ header .layout-container {
   border-color: #dedfce;
 }
 
-#block-gazda-main-menu .menu-item a.is-active,
-#block-gazda-main-menu .menu-item--active-trail > a {
-  color: #fff;
-  background: #173f35;
-  border-color: #173f35;
-}
-
 #block-gazda-main-menu .menu-item a:focus-visible {
   outline: 3px solid #f1bb61 !important;
   outline-offset: 2px;
@@ -182,10 +175,10 @@ header .layout-container {
   }
 
   #block-gazda-main-menu ul.menu {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
     gap: 7px;
     width: 100%;
+    justify-content: space-around;
   }
 
   #block-gazda-main-menu .menu-item:first-child {
@@ -194,8 +187,8 @@ header .layout-container {
 
   #block-gazda-main-menu .menu-item a {
     width: 100%;
+    padding: 0;
     min-height: 48px;
-    padding: 9px 10px;
     font-size: 0.9rem;
     overflow-wrap: anywhere;
   }
