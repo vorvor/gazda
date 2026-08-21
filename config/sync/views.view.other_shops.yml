@@ -7,6 +7,7 @@ dependencies:
     - field.storage.node.field_description
     - field.storage.node.field_phone
     - node.type.other_shop
+    - system.menu.main
     - taxonomy.vocabulary.other_shop_category
   module:
     - better_exposed_filters
@@ -525,6 +526,15 @@ display:
     display_options:
       display_extenders: {  }
       path: other-shops
+      menu:
+        type: normal
+        title: 'Egyéb kereső'
+        description: ''
+        weight: 0
+        expanded: false
+        menu_name: main
+        parent: ''
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:
