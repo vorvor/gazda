@@ -25,7 +25,7 @@ body {
 }
 
 header.site-header {
-  height: 44px;
+  height: auto;
 }
 
 .page-content {
@@ -81,18 +81,61 @@ header .layout-container {
 }
 
 #block-gazda-main-menu {
-  ul.menu {
-    display: flex;
-    gap: 12px;
-    list-style: none;
+  min-width: 0;
+  margin-left: auto;
+}
 
-    li {
-      list-style: none;
-      border-right: 2px solid #ccc;
-      padding-right: 12px;
-      line-height: 15px;
-    }
-  }
+#block-gazda-main-menu ul.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#block-gazda-main-menu .menu-item {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#block-gazda-main-menu .menu-item a {
+  display: inline-flex;
+  min-height: 44px;
+  padding: 8px 14px;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  color: #17302a;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+#block-gazda-main-menu .menu-item a:hover {
+  color: #173f35;
+  background: #f0efe3;
+  border-color: #dedfce;
+}
+
+#block-gazda-main-menu .menu-item a.is-active,
+#block-gazda-main-menu .menu-item--active-trail > a {
+  color: #fff;
+  background: #173f35;
+  border-color: #173f35;
+}
+
+#block-gazda-main-menu .menu-item a:focus-visible {
+  outline: 3px solid #f1bb61 !important;
+  outline-offset: 2px;
+  box-shadow: none !important;
 }
 
 #block-gazda-site-branding {
@@ -107,10 +150,61 @@ header .layout-container {
 
 .region-header {
   display: flex;
-  padding-top: 4px;
+  min-height: 64px;
+  gap: 18px;
+  padding: 8px 0;
   justify-content: space-between;
   align-items: center;
   color: #fff;
+}
+
+@media screen and (max-width: 800px) {
+  header.site-header .layout-container {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .region-header {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding-top: 10px;
+    padding-bottom: 12px;
+  }
+
+  #block-gazda-site-branding img {
+    width: 108px;
+  }
+
+  #block-gazda-main-menu {
+    flex: 1 0 100%;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #block-gazda-main-menu ul.menu {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    width: 100%;
+  }
+
+  #block-gazda-main-menu .menu-item:first-child {
+    grid-column: 1 / -1;
+  }
+
+  #block-gazda-main-menu .menu-item a {
+    width: 100%;
+    min-height: 48px;
+    padding: 9px 10px;
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #block-gazda-main-menu .menu-item a {
+    transition: none;
+  }
 }
 
 .site-name {
@@ -613,6 +707,7 @@ header .layout-container {
     display: flex;
     gap: 24px;
     align-items: center;
+    justify-content: center;
 
     .views-field-field-logo {
       padding: 12px;
