@@ -88,6 +88,9 @@ header .layout-container {
 
     li {
       list-style: none;
+      border-right: 2px solid #ccc;
+      padding-right: 12px;
+      line-height: 15px;
     }
   }
 }
