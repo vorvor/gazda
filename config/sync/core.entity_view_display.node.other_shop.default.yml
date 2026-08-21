@@ -5,7 +5,10 @@ dependencies:
   config:
     - field.field.node.other_shop.field_address
     - field.field.node.other_shop.field_description
+    - field.field.node.other_shop.field_open_hours_text
     - field.field.node.other_shop.field_other_shop_category
+    - field.field.node.other_shop.field_phone
+    - field.field.node.other_shop.field_url
     - node.type.other_shop
   module:
     - user
@@ -28,6 +31,13 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
+  field_open_hours_text:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
   field_other_shop_category:
     type: entity_reference_label
     label: above
@@ -35,6 +45,22 @@ content:
       link: true
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_phone:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_url:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 103
     region: content
   links:
     settings: {  }

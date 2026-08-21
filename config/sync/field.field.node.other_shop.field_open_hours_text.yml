@@ -1,0 +1,19 @@
+uuid: 2734dcd3-47d5-4b5f-aa27-6df12c536379
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_open_hours_text
+    - node.type.other_shop
+id: node.other_shop.field_open_hours_text
+field_name: field_open_hours_text
+entity_type: node
+bundle: other_shop
+label: 'Open hours text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

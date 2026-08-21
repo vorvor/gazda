@@ -6,7 +6,10 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.other_shop.field_address
     - field.field.node.other_shop.field_description
+    - field.field.node.other_shop.field_open_hours_text
     - field.field.node.other_shop.field_other_shop_category
+    - field.field.node.other_shop.field_phone
+    - field.field.node.other_shop.field_url
     - node.type.other_shop
   module:
     - user
@@ -24,5 +27,8 @@ hidden:
   addtoany: true
   field_address: true
   field_description: true
+  field_open_hours_text: true
   field_other_shop_category: true
+  field_phone: true
+  field_url: true
   langcode: true

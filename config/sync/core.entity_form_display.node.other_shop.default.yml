@@ -5,7 +5,10 @@ dependencies:
   config:
     - field.field.node.other_shop.field_address
     - field.field.node.other_shop.field_description
+    - field.field.node.other_shop.field_open_hours_text
     - field.field.node.other_shop.field_other_shop_category
+    - field.field.node.other_shop.field_phone
+    - field.field.node.other_shop.field_url
     - node.type.other_shop
   module:
     - path
@@ -36,6 +39,14 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_open_hours_text:
+    type: string_textarea
+    weight: 127
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
   field_other_shop_category:
     type: entity_reference_autocomplete
     weight: 125
@@ -43,6 +54,22 @@ content:
     settings:
       match_operator: CONTAINS
       match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_phone:
+    type: string_textfield
+    weight: 126
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_url:
+    type: string_textfield
+    weight: 128
+    region: content
+    settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
