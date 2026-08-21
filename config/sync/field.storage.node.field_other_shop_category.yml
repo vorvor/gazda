@@ -1,0 +1,20 @@
+uuid: a8687e41-c3fe-469a-9268-144a27b19d98
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_other_shop_category
+field_name: field_other_shop_category
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

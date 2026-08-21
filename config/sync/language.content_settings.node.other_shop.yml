@@ -1,0 +1,11 @@
+uuid: 3b1c4489-90c3-4932-99cd-59f25eb93441
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.other_shop
+id: node.other_shop
+target_entity_type_id: node
+target_bundle: other_shop
+default_langcode: site_default
+language_alterable: false

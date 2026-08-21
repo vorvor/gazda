@@ -1,0 +1,46 @@
+uuid: 5cb4a8b2-56a4-4a74-8c26-b15ce7649a6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.other_shop.field_address
+    - field.field.node.other_shop.field_description
+    - field.field.node.other_shop.field_other_shop_category
+    - node.type.other_shop
+  module:
+    - user
+id: node.other_shop.default
+targetEntityType: node
+bundle: other_shop
+mode: default
+content:
+  field_address:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_other_shop_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  addtoany: true
+  langcode: true

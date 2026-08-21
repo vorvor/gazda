@@ -1,0 +1,28 @@
+uuid: cadfadd2-70dd-4c69-a080-b363545b93a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.other_shop.field_address
+    - field.field.node.other_shop.field_description
+    - field.field.node.other_shop.field_other_shop_category
+    - node.type.other_shop
+  module:
+    - user
+id: node.other_shop.teaser
+targetEntityType: node
+bundle: other_shop
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  addtoany: true
+  field_address: true
+  field_description: true
+  field_other_shop_category: true
+  langcode: true

@@ -1,0 +1,29 @@
+uuid: 01e8e8be-3b6c-490c-9a06-10a8423be11a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_other_shop_category
+    - node.type.other_shop
+    - taxonomy.vocabulary.other_shop_category
+id: node.other_shop.field_other_shop_category
+field_name: field_other_shop_category
+entity_type: node
+bundle: other_shop
+label: 'Other shop category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      other_shop_category: other_shop_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

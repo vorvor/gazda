@@ -1,0 +1,9 @@
+uuid: 274ba1b7-9ab1-445a-afe9-b98ae5dff4b6
+langcode: en
+status: true
+dependencies: {  }
+name: 'Other shop category'
+vid: other_shop_category
+description: null
+weight: 0
+new_revision: false
