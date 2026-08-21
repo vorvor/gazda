@@ -1,0 +1,14 @@
+uuid: e676bb9f-642e-4cbc-b2ad-c2c6a7a5fd93
+langcode: hu
+status: true
+dependencies:
+  module:
+    - media
+    - views_bulk_edit
+_core:
+  default_config_hash: xN0kWpQZeiYp9xWNycp37rmLmAcnEyS9LDjPPTPce2w
+id: media_edit_action
+label: 'Média szerkesztése'
+type: media
+plugin: 'entity:edit_action:media'
+configuration: {  }
