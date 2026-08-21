@@ -443,7 +443,7 @@ display:
           exposed: true
           expose:
             operator_id: field_other_shop_category_target_id_op
-            label: Category
+            label: ''
             description: ''
             use_operator: false
             operator: field_other_shop_category_target_id_op
