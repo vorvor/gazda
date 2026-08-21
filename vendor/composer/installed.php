@@ -3,7 +3,7 @@
         'name' => 'drupal/recommended-project',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'e248683f98c7798fc82284c30ec9412838b83f8b',
+        'reference' => '3f18c6c4b3b2b4cf3f047d2419bf78951df3c159',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -667,6 +667,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/node_export' => array(
+            'pretty_version' => '1.5.0',
+            'version' => '1.5.0.0',
+            'reference' => '8.x-1.5',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/node_export',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/nouislider_js' => array(
             'pretty_version' => '15.8.1',
             'version' => '15.8.1.0',
@@ -706,7 +715,7 @@
         'drupal/recommended-project' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'e248683f98c7798fc82284c30ec9412838b83f8b',
+            'reference' => '3f18c6c4b3b2b4cf3f047d2419bf78951df3c159',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

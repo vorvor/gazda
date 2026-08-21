@@ -43,6 +43,7 @@
         "drupal/imagefield_slideshow": "^2.0",
         "drupal/leaflet": "^10.4",
         "drupal/metatag": "^2.2",
+        "drupal/node_export": "^1.5",
         "drupal/office_hours": "^1.29",
         "drupal/pathauto": "^1.15",
         "drupal/redirect": "^1.11",
