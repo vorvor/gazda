@@ -1,0 +1,346 @@
+/* Responsive directory for useful local services. */
+body.path-other-shops {
+  color: #17302a;
+  background: #fbf8ef;
+}
+
+body.path-other-shops main > .layout-container {
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: clamp(18px, 4vw, 40px);
+  padding-left: clamp(18px, 4vw, 40px);
+  box-sizing: border-box;
+}
+
+body.path-other-shops .page-title {
+  margin: 0 0 10px;
+  color: #17302a;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+body.path-other-shops .view-other-shops .view-header {
+  display: inline-flex;
+  min-height: 32px;
+  margin-bottom: 16px;
+  padding: 4px 11px;
+  align-items: center;
+  color: #236652;
+  background: #edf2e8;
+  border: 1px solid #d6dfd0;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+body.path-other-shops .view-other-shops .view-filters {
+  margin: 0 0 28px;
+  padding: clamp(14px, 3vw, 22px);
+  background: #fffdf7;
+  border: 1px solid #dfe4d8;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(35, 58, 46, 0.07);
+}
+
+body.path-other-shops .view-other-shops .views-exposed-form {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+body.path-other-shops .view-other-shops .fieldset,
+body.path-other-shops .view-other-shops .fieldset__wrapper {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+body.path-other-shops .view-other-shops .views-exposed-form .form-radios {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+body.path-other-shops .view-other-shops .fieldset__wrapper > .form-radios {
+  display: block;
+  width: 100%;
+}
+
+body.path-other-shops .view-other-shops .form-radios .form-radios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+body.path-other-shops .view-other-shops .form-type--radio {
+  position: relative;
+  margin: 0;
+}
+
+body.path-other-shops .view-other-shops .form-radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+body.path-other-shops .view-other-shops .form-type--radio label {
+  display: flex;
+  min-height: 44px;
+  margin: 0;
+  padding: 8px 12px;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  color: #304a42;
+  cursor: pointer;
+  background: #f7f5eb;
+  border: 1px solid #dfe4d8;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+body.path-other-shops .view-other-shops .form-type--radio label:hover {
+  color: #173f35;
+  background: #edf2e8;
+  border-color: #bfcdb9;
+}
+
+body.path-other-shops .view-other-shops .form-radio:checked + label {
+  color: #fff;
+  background: #173f35;
+  border-color: #173f35;
+}
+
+body.path-other-shops .view-other-shops .form-radio:focus-visible + label {
+  outline: 3px solid #f1bb61;
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 800px) {
+  body.path-other-shops main > .layout-container {
+    margin-top: 0;
+    padding: 28px 16px 44px;
+  }
+
+  body.path-other-shops .page-title {
+    margin-bottom: 8px;
+    font-size: clamp(2rem, 9vw, 2.65rem);
+  }
+
+  body.path-other-shops .view-other-shops .view-header {
+    margin-bottom: 14px;
+  }
+
+  body.path-other-shops .view-other-shops .view-filters {
+    margin-bottom: 24px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  body.path-other-shops .view-other-shops .form-radios .form-radios {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  body.path-other-shops .view-other-shops .form-type--radio:first-child {
+    grid-column: 1 / -1;
+  }
+
+  body.path-other-shops .view-other-shops .form-type--radio label {
+    min-height: 48px;
+    padding: 8px;
+    font-size: 0.86rem;
+    overflow-wrap: anywhere;
+  }
+
+  body.path-other-shops .view-other-shops .views-table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    background: transparent;
+    border: 0;
+  }
+
+  body.path-other-shops .view-other-shops .views-table thead {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  body.path-other-shops .view-other-shops .views-table tbody {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+  }
+
+  body.path-other-shops .view-other-shops .views-table tbody tr {
+    display: grid;
+    align-content: start;
+    width: auto;
+    min-width: 0;
+    padding: 17px;
+    overflow: hidden;
+    background: #fffdf7;
+    border: 1px solid #dfe4d8;
+    border-left: 5px solid #236652;
+    border-radius: 16px;
+    box-shadow: 0 9px 24px rgba(35, 58, 46, 0.07);
+  }
+
+  body.path-other-shops .view-other-shops .views-table tbody td {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 10px;
+    width: auto;
+    min-width: 0;
+    min-height: 0;
+    padding: 7px 0;
+    color: #3e554e;
+    background: transparent;
+    border: 0;
+    font-size: 0.93rem;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  body.path-other-shops .view-other-shops .views-table tbody td::before {
+    color: #6b7b74;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    line-height: 1.45rem;
+    text-transform: uppercase;
+  }
+
+  body.path-other-shops .view-other-shops .views-table tbody td.views-field-title {
+    display: block;
+    margin-bottom: 7px;
+    padding: 0 0 12px;
+    border-bottom: 1px solid #e4e8de;
+  }
+
+  body.path-other-shops .view-other-shops .views-table tbody td.views-field-title::before,
+  body.path-other-shops .view-other-shops .views-table tbody td.views-field-nothing::before {
+    content: none;
+  }
+
+  body.path-other-shops .view-other-shops .views-table tbody td.views-field-title a {
+    color: #173f35;
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 750;
+    line-height: 1.2;
+  }
+
+  body.path-other-shops .view-other-shops td.views-field-field-address::before {
+    content: "Cím";
+  }
+
+  body.path-other-shops .view-other-shops td.views-field-field-description::before {
+    content: "Részletek";
+  }
+
+  body.path-other-shops .view-other-shops td.views-field-field-phone::before {
+    content: "Telefon";
+  }
+
+  body.path-other-shops .view-other-shops .views-table tbody td.views-field-nothing {
+    display: flex;
+    margin-top: 8px;
+    padding: 12px 0 0;
+    justify-content: flex-end;
+    border-top: 1px solid #e4e8de;
+  }
+
+  body.path-other-shops .view-other-shops .views-table tbody td.views-field-nothing a {
+    display: inline-flex;
+    min-height: 44px;
+    padding: 8px 14px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: #fff;
+    background: #173f35;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 900;
+  }
+
+  body.path-other-shops .view-other-shops .views-table tbody td.views-field-nothing a::after {
+    margin-left: 6px;
+    content: "↗";
+  }
+
+  body.path-other-shops .view-other-shops a:focus-visible,
+  body.path-other-shops .view-other-shops input:focus-visible {
+    outline: 3px solid #f1bb61 !important;
+    outline-offset: 3px;
+    box-shadow: none !important;
+  }
+
+  body.path-other-shops .view-other-shops .pager {
+    margin-top: 28px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  body.path-other-shops .view-other-shops .views-table tbody {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media screen and (max-width: 360px) {
+  body.path-other-shops .view-other-shops .form-radios .form-radios {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.path-other-shops .view-other-shops .form-type--radio:first-child {
+    grid-column: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.path-other-shops .view-other-shops .form-type--radio label {
+    transition: none;
+  }
+}

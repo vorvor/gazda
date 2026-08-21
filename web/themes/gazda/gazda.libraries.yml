@@ -5,6 +5,7 @@ styles:
       css/style-mobile.css: {}
       css/homepage-discovery.css: {}
       css/node-detail.css: {}
+      css/other-shops.css: {}
   js:
     js/discovery-proof-scroll.js: {}
   dependencies:
