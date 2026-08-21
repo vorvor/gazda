@@ -545,7 +545,7 @@ display:
       path: other-shops
       menu:
         type: normal
-        title: 'Egyéb kereső'
+        title: 'Egyéb szolgáltatás kereső'
         description: ''
         weight: 0
         expanded: false
