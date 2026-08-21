@@ -1,0 +1,13 @@
+uuid: 01c0118c-c32f-4390-99d5-e2425f0f7bf5
+langcode: hu
+status: true
+dependencies:
+  module:
+    - node_export
+_core:
+  default_config_hash: dFWQNI8U0TCiP6sRrBUUa4TXbrgg5WgTpwEpu7Kc15Y
+id: bulk_node_export
+label: 'Node Export'
+type: node
+plugin: bulk_node_export
+configuration: {  }
