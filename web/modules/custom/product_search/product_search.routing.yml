@@ -12,4 +12,21 @@ product_search.ajax:
     _controller: '\Drupal\product_search\Controller\ProductSearchController::ajaxSearch'
   requirements:
     _permission: 'access content'
+    _csrf_request_header_token: 'TRUE'
+  methods: [POST]
+
+product_search.csrf_token:
+  path: '/search-product/token'
+  defaults:
+    _controller: '\Drupal\product_search\Controller\ProductSearchController::csrfToken'
+  requirements:
+    _permission: 'access content'
   methods: [GET]
+
+product_search.statistics:
+  path: '/admin/reports/product-search-statistics'
+  defaults:
+    _controller: '\Drupal\product_search\Controller\SearchStatisticsController::page'
+    _title: 'Keresési statisztika'
+  requirements:
+    _permission: 'view product search statistics'

@@ -7,3 +7,8 @@ search:
   dependencies:
     - core/drupal
     - core/once
+
+statistics:
+  css:
+    theme:
+      css/search-statistics.css: {}

@@ -1,0 +1,4 @@
+view product search statistics:
+  title: 'Keresési statisztika megtekintése'
+  description: 'A látogatók által megadott keresések összesített adatainak megtekintése.'
+  restrict access: true

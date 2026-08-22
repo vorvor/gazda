@@ -2,14 +2,19 @@
 
 namespace Drupal\product_search\Controller;
 
+use Drupal\Core\Access\CsrfRequestHeaderAccessCheck;
+use Drupal\Core\Access\CsrfTokenGenerator;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Database\Query\SelectInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Render\RendererInterface;
+use Drupal\product_search\SearchAnalytics;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Controller for the AJAX product search page.
@@ -24,11 +29,15 @@ final class ProductSearchController extends ControllerBase {
    */
   private const MAX_RESULTS = 100;
 
+  private const MAX_SEARCH_TERM_LENGTH = 255;
+
   public function __construct(
     private readonly Connection $productSearchDatabase,
     private readonly RendererInterface $productSearchRenderer,
     private readonly EntityTypeManagerInterface $productSearchEntityTypeManager,
     private readonly FileUrlGeneratorInterface $fileUrlGenerator,
+    private readonly SearchAnalytics $searchAnalytics,
+    private readonly CsrfTokenGenerator $csrfTokenGenerator,
   ) {}
 
   /**
@@ -40,6 +49,8 @@ final class ProductSearchController extends ControllerBase {
       $container->get('renderer'),
       $container->get('entity_type.manager'),
       $container->get('file_url_generator'),
+      $container->get('product_search.search_analytics'),
+      $container->get('csrf_token'),
     );
   }
 
@@ -183,10 +194,39 @@ final class ProductSearchController extends ControllerBase {
   }
 
   /**
-   * AJAX endpoint: /search-product/ajax?q=keyword.
+   * Returns a session-bound token for the product-search POST endpoint.
+   */
+  public function csrfToken(Request $request): Response {
+    $session = $request->getSession();
+    $session->start();
+    $session->set('product_search.csrf_token', TRUE);
+
+    return new Response(
+      $this->csrfTokenGenerator->get(CsrfRequestHeaderAccessCheck::TOKEN_KEY),
+      200,
+      [
+        'Content-Type' => 'text/plain',
+        'Cache-Control' => 'no-store, private',
+      ],
+    );
+  }
+
+  /**
+   * CSRF-protected AJAX endpoint for submitted search keywords.
    */
   public function ajaxSearch(Request $request): JsonResponse {
-    $keyword = trim((string) $request->query->get('q', ''));
+    if (!$this->csrfTokenGenerator->validate(
+      (string) $request->headers->get('X-CSRF-Token', ''),
+      CsrfRequestHeaderAccessCheck::TOKEN_KEY,
+    )) {
+      return new JsonResponse(['message' => 'Invalid CSRF token.'], 403);
+    }
+
+    $keyword = mb_substr(
+      trim((string) $request->request->get('q', '')),
+      0,
+      self::MAX_SEARCH_TERM_LENGTH,
+    );
 
     // Empty keyword means: show the default products View with all products.
     if ($keyword === '') {
@@ -206,6 +246,7 @@ final class ProductSearchController extends ControllerBase {
     }
 
     $nids = $this->findProductNodeIds($keyword);
+    $this->searchAnalytics->log($keyword, count($nids), $request->getClientIp());
 
     if ($nids === []) {
       return new JsonResponse([
@@ -250,19 +291,30 @@ final class ProductSearchController extends ControllerBase {
 
   /**
    * Finds product node IDs by title, description, tag name, or category name.
+   */
+  private function findProductNodeIds(string $keyword): array {
+    return array_map(
+      'intval',
+      $this->buildProductSearchQuery($keyword)->execute()->fetchCol(),
+    );
+  }
+
+  /**
+   * Builds the node-access-aware product lookup query.
    *
    * This intentionally uses Drupal's database API instead of EntityQuery for
    * the entity-reference term-name search. EntityQuery is good for simple field
    * conditions like field_tags.target_id, but it can break when trying to walk
    * from a node field to a referenced taxonomy term name.
    */
-  private function findProductNodeIds(string $keyword): array {
+  private function buildProductSearchQuery(string $keyword): SelectInterface {
     $like = '%' . $this->productSearchDatabase->escapeLike($keyword) . '%';
 
     $query = $this->productSearchDatabase->select('node_field_data', 'nfd')
       ->fields('nfd', ['nid'])
       ->condition('nfd.type', ['product', 'service'], 'IN')
       ->condition('nfd.status', 1)
+      ->addTag('node_access')
       ->groupBy('nfd.nid')
       ->range(0, self::MAX_RESULTS);
 
@@ -311,9 +363,7 @@ final class ProductSearchController extends ControllerBase {
 
     $query->condition($or);
 
-    $a = array_map('intval', $query->execute()->fetchCol());
-
-    return array_map('intval', $query->execute()->fetchCol());
+    return $query;
   }
 
 }

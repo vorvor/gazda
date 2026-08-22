@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall hooks for the Product Search module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function product_search_schema(): array {
+  $schema['product_search_query_log'] = [
+    'description' => 'Stores product search queries for aggregate reporting.',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary identifier for the search event.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'search_term' => [
+        'description' => 'Whitespace-normalized text entered by the visitor.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'normalized_term' => [
+        'description' => 'Case-normalized search text used for aggregation.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'result_count' => [
+        'description' => 'Number of matching products returned for the search.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'created' => [
+        'description' => 'Unix timestamp when the search was recorded.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'normalized_term' => ['normalized_term'],
+      'created' => ['created'],
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Creates the search-query log for existing installations.
+ */
+function product_search_update_10001(): void {
+  $database = \Drupal::database();
+  $schema = $database->schema();
+
+  if (!$schema->tableExists('product_search_query_log')) {
+    $definitions = product_search_schema();
+    $schema->createTable('product_search_query_log', $definitions['product_search_query_log']);
+  }
+}

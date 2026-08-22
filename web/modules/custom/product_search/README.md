@@ -4,7 +4,8 @@ Provides `/search-product` with a text input and AJAX product search.
 
 Before the user types anything, the page renders the `products` View display `page_1` normally, so all products can appear under the input field.
 
-When the user types, the AJAX endpoint searches product nodes by:
+When the user types, the CSRF-protected AJAX `POST` endpoint searches product
+nodes by:
 
 - node title
 - `field_description`
@@ -41,4 +42,38 @@ Visit:
 
 ```text
 /search-product
+```
+
+## Search statistics
+
+The CSRF-protected AJAX `POST` endpoint records searches longer than three
+characters in the `product_search_query_log` table. It stores the normalized
+search text, result count, and timestamp, but no IP address, user ID, session
+ID, or other visitor identifier. Search terms are limited to 255 Unicode
+characters before the product database is queried.
+
+Analytics writes are limited to 60 qualifying searches per hour for each
+client. Throttling uses Drupal's flood service with an HMAC pseudonym derived
+from the client address and the site's private key; the raw address is never
+stored by this module. Rows older than 90 days are pruned before a new
+qualifying record is written. The table is also capped at 10,000 rows, with the
+oldest rows removed first. Insert or retention failures are logged without the
+search term and never prevent the search response. Cap maintenance and
+insertion are serialized with Drupal's lock API.
+
+Aggregated statistics are available at:
+
+```text
+/admin/reports/product-search-statistics
+```
+
+Access is controlled by the `view product search statistics` permission. The
+report shows total searches, unique terms, searches without results, average
+result counts, and the most recent search time.
+
+After deploying this feature to an existing installation, run:
+
+```bash
+drush updb -y
+drush cr
 ```

@@ -1,0 +1,6 @@
+product_search.statistics:
+  title: 'Keresési statisztika'
+  description: 'A látogatók termékkereséseinek összesített adatai.'
+  route_name: product_search.statistics
+  parent: system.admin_reports
+  weight: 20

@@ -16,6 +16,58 @@
         const defaultResultsHtml = results.innerHTML;
         let timer = null;
         let controller = null;
+        let csrfTokenPromise = null;
+
+        const getCsrfToken = () => {
+          if (!csrfTokenPromise) {
+            csrfTokenPromise = fetch(Drupal.url('search-product/token'), {
+              credentials: 'same-origin'
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(`HTTP ${response.status}`);
+                }
+                return response.text();
+              })
+              .catch((error) => {
+                csrfTokenPromise = null;
+                throw error;
+              });
+          }
+
+          return csrfTokenPromise;
+        };
+
+        const fetchSearch = (keyword, requestController, retried = false) => getCsrfToken()
+          .then((csrfToken) => {
+            if (requestController.signal.aborted) {
+              throw new DOMException('Aborted', 'AbortError');
+            }
+
+            return fetch(Drupal.url('search-product/ajax'), {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'X-CSRF-Token': csrfToken,
+                'X-Requested-With': 'XMLHttpRequest'
+              },
+              body: new URLSearchParams({ q: keyword }),
+              credentials: 'same-origin',
+              signal: requestController.signal
+            });
+          })
+          .then((response) => {
+            if (response.status === 403 && !retried && !requestController.signal.aborted) {
+              csrfTokenPromise = null;
+              return fetchSearch(keyword, requestController, true);
+            }
+
+            if (!response.ok) {
+              throw new Error(`HTTP ${response.status}`);
+            }
+
+            return response.json();
+          });
 
         const runSearch = (sourceInput) => {
           const keyword = sourceInput.value.trim();
@@ -54,26 +106,17 @@
           controller = new AbortController();
           const requestController = controller;
 
-          fetch(`${Drupal.url('search-product/ajax')}?q=${encodeURIComponent(keyword)}`, {
-            method: 'GET',
-            headers: {
-              'Accept': 'application/json',
-              'X-Requested-With': 'XMLHttpRequest'
-            },
-            signal: controller.signal
-          })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-              }
-              return response.json();
-            })
+          fetchSearch(keyword, requestController)
             .then((data) => {
+              if (controller !== requestController) {
+                return;
+              }
+
               results.innerHTML = data.html || '<p class="product-search-no-results">' + Drupal.t('No products found.') + '</p>';
               Drupal.attachBehaviors(results);
             })
             .catch((error) => {
-              if (error.name === 'AbortError') {
+              if (error.name === 'AbortError' || controller !== requestController) {
                 return;
               }
               results.innerHTML = '<p class="product-search-error">' + Drupal.t('Search failed. Please try again.') + '</p>';

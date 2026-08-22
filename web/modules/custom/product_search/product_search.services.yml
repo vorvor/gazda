@@ -1,0 +1,15 @@
+services:
+  logger.channel.product_search:
+    parent: logger.channel_base
+    arguments: ['product_search']
+
+  product_search.search_analytics:
+    class: Drupal\product_search\SearchAnalytics
+    arguments:
+      - '@database'
+      - '@datetime.time'
+      - '@flood'
+      - '@lock'
+      - '@request_stack'
+      - '@private_key'
+      - '@logger.channel.product_search'
