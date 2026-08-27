@@ -1,0 +1,40 @@
+uuid: 9ec9bb28-6c68-40f9-bc20-d9aca5d2bc51
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.restaurant.field_data_source
+    - field.field.node.restaurant.field_image
+    - field.field.node.restaurant.field_meal
+    - image.style.medium
+    - node.type.restaurant
+  module:
+    - image
+    - user
+id: node.restaurant.teaser
+targetEntityType: node
+bundle: restaurant
+mode: teaser
+content:
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  addtoany: true
+  field_data_source: true
+  field_meal: true
+  langcode: true

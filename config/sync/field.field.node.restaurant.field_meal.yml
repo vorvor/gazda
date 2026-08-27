@@ -1,0 +1,19 @@
+uuid: 76199bb9-084c-4148-bd81-9f28bf3fb527
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_meal
+    - node.type.restaurant
+id: node.restaurant.field_meal
+field_name: field_meal
+entity_type: node
+bundle: restaurant
+label: Meal
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

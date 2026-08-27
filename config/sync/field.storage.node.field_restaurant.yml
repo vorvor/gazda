@@ -1,0 +1,19 @@
+uuid: dace6768-b850-4fb9-a997-74b72d4fbd8d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_restaurant
+field_name: field_restaurant
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

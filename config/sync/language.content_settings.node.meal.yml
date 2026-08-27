@@ -1,0 +1,11 @@
+uuid: 06d17d1a-ef37-49f3-9882-0280ae44717a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.meal
+id: node.meal
+target_entity_type_id: node
+target_bundle: meal
+default_langcode: site_default
+language_alterable: false

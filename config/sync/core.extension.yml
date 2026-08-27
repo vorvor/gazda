@@ -82,6 +82,7 @@ module:
   public_holiday: 0
   queue_ui: 0
   redirect: 0
+  restaurant_menu_import: 0
   search: 0
   seo_analyzer: 0
   seo_audit: 0

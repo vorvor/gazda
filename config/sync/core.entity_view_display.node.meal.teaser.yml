@@ -1,0 +1,28 @@
+uuid: 930b178a-e946-4710-8069-aeffadc9f056
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.meal.field_description
+    - field.field.node.meal.field_price
+    - field.field.node.meal.field_restaurant
+    - node.type.meal
+  module:
+    - user
+id: node.meal.teaser
+targetEntityType: node
+bundle: meal
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  addtoany: true
+  field_description: true
+  field_price: true
+  field_restaurant: true
+  langcode: true
