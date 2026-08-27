@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_price
     - field.storage.node.field_restaurant
     - node.type.meal
+    - system.menu.main
   module:
     - better_exposed_filters
     - node
@@ -358,7 +359,7 @@ display:
           exposed: true
           expose:
             operator_id: title_op
-            label: Étel keresése
+            label: 'Étel keresése'
             description: ''
             use_operator: false
             operator: title_op
@@ -427,6 +428,15 @@ display:
     display_options:
       display_extenders: {  }
       path: meals
+      menu:
+        type: normal
+        title: Együnk!
+        description: ''
+        weight: 0
+        expanded: false
+        menu_name: main
+        parent: ''
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:
