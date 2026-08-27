@@ -1,0 +1,255 @@
+/* Meal directory, based on the homepage discovery system. */
+body.path-meals {
+  color: var(--discovery-ink, #17302a);
+  background: var(--discovery-cream, #fbf8ef);
+}
+
+body.path-meals header.site-header {
+  height: auto;
+  background: var(--discovery-paper, #fffdf7);
+  border-bottom: 1px solid var(--discovery-line, #dfe4d8);
+}
+
+body.path-meals header.site-header .layout-container,
+body.path-meals main > .layout-container {
+  width: min(calc(100% - 32px), 1280px);
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+body.path-meals .content-header {
+  position: relative;
+  margin: 28px 0 22px;
+  padding: clamp(32px, 5vw, 58px);
+  overflow: hidden;
+  background-color: #f5f5e6;
+  background-image: linear-gradient(90deg, rgba(251, 248, 239, 0.25), rgba(251, 248, 239, 0.82)), url("/themes/gazda/images/header-bg.png");
+  background-position: center;
+  background-size: cover;
+  border: 1px solid #e7e3d2;
+  border-radius: 28px;
+  box-shadow: 0 22px 58px rgba(35, 58, 46, 0.09);
+}
+
+body.path-meals .content-header::before {
+  position: absolute;
+  top: 0;
+  left: clamp(32px, 7vw, 88px);
+  width: 88px;
+  height: 7px;
+  content: "";
+  background: var(--discovery-warm, #d98738);
+  border-radius: 0 0 8px 8px;
+}
+
+body.path-meals .content-header .region,
+body.path-meals .content-header .block {
+  margin: 0;
+}
+
+body.path-meals h1.page-title {
+  margin: 0;
+  color: var(--discovery-ink, #17302a);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2.35rem, 5vw, 4.6rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+body.path-meals .page-content,
+body.path-meals #block-gazda-content {
+  margin: 0;
+}
+
+body.path-meals .view-meals {
+  padding-bottom: 64px;
+}
+
+body.path-meals .view-meals .view-filters {
+  margin: 0 0 26px;
+  padding: 18px;
+  background: var(--discovery-paper, #fffdf7);
+  border: 1px solid var(--discovery-line, #dfe4d8);
+  border-radius: 18px;
+  box-shadow: 0 12px 34px rgba(23, 63, 53, 0.07);
+}
+
+body.path-meals .view-meals .views-exposed-form,
+body.path-meals .view-meals .views-exposed-form__item {
+  margin: 0;
+  padding: 0;
+}
+
+body.path-meals .view-meals .views-exposed-form__item--preceding-actions {
+  width: 100%;
+  max-width: 620px;
+}
+
+body.path-meals .view-meals .form-item__label {
+  display: block;
+  margin: 0 0 8px;
+  color: var(--discovery-forest, #173f35);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+body.path-meals .view-meals input.form-text {
+  width: 100%;
+  max-width: none;
+  min-height: 54px;
+  box-sizing: border-box;
+  padding: 0 18px;
+  color: var(--discovery-ink, #17302a);
+  background: #fff;
+  border: 1px solid #ccd5c8;
+  border-radius: 13px;
+  box-shadow: none;
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+}
+
+body.path-meals .view-meals input.form-text:focus {
+  border-color: var(--discovery-forest-bright, #236652);
+  box-shadow: 0 0 0 3px rgba(35, 102, 82, 0.14);
+  outline: 0;
+}
+
+body.path-meals .view-meals .view-content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+body.path-meals .view-meals .views-row {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-width: 0;
+  min-height: 210px;
+  box-sizing: border-box;
+  padding: 26px;
+  overflow: hidden;
+  background: var(--discovery-paper, #fffdf7);
+  border: 1px solid var(--discovery-line, #dfe4d8);
+  border-radius: 20px;
+  box-shadow: 0 15px 38px rgba(23, 63, 53, 0.08);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+body.path-meals .view-meals .views-row::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 5px;
+  content: "";
+  background: linear-gradient(90deg, var(--discovery-forest-bright, #236652), var(--discovery-warm, #d98738));
+}
+
+body.path-meals .view-meals .views-row:hover {
+  border-color: #cbd7c8;
+  box-shadow: 0 20px 48px rgba(23, 63, 53, 0.13);
+  transform: translateY(-3px);
+}
+
+body.path-meals .view-meals .views-field-title {
+  margin: 0 0 22px;
+  color: var(--discovery-ink, #17302a);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.35rem, 2vw, 1.72rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+body.path-meals .view-meals .views-field-field-restaurant {
+  align-self: end;
+  margin-bottom: 18px;
+  color: var(--discovery-muted, #607069);
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+body.path-meals .view-meals .views-field-field-restaurant::before {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--discovery-forest-bright, #236652);
+  content: "Étterem";
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+body.path-meals .view-meals .views-field-field-price {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 38px;
+  padding: 6px 13px;
+  align-items: center;
+  color: #fff;
+  background: var(--discovery-forest, #173f35);
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+body.path-meals .view-meals .view-empty {
+  padding: 30px;
+  color: var(--discovery-muted, #607069);
+  background: var(--discovery-paper, #fffdf7);
+  border: 1px solid var(--discovery-line, #dfe4d8);
+  border-radius: 18px;
+  text-align: center;
+}
+
+body.path-meals .view-meals a:focus-visible,
+body.path-meals .view-meals input:focus-visible {
+  outline: 3px solid #f1bb61 !important;
+  outline-offset: 3px;
+}
+
+@media (max-width: 980px) {
+  body.path-meals .view-meals .view-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  body.path-meals header.site-header .layout-container,
+  body.path-meals main > .layout-container {
+    width: min(calc(100% - 24px), 1280px);
+  }
+
+  body.path-meals .content-header {
+    margin-top: 16px;
+    padding: 30px 24px;
+    border-radius: 22px;
+  }
+
+  body.path-meals .view-meals .view-filters {
+    padding: 14px;
+  }
+
+  body.path-meals .view-meals .view-content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  body.path-meals .view-meals .views-row {
+    min-height: 190px;
+    padding: 23px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.path-meals .view-meals .views-row {
+    transition: none;
+  }
+}

@@ -1,0 +1,7 @@
+name: Restaurant Menu Import
+type: module
+description: 'Creates and updates meal content from basic restaurant HTML and PDF menu sources.'
+package: Custom
+core_version_requirement: ^10
+dependencies:
+  - drupal:node

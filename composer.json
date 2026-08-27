@@ -60,7 +60,8 @@
         "drupal/xmlsitemap": "^2.0",
         "drupal/youtube": "^2.0",
         "drush/drush": "^13.7",
-        "geocoder-php/nominatim-provider": "^5.8"
+        "geocoder-php/nominatim-provider": "^5.8",
+        "smalot/pdfparser": "^2.12"
     },
     "conflict": {
         "drupal/drupal": "*"

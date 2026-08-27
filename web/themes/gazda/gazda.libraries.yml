@@ -6,6 +6,7 @@ styles:
       css/homepage-discovery.css: {}
       css/node-detail.css: {}
       css/other-shops.css: {}
+      css/meals.css: {}
   js:
     js/discovery-proof-scroll.js: {}
   dependencies:

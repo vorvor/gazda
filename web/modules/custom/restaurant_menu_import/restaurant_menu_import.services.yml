@@ -1,0 +1,34 @@
+services:
+  logger.channel.restaurant_menu_import:
+    parent: logger.channel_base
+    arguments: ['restaurant_menu_import']
+
+  restaurant_menu_import.source_resolver:
+    class: Drupal\restaurant_menu_import\SourceResolver
+
+  restaurant_menu_import.pdf_extractor:
+    class: Drupal\restaurant_menu_import\PdfMealExtractor
+
+  restaurant_menu_import.html_extractor:
+    class: Drupal\restaurant_menu_import\HtmlMealExtractor
+
+  restaurant_menu_import.pdf_parser:
+    class: Smalot\PdfParser\Parser
+
+  restaurant_menu_import.meal_synchronizer:
+    class: Drupal\restaurant_menu_import\MealSynchronizer
+    arguments:
+      - '@entity_type.manager'
+
+  restaurant_menu_import.importer:
+    class: Drupal\restaurant_menu_import\RestaurantMenuImporter
+    arguments:
+      - '@entity_type.manager'
+      - '@http_client'
+      - '@lock'
+      - '@logger.channel.restaurant_menu_import'
+      - '@restaurant_menu_import.source_resolver'
+      - '@restaurant_menu_import.pdf_extractor'
+      - '@restaurant_menu_import.html_extractor'
+      - '@restaurant_menu_import.meal_synchronizer'
+      - '@restaurant_menu_import.pdf_parser'

@@ -1,0 +1,7 @@
+services:
+  restaurant_menu_import.commands:
+    class: Drupal\restaurant_menu_import\Commands\RestaurantMenuImportCommands
+    arguments:
+      - '@restaurant_menu_import.importer'
+    tags:
+      - { name: drush.command }

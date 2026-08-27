@@ -731,6 +731,10 @@ class ComposerStaticInit912487cae028eb1c5b00467a134e77d4
             array (
                 0 => __DIR__ . '/..' . '/davedevelopment/stiphle/src',
             ),
+            'Smalot\\PdfParser\\' =>
+            array (
+                0 => __DIR__ . '/..' . '/smalot/pdfparser/src',
+            ),
         ),
         'C' =>
         array (
