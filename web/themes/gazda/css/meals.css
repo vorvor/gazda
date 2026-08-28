@@ -127,7 +127,9 @@ body.path-meals .view-meals .view-content {
 body.path-meals .view-meals .views-row {
   position: relative;
   display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   grid-template-rows: auto 1fr auto;
+  column-gap: 9px;
   min-width: 0;
   min-height: 210px;
   box-sizing: border-box;
@@ -157,6 +159,7 @@ body.path-meals .view-meals .views-row:hover {
 }
 
 body.path-meals .view-meals .views-field-title {
+  grid-column: 1 / -1;
   margin: 0 0 22px;
   color: var(--discovery-ink, #17302a);
   font-family: "Fraunces", Georgia, serif;
@@ -168,6 +171,7 @@ body.path-meals .view-meals .views-field-title {
 }
 
 body.path-meals .view-meals .views-field-field-restaurant {
+  grid-column: 1 / -1;
   align-self: end;
   margin-bottom: 18px;
   color: var(--discovery-muted, #607069);
@@ -188,6 +192,7 @@ body.path-meals .view-meals .views-field-field-restaurant::before {
 
 body.path-meals .view-meals .views-field-field-price {
   display: inline-flex;
+  grid-column: 1 / -1;
   width: fit-content;
   min-height: 38px;
   padding: 6px 13px;
@@ -204,14 +209,10 @@ body.path-meals .view-meals .views-field-field-address,
 body.path-meals .view-meals .views-field-field-web {
   display: flex;
   justify-content: flex-end;
-  margin-top: 9px;
-  text-align: right;
-}
-
-body.path-meals .view-meals .views-field-field-address {
   margin-top: 18px;
   padding-top: 16px;
   border-top: 1px solid var(--discovery-line, #dfe4d8);
+  text-align: right;
 }
 
 body.path-meals .view-meals .views-field-field-address a,
@@ -230,6 +231,7 @@ body.path-meals .view-meals .views-field-field-web a {
   font-weight: 900;
   line-height: 1;
   text-decoration: none;
+  white-space: nowrap;
   transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
 }
 
