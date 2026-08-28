@@ -3,7 +3,7 @@
         'name' => 'drupal/recommended-project',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '46e41dc18d4b80a6966ffbe9cea71b151b1df640',
+        'reference' => '308a4a66f2735d9f003c1d29c54e8f4189c58fbd',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -523,6 +523,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/entity_reference_exposed_filters' => array(
+            'pretty_version' => '2.0.0-alpha3',
+            'version' => '2.0.0.0-alpha3',
+            'reference' => '2.0.0-alpha3',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/entity_reference_exposed_filters',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/field_gallery' => array(
             'pretty_version' => '2.0.0',
             'version' => '2.0.0.0',
@@ -715,7 +724,7 @@
         'drupal/recommended-project' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '46e41dc18d4b80a6966ffbe9cea71b151b1df640',
+            'reference' => '308a4a66f2735d9f003c1d29c54e8f4189c58fbd',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

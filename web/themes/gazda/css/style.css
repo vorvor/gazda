@@ -824,3 +824,18 @@ header .layout-container {
     }
   }
 }
+
+.imagefield_slideshow-wrapper {
+  border: none;
+
+  .cycle-overlay {
+    display: none !important;
+  }
+}
+
+.view-meals {
+  .views-exposed-form.views-exposed-form {
+    border: none;
+    box-shadow: none;
+  }
+}

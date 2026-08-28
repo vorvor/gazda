@@ -30,6 +30,7 @@
         "drupal/core-recommended": "^10.6",
         "drupal/editablefields": "^1.0",
         "drupal/email_octopus": "^2.0",
+        "drupal/entity_reference_exposed_filters": "^2.0@alpha",
         "drupal/field_gallery": "^2.0",
         "drupal/flag": "^5.0",
         "drupal/flag_anon": "^1.1",
