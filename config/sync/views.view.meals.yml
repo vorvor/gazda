@@ -403,7 +403,20 @@ display:
           query_tags: {  }
       relationships: {  }
       use_ajax: true
-      header: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: 'Az ételek feltüntetett árai és elérhetősége tájékoztató jellegűek. Az éttermek árai, kínálata és az egyes fogások elérhetősége időközben változhat. Az adatokat időszakonként frissítjük, azonban nem tudjuk garantálni, hogy minden információ minden pillanatban naprakész. Az esetleges eltérésekből eredő kellemetlenségekért felelősséget nem vállalunk, ezért rendelés vagy látogatás előtt érdemes az aktuális kínálatról és árakról közvetlenül az étteremnél érdeklődni.'
+            format: basic_html
+          tokenize: false
       footer: {  }
       display_extenders: {  }
     cache_metadata:

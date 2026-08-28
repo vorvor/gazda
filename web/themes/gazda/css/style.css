@@ -834,6 +834,11 @@ header .layout-container {
 }
 
 .view-meals {
+  .view-header {
+    padding: 24px;
+    font-size: 0.9em;
+  }
+
   .views-exposed-form.views-exposed-form {
     border: none;
     box-shadow: none;
