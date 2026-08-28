@@ -250,7 +250,6 @@ body.path-frontpage header.site-header a:focus-visible {
 .discovery-story__image-link {
   display: block;
   overflow: hidden;
-  border-radius: 16px;
 }
 
 .discovery-story img {

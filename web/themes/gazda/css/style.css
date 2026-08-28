@@ -843,4 +843,11 @@ header .layout-container {
     border: none;
     box-shadow: none;
   }
+
+  .views-row {
+    .views-field-field-address,
+    .views-field-field-web {
+      text-align: right;
+    }
+  }
 }
