@@ -3,19 +3,29 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.restaurant.field_address
     - field.field.node.restaurant.field_data_source
     - field.field.node.restaurant.field_image
     - field.field.node.restaurant.field_meal
+    - field.field.node.restaurant.field_web
     - image.style.wide
     - node.type.restaurant
   module:
     - image
+    - link
     - user
 id: node.restaurant.default
 targetEntityType: node
 bundle: restaurant
 mode: default
 content:
+  field_address:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_data_source:
     type: basic_string
     label: above
@@ -41,6 +51,18 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_web:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: nofollow
+      target: _blank
+    third_party_settings: {  }
+    weight: 5
     region: content
   links:
     settings: {  }

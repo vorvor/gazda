@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.restaurant.field_address
     - field.field.node.restaurant.field_data_source
     - field.field.node.restaurant.field_image
     - field.field.node.restaurant.field_meal
+    - field.field.node.restaurant.field_web
     - image.style.medium
     - node.type.restaurant
   module:
@@ -35,6 +37,8 @@ content:
     region: content
 hidden:
   addtoany: true
+  field_address: true
   field_data_source: true
   field_meal: true
+  field_web: true
   langcode: true

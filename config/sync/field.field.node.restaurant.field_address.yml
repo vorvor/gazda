@@ -1,0 +1,19 @@
+uuid: 61176a35-71ea-4328-ba64-0b21e067d36f
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address
+    - node.type.restaurant
+id: node.restaurant.field_address
+field_name: field_address
+entity_type: node
+bundle: restaurant
+label: Address
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

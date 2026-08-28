@@ -3,13 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.restaurant.field_address
     - field.field.node.restaurant.field_data_source
     - field.field.node.restaurant.field_image
     - field.field.node.restaurant.field_meal
+    - field.field.node.restaurant.field_web
     - image.style.thumbnail
     - node.type.restaurant
   module:
     - image
+    - link
     - path
 id: node.restaurant.default
 targetEntityType: node
@@ -21,6 +24,14 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_address:
+    type: string_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 2
+      placeholder: ''
     third_party_settings: {  }
   field_data_source:
     type: string_textarea
@@ -45,6 +56,14 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_web:
+    type: link_default
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   langcode:
     type: language_select
