@@ -558,6 +558,16 @@ display:
             value: 'Az ételek feltüntetett árai és elérhetősége tájékoztató jellegűek. Az éttermek árai, kínálata és az egyes fogások elérhetősége időközben változhat. Az adatokat időszakonként frissítjük, azonban nem tudjuk garantálni, hogy minden információ minden pillanatban naprakész. Az esetleges eltérésekből eredő kellemetlenségekért felelősséget nem vállalunk, ezért rendelés vagy látogatás előtt érdemes az aktuális kínálatról és árakról közvetlenül az étteremnél érdeklődni.'
             format: basic_html
           tokenize: false
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: '<p>@total étel.</p>'
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -579,6 +589,7 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      exposed_block: true
       display_extenders: {  }
       path: meals
       menu:
