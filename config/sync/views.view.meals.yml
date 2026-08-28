@@ -298,7 +298,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: étlap/web
+            text: étlap/weboldal
             make_link: true
             path: '{{ field_web__uri }}'
             absolute: false

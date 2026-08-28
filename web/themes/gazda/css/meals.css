@@ -200,6 +200,66 @@ body.path-meals .view-meals .views-field-field-price {
   letter-spacing: 0.01em;
 }
 
+body.path-meals .view-meals .views-field-field-address,
+body.path-meals .view-meals .views-field-field-web {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 9px;
+  text-align: right;
+}
+
+body.path-meals .view-meals .views-field-field-address {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--discovery-line, #dfe4d8);
+}
+
+body.path-meals .view-meals .views-field-field-address a,
+body.path-meals .view-meals .views-field-field-web a {
+  display: inline-flex;
+  min-height: 38px;
+  box-sizing: border-box;
+  padding: 7px 13px;
+  align-items: center;
+  gap: 7px;
+  color: var(--discovery-forest, #173f35);
+  background: #f4f5e9;
+  border: 1px solid #cad5c5;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1;
+  text-decoration: none;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+body.path-meals .view-meals .views-field-field-address a::before {
+  content: "⌖";
+  color: var(--discovery-warm, #d98738);
+  font-size: 1rem;
+}
+
+body.path-meals .view-meals .views-field-field-web a::after {
+  content: "↗";
+  font-size: 0.95rem;
+}
+
+body.path-meals .view-meals .views-field-field-web a {
+  color: #fff;
+  background: var(--discovery-forest-bright, #236652);
+  border-color: var(--discovery-forest-bright, #236652);
+}
+
+body.path-meals .view-meals .views-field-field-address a:hover {
+  background: #fff;
+  border-color: var(--discovery-forest-bright, #236652);
+}
+
+body.path-meals .view-meals .views-field-field-web a:hover {
+  background: var(--discovery-forest, #173f35);
+  border-color: var(--discovery-forest, #173f35);
+}
+
 body.path-meals .view-meals .view-empty {
   padding: 30px;
   color: var(--discovery-muted, #607069);
