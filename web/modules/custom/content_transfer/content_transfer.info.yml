@@ -1,0 +1,9 @@
+name: Content Transfer
+type: module
+description: Exports nodes with referenced media and files and imports them by UUID.
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:file
+  - drupal:media
+  - drupal:node

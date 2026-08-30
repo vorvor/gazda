@@ -1,0 +1,15 @@
+content_transfer.export:
+  path: '/admin/content/content-transfer/export'
+  defaults:
+    _form: '\Drupal\content_transfer\Form\ExportForm'
+    _title: 'Export content'
+  requirements:
+    _permission: 'administer content transfer'
+
+content_transfer.import:
+  path: '/admin/content/content-transfer/import'
+  defaults:
+    _form: '\Drupal\content_transfer\Form\ImportForm'
+    _title: 'Import content'
+  requirements:
+    _permission: 'administer content transfer'

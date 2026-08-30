@@ -1,0 +1,6 @@
+content_transfer.export:
+  title: 'Content transfer'
+  description: 'Export or import nodes with their media and files.'
+  route_name: content_transfer.export
+  parent: system.admin_content
+  weight: 30

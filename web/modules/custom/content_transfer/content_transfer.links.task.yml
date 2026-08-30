@@ -1,0 +1,9 @@
+content_transfer.export:
+  title: 'Export'
+  route_name: content_transfer.export
+  base_route: content_transfer.export
+
+content_transfer.import:
+  title: 'Import'
+  route_name: content_transfer.import
+  base_route: content_transfer.export

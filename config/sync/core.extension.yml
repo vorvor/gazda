@@ -22,6 +22,7 @@ module:
   config: 0
   config_ignore: 0
   contact: 0
+  content_transfer: 0
   contextual: 0
   daily_coupon: 0
   datetime: 0

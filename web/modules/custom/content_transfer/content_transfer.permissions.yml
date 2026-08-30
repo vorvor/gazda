@@ -1,0 +1,4 @@
+administer content transfer:
+  title: 'Administer content transfer'
+  description: 'Export and import nodes, media entities, and files.'
+  restrict access: true

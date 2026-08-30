@@ -1,0 +1,21 @@
+services:
+  content_transfer.package_archive:
+    class: Drupal\content_transfer\PackageArchive
+
+  content_transfer.exporter:
+    class: Drupal\content_transfer\ContentExporter
+    arguments:
+      - '@entity_type.manager'
+      - '@entity_field.manager'
+      - '@file_system'
+      - '@content_transfer.package_archive'
+
+  content_transfer.importer:
+    class: Drupal\content_transfer\ContentImporter
+    arguments:
+      - '@entity_type.manager'
+      - '@entity_field.manager'
+      - '@entity_type.bundle.info'
+      - '@file_system'
+      - '@current_user'
+      - '@content_transfer.package_archive'
