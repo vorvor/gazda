@@ -19,9 +19,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 final class ImportForm extends FormBase implements ContainerInjectionInterface {
 
   public function __construct(
-    private readonly ContentImporter $importer,
-    private readonly EntityTypeManagerInterface $entityTypeManager,
-    private readonly FileSystemInterface $fileSystem,
+    protected ContentImporter $importer,
+    protected EntityTypeManagerInterface $entityTypeManager,
+    protected FileSystemInterface $fileSystem,
   ) {}
 
   /**

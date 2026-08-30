@@ -19,8 +19,8 @@ use Symfony\Component\HttpFoundation\HeaderUtils;
 final class ExportForm extends FormBase implements ContainerInjectionInterface {
 
   public function __construct(
-    private readonly ContentExporter $exporter,
-    private readonly FileSystemInterface $fileSystem,
+    protected ContentExporter $exporter,
+    protected FileSystemInterface $fileSystem,
   ) {}
 
   /**
