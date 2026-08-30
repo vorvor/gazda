@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.product.field_description
+    - field.field.node.product.field_idea_videos
     - field.field.node.product.field_images
     - field.field.node.product.field_marketing_text
     - field.field.node.product.field_shop
@@ -38,6 +39,7 @@ content:
 hidden:
   addtoany: true
   field_description: true
+  field_idea_videos: true
   field_images: true
   field_marketing_text: true
   field_shop: true

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.product.field_description
+    - field.field.node.product.field_idea_videos
     - field.field.node.product.field_images
     - field.field.node.product.field_marketing_text
     - field.field.node.product.field_shop
@@ -31,6 +32,16 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_idea_videos:
+    type: entity_reference_autocomplete
+    weight: 126
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_images:
@@ -117,4 +128,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  url_redirects: true
