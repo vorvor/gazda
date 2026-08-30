@@ -6,6 +6,7 @@ namespace Drupal\content_transfer\Form;
 
 use Drupal\content_transfer\ContentExporter;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -21,6 +22,7 @@ final class ExportForm extends FormBase implements ContainerInjectionInterface {
   public function __construct(
     protected ContentExporter $exporter,
     protected FileSystemInterface $fileSystem,
+    protected EntityTypeManagerInterface $entityTypeManager,
   ) {}
 
   /**
@@ -30,6 +32,7 @@ final class ExportForm extends FormBase implements ContainerInjectionInterface {
     return new self(
       $container->get('content_transfer.exporter'),
       $container->get('file_system'),
+      $container->get('entity_type.manager'),
     );
   }
 
@@ -45,15 +48,56 @@ final class ExportForm extends FormBase implements ContainerInjectionInterface {
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
     $form['description'] = [
-      '#markup' => '<p>' . $this->t('Válaszd ki az exportálandó tartalmakat. A csomag tartalmazza az összes mezőértéket, a közvetlenül hivatkozott média entitásokat és a kapcsolódó fájlokat.') . '</p>',
+      '#markup' => '<p>' . $this->t('Válaszd ki az exportálandó termékeket. A csomag tartalmazza az összes mezőértéket, a közvetlenül hivatkozott média entitásokat és a kapcsolódó fájlokat.') . '</p>',
     ];
+
+    $storage = $this->entityTypeManager->getStorage('node');
+    $nodeIds = $storage->getQuery()
+      ->accessCheck(TRUE)
+      ->condition('type', 'product')
+      ->sort('changed', 'DESC')
+      ->sort('nid', 'DESC')
+      ->execute();
+    $nodes = $storage->loadMultiple($nodeIds);
+
+    $shopIds = [];
+    foreach ($nodes as $node) {
+      if ($node->hasField('field_shop')) {
+        $shopIds = array_merge(
+          $shopIds,
+          array_column($node->get('field_shop')->getValue(), 'target_id'),
+        );
+      }
+    }
+    $shops = $storage->loadMultiple(array_unique($shopIds));
+
+    $options = [];
+    foreach ($nodeIds as $nodeId) {
+      if (isset($nodes[$nodeId])) {
+        $shopLabels = [];
+        $shopReferences = $nodes[$nodeId]->hasField('field_shop')
+          ? $nodes[$nodeId]->get('field_shop')->getValue()
+          : [];
+        foreach ($shopReferences as $reference) {
+          $shopId = $reference['target_id'] ?? NULL;
+          if ($shopId !== NULL && isset($shops[$shopId])) {
+            $shopLabels[] = $shops[$shopId]->label();
+          }
+        }
+        $options[$nodeId] = $this->t('@title — Üzlet: @shop (ID: @id)', [
+          '@title' => $nodes[$nodeId]->label(),
+          '@shop' => $shopLabels === [] ? $this->t('nincs megadva') : implode(', ', $shopLabels),
+          '@id' => $nodeId,
+        ]);
+      }
+    }
+
     $form['nodes'] = [
-      '#type' => 'entity_autocomplete',
-      '#title' => $this->t('Tartalmak'),
-      '#target_type' => 'node',
-      '#tags' => TRUE,
+      '#type' => 'checkboxes',
+      '#title' => $this->t('Termékek'),
+      '#options' => $options,
       '#required' => TRUE,
-      '#description' => $this->t('Kezdj el gépelni, majd válassz ki egy vagy több tartalmat.'),
+      '#description' => $this->t('A legutóbb módosított termékek szerepelnek elöl.'),
     ];
     $form['actions'] = ['#type' => 'actions'];
     $form['actions']['submit'] = [
@@ -68,7 +112,10 @@ final class ExportForm extends FormBase implements ContainerInjectionInterface {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
-    $nodeIds = array_column($form_state->getValue('nodes'), 'target_id');
+    $nodeIds = array_values(array_filter(
+      $form_state->getValue('nodes'),
+      static fn ($value): bool => (int) $value > 0,
+    ));
     $path = $this->fileSystem->tempnam($this->fileSystem->getTempDirectory(), 'content-transfer-');
     if ($path === FALSE) {
       throw new \RuntimeException('Unable to create a temporary export file.');

@@ -14,7 +14,7 @@ function form_serialization_assert(bool $condition, string $message): void {
 $container = \Drupal::getContainer();
 $cases = [
   [ImportForm::create($container), ['importer', 'entityTypeManager', 'fileSystem']],
-  [ExportForm::create($container), ['exporter', 'fileSystem']],
+  [ExportForm::create($container), ['exporter', 'fileSystem', 'entityTypeManager']],
 ];
 
 foreach ($cases as [$form, $properties]) {
