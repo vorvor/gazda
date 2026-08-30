@@ -85,16 +85,27 @@ final class ContentExporter {
 
   /**
    * Captures an entity and its supported dependencies.
+   *
+   * @return bool
+   *   TRUE when the entity can be included, or FALSE for a missing file.
    */
-  private function captureEntity(ContentEntityInterface $entity): void {
+  private function captureEntity(ContentEntityInterface $entity): bool {
     $entityTypeId = $entity->getEntityTypeId();
     if (!in_array($entityTypeId, ['node', 'media', 'file'], TRUE)) {
-      return;
+      return FALSE;
     }
     $uuid = $entity->uuid();
     $key = $entityTypeId . ':' . $uuid;
     if (isset($this->records[$key])) {
-      return;
+      return TRUE;
+    }
+
+    $sourcePath = NULL;
+    if ($entity instanceof FileInterface) {
+      $sourcePath = $this->fileSystem->realpath($entity->getFileUri());
+      if ($sourcePath === FALSE || !is_file($sourcePath)) {
+        return FALSE;
+      }
     }
 
     // Reserve the record before walking references to avoid reference cycles.
@@ -134,22 +145,18 @@ final class ContentExporter {
           continue;
         }
         $targetType = $target->getEntityTypeId();
+        if (in_array($targetType, ['media', 'file'], TRUE) && !$this->captureEntity($target)) {
+          unset($values[$delta]);
+          continue;
+        }
         $values[$delta]['target_type'] = $targetType;
         $values[$delta]['target_uuid'] = $target->uuid();
         unset($values[$delta]['target_id']);
-        if (in_array($targetType, ['media', 'file'], TRUE)) {
-          $this->captureEntity($target);
-        }
       }
-      $record['fields'][$fieldName] = $values;
+      $record['fields'][$fieldName] = array_values($values);
     }
 
     if ($entity instanceof FileInterface) {
-      $uri = $entity->getFileUri();
-      $sourcePath = $this->fileSystem->realpath($uri);
-      if ($sourcePath === FALSE || !is_file($sourcePath)) {
-        throw new \RuntimeException(sprintf('The file payload for "%s" cannot be read.', $uri));
-      }
       $filename = preg_replace('/[^A-Za-z0-9._-]+/', '-', $entity->getFilename()) ?: 'file';
       $payload = sprintf('files/%s/%s', $uuid, $filename);
       $record['payload'] = $payload;
@@ -157,6 +164,7 @@ final class ContentExporter {
     }
 
     $this->records[$key] = $record;
+    return TRUE;
   }
 
 }
