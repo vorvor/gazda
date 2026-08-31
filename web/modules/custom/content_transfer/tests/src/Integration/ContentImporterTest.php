@@ -39,6 +39,8 @@ $path = tempnam(sys_get_temp_dir(), 'content-transfer-import-');
 importer_assert($path !== FALSE, 'A temporary package path must be created.');
 $newEntityPath = tempnam(sys_get_temp_dir(), 'content-transfer-new-');
 importer_assert($newEntityPath !== FALSE, 'A second temporary package path must be created.');
+$emptyFieldPath = tempnam(sys_get_temp_dir(), 'content-transfer-empty-field-');
+importer_assert($emptyFieldPath !== FALSE, 'An empty-field package path must be created.');
 $database = \Drupal::database();
 $transaction = $database->startTransaction();
 
@@ -74,6 +76,26 @@ try {
   $skipped = $importer->import($path, FALSE);
   importer_assert(($skipped['skipped']['node'] ?? 0) === 1, 'Importing without updates must skip an existing node UUID.');
 
+  $preservedImageIds = array_column($restored->get('field_images')->getValue(), 'target_id');
+  importer_assert($preservedImageIds !== [], 'The empty-field update fixture must have an image to preserve.');
+  $archive->create($emptyFieldPath, [
+    'entities' => [[
+      'entity_type' => 'node',
+      'bundle' => $restored->bundle(),
+      'uuid' => $restored->uuid(),
+      'langcode' => $restored->language()->getId(),
+      'fields' => [
+        'title' => [['value' => 'Content transfer non-empty update']],
+        'field_images' => [],
+      ],
+    ]],
+  ], []);
+  $importer->import($emptyFieldPath, TRUE);
+  $nodeStorage->resetCache([$nodeId]);
+  $preserved = $nodeStorage->load($nodeId);
+  importer_assert($preserved->label() === 'Content transfer non-empty update', 'A non-empty imported field must update the destination.');
+  importer_assert(array_column($preserved->get('field_images')->getValue(), 'target_id') === $preservedImageIds, 'An empty imported field must preserve the destination value.');
+
   $newUuid = (new \Drupal\Component\Uuid\Php())->generate();
   $archive->create($newEntityPath, [
     'entities' => [[
@@ -101,6 +123,9 @@ finally {
   }
   if (is_file($newEntityPath)) {
     unlink($newEntityPath);
+  }
+  if (is_file($emptyFieldPath)) {
+    unlink($emptyFieldPath);
   }
   foreach ($temporarySourceUris as $uri) {
     $fileSystem->delete($uri);

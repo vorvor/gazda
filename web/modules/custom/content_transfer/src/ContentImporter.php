@@ -148,6 +148,10 @@ final class ContentImporter {
       if ($definition->isComputed() || $definition->isReadOnly() || $definition->isInternal() || ($entity instanceof FileInterface && in_array($fieldName, ['uri', 'filesize'], TRUE))) {
         continue;
       }
+      // Empty source fields are not destructive: retain destination content.
+      if ($values === []) {
+        continue;
+      }
       $entity->set($fieldName, $this->resolveReferences($values));
     }
   }
