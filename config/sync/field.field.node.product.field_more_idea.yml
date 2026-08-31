@@ -1,0 +1,23 @@
+uuid: 25523c4d-9d88-41d1-b13d-104d67f4577d
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_more_idea
+    - node.type.product
+  module:
+    - link
+id: node.product.field_more_idea
+field_name: field_more_idea
+entity_type: node
+bundle: product
+label: 'További ötletek'
+description: 'További ötleteket tartalmazó külső oldal vagy lejátszási lista.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 16
+field_type: link

@@ -7,12 +7,14 @@ dependencies:
     - field.field.node.product.field_idea_videos
     - field.field.node.product.field_images
     - field.field.node.product.field_marketing_text
+    - field.field.node.product.field_more_idea
     - field.field.node.product.field_shop
     - field.field.node.product.field_tags
     - image.style.thumbnail
     - node.type.product
   module:
     - image
+    - link
     - path
     - text
 id: node.product.default
@@ -59,6 +61,14 @@ content:
     settings:
       rows: 5
       placeholder: ''
+    third_party_settings: {  }
+  field_more_idea:
+    type: link_default
+    weight: 127
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_shop:
     type: options_buttons

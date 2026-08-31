@@ -26,6 +26,7 @@ $form = $formObject->buildForm([], new FormState());
 export_form_assert(($form['nodes']['#type'] ?? NULL) === 'checkboxes', 'Products must be displayed as checkboxes.');
 $actualIds = array_map('intval', array_keys($form['nodes']['#options'] ?? []));
 export_form_assert($actualIds === array_map('intval', $expectedIds), 'Products must be ordered by changed date descending, then node ID descending.');
+export_form_assert(str_contains((string) $form['nodes']['#title'], (string) count($actualIds)), 'The checkbox title must display the number of listed products.');
 
 $nodes = $storage->loadMultiple($actualIds);
 $checkedShopLabels = 0;

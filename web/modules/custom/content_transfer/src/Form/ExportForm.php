@@ -94,7 +94,7 @@ final class ExportForm extends FormBase implements ContainerInjectionInterface {
 
     $form['nodes'] = [
       '#type' => 'checkboxes',
-      '#title' => $this->t('Termékek'),
+      '#title' => $this->t('Termékek (@count)', ['@count' => count($options)]),
       '#options' => $options,
       '#required' => TRUE,
       '#description' => $this->t('A legutóbb módosított termékek szerepelnek elöl.'),

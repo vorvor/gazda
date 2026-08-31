@@ -7,12 +7,14 @@ dependencies:
     - field.field.node.product.field_idea_videos
     - field.field.node.product.field_images
     - field.field.node.product.field_marketing_text
+    - field.field.node.product.field_more_idea
     - field.field.node.product.field_shop
     - field.field.node.product.field_tags
     - image.style.fb_post_image
     - node.type.product
   module:
     - colorbox
+    - link
     - user
 id: node.product.default
 targetEntityType: node
@@ -53,6 +55,18 @@ content:
       colorbox_node_style_first: fb_post_image
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_more_idea:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: 'noopener noreferrer'
+      target: _blank
+    third_party_settings: {  }
+    weight: 8
     region: content
   field_shop:
     type: entity_reference_entity_view

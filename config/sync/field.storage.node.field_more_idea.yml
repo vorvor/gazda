@@ -1,0 +1,19 @@
+uuid: a1d0db7d-2a48-4085-85c5-dd2f7398eb02
+langcode: hu
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_more_idea
+field_name: field_more_idea
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

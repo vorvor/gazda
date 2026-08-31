@@ -718,6 +718,81 @@ body.page-node-type-product .field--name-field-idea-videos .media-oembed-content
   border-radius: 16px;
 }
 
+body.page-node-type-product .field--name-field-more-idea {
+  margin-top: 18px;
+}
+
+body.page-node-type-product .field--name-field-more-idea a {
+  display: inline-flex;
+  box-sizing: border-box;
+  min-height: 46px;
+  padding: 9px 16px;
+  color: var(--detail-forest);
+  align-items: center;
+  gap: 9px;
+  background: #fff4df;
+  border: 1px solid #e4bd86;
+  border-radius: 12px;
+  box-shadow: 0 7px 18px rgba(35, 58, 46, 0.1);
+  font-size: 0.96rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: background-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+body.page-node-type-product .field--name-field-more-idea a::before {
+  display: inline-grid;
+  width: 26px;
+  height: 26px;
+  color: #fff8e9;
+  place-items: center;
+  flex: 0 0 26px;
+  content: "✦";
+  background: var(--detail-warm);
+  border-radius: 50%;
+  font-size: 0.82rem;
+}
+
+body.page-node-type-product .field--name-field-more-idea a::after {
+  margin-left: 2px;
+  content: "↗";
+  font-size: 1.05rem;
+  line-height: 1;
+  transition: transform 150ms ease;
+}
+
+body.page-node-type-product .field--name-field-more-idea a:hover {
+  color: var(--detail-forest);
+  background: #ffe9c2;
+  border-color: #d99a4f;
+  box-shadow: 0 9px 22px rgba(35, 58, 46, 0.14);
+  transform: translateY(-1px);
+}
+
+body.page-node-type-product .field--name-field-more-idea a:hover::after {
+  transform: translate(1px, -1px);
+}
+
+body.page-node-type-product .field--name-field-more-idea a:active {
+  box-shadow: 0 4px 12px rgba(35, 58, 46, 0.11);
+  transform: translateY(1px);
+}
+
+@media (max-width: 520px) {
+  body.page-node-type-product .field--name-field-more-idea a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-node-type-product .field--name-field-more-idea a,
+  body.page-node-type-product .field--name-field-more-idea a::after {
+    transition: none;
+  }
+}
+
 body.page-node-type-product h1,
 body.page-node-type-product .page-title {
   color: var(--detail-ink);

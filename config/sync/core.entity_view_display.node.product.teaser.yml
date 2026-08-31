@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.product.field_idea_videos
     - field.field.node.product.field_images
     - field.field.node.product.field_marketing_text
+    - field.field.node.product.field_more_idea
     - field.field.node.product.field_shop
     - field.field.node.product.field_tags
     - node.type.product
@@ -42,5 +43,6 @@ hidden:
   field_idea_videos: true
   field_images: true
   field_marketing_text: true
+  field_more_idea: true
   field_shop: true
   langcode: true

@@ -7,6 +7,8 @@ config:
   webroot: web
   drush: ^11
   xdebug: true
+keys:
+  - id_ed25519
 env_file:
   - ./lando/vars.env
 
