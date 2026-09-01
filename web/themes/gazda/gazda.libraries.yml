@@ -7,6 +7,7 @@ styles:
       css/node-detail.css: {}
       css/other-shops.css: {}
       css/meals.css: {}
+      css/cultural-programs.css: {}
   js:
     js/discovery-proof-scroll.js: {}
   dependencies:

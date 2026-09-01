@@ -1,0 +1,19 @@
+uuid: 563892ed-5be0-4e3f-825a-7898d12ebb36
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_source_name
+    - node.type.cultural_program
+id: node.cultural_program.field_source_name
+field_name: field_source_name
+entity_type: node
+bundle: cultural_program
+label: 'Forrás neve'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

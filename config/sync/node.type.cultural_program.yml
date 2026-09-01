@@ -1,0 +1,17 @@
+uuid: a1355e44-fa0c-4c63-bec8-8bb64b6b436a
+langcode: hu
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Kulturális program'
+type: cultural_program
+description: 'Szentendre aktuális kulturális programjai és eseményei.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

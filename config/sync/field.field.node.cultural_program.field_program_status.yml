@@ -1,0 +1,23 @@
+uuid: 029c53fa-c495-4411-985f-40a9d6bf3966
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_status
+    - node.type.cultural_program
+  module:
+    - options
+id: node.cultural_program.field_program_status
+field_name: field_program_status
+entity_type: node
+bundle: cultural_program
+label: 'Program állapota'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: scheduled
+default_value_callback: ''
+settings: {  }
+field_type: list_string

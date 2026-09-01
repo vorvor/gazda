@@ -1,0 +1,19 @@
+uuid: 2915c777-2415-410a-85dc-72a7af53162a
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place_address
+    - node.type.cultural_place
+id: node.cultural_place.field_place_address
+field_name: field_place_address
+entity_type: node
+bundle: cultural_place
+label: Cím
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

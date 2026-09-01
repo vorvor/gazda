@@ -1,0 +1,28 @@
+uuid: bef350d1-f0a2-421b-8b26-9f8852df4ac9
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_category
+    - node.type.cultural_program
+    - taxonomy.vocabulary.cultural_program_category
+id: node.cultural_program.field_program_category
+field_name: field_program_category
+entity_type: node
+bundle: cultural_program
+label: Kategóriák
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      cultural_program_category: cultural_program_category
+    sort:
+      field: name
+      direction: ASC
+    auto_create: true
+field_type: entity_reference

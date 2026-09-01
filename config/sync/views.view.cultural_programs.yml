@@ -1,0 +1,349 @@
+uuid: 8e7c2a4b-5f1d-4b8e-9a3c-7d2e1f6b4c9a
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_image
+    - field.storage.node.field_program_end
+    - field.storage.node.field_program_place
+    - field.storage.node.field_program_start
+    - image.style.cultural_program_card
+    - node.type.cultural_program
+    - system.menu.main
+  module:
+    - datetime
+    - entity_reference_exposed_filters
+    - image
+    - node
+    - user
+id: cultural_programs
+label: 'Kulturális programok'
+module: views
+description: 'List of cultural programs with date and place filters'
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Kulturális programok'
+      fields:
+        field_program_image:
+          id: field_program_image
+          table: node__field_program_image
+          field: field_program_image
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: true
+            ellipsis: true
+            strip_tags: false
+            trim: false
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: image
+          settings:
+            image_link: content
+            image_style: cultural_program_card
+            image_loading:
+              attribute: lazy
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+          label: ''
+          alter:
+            make_link: true
+            absolute: false
+        field_program_start:
+          id: field_program_start
+          table: node__field_program_start
+          field: field_program_start
+          plugin_id: datetime
+          label: Kezdés
+          settings:
+            format_type: short
+            timezone_override: ''
+        field_program_end:
+          id: field_program_end
+          table: node__field_program_end
+          field: field_program_end
+          plugin_id: datetime
+          label: Befejezés
+          settings:
+            format_type: short
+            timezone_override: ''
+        field_program_place:
+          id: field_program_place
+          table: node__field_program_place
+          field: field_program_place
+          plugin_id: entity_reference_entity_view
+          label: Helyszín
+          settings:
+            link: true
+      pager:
+        type: full
+        options:
+          offset: 0
+          pagination_heading_level: h4
+          items_per_page: 50
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Tovább »'
+            previous: '« Előző'
+            first: '« Első'
+            last: 'Utolsó »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Szűrés
+          reset_button: true
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növekvő
+          sort_desc_label: Csökkenő
+      access:
+        type: perm
+      cache:
+        type: tag
+      empty: {  }
+      sorts:
+        field_program_start_value:
+          id: field_program_start_value
+          table: node__field_program_start
+          field: field_program_start_value
+          order: ASC
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            cultural_program: cultural_program
+          group: 1
+          exposed: false
+          expose:
+            operator_id: type_op
+            label: Tartalomtípus
+            description: ''
+            use_operator: false
+            operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        field_program_start_value:
+          id: field_program_start_value
+          table: node__field_program_start
+          field: field_program_start_value
+          relationship: none
+          operator: '>='
+          exposed: true
+          expose:
+            operator_id: field_program_start_value_op
+            label: 'Dátum (mettől)'
+            operator: field_program_start_value_op
+            identifier: field_program_start_value
+            remember_roles:
+              authenticated: authenticated
+            placeholder: YYYY-MM-DD
+        field_program_end_value:
+          id: field_program_end_value
+          table: node__field_program_end
+          field: field_program_end_value
+          relationship: none
+          operator: '<='
+          exposed: true
+          expose:
+            operator_id: field_program_end_value_op
+            label: 'Dátum (meddig)'
+            operator: field_program_end_value_op
+            identifier: field_program_end_value
+            remember_roles:
+              authenticated: authenticated
+            placeholder: YYYY-MM-DD
+        eref_node_titles:
+          id: eref_node_titles
+          table: node_field_data
+          field: eref_node_titles
+          relationship: field_program_place
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: eref_node_titles
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Helyszín
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_program_place_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          sort_order: '1'
+          sort_by: '1'
+          get_unpublished: '1'
+          get_filter_no_results: '0'
+          sort_bundle_order: '1'
+      style:
+        type: default
+      row:
+        type: fields
+      relationships:
+        field_program_place:
+          id: field_program_place
+          table: node__field_program_place
+          field: field_program_place
+          relationship: none
+          group_type: group
+          admin_label: 'Helyszín: tartalom'
+          plugin_id: standard
+          required: false
+      use_more: false
+      use_more_always: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_program_end'
+        - 'config:field.storage.node.field_program_place'
+        - 'config:field.storage.node.field_program_start'
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      defaults:
+        fields: true
+        sorts: true
+        filters: true
+      display_extenders: {  }
+      path: kulturalis-programok
+      menu:
+        type: normal
+        title: 'Kulturális programok'
+        weight: 0
+        context: '0'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_program_end'
+        - 'config:field.storage.node.field_program_place'
+        - 'config:field.storage.node.field_program_start'

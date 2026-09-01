@@ -1,0 +1,19 @@
+uuid: ee05ffec-93e7-4b80-af55-c03892941b90
+langcode: hu
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_place_website
+field_name: field_place_website
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

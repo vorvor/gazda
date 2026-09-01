@@ -1,0 +1,21 @@
+uuid: c522c590-3bbf-40ee-8fe4-565b22039909
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_family
+    - node.type.cultural_program
+id: node.cultural_program.field_program_family
+field_name: field_program_family
+entity_type: node
+bundle: cultural_program
+label: 'Gyerek- vagy családi program'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

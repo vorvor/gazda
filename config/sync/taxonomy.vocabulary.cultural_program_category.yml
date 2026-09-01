@@ -1,0 +1,9 @@
+uuid: ae76a4c3-107c-47cb-a352-65fd34b35f30
+langcode: hu
+status: true
+dependencies: {  }
+name: 'Kulturális program kategóriák'
+vid: cultural_program_category
+description: 'A kulturális programok szűrésére használt kategóriák.'
+weight: 0
+new_revision: false

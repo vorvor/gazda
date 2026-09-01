@@ -1,0 +1,21 @@
+uuid: 6134bd29-5b4f-432e-b5b5-fb9584ad1847
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_start
+    - node.type.cultural_program
+  module:
+    - datetime
+id: node.cultural_program.field_program_start
+field_name: field_program_start
+entity_type: node
+bundle: cultural_program
+label: Kezdés
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,29 @@
+uuid: c95f37d0-2247-442f-81af-94577d64fd6a
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_place
+    - node.type.cultural_place
+    - node.type.cultural_program
+id: node.cultural_program.field_program_place
+field_name: field_program_place
+entity_type: node
+bundle: cultural_program
+label: 'Helyszín / házigazda'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      cultural_place: cultural_place
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

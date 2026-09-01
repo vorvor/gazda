@@ -1,0 +1,19 @@
+uuid: 7b8c361d-14dc-4116-a9ef-f6ec8ef9fdd1
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_source_name
+    - node.type.cultural_place
+id: node.cultural_place.field_source_name
+field_name: field_source_name
+entity_type: node
+bundle: cultural_place
+label: 'Elsődleges adatforrás'
+description: 'A helyszínadatok elsődleges, legnagyobb prioritású forrása.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

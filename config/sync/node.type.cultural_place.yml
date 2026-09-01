@@ -1,0 +1,17 @@
+uuid: 97cc0378-7ba2-47d8-b94b-f8b051c717e8
+langcode: hu
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Kulturális helyszín'
+type: cultural_place
+description: 'Kulturális programok helyszíne vagy házigazdája.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

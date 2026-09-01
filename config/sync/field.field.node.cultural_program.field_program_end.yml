@@ -1,0 +1,21 @@
+uuid: 136e8f18-2339-48b3-9b09-602cb1014af1
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_end
+    - node.type.cultural_program
+  module:
+    - datetime
+id: node.cultural_program.field_program_end
+field_name: field_program_end
+entity_type: node
+bundle: cultural_program
+label: Befejezés
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

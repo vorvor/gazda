@@ -1,0 +1,21 @@
+uuid: da0dff3c-e1e9-4e80-aad2-f07eab84e3fa
+langcode: hu
+status: true
+dependencies: {  }
+name: cultural_program_card
+label: 'Kulturális program kártya (720×420)'
+effects:
+  95379e63-be67-4be8-b038-ba84ce493f56:
+    uuid: 95379e63-be67-4be8-b038-ba84ce493f56
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 420
+      anchor: center-center
+  0eee665c-e623-4cfd-9208-03f465491a43:
+    uuid: 0eee665c-e623-4cfd-9208-03f465491a43
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

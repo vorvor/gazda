@@ -1,0 +1,21 @@
+uuid: b2fd9bdf-1738-41b4-b92a-db8d92fbd11f
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_all_day
+    - node.type.cultural_program
+id: node.cultural_program.field_program_all_day
+field_name: field_program_all_day
+entity_type: node
+bundle: cultural_program
+label: 'Egész napos program'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

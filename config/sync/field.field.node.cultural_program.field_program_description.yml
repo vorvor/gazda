@@ -1,0 +1,22 @@
+uuid: 94fe819b-0eb6-4cb7-b75c-57dd2829fd1e
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_description
+    - node.type.cultural_program
+  module:
+    - text
+id: node.cultural_program.field_program_description
+field_name: field_program_description
+entity_type: node
+bundle: cultural_program
+label: Leírás
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

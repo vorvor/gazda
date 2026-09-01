@@ -1,0 +1,21 @@
+uuid: deed7195-a538-4cf4-aee5-2bf34b3b7e33
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_source_updated
+    - node.type.cultural_program
+  module:
+    - datetime
+id: node.cultural_program.field_program_source_updated
+field_name: field_program_source_updated
+entity_type: node
+bundle: cultural_program
+label: 'Forrásban frissítve'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,23 @@
+uuid: dd88ef4a-b308-4f0c-82a7-6ef2ef38dd21
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place_website
+    - node.type.cultural_place
+  module:
+    - link
+id: node.cultural_place.field_place_website
+field_name: field_place_website
+entity_type: node
+bundle: cultural_place
+label: Weboldal
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link
