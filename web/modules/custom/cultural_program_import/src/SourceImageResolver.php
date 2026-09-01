@@ -14,57 +14,25 @@ use GuzzleHttp\RequestOptions;
  */
 final class SourceImageResolver {
 
-  private const MAX_IMAGE_BYTES = 12582912;
-
-  private const MIN_IMAGE_WIDTH = 300;
-
-  private const MIN_IMAGE_HEIGHT = 160;
-
   public function __construct(
     private readonly ClientInterface $httpClient,
   ) {}
 
   /**
-   * Fetches the source page and returns the first usable original-site image.
+   * Fetches only the source page and returns its first original-site image URL.
    *
-   * @return array{url: string, data: string, mime: string, width: int, height: int}|null
-   *   Downloaded image information, or NULL when no suitable image is found.
+   * The image itself is deliberately not requested or downloaded.
    */
-  public function resolve(string $sourceUrl): ?array {
+  public function resolveUrl(string $sourceUrl): ?string {
     $response = $this->httpClient->request('GET', $sourceUrl, $this->requestOptions(30));
     $html = (string) $response->getBody();
     if ($html === '') {
       return NULL;
     }
 
-    foreach (array_slice($this->extractCandidates($html, $sourceUrl), 0, 12) as $imageUrl) {
-      if (!$this->hasAllowedHost($sourceUrl, $imageUrl)) {
-        continue;
-      }
-      try {
-        $imageResponse = $this->httpClient->request('GET', $imageUrl, $this->requestOptions(30));
-        $data = (string) $imageResponse->getBody();
-        if ($data === '' || strlen($data) > self::MAX_IMAGE_BYTES) {
-          continue;
-        }
-        $size = @getimagesizefromstring($data);
-        if (!is_array($size) || ($size[0] ?? 0) < self::MIN_IMAGE_WIDTH || ($size[1] ?? 0) < self::MIN_IMAGE_HEIGHT) {
-          continue;
-        }
-        $mime = (string) ($size['mime'] ?? '');
-        if (!in_array($mime, ['image/jpeg', 'image/png', 'image/webp', 'image/gif'], TRUE)) {
-          continue;
-        }
-        return [
-          'url' => $imageUrl,
-          'data' => $data,
-          'mime' => $mime,
-          'width' => (int) $size[0],
-          'height' => (int) $size[1],
-        ];
-      }
-      catch (\Throwable) {
-        // Try the next candidate from the same source page.
+    foreach ($this->extractCandidates($html, $sourceUrl) as $imageUrl) {
+      if ($this->hasAllowedHost($sourceUrl, $imageUrl)) {
+        return $imageUrl;
       }
     }
 
@@ -239,7 +207,7 @@ final class SourceImageResolver {
   }
 
   /**
-   * Returns conservative HTTP options for source and image requests.
+   * Returns conservative HTTP options for source-page requests.
    */
   private function requestOptions(int $timeout): array {
     return [
@@ -247,7 +215,7 @@ final class SourceImageResolver {
       RequestOptions::TIMEOUT => $timeout,
       RequestOptions::HEADERS => [
         'User-Agent' => 'SetaljBe cultural program image importer/1.0',
-        'Accept' => 'text/html,application/xhtml+xml,image/avif,image/webp,image/png,image/jpeg,*/*;q=0.8',
+        'Accept' => 'text/html,application/xhtml+xml,*/*;q=0.8',
       ],
       RequestOptions::ALLOW_REDIRECTS => ['max' => 5],
       RequestOptions::HTTP_ERRORS => TRUE,

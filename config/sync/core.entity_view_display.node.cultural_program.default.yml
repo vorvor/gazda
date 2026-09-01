@@ -19,11 +19,10 @@ dependencies:
     - field.field.node.cultural_program.field_program_ticket
     - field.field.node.cultural_program.field_source_name
     - field.field.node.cultural_program.field_source_url
-    - image.style.wide
     - node.type.cultural_program
   module:
+    - cultural_program_import
     - datetime
-    - image
     - link
     - options
     - text
@@ -58,13 +57,10 @@ content:
     weight: 3
     region: content
   field_program_image:
-    type: image
+    type: cultural_program_remote_image
     label: hidden
     settings:
-      image_link: ''
-      image_style: wide
-      image_loading:
-        attribute: lazy
+      link_to_content: false
     third_party_settings: {  }
     weight: 0
     region: content

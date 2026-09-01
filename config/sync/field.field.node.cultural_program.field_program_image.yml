@@ -1,4 +1,4 @@
-uuid: 4e8eea2d-1d1e-473e-96a0-274090fdcd49
+uuid: fae1df09-1fba-4526-a6ad-f5b771c832a4
 langcode: hu
 status: true
 dependencies:
@@ -6,33 +6,18 @@ dependencies:
     - field.storage.node.field_program_image
     - node.type.cultural_program
   module:
-    - image
+    - link
 id: node.cultural_program.field_program_image
 field_name: field_program_image
 entity_type: node
 bundle: cultural_program
-label: Programkép
-description: ''
+label: 'Eredeti programkép URL'
+description: 'Az eredeti programoldal távoli képének közvetlen URL-je; a kép nem kerül letöltésre.'
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:file'
-  handler_settings: {  }
-  file_directory: 'cultural-programs/[date:custom:Y]-[date:custom:m]'
-  file_extensions: 'png gif jpg jpeg webp'
-  max_filesize: '12 MB'
-  max_resolution: ''
-  min_resolution: 300x160
-  alt_field: true
-  alt_field_required: true
-  title_field: false
-  title_field_required: false
-  default_image:
-    uuid: ''
-    alt: ''
-    title: ''
-    width: null
-    height: null
-field_type: image
+  title: 0
+  link_type: 16
+field_type: link

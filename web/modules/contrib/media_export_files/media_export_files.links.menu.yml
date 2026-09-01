@@ -1,0 +1,6 @@
+media_export_files.settings:
+  title: 'Media Export Files'
+  description: 'Download Media files as a ZIP.'
+  parent: system.admin_config_media
+  route_name: media_export_files.settings
+  weight: 100

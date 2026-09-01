@@ -15,8 +15,6 @@ services:
     class: Drupal\cultural_program_import\ProgramImageSynchronizer
     arguments:
       - '@entity_type.manager'
-      - '@file.repository'
-      - '@file_system'
       - '@cultural_program_import.source_image_resolver'
 
   cultural_program_import.source.tribe_events:

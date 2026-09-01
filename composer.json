@@ -43,6 +43,7 @@
         "drupal/image_effects": "^4.0",
         "drupal/imagefield_slideshow": "^2.0",
         "drupal/leaflet": "^10.4",
+        "drupal/media_export_files": "^1.0",
         "drupal/metatag": "^2.2",
         "drupal/node_export": "^1.5",
         "drupal/office_hours": "^1.29",
@@ -124,6 +125,9 @@
         "patches": {
             "drupal/core": {
                 "Issue #2815881: Fix Views aggregation SQL error with multi-column fields": "https://www.drupal.org/files/issues/2023-12-29/2815881-172.patch"
+            },
+            "drupal/media_export_files": {
+                "Use the bundled PclZip library from Composer's contrib install path": "patches/media-export-files-portable-pclzip-path.patch"
             }
         },
         "drupal-core-project-message": {

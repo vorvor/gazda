@@ -1,0 +1,4 @@
+download media library:
+  title: 'Download the media library'
+  description: 'Allow users to download the media library as a ZIP file.'
+  restrict access: TRUE

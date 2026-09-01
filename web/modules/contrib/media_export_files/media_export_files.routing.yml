@@ -1,0 +1,9 @@
+media_export_files.settings:
+  path: '/admin/config/media-export-files'
+  defaults:
+    _form: '\Drupal\media_export_files\Form\MediaExportFilesForm'
+    _title: 'Media Export Files'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE

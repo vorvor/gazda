@@ -5,6 +5,11 @@ declare(strict_types=1);
 require_once __DIR__ . '/../../../src/SourceImageResolver.php';
 
 use Drupal\cultural_program_import\SourceImageResolver;
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Middleware;
+use GuzzleHttp\Psr7\Response;
 
 function cultural_image_assert(bool $condition, string $message): void {
   if (!$condition) {
@@ -35,4 +40,14 @@ cultural_image_assert(in_array('https://programs.example.test/sites/default/file
 cultural_image_assert(in_array('https://media.example.test/images/skanzen-event.png', $candidates, TRUE), 'Next.js image proxies must resolve to their original URL.');
 cultural_image_assert(!array_filter($candidates, static fn(string $url): bool => str_contains($url, 'tribe-loading')), 'Loading images must be excluded.');
 
-print "PASS: source image candidates are normalized and decorative assets are excluded\n";
+$history = [];
+$stack = HandlerStack::create(new MockHandler([
+  new Response(200, ['Content-Type' => 'text/html'], '<meta property="og:image" content="/images/remote-event.jpg">'),
+]));
+$stack->push(Middleware::history($history));
+$noDownloadResolver = new SourceImageResolver(new Client(['handler' => $stack]));
+$resolved = $noDownloadResolver->resolveUrl('https://programs.example.test/event/one');
+cultural_image_assert($resolved === 'https://programs.example.test/images/remote-event.jpg', 'The original remote URL must be returned.');
+cultural_image_assert(count($history) === 1, 'Resolving an image URL must request only the source page, not the image.');
+
+print "PASS: source image URLs are normalized without downloading image bytes\n";

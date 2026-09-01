@@ -1,0 +1,13 @@
+name: 'Media Export Files'
+type: module
+description: 'Provides functionality to export the media files in a ZIP format.'
+core_version_requirement: ^9 || ^10 || ^11
+package: Custom
+dependencies:
+  - drupal:file
+configure: media_export_files.settings
+
+# Information added by Drupal.org packaging script on 2024-12-31
+version: '1.0.0'
+project: 'media_export_files'
+datestamp: 1735638637

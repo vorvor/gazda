@@ -3,17 +3,17 @@ langcode: hu
 status: true
 dependencies:
   config:
-    - field.storage.node.field_program_image
     - field.storage.node.field_program_end
+    - field.storage.node.field_program_image
     - field.storage.node.field_program_place
     - field.storage.node.field_program_start
-    - image.style.cultural_program_card
     - node.type.cultural_program
     - system.menu.main
   module:
+    - cultural_program_import
     - datetime
     - entity_reference_exposed_filters
-    - image
+    - link
     - node
     - user
 id: cultural_programs
@@ -63,13 +63,10 @@ display:
           hide_empty: true
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: image
+          click_sort_column: uri
+          type: cultural_program_remote_image
           settings:
-            image_link: content
-            image_style: cultural_program_card
-            image_loading:
-              attribute: lazy
+            link_to_content: true
           group_column: ''
           group_columns: {  }
           group_rows: true

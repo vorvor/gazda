@@ -58,14 +58,14 @@ final class CulturalProgramImportCommands extends DrushCommands {
   }
 
   /**
-   * Downloads card images from each program's original source page.
+   * Stores card image URLs from each program's original source page.
    *
    * @param array $options
    *   Command options.
    *
    * @command cultural-program:image-sync
    * @aliases cpis
-   * @option dry-run Discover usable images without changing content.
+   * @option dry-run Discover image URLs without changing content.
    * @option overwrite Replace existing program images.
    * @option limit Process at most this many nodes; zero means all.
    * @usage cultural-program:image-sync --dry-run
@@ -82,12 +82,11 @@ final class CulturalProgramImportCommands extends DrushCommands {
       max(0, (int) $options['limit']),
     );
     $this->output()->writeln(sprintf(
-      'Programs: %d; existing: %d; matched: %d; downloaded: %d; reused: %d; skipped: %d; errors: %d',
+      'Programs: %d; existing: %d; matched: %d; updated: %d; skipped: %d; errors: %d',
       $result['total'],
       $result['existing'],
       $result['matched'],
-      $result['downloaded'],
-      $result['reused'],
+      $result['updated'],
       $result['skipped'],
       count($result['errors']),
     ));

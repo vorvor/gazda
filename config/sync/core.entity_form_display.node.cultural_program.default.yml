@@ -19,11 +19,9 @@ dependencies:
     - field.field.node.cultural_program.field_program_ticket
     - field.field.node.cultural_program.field_source_name
     - field.field.node.cultural_program.field_source_url
-    - image.style.medium
     - node.type.cultural_program
   module:
     - datetime
-    - image
     - link
     - path
     - text
@@ -85,12 +83,12 @@ content:
       display_label: true
     third_party_settings: {  }
   field_program_image:
-    type: image_image
+    type: link_default
     weight: 1
     region: content
     settings:
-      progress_indicator: throbber
-      preview_image_style: medium
+      placeholder_url: 'https://example.hu/program-image.jpg'
+      placeholder_title: ''
     third_party_settings: {  }
   field_program_last_seen:
     type: datetime_default
