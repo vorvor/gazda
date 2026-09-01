@@ -1,0 +1,8 @@
+services:
+  cultural_program_import.commands:
+    class: Drupal\cultural_program_import\Commands\CulturalProgramImportCommands
+    arguments:
+      - '@cultural_program_import.importer'
+      - '@cultural_program_import.image_synchronizer'
+    tags:
+      - { name: drush.command }

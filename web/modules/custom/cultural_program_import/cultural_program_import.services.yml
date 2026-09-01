@@ -1,0 +1,55 @@
+services:
+  logger.channel.cultural_program_import:
+    parent: logger.channel_base
+    arguments: ['cultural_program_import']
+
+  cultural_program_import.synchronizer:
+    class: Drupal\cultural_program_import\ProgramSynchronizer
+    arguments: ['@entity_type.manager', '@current_user']
+
+  cultural_program_import.source_image_resolver:
+    class: Drupal\cultural_program_import\SourceImageResolver
+    arguments: ['@http_client']
+
+  cultural_program_import.image_synchronizer:
+    class: Drupal\cultural_program_import\ProgramImageSynchronizer
+    arguments:
+      - '@entity_type.manager'
+      - '@file.repository'
+      - '@file_system'
+      - '@cultural_program_import.source_image_resolver'
+
+  cultural_program_import.source.tribe_events:
+    class: Drupal\cultural_program_import\TribeEventsSource
+    arguments: ['@http_client']
+
+  cultural_program_import.source.partmozi:
+    class: Drupal\cultural_program_import\PartMoziSource
+    arguments: ['@http_client']
+
+  cultural_program_import.source.skanzen:
+    class: Drupal\cultural_program_import\SkanzenSource
+    arguments: ['@http_client']
+
+  cultural_program_import.source.library:
+    class: Drupal\cultural_program_import\LibrarySource
+    arguments: ['@http_client']
+
+  cultural_program_import.source_registry:
+    class: Drupal\cultural_program_import\ProgramSourceRegistry
+    arguments:
+      - '@cultural_program_import.source.tribe_events'
+      - '@cultural_program_import.source.partmozi'
+      - '@cultural_program_import.source.skanzen'
+      - '@cultural_program_import.source.library'
+
+  Drupal\cultural_program_import\ProgramSourceRegistryInterface:
+    alias: cultural_program_import.source_registry
+
+  cultural_program_import.importer:
+    class: Drupal\cultural_program_import\CulturalProgramImporter
+    arguments:
+      - '@cultural_program_import.synchronizer'
+      - '@cultural_program_import.source_registry'
+      - '@lock'
+      - '@logger.channel.cultural_program_import'

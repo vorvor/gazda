@@ -1,0 +1,30 @@
+{
+  "events": [
+    {
+      "id": 18436,
+      "status": "publish",
+      "modified_utc": "2026-08-31 06:51:15",
+      "url": "https://programok.szentendre.hu/esemeny/teszt-program/",
+      "title": "Teszt &amp; családi program",
+      "description": "<p>Első sor.<br>Második sor.</p>",
+      "all_day": false,
+      "utc_start_date": "2026-09-01 16:00:00",
+      "utc_end_date": "2026-09-01 17:30:00",
+      "cost": "2500 Ft",
+      "website": "https://tickets.example.com/18436",
+      "categories": [
+        {"name": "Gyerekprogramok"},
+        {"name": "Koncert"}
+      ],
+      "venue": {
+        "venue": "Dunaparti Művelődési Ház",
+        "address": "Dunakorzó 11/A",
+        "city": "Szentendre",
+        "zip": "2000",
+        "website": "https://example.com/dmh"
+      }
+    }
+  ],
+  "total": 1,
+  "total_pages": 1
+}
