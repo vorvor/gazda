@@ -1,5 +1,5 @@
 {
-    "_hash": "6fe64034d69f03a7c842d6ccf9d150c805263b7860f1ac778d689e13442b0c99",
+    "_hash": "f7e935d6d209ef95e7e848d0aa752fddb3704e8f0c10ac0149b1bd51aed0a5c0",
     "patches": {
         "drupal/core": [
             {
@@ -8,6 +8,18 @@
                 "url": "https://www.drupal.org/files/issues/2023-12-29/2815881-172.patch",
                 "sha256": "ff20b94456b8641489a069ec1530ff1924a210955503a299383776cfd1e20800",
                 "depth": 2,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/media_export_files": [
+            {
+                "package": "drupal/media_export_files",
+                "description": "Use the bundled PclZip library from Composer's contrib install path",
+                "url": "patches/media-export-files-portable-pclzip-path.patch",
+                "sha256": "67d3d9027d58ec5ef077a957116744bb83b5fc4a80e04f8a9c0edab7a101b1eb",
+                "depth": 1,
                 "extra": {
                     "provenance": "root"
                 }

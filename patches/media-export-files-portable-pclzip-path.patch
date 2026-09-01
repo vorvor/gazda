@@ -1,0 +1,13 @@
+--- a/src/Form/MediaExportFilesForm.php
++++ b/src/Form/MediaExportFilesForm.php
+@@ -7,8 +7,8 @@ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\file\Entity\File;
+ use Symfony\Component\HttpFoundation\StreamedResponse;
+ 
+-// Include the PclZip library
+-require_once DRUPAL_ROOT . '/modules/media_export_files/vendor/pclzip/pclzip.lib.php';
++// Load the library bundled with this module, regardless of installer path.
++require_once dirname(__DIR__, 2) . '/vendor/pclzip/pclzip.lib.php';
+ 
+ /**
+  * Media library export form.

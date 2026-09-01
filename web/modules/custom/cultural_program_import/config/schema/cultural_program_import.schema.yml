@@ -1,0 +1,5 @@
+# Schema for Cultural Program Import configuration.
+
+views.exposed_form.cultural_program_date:
+  type: views_exposed_form
+  label: 'Cultural program date filters'

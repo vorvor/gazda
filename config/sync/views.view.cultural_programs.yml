@@ -137,7 +137,7 @@ display:
             offset_label: Offset
           quantity: 9
       exposed_form:
-        type: basic
+        type: cultural_program_date
         options:
           submit_button: Szűrés
           reset_button: true
