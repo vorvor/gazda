@@ -5,7 +5,6 @@ namespace Drupal\shop_google_reviews;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Cache\CacheTagsInvalidatorInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Site\Settings;
 use Drupal\Core\State\StateInterface;
 use Drupal\node\NodeInterface;
 use GuzzleHttp\ClientInterface;
@@ -16,7 +15,7 @@ use RuntimeException;
 /**
  * Fetches and stores shop ratings from Google Places.
  */
-final class GooglePlacesRatingClient {
+final class GooglePlacesRatingClient implements RatingRefresherInterface {
 
   public const API_KEY_STATE_KEY = 'shop_google_reviews.api_key';
 
@@ -164,15 +163,6 @@ final class GooglePlacesRatingClient {
   }
 
   private function getApiKey(): string {
-    $environment_key = getenv('GOOGLE_PLACES_API_KEY');
-    $external_key = trim((string) Settings::get(
-      'shop_google_reviews_api_key',
-      $environment_key === FALSE ? '' : $environment_key,
-    ));
-    if ($external_key !== '') {
-      return $external_key;
-    }
-
     return trim((string) $this->state->get(self::API_KEY_STATE_KEY, ''));
   }
 

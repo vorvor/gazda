@@ -5,9 +5,9 @@ namespace Drupal\shop_google_reviews\Form;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Site\Settings;
 use Drupal\Core\State\StateInterface;
 use Drupal\shop_google_reviews\GooglePlacesRatingClient;
+use Drupal\shop_google_reviews\RatingRefresherInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -20,6 +20,7 @@ final class ApiKeySettingsForm extends FormBase implements ContainerInjectionInt
    */
   public function __construct(
     protected StateInterface $state,
+    protected RatingRefresherInterface $ratingRefresher,
   ) {}
 
   /**
@@ -28,6 +29,7 @@ final class ApiKeySettingsForm extends FormBase implements ContainerInjectionInt
   public static function create(ContainerInterface $container): static {
     return new static(
       $container->get('state'),
+      $container->get('shop_google_reviews.rating_client'),
     );
   }
 
@@ -42,14 +44,11 @@ final class ApiKeySettingsForm extends FormBase implements ContainerInjectionInt
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
-    $has_stored_key = trim((string) $this->state->get(GooglePlacesRatingClient::API_KEY_STATE_KEY, '')) !== '';
-    $has_external_key = $this->hasExternalApiKey();
+    $stored_key = trim((string) $this->state->get(GooglePlacesRatingClient::API_KEY_STATE_KEY, ''));
+    $has_stored_key = $stored_key !== '';
 
-    if ($has_external_key) {
-      $status = $this->t('Az API-kulcs a settings.php fájlban vagy a GOOGLE_PLACES_API_KEY környezeti változóban van beállítva. Ez elsőbbséget élvez az itt mentett kulccsal szemben.');
-    }
-    elseif ($has_stored_key) {
-      $status = $this->t('A Drupalban van mentett API-kulcs. Maga a kulcs biztonsági okból nem jelenik meg.');
+    if ($has_stored_key) {
+      $status = $this->t('A Google Places API-kulcs be van állítva.');
     }
     else {
       $status = $this->t('Nincs beállítva Google Places API-kulcs.');
@@ -61,20 +60,19 @@ final class ApiKeySettingsForm extends FormBase implements ContainerInjectionInt
       '#markup' => $status,
     ];
     $form['api_key'] = [
-      '#type' => 'password',
+      '#type' => 'textfield',
       '#title' => $this->t('Google Places API-kulcs'),
-      '#default_value' => '',
+      '#default_value' => $stored_key,
       '#maxlength' => 512,
-      '#description' => $this->t('Új kulcs mentéséhez add meg az értéket. Hagyd üresen a jelenleg mentett kulcs megtartásához. Kiszolgálóra korlátozott, Places API (New) szolgáltatáshoz engedélyezett kulcsot használj.'),
+      '#description' => $this->t('Kiszolgálóra korlátozott, Places API (New) szolgáltatáshoz engedélyezett kulcsot használj.'),
       '#attributes' => [
-        'autocomplete' => 'new-password',
+        'autocomplete' => 'off',
       ],
     ];
     if ($has_stored_key) {
       $form['clear_api_key'] = [
         '#type' => 'checkbox',
         '#title' => $this->t('A Drupalban mentett API-kulcs eltávolítása'),
-        '#description' => $this->t('Ez nem távolítja el a settings.php fájlban vagy a kiszolgáló környezetében beállított kulcsot.'),
       ];
     }
     else {
@@ -108,21 +106,32 @@ final class ApiKeySettingsForm extends FormBase implements ContainerInjectionInt
       $this->messenger()->addStatus($this->t('A mentett API-kulcs nem változott.'));
       return;
     }
+    $stored_key = trim((string) $this->state->get(GooglePlacesRatingClient::API_KEY_STATE_KEY, ''));
+    if ($api_key === $stored_key) {
+      $this->messenger()->addStatus($this->t('A mentett API-kulcs nem változott.'));
+      return;
+    }
 
     $this->state->set(GooglePlacesRatingClient::API_KEY_STATE_KEY, $api_key);
-    $this->messenger()->addStatus($this->t('A Google Places API-kulcs mentve.'));
-  }
+    try {
+      $counts = $this->ratingRefresher->refreshAll(TRUE);
+    }
+    catch (\Throwable) {
+      $this->messenger()->addWarning($this->t('Az API-kulcs mentve, de az értékelések frissítése nem indult el. A következő cron futás újra megpróbálja.'));
+      return;
+    }
 
-  /**
-   * Returns whether an environment-specific key overrides the admin setting.
-   */
-  private function hasExternalApiKey(): bool {
-    $environment_key = getenv('GOOGLE_PLACES_API_KEY');
+    if ($counts['failed'] > 0) {
+      $this->messenger()->addWarning($this->t('Az API-kulcs mentve. @updated üzlet értékelése frissült, @failed frissítés sikertelen volt.', [
+        '@updated' => $counts['updated'],
+        '@failed' => $counts['failed'],
+      ]));
+      return;
+    }
 
-    return trim((string) Settings::get(
-      'shop_google_reviews_api_key',
-      $environment_key === FALSE ? '' : $environment_key,
-    )) !== '';
+    $this->messenger()->addStatus($this->t('A Google Places API-kulcs mentve, @updated üzlet értékelése frissítve.', [
+      '@updated' => $counts['updated'],
+    ]));
   }
 
 }

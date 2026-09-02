@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Drupal\Core\Form\FormState;
 use Drupal\shop_google_reviews\Form\ApiKeySettingsForm;
 use Drupal\shop_google_reviews\GooglePlacesRatingClient;
+use Drupal\shop_google_reviews\RatingRefresherInterface;
 
 /**
  * Fails the integration test when a condition is not met.
@@ -13,6 +14,33 @@ function shop_google_reviews_settings_assert(bool $condition, string $message): 
   if (!$condition) {
     throw new RuntimeException($message);
   }
+}
+
+/**
+ * Records settings-form refresh requests without calling Google.
+ */
+final class ShopGoogleReviewsTestRefresher implements RatingRefresherInterface {
+
+  public int $calls = 0;
+
+  public bool $forced = FALSE;
+
+  public bool $throw = FALSE;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function refreshAll(bool $force = FALSE): array {
+    if ($this->throw) {
+      throw new RuntimeException('Simulated refresh startup failure.');
+    }
+
+    $this->calls++;
+    $this->forced = $force;
+
+    return ['updated' => 4, 'skipped' => 0, 'failed' => 0];
+  }
+
 }
 
 $route = \Drupal::service('router.route_provider')
@@ -37,15 +65,16 @@ $previous_key = $state->get($state_key);
 
 try {
   $state->delete($state_key);
-  $form_object = ApiKeySettingsForm::create(\Drupal::getContainer());
+  $refresher = new ShopGoogleReviewsTestRefresher();
+  $form_object = new ApiKeySettingsForm($state, $refresher);
   $form = $form_object->buildForm([], new FormState());
   shop_google_reviews_settings_assert(
-    ($form['api_key']['#type'] ?? '') === 'password',
-    'The API key input must be a password field.',
+    ($form['api_key']['#type'] ?? '') === 'textfield',
+    'The API key input must be a text field.',
   );
   shop_google_reviews_settings_assert(
     ($form['api_key']['#default_value'] ?? NULL) === '',
-    'The API key must never be exposed as a form default value.',
+    'The API key field must be empty when no key is stored.',
   );
 
   $save_state = (new FormState())
@@ -56,6 +85,24 @@ try {
     $state->get($state_key) === 'admin-test-key',
     'The submitted API key was not stored.',
   );
+  shop_google_reviews_settings_assert(
+    $refresher->calls === 1 && $refresher->forced,
+    'Saving the API key did not force an immediate rating refresh.',
+  );
+  $saved_form = $form_object->buildForm([], new FormState());
+  shop_google_reviews_settings_assert(
+    ($saved_form['api_key']['#default_value'] ?? NULL) === 'admin-test-key',
+    'The saved API key is not shown in the text field.',
+  );
+
+  $unchanged_state = (new FormState())
+    ->setValue('api_key', 'admin-test-key')
+    ->setValue('clear_api_key', FALSE);
+  $form_object->submitForm($saved_form, $unchanged_state);
+  shop_google_reviews_settings_assert(
+    $refresher->calls === 1,
+    'Resaving an unchanged API key must not trigger a billed refresh.',
+  );
 
   $blank_state = (new FormState())
     ->setValue('api_key', '')
@@ -65,6 +112,10 @@ try {
     $state->get($state_key) === 'admin-test-key',
     'A blank submission must retain the stored API key.',
   );
+  shop_google_reviews_settings_assert(
+    $refresher->calls === 1,
+    'A blank submission must not trigger another rating refresh.',
+  );
 
   $clear_state = (new FormState())
     ->setValue('api_key', '')
@@ -73,6 +124,22 @@ try {
   shop_google_reviews_settings_assert(
     $state->get($state_key) === NULL,
     'The clear option did not remove the stored API key.',
+  );
+  shop_google_reviews_settings_assert(
+    $refresher->calls === 1,
+    'Removing the API key must not trigger another rating refresh.',
+  );
+
+  $failing_refresher = new ShopGoogleReviewsTestRefresher();
+  $failing_refresher->throw = TRUE;
+  $failing_form = new ApiKeySettingsForm($state, $failing_refresher);
+  $failure_state = (new FormState())
+    ->setValue('api_key', 'saved-despite-refresh-failure')
+    ->setValue('clear_api_key', FALSE);
+  $failing_form->submitForm($form, $failure_state);
+  shop_google_reviews_settings_assert(
+    $state->get($state_key) === 'saved-despite-refresh-failure',
+    'A refresh startup failure prevented the API key from being saved.',
   );
 }
 finally {

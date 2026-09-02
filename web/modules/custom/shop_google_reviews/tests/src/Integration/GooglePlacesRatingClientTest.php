@@ -60,7 +60,7 @@ $api_key_state_key = GooglePlacesRatingClient::API_KEY_STATE_KEY;
 $previous_stored_key = $state->get($api_key_state_key);
 
 try {
-  putenv('GOOGLE_PLACES_API_KEY');
+  putenv('GOOGLE_PLACES_API_KEY=environment-key-must-be-ignored');
   $state->set($api_key_state_key, 'test-api-key');
   $client = new GooglePlacesRatingClient(
     $http_client,
@@ -91,7 +91,7 @@ try {
   );
   shop_google_reviews_test_assert(
     $request->getHeaderLine('X-Goog-Api-Key') === 'test-api-key',
-    'The server-side API key was not used.',
+    'The API key saved on the admin page was not used exclusively.',
   );
   shop_google_reviews_test_assert($result['place_id'] === $place_id, 'The Place ID was not stored.');
   shop_google_reviews_test_assert($result['display_name'] === 'Gazdabolt', 'The display name was not normalized.');
