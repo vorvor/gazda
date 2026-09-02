@@ -1,0 +1,7 @@
+services:
+  shop_google_reviews.commands:
+    class: Drupal\shop_google_reviews\Commands\ShopGoogleReviewsCommands
+    arguments:
+      - '@shop_google_reviews.rating_client'
+    tags:
+      - { name: drush.command }

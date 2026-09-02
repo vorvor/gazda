@@ -1,0 +1,15 @@
+services:
+  logger.channel.shop_google_reviews:
+    parent: logger.channel_base
+    arguments: ['shop_google_reviews']
+
+  shop_google_reviews.rating_client:
+    class: Drupal\shop_google_reviews\GooglePlacesRatingClient
+    arguments:
+      - '@http_client'
+      - '@state'
+      - '@datetime.time'
+      - '@cache_tags.invalidator'
+      - '@entity_type.manager'
+      - '@logger.channel.shop_google_reviews'
+    public: true

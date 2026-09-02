@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Hooks for the Shop Google Reviews module.
+ */
+
+use Drupal\Core\Cache\Cache;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_cron().
+ */
+function shop_google_reviews_cron(): void {
+  \Drupal::service('shop_google_reviews.rating_client')->refreshAll();
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function shop_google_reviews_preprocess_node(array &$variables): void {
+  $node = $variables['node'] ?? NULL;
+  if (!$node instanceof NodeInterface || $node->bundle() !== 'shop' || $variables['view_mode'] !== 'full') {
+    return;
+  }
+
+  /** @var \Drupal\shop_google_reviews\GooglePlacesRatingClient $rating_client */
+  $rating_client = \Drupal::service('shop_google_reviews.rating_client');
+  $rating = $rating_client->get((int) $node->id());
+  $variables['google_review_rating'] = $rating;
+  $variables['content']['#cache']['tags'] = Cache::mergeTags(
+    $variables['content']['#cache']['tags'] ?? [],
+    [$rating_client->cacheTag((int) $node->id())],
+  );
+}

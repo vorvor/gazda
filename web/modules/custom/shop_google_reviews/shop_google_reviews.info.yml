@@ -1,0 +1,7 @@
+name: Shop Google Reviews
+type: module
+description: Fetches and displays Google Places ratings for shop pages.
+package: Custom
+core_version_requirement: ^10
+dependencies:
+  - drupal:node
