@@ -18,6 +18,8 @@ use RuntimeException;
  */
 final class GooglePlacesRatingClient {
 
+  public const API_KEY_STATE_KEY = 'shop_google_reviews.api_key';
+
   private const REFRESH_INTERVAL = 86400;
 
   private const ENDPOINT = 'https://places.googleapis.com/v1/places/';
@@ -163,11 +165,15 @@ final class GooglePlacesRatingClient {
 
   private function getApiKey(): string {
     $environment_key = getenv('GOOGLE_PLACES_API_KEY');
-
-    return trim((string) Settings::get(
+    $external_key = trim((string) Settings::get(
       'shop_google_reviews_api_key',
       $environment_key === FALSE ? '' : $environment_key,
     ));
+    if ($external_key !== '') {
+      return $external_key;
+    }
+
+    return trim((string) $this->state->get(self::API_KEY_STATE_KEY, ''));
   }
 
   private function isGoogleMapsUri(string $uri): bool {

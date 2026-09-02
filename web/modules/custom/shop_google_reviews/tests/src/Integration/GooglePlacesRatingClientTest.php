@@ -56,9 +56,12 @@ $stack = HandlerStack::create($mock);
 $stack->push(Middleware::history($history));
 $http_client = new Client(['handler' => $stack]);
 $previous_key = getenv('GOOGLE_PLACES_API_KEY');
-putenv('GOOGLE_PLACES_API_KEY=test-api-key');
+$api_key_state_key = GooglePlacesRatingClient::API_KEY_STATE_KEY;
+$previous_stored_key = $state->get($api_key_state_key);
 
 try {
+  putenv('GOOGLE_PLACES_API_KEY');
+  $state->set($api_key_state_key, 'test-api-key');
   $client = new GooglePlacesRatingClient(
     $http_client,
     $state,
@@ -99,6 +102,12 @@ try {
 finally {
   $state->delete('shop_google_reviews.rating.' . $node_id);
   $state->delete('shop_google_reviews.last_attempt.' . $node_id);
+  if ($previous_stored_key === NULL) {
+    $state->delete($api_key_state_key);
+  }
+  else {
+    $state->set($api_key_state_key, $previous_stored_key);
+  }
   \Drupal::service('cache_tags.invalidator')->invalidateTags(['shop_google_reviews:' . $node_id]);
   if ($previous_key === FALSE) {
     putenv('GOOGLE_PLACES_API_KEY');

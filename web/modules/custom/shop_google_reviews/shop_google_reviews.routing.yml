@@ -1,0 +1,7 @@
+shop_google_reviews.settings:
+  path: '/admin/config/services/shop-google-reviews'
+  defaults:
+    _form: '\Drupal\shop_google_reviews\Form\ApiKeySettingsForm'
+    _title: 'Google-értékelések beállításai'
+  requirements:
+    _permission: 'administer site configuration'

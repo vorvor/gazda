@@ -1,0 +1,6 @@
+shop_google_reviews.settings:
+  title: 'Google-értékelések'
+  description: 'Google Places API-kulcs beállítása az üzletek értékeléseihez.'
+  route_name: shop_google_reviews.settings
+  parent: system.admin_config_services
+  weight: 10
