@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.shop.field_description
     - field.field.node.shop.field_email
     - field.field.node.shop.field_featured_shop
+    - field.field.node.shop.field_google_place_id
     - field.field.node.shop.field_images
     - field.field.node.shop.field_location
     - field.field.node.shop.field_logo
@@ -41,6 +42,7 @@ hidden:
   field_description: true
   field_email: true
   field_featured_shop: true
+  field_google_place_id: true
   field_images: true
   field_location: true
   field_logo: true

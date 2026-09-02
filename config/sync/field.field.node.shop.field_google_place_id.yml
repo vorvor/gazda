@@ -1,0 +1,19 @@
+uuid: ef4e951e-c8c7-4ec6-8420-aced4e65a19f
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_google_place_id
+    - node.type.shop
+id: node.shop.field_google_place_id
+field_name: field_google_place_id
+entity_type: node
+bundle: shop
+label: 'Google Place ID'
+description: 'A Google Térkép helyazonosítója (például: ChIJ…).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

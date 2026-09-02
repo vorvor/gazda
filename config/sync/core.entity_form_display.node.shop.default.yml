@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.shop.field_description
     - field.field.node.shop.field_email
     - field.field.node.shop.field_featured_shop
+    - field.field.node.shop.field_google_place_id
     - field.field.node.shop.field_images
     - field.field.node.shop.field_location
     - field.field.node.shop.field_logo
@@ -98,6 +99,14 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_google_place_id:
+    type: string_textfield
+    weight: 136
+    region: content
+    settings:
+      size: 60
+      placeholder: ChIJ…
     third_party_settings: {  }
   field_images:
     type: image_image
@@ -196,4 +205,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  url_redirects: true

@@ -90,6 +90,7 @@ module:
   search: 0
   seo_analyzer: 0
   seo_audit: 0
+  shop_google_reviews: 0
   shortcut: 0
   slick: 0
   slick_views: 0

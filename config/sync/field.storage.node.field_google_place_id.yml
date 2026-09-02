@@ -1,0 +1,21 @@
+uuid: 1b33224e-37eb-488f-98d6-35f2dad74df4
+langcode: hu
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_google_place_id
+field_name: field_google_place_id
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: true
+  is_ascii: true
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
