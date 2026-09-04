@@ -26,6 +26,10 @@
     }
   }
 
+  .view-products .views-infinite-scroll-content-wrapper {
+    display: block;
+  }
+
   .product-full, .shop-full {
     display: block;
 

@@ -32,12 +32,16 @@ final class CulturalProgramImportCommands extends DrushCommands {
    * @command cultural-program:import
    * @aliases cpi
    * @option dry-run Report changes without saving content.
+   * @option create-only Create new normalized titles without updating existing programs.
    * @usage cultural-program:import
    * @usage cultural-program:import partmozi
    * @usage cultural-program:import all --dry-run
    */
-  public function import(string $source = 'all', array $options = ['dry-run' => FALSE]): int {
-    $result = $this->importer->import($source, (bool) $options['dry-run']);
+  public function import(string $source = 'all', array $options = [
+    'dry-run' => FALSE,
+    'create-only' => FALSE,
+  ]): int {
+    $result = $this->importer->import($source, (bool) $options['dry-run'], NULL, (bool) $options['create-only']);
     foreach ($result['sources'] as $key => $count) {
       $this->output()->writeln(sprintf('%s: %d', $key, $count));
     }

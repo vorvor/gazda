@@ -90,6 +90,64 @@ try {
   cultural_sync_assert($preserved->get('field_program_end')->value === '2026-09-05T18:00:00', 'An empty imported end date must not clear the existing end date.');
   cultural_sync_assert($preserved->get('field_program_ticket')->uri === 'https://example.com/tickets/100', 'An empty imported ticket URL must not clear the existing ticket URL.');
 
+  $createOnlyRecord = new ProgramRecord(
+    sourceName: 'Másik kulturális forrás',
+    externalId: 'different-event-id',
+    priority: 100,
+    title: 'TESZT, kulturális program!',
+    description: 'Ezt a meglévő programot nem szabad felülírni.',
+    start: $record->start->modify('+1 day'),
+    end: NULL,
+    allDay: TRUE,
+    placeName: 'Create-only új helyszín',
+    placeAddress: '2000 Szentendre, Másik utca 2.',
+    placeWebsite: '',
+    sourceUrl: 'https://example.com/events/different',
+    ticketUrl: '',
+    price: '',
+    categories: [],
+    family: FALSE,
+    status: 'scheduled',
+    sourceUpdated: NULL,
+  );
+  $createOnly = $synchronizer->synchronize([$createOnlyRecord], FALSE, $now, TRUE);
+  cultural_sync_assert($createOnly === ['created' => 0, 'updated' => 0, 'unchanged' => 1, 'places_created' => 0, 'places_updated' => 0], 'Create-only mode must skip an existing normalized title without touching its place.');
+  $storage->resetCache([$program->id()]);
+  $createOnlyPreserved = $storage->load($program->id());
+  cultural_sync_assert($createOnlyPreserved->label() === 'Teszt kulturális program', 'Create-only mode must preserve the existing title.');
+  cultural_sync_assert($createOnlyPreserved->get('field_program_description')->value === 'Eredeti leírás.', 'Create-only mode must preserve existing program fields.');
+  $createOnlyPlaceIds = $storage->getQuery()
+    ->accessCheck(FALSE)
+    ->condition('type', 'cultural_place')
+    ->condition('title', 'Create-only új helyszín')
+    ->execute();
+  cultural_sync_assert($createOnlyPlaceIds === [], 'Create-only mode must not create a place for a skipped existing program.');
+
+  $renamedCreateOnlyRecord = new ProgramRecord(
+    sourceName: $record->sourceName,
+    externalId: $record->externalId,
+    priority: $record->priority,
+    title: 'Forrásban átnevezett meglévő program',
+    description: 'Ezt sem szabad felülírni.',
+    start: $record->start,
+    end: NULL,
+    allDay: FALSE,
+    placeName: 'Átnevezett program új helyszíne',
+    placeAddress: '',
+    placeWebsite: '',
+    sourceUrl: $record->sourceUrl,
+    ticketUrl: '',
+    price: '',
+    categories: [],
+    family: FALSE,
+    status: 'scheduled',
+    sourceUpdated: NULL,
+  );
+  $renamedCreateOnly = $synchronizer->synchronize([$renamedCreateOnlyRecord], FALSE, $now, TRUE);
+  cultural_sync_assert($renamedCreateOnly === ['created' => 0, 'updated' => 0, 'unchanged' => 1, 'places_created' => 0, 'places_updated' => 0], 'Create-only mode must skip an existing source identity even when its upstream title changed.');
+  $storage->resetCache([$program->id()]);
+  cultural_sync_assert($storage->load($program->id())->label() === 'Teszt kulturális program', 'Create-only mode must not rename an existing source identity.');
+
   $nextDay = $now->modify('+1 day');
   $seenAgain = $synchronizer->synchronize([$emptyUpdate], FALSE, $nextDay);
   cultural_sync_assert($seenAgain['updated'] === 0 && $seenAgain['unchanged'] === 1, 'A last-seen refresh must not be reported as a material program update.');

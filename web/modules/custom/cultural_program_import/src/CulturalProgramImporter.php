@@ -35,11 +35,13 @@ final class CulturalProgramImporter {
    *   Whether entity writes should be skipped.
    * @param \DateTimeImmutable|null $from
    *   Earliest relevant event date.
+   * @param bool $createOnly
+   *   Whether existing programs must remain untouched.
    *
    * @return array
    *   Per-source extraction, error, and synchronization counts.
    */
-  public function import(string $source = 'all', bool $dryRun = FALSE, ?\DateTimeImmutable $from = NULL): array {
+  public function import(string $source = 'all', bool $dryRun = FALSE, ?\DateTimeImmutable $from = NULL, bool $createOnly = FALSE): array {
     $available = $this->sourceRegistry->keys();
     $selected = $source === 'all' ? $available : [$source];
     foreach ($selected as $key) {
@@ -70,7 +72,7 @@ final class CulturalProgramImporter {
         }
       }
 
-      $result = $this->synchronizer->synchronize($records, $dryRun);
+      $result = $this->synchronizer->synchronize($records, $dryRun, NULL, $createOnly);
       $result['fetched'] = count($records);
       $result['sources'] = $sourceCounts;
       $result['errors'] = $errors;

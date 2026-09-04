@@ -32,11 +32,13 @@ final class ProgramSynchronizer {
    *   Whether to report without saving entities.
    * @param \DateTimeImmutable|null $now
    *   Import time, primarily injectable for deterministic tests.
+   * @param bool $createOnly
+   *   Whether existing normalized program titles must remain untouched.
    *
    * @return array{created: int, updated: int, unchanged: int, places_created: int, places_updated: int}
    *   Synchronization counts.
    */
-  public function synchronize(array $records, bool $dryRun = FALSE, ?\DateTimeImmutable $now = NULL): array {
+  public function synchronize(array $records, bool $dryRun = FALSE, ?\DateTimeImmutable $now = NULL, bool $createOnly = FALSE): array {
     $result = [
       'created' => 0,
       'updated' => 0,
@@ -46,9 +48,16 @@ final class ProgramSynchronizer {
     ];
     $now ??= new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
     usort($records, static fn(ProgramRecord $left, ProgramRecord $right): int => [$left->priority, $left->sourceName, $left->externalId] <=> [$right->priority, $right->sourceName, $right->externalId]);
+    [$existingTitles, $existingSourceIds] = $createOnly ? $this->existingProgramKeys() : [[], []];
 
     foreach ($records as $record) {
       if (!$record instanceof ProgramRecord) {
+        continue;
+      }
+      $normalizedTitle = $this->normalize($record->title);
+      $sourceId = $record->sourceName . "\0" . $record->externalId;
+      if ($createOnly && (isset($existingTitles[$normalizedTitle]) || isset($existingSourceIds[$sourceId]))) {
+        $result['unchanged']++;
         continue;
       }
       [$place, $placeState] = $this->upsertPlace($record, $dryRun);
@@ -61,9 +70,40 @@ final class ProgramSynchronizer {
 
       $state = $this->upsertProgram($record, $place, $now, $dryRun);
       $result[$state]++;
+      if ($createOnly && $state === 'created') {
+        $existingTitles[$normalizedTitle] = TRUE;
+        $existingSourceIds[$sourceId] = TRUE;
+      }
     }
 
     return $result;
+  }
+
+  /**
+   * Returns title and source identity keys for existing cultural programs.
+   *
+   * @return array{0: array<string, bool>, 1: array<string, bool>}
+   *   Lookup maps keyed by normalized title and source/external ID.
+   */
+  private function existingProgramKeys(): array {
+    $storage = $this->entityTypeManager->getStorage('node');
+    $ids = $storage->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('type', 'cultural_program')
+      ->execute();
+    $titles = [];
+    $sourceIds = [];
+    foreach ($storage->loadMultiple($ids) as $program) {
+      if ($program instanceof NodeInterface) {
+        $titles[$this->normalize($program->label())] = TRUE;
+        $sourceName = (string) $program->get('field_source_name')->value;
+        $externalId = (string) $program->get('field_external_id')->value;
+        if ($sourceName !== '' && $externalId !== '') {
+          $sourceIds[$sourceName . "\0" . $externalId] = TRUE;
+        }
+      }
+    }
+    return [$titles, $sourceIds];
   }
 
   /**

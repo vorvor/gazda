@@ -404,6 +404,13 @@ header .layout-container {
   }
 }
 
+.view-products .views-infinite-scroll-content-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .view-popular {
   .view-content {
     padding-left: 25px;
