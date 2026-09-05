@@ -1,0 +1,23 @@
+uuid: 3a102111-f938-40e5-b88b-1c600a3557f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.service
+  module:
+    - node
+id: szolgaltatas
+label: service-alias
+type: 'canonical_entities:node'
+pattern: '/szolgaltatas/[node:field_shop:entity:title]/[node:title]'
+selection_criteria:
+  12e8ea62-d973-44cd-8f2c-a9c0e292a807:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      service: service
+selection_logic: and
+weight: -5
+relationships: {  }

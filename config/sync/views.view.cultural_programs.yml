@@ -13,7 +13,6 @@ dependencies:
     - cultural_program_import
     - datetime
     - entity_reference_exposed_filters
-    - link
     - node
     - user
 id: cultural_programs
@@ -300,6 +299,17 @@ display:
           required: false
       use_more: false
       use_more_always: false
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: '@total program.'
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -312,6 +322,7 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_program_end'
+        - 'config:field.storage.node.field_program_image'
         - 'config:field.storage.node.field_program_place'
         - 'config:field.storage.node.field_program_start'
   page_1:
@@ -342,5 +353,6 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_program_end'
+        - 'config:field.storage.node.field_program_image'
         - 'config:field.storage.node.field_program_place'
         - 'config:field.storage.node.field_program_start'
