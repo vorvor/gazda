@@ -552,6 +552,7 @@ header .layout-container {
   }
 
   .field--name-field-description,
+  .field--name-field-service-description,
   .field--name-field-address,
   .field--name-field-email,
   .field--name-field-phone {

@@ -25,7 +25,7 @@ function _gazda_clean_string($string) {
  * Implements hook_preprocess_node().
  */
 function gazda_preprocess_node(&$variables) {
-  if (in_array($variables['node']->bundle(), ['product', 'shop'], TRUE) && $variables['view_mode'] === 'full') {
+  if (in_array($variables['node']->bundle(), ['product', 'service', 'shop'], TRUE) && $variables['view_mode'] === 'full') {
     $variables['public_holiday_block'] = [];
     $variables['public_holiday_active'] = FALSE;
     if (\Drupal::moduleHandler()->moduleExists('public_holiday')) {
@@ -65,7 +65,7 @@ function gazda_preprocess_html(&$variables) {
     if ($node->bundle() === 'shop') {
       $shop_name = $node->label();
     }
-    elseif ($node->bundle() === 'product' && $node->hasField('field_shop') && !$node->get('field_shop')->isEmpty()) {
+    elseif (in_array($node->bundle(), ['product', 'service'], TRUE) && $node->hasField('field_shop') && !$node->get('field_shop')->isEmpty()) {
       $shop_node = $node->get('field_shop')->entity;
       if ($shop_node instanceof NodeInterface) {
         $shop_name = $shop_node->label();

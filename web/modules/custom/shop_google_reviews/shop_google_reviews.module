@@ -29,7 +29,7 @@ function shop_google_reviews_preprocess_node(array &$variables): void {
   if ($node->bundle() === 'shop') {
     $shop = $node;
   }
-  elseif ($node->bundle() === 'product' && $node->hasField('field_shop')) {
+  elseif (in_array($node->bundle(), ['product', 'service'], TRUE) && $node->hasField('field_shop')) {
     $shop = $node->get('field_shop')->entity;
   }
   if (!$shop instanceof NodeInterface || $shop->bundle() !== 'shop') {

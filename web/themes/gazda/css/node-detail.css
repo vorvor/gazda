@@ -737,8 +737,8 @@ body.path-node .view-services .clipboardjs-button {
   border-radius: 0 8px 8px 0;
 }
 
-/* Product detail pages inherit the same paper, card and action vocabulary. */
-body.page-node-type-product .product-full {
+/* Product and service detail pages share the same card and action vocabulary. */
+body:is(.page-node-type-product, .page-node-type-service) .product-full {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
   gap: clamp(24px, 4vw, 48px);
@@ -748,8 +748,8 @@ body.page-node-type-product .product-full {
   border-radius: 26px;
 }
 
-body.page-node-type-product .product-details,
-body.page-node-type-product .shop-details {
+body:is(.page-node-type-product, .page-node-type-service) .product-details,
+body:is(.page-node-type-product, .page-node-type-service) .shop-details {
   max-width: none;
   padding: clamp(22px, 3vw, 34px);
   background: #fff;
@@ -865,14 +865,14 @@ body.page-node-type-product .field--name-field-more-idea a:active {
   }
 }
 
-body.page-node-type-product h1,
-body.page-node-type-product .page-title {
+body:is(.page-node-type-product, .page-node-type-service) h1,
+body:is(.page-node-type-product, .page-node-type-service) .page-title {
   color: var(--detail-ink);
   font-family: "Fraunces", Georgia, serif;
   letter-spacing: -0.03em;
 }
 
-body.page-node-type-product .field--name-field-tags .field__item {
+body:is(.page-node-type-product, .page-node-type-service) .field--name-field-tags .field__item {
   color: var(--detail-forest);
   background: #486e16;
   border-radius: 100px;
@@ -935,7 +935,7 @@ body.page-node-type-product .field--name-field-tags .field__item {
   }
 
   .shop-detail-grid,
-  body.page-node-type-product .product-full {
+  body:is(.page-node-type-product, .page-node-type-service) .product-full {
     grid-template-columns: 1fr;
   }
 
@@ -985,7 +985,8 @@ body.page-node-type-product .field--name-field-tags .field__item {
 
 @media (prefers-reduced-motion: reduce) {
   body.page-node-type-shop *,
-  body.page-node-type-product * {
+  body.page-node-type-product *,
+  body.page-node-type-service * {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }

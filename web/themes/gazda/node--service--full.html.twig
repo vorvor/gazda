@@ -1,0 +1,24 @@
+<div class="product-full service-full">
+  <div class="product-details service-details">
+    {{ content|without('field_shop') }}
+  </div>
+  <div class="shop-details{% if public_holiday_active %} has-public-holiday{% endif %}">
+    {% set shop = node.field_shop.entity %}
+    {% if shop %}
+      <a class="shop-on-map" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/{{ shop.field_address.value }}">Térkép</a>
+    {% endif %}
+    {{ public_holiday_block }}
+    {{ content.field_shop }}
+    {% if google_review_rating %}
+      <a class="shop-google-rating" href="{{ google_review_rating.google_maps_uri }}" target="_blank" rel="noopener noreferrer" aria-label="{{ 'Google-értékelés: @rating az 5-ből, @count vélemény alapján'|t({'@rating': google_review_rating.rating|number_format(1, ','), '@count': google_review_rating.review_count}) }}">
+        <span class="shop-google-rating__source"><img src="/{{ base_path ~ directory }}/images/google-logo.png" alt="Google" width="74" height="24" /></span>
+        <span class="shop-google-rating__score">{{ google_review_rating.rating|number_format(1, ',') }}</span>
+        <span class="shop-google-rating__stars" aria-hidden="true">★★★★★</span>
+        <span class="shop-google-rating__count">({{ google_review_rating.review_count }} {{ 'vélemény'|t }})</span>
+      </a>
+    {% endif %}
+  </div>
+</div>
+<div class="disclaimer">
+  <p><em>A szolgáltatásokkal kapcsolatos információk tájékoztató jellegűek, és időközben változhatnak. Igénybevétel előtt az aktuális feltételekről, árakról és részletekről mindig érdeklődj közvetlenül az adott szolgáltatónál.</em></p>
+</div>
