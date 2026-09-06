@@ -5,6 +5,7 @@ dependencies:
   config:
     - node.type.service
   module:
+    - language
     - node
 id: szolgaltatas
 label: service-alias
@@ -18,6 +19,15 @@ selection_criteria:
       node: node
     bundles:
       service: service
+  5ec60ed4-4c1c-44ae-b625-42fbb5517dd1:
+    id: language
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      hu: hu
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

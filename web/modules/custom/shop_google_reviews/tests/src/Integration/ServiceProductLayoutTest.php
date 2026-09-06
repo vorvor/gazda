@@ -55,6 +55,14 @@ shop_google_reviews_service_assert(
   'The service is missing the shop details panel.',
 );
 shop_google_reviews_service_assert(
+  $xpath->query('//div[contains(concat(" ", normalize-space(@class), " "), " shop-details ")][contains(concat(" ", normalize-space(@class), " "), " shop-detail-card--contact ")]')->length === 1,
+  'The service shop panel must use the shop contact-card styling.',
+);
+shop_google_reviews_service_assert(
+  $xpath->query('//div[contains(concat(" ", normalize-space(@class), " "), " shop-details ")]//div[contains(concat(" ", normalize-space(@class), " "), " shop-phone ")]/a[starts-with(@href, "tel:")]')->length === count($shop->get('field_phone')),
+  'The service shop panel must render every referenced shop phone as a styled call action.',
+);
+shop_google_reviews_service_assert(
   $xpath->query('//div[contains(concat(" ", normalize-space(@class), " "), " shop-details ")]//a[contains(concat(" ", normalize-space(@class), " "), " shop-google-rating ")]')->length === 1,
   'The service shop panel does not contain its Google rating.',
 );

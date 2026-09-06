@@ -47,6 +47,22 @@ $document->loadHTML('<?xml encoding="utf-8" ?>' . $html);
 libxml_clear_errors();
 libxml_use_internal_errors($previous_errors);
 $xpath = new DOMXPath($document);
+$contact_panels = $xpath->query(
+  '//div[contains(concat(" ", normalize-space(@class), " "), " shop-details ")]'
+  . '[contains(concat(" ", normalize-space(@class), " "), " shop-detail-card--contact ")]',
+);
+shop_google_reviews_product_assert(
+  $contact_panels !== FALSE && $contact_panels->length === 1,
+  'The product shop-details section must use the shop contact-card styling.',
+);
+$phone_links = $xpath->query(
+  '//div[contains(concat(" ", normalize-space(@class), " "), " shop-details ")]'
+  . '//div[contains(concat(" ", normalize-space(@class), " "), " shop-phone ")]/a[starts-with(@href, "tel:")]',
+);
+shop_google_reviews_product_assert(
+  $phone_links !== FALSE && $phone_links->length === count($shop->get('field_phone')),
+  'The product shop panel must render every referenced shop phone as a styled call action.',
+);
 $badges = $xpath->query(
   '//div[contains(concat(" ", normalize-space(@class), " "), " shop-details ")]'
   . '//a[contains(concat(" ", normalize-space(@class), " "), " shop-google-rating ")]',

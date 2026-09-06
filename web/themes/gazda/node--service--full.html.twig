@@ -2,13 +2,18 @@
   <div class="product-details service-details">
     {{ content|without('field_shop') }}
   </div>
-  <div class="shop-details{% if public_holiday_active %} has-public-holiday{% endif %}">
+  <div class="shop-details shop-detail-card shop-detail-card--contact{% if public_holiday_active %} has-public-holiday{% endif %}">
     {% set shop = node.field_shop.entity %}
-    {% if shop %}
-      <a class="shop-on-map" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/{{ shop.field_address.value }}">Térkép</a>
-    {% endif %}
     {{ public_holiday_block }}
     {{ content.field_shop }}
+    {% if shop %}
+      <a class="shop-on-map" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/{{ shop.field_address.value }}">{{ 'Megnyitás térképen'|t }}</a>
+      <div class="shop-phone">
+        {% for phone in shop.field_phone %}
+          <a href="tel:{{ phone.value|striptags|trim }}"><i class="fa-solid fa-phone" aria-hidden="true"></i> {{ phone.value }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
     {% if google_review_rating %}
       <a class="shop-google-rating" href="{{ google_review_rating.google_maps_uri }}" target="_blank" rel="noopener noreferrer" aria-label="{{ 'Google-értékelés: @rating az 5-ből, @count vélemény alapján'|t({'@rating': google_review_rating.rating|number_format(1, ','), '@count': google_review_rating.review_count}) }}">
         <span class="shop-google-rating__source"><img src="/{{ base_path ~ directory }}/images/google-logo.png" alt="Google" width="74" height="24" /></span>
