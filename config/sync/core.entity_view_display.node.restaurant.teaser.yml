@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.restaurant.field_address
+    - field.field.node.restaurant.field_daily_meal_menu_source
     - field.field.node.restaurant.field_data_source
     - field.field.node.restaurant.field_image
     - field.field.node.restaurant.field_meal
@@ -38,6 +39,7 @@ content:
 hidden:
   addtoany: true
   field_address: true
+  field_daily_meal_menu_source: true
   field_data_source: true
   field_meal: true
   field_web: true

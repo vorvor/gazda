@@ -340,7 +340,7 @@ display:
       menu:
         type: normal
         title: 'Kulturális programok'
-        weight: 0
+        weight: -47
         context: '0'
     cache_metadata:
       max-age: -1

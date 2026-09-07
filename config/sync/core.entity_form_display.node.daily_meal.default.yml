@@ -1,23 +1,19 @@
-uuid: 9c5a9449-45fe-43ea-940b-577354bb2c11
+uuid: 67161a29-58cb-4b50-afdd-643300bc4d6d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.restaurant.field_address
-    - field.field.node.restaurant.field_daily_meal_menu_source
-    - field.field.node.restaurant.field_data_source
-    - field.field.node.restaurant.field_image
-    - field.field.node.restaurant.field_meal
-    - field.field.node.restaurant.field_web
-    - image.style.thumbnail
-    - node.type.restaurant
+    - field.field.node.daily_meal.field_date
+    - field.field.node.daily_meal.field_description
+    - field.field.node.daily_meal.field_price
+    - field.field.node.daily_meal.field_restaurant
+    - node.type.daily_meal
   module:
-    - image
-    - link
+    - datetime
     - path
-id: node.restaurant.default
+id: node.daily_meal.default
 targetEntityType: node
-bundle: restaurant
+bundle: daily_meal
 mode: default
 content:
   created:
@@ -26,53 +22,36 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_address:
-    type: string_textarea
-    weight: 6
-    region: content
-    settings:
-      rows: 2
-      placeholder: ''
-    third_party_settings: {  }
-  field_daily_meal_menu_source:
-    type: string_textfield
-    weight: 123
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_data_source:
-    type: string_textarea
+  field_date:
+    type: datetime_default
     weight: 121
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_description:
+    type: string_textarea
+    weight: 123
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-  field_image:
-    type: image_image
-    weight: 1
+  field_price:
+    type: number
+    weight: 121
     region: content
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-  field_meal:
-    type: string_textfield
-    weight: 122
-    region: content
-    settings:
-      size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_web:
-    type: link_default
-    weight: 5
+  field_restaurant:
+    type: entity_reference_autocomplete
+    weight: 124
     region: content
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select

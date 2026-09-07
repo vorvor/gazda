@@ -97,7 +97,8 @@ body.path-meals .view-meals .form-item__label {
   text-transform: uppercase;
 }
 
-body.path-meals .view-meals input.form-text {
+body.path-meals .view-meals input.form-text,
+body.path-meals .view-meals input.form-date {
   width: 100%;
   max-width: none;
   min-height: 54px;
@@ -112,10 +113,18 @@ body.path-meals .view-meals input.form-text {
   font-size: 1rem;
 }
 
-body.path-meals .view-meals input.form-text:focus {
+body.path-meals .view-meals input.form-text:focus,
+body.path-meals .view-meals input.form-date:focus {
   border-color: var(--discovery-forest-bright, #236652);
   box-shadow: 0 0 0 3px rgba(35, 102, 82, 0.14);
   outline: 0;
+}
+
+body.path-daily-meal .view-daily-meal .views-exposed-form {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.45fr) minmax(280px, 1fr);
+  gap: 14px;
+  align-items: end;
 }
 
 body.path-meals .view-meals .view-content {
@@ -297,6 +306,10 @@ body.path-meals .view-meals input:focus-visible {
 
   body.path-meals .view-meals .view-filters {
     padding: 14px;
+  }
+
+  body.path-daily-meal .view-daily-meal .views-exposed-form {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   body.path-meals .view-meals .view-content {

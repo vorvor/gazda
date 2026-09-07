@@ -1,4 +1,4 @@
-uuid: 1a0331b2-71de-4422-8b58-77f9c850297b
+uuid: 72e960f5-9354-4734-bb07-863b7a94f3d8
 langcode: hu
 status: true
 dependencies:
@@ -7,15 +7,16 @@ dependencies:
     - field.storage.node.field_price
     - field.storage.node.field_restaurant
     - field.storage.node.field_web
-    - node.type.meal
+    - node.type.daily_meal
     - system.menu.main
   module:
     - better_exposed_filters
+    - datetime
     - link
     - node
     - user
-id: meals
-label: Meals
+id: daily_meal
+label: 'Daily meal'
 module: views
 description: ''
 tag: ''
@@ -28,7 +29,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Ételek
+      title: 'Napi menü'
       fields:
         title:
           id: title
@@ -361,9 +362,9 @@ display:
       exposed_form:
         type: bef
         options:
-          submit_button: Apply
+          submit_button: Alkalmaz
           reset_button: false
-          reset_button_label: Reset
+          reset_button_label: Alaphelyzet
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
           sort_asc_label: Asc
@@ -376,8 +377,8 @@ display:
               auto_submit_sort_only: false
               autosubmit_breakpoint: ''
               autosubmit_exclude_textfield: false
-              autosubmit_textfield_delay: 900
-              autosubmit_textfield_minimum_length: 1
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
               autosubmit_hide: true
               input_required: false
               allow_secondary: false
@@ -385,6 +386,16 @@ display:
               secondary_open: false
               reset_button_always_show: false
             filter:
+              field_date_value:
+                plugin_id: bef_datepicker
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  open_by_default: false
+                  is_secondary: false
+                  hide_label: false
+                  field_classes: ''
               title:
                 plugin_id: default
                 advanced:
@@ -404,19 +415,22 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        random:
-          id: random
-          table: views
-          field: random
+        created:
+          id: created
+          table: node_field_data
+          field: created
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: random
-          order: ASC
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
           expose:
             label: ''
             field_identifier: ''
           exposed: false
+          granularity: second
       arguments: {  }
       filters:
         status:
@@ -434,32 +448,47 @@ display:
           id: type
           table: node_field_data
           field: type
-          relationship: none
-          group_type: group
-          admin_label: ''
           entity_type: node
           entity_field: type
           plugin_id: bundle
-          operator: in
           value:
-            meal: meal
+            daily_meal: daily_meal
+        field_date_value:
+          id: field_date_value
+          table: node__field_date
+          field: field_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: now
+            type: offset
           group: 1
-          exposed: false
+          exposed: true
           expose:
-            operator_id: ''
-            label: ''
+            operator_id: field_date_value_op
+            label: Dátum
             description: ''
             use_operator: false
-            operator: ''
+            operator: field_date_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: ''
+            identifier: field_date_value
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -544,34 +573,11 @@ display:
           plugin_id: standard
           required: false
       use_ajax: true
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: 'Az ételek feltüntetett árai és elérhetősége tájékoztató jellegűek. Az éttermek árai, kínálata és az egyes fogások elérhetősége időközben változhat. Az adatokat időszakonként frissítjük, azonban nem tudjuk garantálni, hogy minden információ minden pillanatban naprakész. Az esetleges eltérésekből eredő kellemetlenségekért felelősséget nem vállalunk, ezért rendelés vagy látogatás előtt érdemes az aktuális kínálatról és árakról közvetlenül az étteremnél érdeklődni.'
-            format: basic_html
-          tokenize: false
-        result:
-          id: result
-          table: views
-          field: result
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: result
-          empty: false
-          content: '<p>@total étel.</p>'
+      header: {  }
       footer: {  }
       display_extenders: {  }
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
@@ -589,20 +595,19 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      exposed_block: true
       display_extenders: {  }
-      path: meals
+      path: daily-meal
       menu:
         type: normal
-        title: Éttermek
+        title: 'Napi menü'
         description: ''
-        weight: -43
+        weight: -42
         expanded: false
         menu_name: main
         parent: ''
         context: '0'
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'

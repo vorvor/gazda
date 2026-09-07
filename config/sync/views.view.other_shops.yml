@@ -547,7 +547,7 @@ display:
         type: normal
         title: 'Egyéb kereső'
         description: ''
-        weight: 0
+        weight: -50
         expanded: false
         menu_name: main
         parent: ''

@@ -1,0 +1,30 @@
+uuid: 9b199cb4-b411-4858-87e8-b69cfc0ae460
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.daily_meal.field_date
+    - field.field.node.daily_meal.field_description
+    - field.field.node.daily_meal.field_price
+    - field.field.node.daily_meal.field_restaurant
+    - node.type.daily_meal
+  module:
+    - user
+id: node.daily_meal.teaser
+targetEntityType: node
+bundle: daily_meal
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  addtoany: true
+  field_date: true
+  field_description: true
+  field_price: true
+  field_restaurant: true
+  langcode: true

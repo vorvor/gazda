@@ -1,0 +1,23 @@
+uuid: e2f4dade-9f40-480d-aa39-06761f0c46c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_price
+    - node.type.daily_meal
+id: node.daily_meal.field_price
+field_name: field_price
+entity_type: node
+bundle: daily_meal
+label: Price
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

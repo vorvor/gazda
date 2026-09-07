@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.restaurant.field_address
+    - field.field.node.restaurant.field_daily_meal_menu_source
     - field.field.node.restaurant.field_data_source
     - field.field.node.restaurant.field_image
     - field.field.node.restaurant.field_meal
@@ -25,6 +26,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 6
+    region: content
+  field_daily_meal_menu_source:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 103
     region: content
   field_data_source:
     type: basic_string
