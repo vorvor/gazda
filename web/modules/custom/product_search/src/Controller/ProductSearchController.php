@@ -303,7 +303,7 @@ final class ProductSearchController extends ControllerBase {
   }
 
   /**
-   * Finds product node IDs by title, description, tag name, or category name.
+   * Finds product node IDs matching any submitted keyword.
    */
   private function findProductNodeIds(string $keyword): array {
     return array_map(
@@ -321,8 +321,6 @@ final class ProductSearchController extends ControllerBase {
    * from a node field to a referenced taxonomy term name.
    */
   private function buildProductSearchQuery(string $keyword): SelectInterface {
-    $like = '%' . $this->productSearchDatabase->escapeLike($keyword) . '%';
-
     $query = $this->productSearchDatabase->select('node_field_data', 'nfd')
       ->fields('nfd', ['nid'])
       ->condition('nfd.type', ['product', 'service'], 'IN')
@@ -338,35 +336,46 @@ final class ProductSearchController extends ControllerBase {
 
     $schema = $this->productSearchDatabase->schema();
 
-    $or = $query->orConditionGroup()
-      ->condition('nfd.title', $like, 'LIKE');
+    $searchable_fields = ['nfd.title'];
 
     if ($schema->tableExists('node__field_description')) {
       $query->leftJoin('node__field_description', 'fd', 'fd.entity_id = nfd.nid AND fd.deleted = 0');
-      $or->condition('fd.field_description_value', $like, 'LIKE');
+      $searchable_fields[] = 'fd.field_description_value';
     }
 
     if ($schema->tableExists('node__field_service_description')) {
       $query->leftJoin('node__field_service_description', 'fsd', 'fsd.entity_id = nfd.nid AND fsd.deleted = 0');
-      $or->condition('fsd.field_service_description_value', $like, 'LIKE');
+      $searchable_fields[] = 'fsd.field_service_description_value';
     }
 
     if ($schema->tableExists('node__field_tags')) {
       $query->leftJoin('node__field_tags', 'ft', 'ft.entity_id = nfd.nid AND ft.deleted = 0');
       $query->leftJoin('taxonomy_term_field_data', 'tag_tfd', 'tag_tfd.tid = ft.field_tags_target_id AND tag_tfd.vid = :tag_vid', [':tag_vid' => 'tags']);
-      $or->condition('tag_tfd.name', $like, 'LIKE');
+      $searchable_fields[] = 'tag_tfd.name';
     }
 
     if ($schema->tableExists('node__field_category')) {
       $query->leftJoin('node__field_category', 'fc', 'fc.entity_id = nfd.nid AND fc.deleted = 0');
       $query->leftJoin('taxonomy_term_field_data', 'cat_tfd', 'cat_tfd.tid = fc.field_category_target_id AND cat_tfd.vid = :cat_vid', [':cat_vid' => 'product_category']);
-      $or->condition('cat_tfd.name', $like, 'LIKE');
+      $searchable_fields[] = 'cat_tfd.name';
     }
 
     if ($schema->tableExists('node__field_shop')) {
       $query->leftJoin('node__field_shop', 'fs', 'fs.entity_id = nfd.nid AND fs.deleted = 0');
       $query->leftJoin('node_field_data', 'shop', 'shop.nid = fs.field_shop_target_id');
-      $or->condition('shop.title', $like, 'LIKE');
+      $searchable_fields[] = 'shop.title';
+    }
+
+    // In a query string, Symfony decodes + separators as spaces. Treat both
+    // whitespace and literal + characters as keyword separators and return the
+    // union of products matching any keyword in any searchable field.
+    $keywords = preg_split('/[+\s]+/u', trim($keyword), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+    $or = $query->orConditionGroup();
+    foreach ($keywords as $search_keyword) {
+      $like = '%' . $this->productSearchDatabase->escapeLike($search_keyword) . '%';
+      foreach ($searchable_fields as $field) {
+        $or->condition($field, $like, 'LIKE');
+      }
     }
 
     $query->condition($or);
