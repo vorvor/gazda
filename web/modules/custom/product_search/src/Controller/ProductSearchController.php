@@ -57,13 +57,26 @@ final class ProductSearchController extends ControllerBase {
   /**
    * Search page at /search-product.
    */
-  public function page(): array {
-    $default_view = $this->buildProductsView();
+  public function page(Request $request): array {
+    $keyword = mb_substr(
+      trim((string) $request->query->get('keyword', '')),
+      0,
+      self::MAX_SEARCH_TERM_LENGTH,
+    );
+
+    $nids = NULL;
+    if ($keyword !== '') {
+      $nids = $this->findProductNodeIds($keyword);
+      $this->searchAnalytics->log($keyword, count($nids), $request->getClientIp());
+    }
+
+    $results_view = $this->buildProductsView($nids);
     $discovery = $this->buildHomepageDiscovery();
 
     return [
       '#theme' => 'product_search',
       '#placeholder' => $this->t('Search product'),
+      '#keyword' => $keyword,
       '#marketingblock' => [
         '#type' => 'container',
         '#attributes' => [
@@ -81,7 +94,7 @@ final class ProductSearchController extends ControllerBase {
           </div>',
         ],
       ],
-      '#results' => $default_view ?: [
+      '#results' => $results_view ?: [
         '#markup' => '<p class="product-search-error">' . $this->t('The products view could not be rendered.') . '</p>',
       ],
       '#local_offering_count' => $discovery['local_offering_count'],
@@ -336,11 +349,6 @@ final class ProductSearchController extends ControllerBase {
     if ($schema->tableExists('node__field_service_description')) {
       $query->leftJoin('node__field_service_description', 'fsd', 'fsd.entity_id = nfd.nid AND fsd.deleted = 0');
       $or->condition('fsd.field_service_description_value', $like, 'LIKE');
-    }
-
-    if ($schema->tableExists('node__field_marketing_text')) {
-      $query->leftJoin('node__field_marketing_text', 'fmt', 'fmt.entity_id = nfd.nid AND fmt.deleted = 0');
-      $or->condition('fmt.field_marketing_text_value', $like, 'LIKE');
     }
 
     if ($schema->tableExists('node__field_tags')) {

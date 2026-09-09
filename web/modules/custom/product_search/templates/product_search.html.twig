@@ -13,6 +13,7 @@
             class="product-search-input"
             type="search"
             autocomplete="off"
+            value="{{ keyword }}"
             placeholder="Mit keresel Szentendrén?" />
           <button class="product-search-submit" type="button" aria-label="Keresés indítása">
             <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
@@ -87,7 +88,7 @@
     </div>
     <div class="product-search-form" role="search">
       <label class="visually-hidden" for="product-search-input">Termék vagy szolgáltatás keresése</label>
-      <input id="product-search-input" class="product-search-input" type="search" autocomplete="off" placeholder="{{ placeholder }}" />
+      <input id="product-search-input" class="product-search-input" type="search" autocomplete="off" value="{{ keyword }}" placeholder="{{ placeholder }}" />
       <button class="product-search-submit" type="button" aria-label="Keresés indítása">
         <span aria-hidden="true">Keresés</span>
       </button>
@@ -108,6 +109,7 @@
           class="product-search-input"
           type="search"
           autocomplete="off"
+          value="{{ keyword }}"
           placeholder="Mit keresel Szentendrén?" />
         <button class="product-search-submit" type="button" aria-label="Keresés indítása">
           <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">

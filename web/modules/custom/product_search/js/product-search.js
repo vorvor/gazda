@@ -14,6 +14,8 @@
         }
 
         const defaultResultsHtml = results.innerHTML;
+        const initialKeyword = inputs[0].value.trim();
+
         let timer = null;
         let controller = null;
         let csrfTokenPromise = null;
@@ -127,6 +129,23 @@
               }
             });
         };
+
+        if (initialKeyword) {
+          document.body.classList.add('searching');
+          // If we have an initial keyword, it came from the primary input (URL param or primary field)
+          document.body.classList.add('searching-primary');
+
+          // Sync other inputs if they exist
+          inputs.forEach((input) => {
+            input.value = initialKeyword;
+          });
+
+          // If the page was loaded with a keyword, we trigger the AJAX search
+          // to ensure the results are correctly filtered and the UI is in the right state.
+          // This also handles cases where the server-side render didn't apply the filter
+          // (e.g. due to frontpage redirect issues).
+          runSearch(inputs[0]);
+        }
 
         inputs.forEach((input) => {
           input.addEventListener('input', () => {

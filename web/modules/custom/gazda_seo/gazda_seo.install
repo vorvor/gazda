@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * @file
+ * Install and update hooks for the Gazda SEO module.
+ */
+
+/**
+ * Align legacy tag languages with their existing canonical aliases.
+ */
+function gazda_seo_update_10001(): string {
+  $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+  $alias_manager = \Drupal::service('path_alias.manager');
+  $default_langcode = \Drupal::languageManager()->getDefaultLanguage()->getId();
+  $updated = 0;
+
+  foreach ($term_storage->loadByProperties(['vid' => 'tags']) as $term) {
+    $internal_path = '/taxonomy/term/' . $term->id();
+    $term_langcode = $term->language()->getId();
+
+    if ($term_langcode === $default_langcode || count($term->getTranslationLanguages()) !== 1) {
+      continue;
+    }
+
+    $term_alias = $alias_manager->getAliasByPath($internal_path, $term_langcode);
+    $default_alias = $alias_manager->getAliasByPath($internal_path, $default_langcode);
+    if ($term_alias !== $internal_path || $default_alias === $internal_path) {
+      continue;
+    }
+
+    $term->set('langcode', $default_langcode);
+    $term->save();
+    $updated++;
+  }
+
+  return t('Aligned @count legacy tag languages with their canonical aliases.', [
+    '@count' => $updated,
+  ]);
+}
+
+/**
+ * Give reported lookalike products source-distinct titles and descriptions.
+ */
+function gazda_seo_update_10002(): string {
+  $products = [
+    81 => [
+      'old_title' => 'Gyorsfőző kukta',
+      'image_id' => 114,
+      'title' => 'Home Perfect 14 literes gyorsfőző kukta',
+      'description' => 'Home Perfect márkajelzésű, egyenes kialakítású, 14 literes gyorsfőző kukta. A csomagoláson látható fényes edény két rövid oldalfüllel, hosszú fekete fedélfogantyúval és nyomásszabályozó szeleppel készült.',
+    ],
+    104 => [
+      'old_title' => 'Gyorsfőző kukta',
+      'image_id' => 138,
+      'title' => 'Perfect Home 9 literes gyorsfőző edény, 22 cm',
+      'description' => 'Perfect Home márkajelzésű, 9 literes, 22 cm átmérőjű gyorsfőző edény. A csomagolás rozsdamentes acél kivitelű, két rövid oldalfüllel, hosszú fekete fedélfogantyúval és nyomásszabályozó szeleppel ellátott edényt mutat.',
+    ],
+    92 => [
+      'old_title' => 'Digitális konyhai mérleg',
+      'image_id' => 125,
+      'title' => 'Enger Impex 7 kg-os digitális konyhai mérleg',
+      'description' => 'Enger Impex márkajelzésű, 7 kg feliratú digitális konyhai mérleg. A csomagolás fehér mérleget ábrázol kerek mérőfelülettel, elöl elhelyezett digitális kijelzővel és három színes kezelőgombbal.',
+    ],
+    95 => [
+      'old_title' => 'Digitális konyhai mérleg',
+      'image_id' => 129,
+      'title' => 'Hauser DKS-1064W digitális konyhai mérleg',
+      'description' => 'Hauser DKS-1064W digitális konyhai mérleg. A csomagoláson fehér, lapos mérleg látható ívelt mérőfelülettel, jobb oldali digitális kijelzővel, kerek kezelőgombbal és akasztónyílással.',
+    ],
+  ];
+
+  $storage = \Drupal::entityTypeManager()->getStorage('node');
+  $updated = 0;
+  foreach ($products as $nid => $values) {
+    $node = $storage->load($nid);
+    if (!$node || $node->bundle() !== 'product' || $node->label() !== $values['old_title']) {
+      continue;
+    }
+    if ((int) $node->get('field_images')->target_id !== $values['image_id']) {
+      continue;
+    }
+
+    $node->setTitle($values['title']);
+    $node->set('field_description', $values['description']);
+    $node->save();
+    $updated++;
+  }
+
+  return t('Updated @count reported products with source-distinct metadata.', [
+    '@count' => $updated,
+  ]);
+}
