@@ -1,0 +1,16 @@
+{
+  "html_pages": 34,
+  "source_pages": 47,
+  "viewport_widths": [
+    1440,
+    390
+  ],
+  "gallery_photos": 78,
+  "interaction_tests": [
+    "mobile menu open/Escape",
+    "gallery filtering/reset",
+    "lightbox open/next/Escape"
+  ],
+  "errors": [],
+  "warnings": []
+}
