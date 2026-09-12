@@ -1,4 +1,11 @@
 """Generate portable UTF-8 pages from the archived, legacy Hungarian website."""
+if __name__ == '__main__':
+    # Public builds now enforce verbatim live-source copy; the prior design
+    # implementation below is retained only as a migration reference.
+    from source_only import main
+    main()
+    raise SystemExit(0)
+
 import json, re, hashlib, html
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit, unquote, quote
@@ -44,12 +51,51 @@ for u,path in ASSETS.items():
     except Exception: pass
 
 def image(suffix): return OPT[source(suffix)]
-HERO = image('INTENZIV LOVASKEPZES/ilk9.JPG')
+HERO = image('hatterek/hunpancel j1.jpg')
 RIDE = image('INTENZIV LOVASKEPZES/ilk1.JPG')
 LOGO = image('dr szebenyi/ther korb.jpg') if source('dr szebenyi/ther korb.jpg') in OPT else ''
 # Locate the source's circular mounted-archer emblem without guessing its URL.
 for u in OPT:
     if u.endswith('ther korb.jpg'): LOGO = OPT[u]
+
+# Reuse original backgrounds as editorial artwork, cropping only empty space.
+DESIGN_IMAGES = {}
+for name, suffix, box in [
+    ('meadow', 'egyesulet/HATTER 007.jpg', (0, 900, 981, 1750)),
+    ('parchment', 'hatterek/Anno 003.jpg', (0, 0, 690, 552)),
+]:
+    target = f'assets/photos/design-{name}.webp'
+    with Image.open(ROOT / ASSETS[source(suffix)]) as original:
+        original.crop(box).convert('RGB').save(ROOT / target, 'WEBP', quality=90)
+    DESIGN_IMAGES[name] = target
+
+def heading_art(title):
+    """Select source-specific artwork without mistaking old text banners for photos."""
+    meadow = (DESIGN_IMAGES['meadow'], 'Legelő lovak – az eredeti egyesületi oldal háttérképe', 'photo')
+    parchment = (DESIGN_IMAGES['parchment'], 'Lovasábrázolás – az eredeti jubileumi oldal pergamenillusztrációja', 'illustration')
+    selected = {
+        'Egyesület': meadow,
+        'Intenzív lovas képzés': (image('INTENZIV LOVASKEPZES/HIRDFOTOK k.jpg'), 'Lovas gyakorlatok – az eredeti képzési oldal fotómontázsa', 'illustration'),
+        'Lovasharc aktuális': (image('top (28)b.jpg'), 'Archív lovas fénykép az eredeti főoldalról', 'photo'),
+        'Írások': (image('konyv/ny.jpg'), 'Illusztráció a Hun-Magyar Harcművészet című kiadványból', 'illustration'),
+        'Kelemen Zsolt': (image('konyv/1 hmhes eszkozei/k.zs..jpg'), 'Archív illusztráció a Hun-Magyar Harcművészet könyv eszközökről szóló fejezetéből', 'illustration'),
+        'Fotógaléria': (image('top (28)b.jpg'), 'Az eredeti főoldal archív lovas fényképe', 'photo'),
+        'Elérhetőségek': meadow,
+        'Források és archív információk': parchment,
+        TITLES[ANNO]: parchment,
+    }
+    if title in selected: return selected[title]
+    u = next((u for u in PAGES if TITLES.get(u) == title), None)
+    if u and '/egyesulet/' in u: return meadow
+    if u:
+        for candidate in PAGES[u]['images']:
+            if candidate not in OPT: continue
+            if any(token in candidate.lower() for token in ['hatter', 'cimsor', 'cimkonyv', 'cg ', 'fejlec', 'felso sor', 'tartalom', 'tabor 25', 'jubileumi verseny']): continue
+            with Image.open(ROOT / OPT[candidate]) as original:
+                width, height = original.size
+            if width >= 250 and height >= 250 and width / height < 3.5:
+                return (OPT[candidate], 'Eredeti forrásillusztráció – ' + title, 'illustration')
+    return parchment
 
 def local_link(value, base):
     absolute = urljoin(base,value)
@@ -100,11 +146,18 @@ def footer():
 def write(filename,title,body,active=None,description=''):
     desc = description or 'Lovasíjász Hagyományőrző Sportegyesület. Lovaglás, íjászat, lovasharc és a magyar lovas hagyomány.'
     output=f'<!doctype html>\n<html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="{E(desc,quote=True)}"><meta name="theme-color" content="#182f26"><title>{E(title)} | Lovasharc</title><link rel="stylesheet" href="assets/site.css"><script defer src="assets/site.js"></script></head><body>{header(active or filename)}<main id="main">{body}</main>{footer()}</body></html>\n'
+    output = output.replace('<link rel="stylesheet" href="assets/site.css">', '<link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/editorial.css">')
+    if filename == 'index.html':
+        output = output.replace('alt="Lovasíjász lövésre emelt íjjal, természetes környezetben" width="1800" height="1200"', 'alt="Páncélos lovas – az eredeti Lovasharc főoldal háttérképe" width="945" height="516"')
+        output = output.replace('Lovasíjászat · Az egyesület fotóarchívumából', 'Lovas hagyomány · Az eredeti honlap háttérképe')
     (ROOT/filename).write_text(output,encoding='utf-8')
 
 def heading(title,desc='',label='Lovasharc',parent=None):
     crumb = f' / <a href="{parent[0]}">{parent[1]}</a>' if parent else ''
-    return f'<section class="page-heading"><div class="container"><div class="breadcrumbs"><a href="index.html">Főoldal</a>{crumb} / {E(title)}</div><span class="eyebrow">{E(label)}</span><h1>{E(title)}</h1>{f"<p>{E(desc)}</p>" if desc else ""}</div></section>'
+    path, alt, treatment = heading_art(title)
+    with Image.open(ROOT / path) as original:
+        width, height = original.size
+    return f'<section class="page-heading page-heading--illustrated"><div class="container"><div class="breadcrumbs"><a href="index.html">Főoldal</a>{crumb} / {E(title)}</div><div class="heading-composition"><div class="heading-copy"><span class="eyebrow">{E(label)}</span><h1>{E(title)}</h1>{f"<p>{E(desc)}</p>" if desc else ""}</div><figure class="heading-art heading-art--{treatment}"><img src="{path}" alt="{E(alt, quote=True)}" width="{width}" height="{height}" fetchpriority="high"><figcaption>Az eredeti honlap képi örökségéből</figcaption></figure></div></div></section>'
 
 def related(items):
     return '<div class="related-list">'+''.join(f'<a href="{href}">{E(label)} <span aria-hidden="true">↗</span></a>' for href,label in items)+'</div>'

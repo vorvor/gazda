@@ -2,9 +2,10 @@
   "source": "http://www.lovasharc.hu/",
   "source_pages": 47,
   "assets_downloaded": 181,
-  "gallery_photos": 78,
+  "gallery_photos": 99,
   "html_pages": [
     "aktualis.html",
+    "cenzurazatlan.html",
     "egyesulet.html",
     "elerhetosegek.html",
     "forrasok.html",
@@ -78,7 +79,15 @@
     "http://www.lovasharc.hu/index_elemei/LH AKTUAL/LH AKTUAL.html": "aktualis.html",
     "http://www.lovasharc.hu/index_elemei/UntitledFrameset-8.html": "iras-73ed1c9c06.html",
     "http://www.lovasharc.hu/index_elemei/dr szebenyi/szk keret 2.html": "iras-bf2a8d2453.html",
-    "http://www.lovasharc.hu/index_elemei/LHSE AKTUAL/cenzurazatlan.html": "fotogaleria.html"
+    "http://www.lovasharc.hu/index_elemei/LHSE AKTUAL/cenzurazatlan.html": "cenzurazatlan.html",
+    "http://www.lovasharc.hu/index_elemei/UntitledFrame-4.html": "egyesulet.html",
+    "http://www.lovasharc.hu/index_elemei/UntitledFrame-1.html": "egyesulet.html",
+    "http://www.lovasharc.hu/index_elemei/UntitledFrame-2.html": "egyesulet.html",
+    "http://www.lovasharc.hu/index_elemei/UntitledFrame-5.html": "egyesulet.html",
+    "http://www.lovasharc.hu/index_elemei/INTENZIV LOVASKEPZES/intenziv lovaskepzes 1.html": "lovaskepzes.html",
+    "http://www.lovasharc.hu/index_elemei/LH AKTUAL/LH AKTUAL cimsor.html": "aktualis.html",
+    "http://www.lovasharc.hu/index_elemei/dr szebenyi/szk fejlec.html": "iras-bf2a8d2453.html",
+    "http://www.lovasharc.hu/index_elemei/UntitledFrame-9.html": "iras-73ed1c9c06.html"
   },
   "errors": [
     {

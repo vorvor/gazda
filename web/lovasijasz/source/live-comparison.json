@@ -1,0 +1,27 @@
+{
+  "live_pages": 47,
+  "new_source_urls": [],
+  "changed_source_urls": [],
+  "unavailable": [
+    {
+      "url": "http://www.lovasharc.hu/index_elemei/irasok/konyv feketelista.html",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "http://www.lovasharc.hu/index_elemei/irasok/konyvajanlo.html",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "http://www.lovasharc.hu/index_elemei/index.html",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "http://www.lovasharc.hu/index_elemei/dr szebenyi/UntitledFrameset-4.html",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "http://www.lovasharc.hu/index_elemei/LHSE AKTUAL/K1024_Tak08.JPG",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ]
+}

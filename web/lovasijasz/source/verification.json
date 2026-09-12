@@ -1,16 +1,52 @@
 {
-  "html_pages": 34,
+  "html_pages": 35,
   "source_pages": 47,
   "viewport_widths": [
     1440,
+    768,
+    320,
     390
   ],
-  "gallery_photos": 78,
+  "gallery_photos": 99,
   "interaction_tests": [
     "mobile menu open/Escape",
     "gallery filtering/reset",
     "lightbox open/next/Escape"
   ],
   "errors": [],
-  "warnings": []
+  "warnings": [],
+  "renderer_retries": [
+    {
+      "page": "forrasok.html",
+      "width": 1440
+    },
+    {
+      "page": "iras-f4e6d9d45e.html",
+      "width": 1440
+    },
+    {
+      "page": "lovaskepzes.html",
+      "width": 1440
+    },
+    {
+      "page": "iras-2219cae9d9.html",
+      "width": 768
+    },
+    {
+      "page": "iras-9aecfccb65.html",
+      "width": 320
+    },
+    {
+      "page": "index.html",
+      "width": 320
+    },
+    {
+      "page": "forrasok.html",
+      "width": 390
+    },
+    {
+      "page": "iras-15aec0953f.html",
+      "width": 390
+    }
+  ]
 }

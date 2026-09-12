@@ -1,0 +1,17 @@
+{
+  "page": "index.html",
+  "reference": "design.jpeg",
+  "viewports": [
+    320,
+    390,
+    768,
+    1024,
+    1280,
+    1440
+  ],
+  "unchanged_subpages": 34,
+  "changed_subpages": [],
+  "source_text_violations": 0,
+  "errors": [],
+  "renderer_retries": []
+}

@@ -1,0 +1,90 @@
+/* Original Lovasharc artwork, integrated into the editorial design. */
+.hero-image {
+  background: #080a08;
+}
+.hero-image > img {
+  object-fit: contain;
+  object-position: center;
+}
+.hero-image::after {
+  background: linear-gradient(90deg, rgba(24, 47, 38, .24), transparent 30%);
+}
+.page-heading--illustrated {
+  position: relative;
+  overflow: hidden;
+  background: #eae5da;
+  padding: 32px 0 46px;
+}
+.page-heading--illustrated .breadcrumbs {
+  margin-bottom: 30px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.heading-composition {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(35px, 5vw, 85px);
+}
+.heading-copy {
+  padding: 20px 0 30px;
+}
+.page-heading--illustrated h1 {
+  font-size: clamp(2.7rem, 4.3vw, 4.25rem);
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+.page-heading--illustrated p {
+  font-size: 16px;
+  max-width: 580px;
+}
+.heading-art {
+  position: relative;
+  margin: 0;
+  padding-bottom: 26px;
+}
+.heading-art img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  object-position: center;
+}
+.heading-art--illustration img {
+  object-fit: contain;
+}
+.heading-art figcaption {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: #686759;
+  text-align: right;
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+@media (min-width: 1500px) {
+  .heading-art img { height: 370px; }
+}
+@media (max-width: 960px) {
+  .heading-composition { gap: 30px; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+  .heading-art img { height: 300px; }
+  .page-heading--illustrated h1 { font-size: 2.8rem; }
+}
+@media (max-width: 640px) {
+  .hero-image { min-height: 300px; }
+  .hero-image > img { object-position: center; }
+  .page-heading--illustrated { padding: 25px 0 30px; }
+  .page-heading--illustrated .breadcrumbs { margin-bottom: 22px; }
+  .heading-composition { grid-template-columns: 1fr; gap: 20px; }
+  .heading-copy { padding: 0; }
+  .page-heading--illustrated h1 { font-size: 2.7rem; text-wrap: pretty; }
+  .page-heading--illustrated p { font-size: 15px; }
+  .heading-art img { height: 255px; }
+  .heading-art figcaption { font-size: 8px; text-align: left; letter-spacing: .1em; }
+}
+@media print {
+  .page-heading--illustrated { background: white; }
+  .heading-composition { display: block; }
+  .heading-art { display: none; }
+}

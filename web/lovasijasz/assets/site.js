@@ -5,7 +5,7 @@ if (toggle && navigation) {
   toggle.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') !== 'true';
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.textContent = open ? 'Bezárás ×' : 'Menü ☰';
+    toggle.textContent = open ? '×' : '☰';
     navigation.classList.toggle('is-open', open);
   });
   document.addEventListener('keydown', event => {
@@ -21,7 +21,7 @@ document.querySelectorAll('.filter').forEach(button => {
   button.addEventListener('click', () => {
     document.querySelectorAll('.filter').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
     figures.forEach(figure => { figure.hidden = button.dataset.filter !== 'all' && figure.dataset.category !== button.dataset.filter; });
-    if (count) count.textContent = `${figures.filter(figure => !figure.hidden).length} fénykép`;
+    if (count) count.textContent = String(figures.filter(figure => !figure.hidden).length);
   });
 });
 const lightbox = document.querySelector('#lightbox');

@@ -1,0 +1,337 @@
+{
+  "live_pages": 47,
+  "html_pages": 35,
+  "new_local_pages": [],
+  "coverage": [
+    {
+      "source": "http://www.lovasharc.hu/",
+      "local": "index.html",
+      "kind": "content",
+      "source_text_nodes": 0,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/lhse.html",
+      "local": "egyesulet.html",
+      "kind": "frameset",
+      "source_text_nodes": 0,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/INTENZIV LOVASKEPZES/INTENZIV LOVASKEPZES.html",
+      "local": "lovaskepzes.html",
+      "kind": "frameset",
+      "source_text_nodes": 0,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/LH AKTUAL/LH AKTUAL felso.html",
+      "local": "aktualis.html",
+      "kind": "frameset",
+      "source_text_nodes": 0,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/irasok/irasok.html",
+      "local": "irasok.html",
+      "kind": "content",
+      "source_text_nodes": 8,
+      "preserved_images": 2
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/Untitled-2.html",
+      "local": "elerhetosegek.html",
+      "kind": "content",
+      "source_text_nodes": 15,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/anno.html",
+      "local": "jubileum.html",
+      "kind": "content",
+      "source_text_nodes": 37,
+      "preserved_images": 2
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/UntitledFrame-4.html",
+      "local": "egyesulet.html",
+      "kind": "content",
+      "source_text_nodes": 0,
+      "preserved_images": 1
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/UntitledFrame-1.html",
+      "local": "egyesulet.html",
+      "kind": "content",
+      "source_text_nodes": 0,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/UntitledFrame-5.html",
+      "local": "egyesulet.html",
+      "kind": "content",
+      "source_text_nodes": 9,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/lhse.html.html",
+      "local": "egyesulet.html",
+      "kind": "content",
+      "source_text_nodes": 64,
+      "preserved_images": 2
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/UntitledFrame-2.html",
+      "local": "egyesulet.html",
+      "kind": "content",
+      "source_text_nodes": 0,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/INTENZIV LOVASKEPZES/intenziv lovaskepzes 1.html",
+      "local": "lovaskepzes.html",
+      "kind": "content",
+      "source_text_nodes": 0,
+      "preserved_images": 1
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/INTENZIV LOVASKEPZES/intenziv lovaskepzes 2.html",
+      "local": "lovaskepzes.html",
+      "kind": "content",
+      "source_text_nodes": 39,
+      "preserved_images": 15
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/LH AKTUAL/LH AKTUAL.html",
+      "local": "aktualis.html",
+      "kind": "content",
+      "source_text_nodes": 0,
+      "preserved_images": 1
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/LH AKTUAL/LH AKTUAL cimsor.html",
+      "local": "aktualis.html",
+      "kind": "content",
+      "source_text_nodes": 7,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/LH AKTUAL/LH AKTUAL mezo.html",
+      "local": "aktualis.html",
+      "kind": "content",
+      "source_text_nodes": 4,
+      "preserved_images": 1
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/dr szebenyi/szk keret 2.html",
+      "local": "iras-bf2a8d2453.html",
+      "kind": "frameset",
+      "source_text_nodes": 0,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/hunmagyarharcmuveszet.html",
+      "local": "iras-e77ea5253c.html",
+      "kind": "content",
+      "source_text_nodes": 8,
+      "preserved_images": 6
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/irasok/nakos.html",
+      "local": "iras-163dcb1f67.html",
+      "kind": "content",
+      "source_text_nodes": 17,
+      "preserved_images": 4
+    },
+    {
+      "source": "http://www.lovasharc.hu/index.html",
+      "local": "index.html",
+      "kind": "content",
+      "source_text_nodes": 0,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/egyesulet/egyesulet celja.html",
+      "local": "iras-94ce092157.html",
+      "kind": "content",
+      "source_text_nodes": 40,
+      "preserved_images": 2
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/egyesulet/lovas kepzesi redszer.html",
+      "local": "iras-25f4ff0944.html",
+      "kind": "content",
+      "source_text_nodes": 52,
+      "preserved_images": 3
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/egyesulet/vizsga.html",
+      "local": "iras-f62f390b9e.html",
+      "kind": "content",
+      "source_text_nodes": 26,
+      "preserved_images": 2
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/egyesulet/reszvetel.html",
+      "local": "iras-2219cae9d9.html",
+      "kind": "content",
+      "source_text_nodes": 47,
+      "preserved_images": 2
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/UntitledFrameset-8.html",
+      "local": "iras-73ed1c9c06.html",
+      "kind": "frameset",
+      "source_text_nodes": 0,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/dr szebenyi/szk fejlec.html",
+      "local": "iras-bf2a8d2453.html",
+      "kind": "content",
+      "source_text_nodes": 1,
+      "preserved_images": 1
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/dr szebenyi/szk tartalom.html",
+      "local": "iras-35992f346c.html",
+      "kind": "content",
+      "source_text_nodes": 21,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/dr szebenyi/szk 1.html",
+      "local": "iras-bf2a8d2453.html",
+      "kind": "content",
+      "source_text_nodes": 696,
+      "preserved_images": 7
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/konyv.html",
+      "local": "iras-d71d6d0f89.html",
+      "kind": "content",
+      "source_text_nodes": 98,
+      "preserved_images": 4
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/UntitledFrame-9.html",
+      "local": "iras-73ed1c9c06.html",
+      "kind": "content",
+      "source_text_nodes": 0,
+      "preserved_images": 1
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/UntitledFrame-10.html",
+      "local": "iras-2e1e7d227e.html",
+      "kind": "content",
+      "source_text_nodes": 13,
+      "preserved_images": 0
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/Untitled-3.html",
+      "local": "iras-73ed1c9c06.html",
+      "kind": "content",
+      "source_text_nodes": 205,
+      "preserved_images": 91
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/1.html",
+      "local": "iras-e2f06503c5.html",
+      "kind": "content",
+      "source_text_nodes": 26,
+      "preserved_images": 4
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/2.html",
+      "local": "iras-15aec0953f.html",
+      "kind": "content",
+      "source_text_nodes": 31,
+      "preserved_images": 10
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/3.html",
+      "local": "iras-4ae544a888.html",
+      "kind": "content",
+      "source_text_nodes": 65,
+      "preserved_images": 6
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/4.html",
+      "local": "iras-f4e6d9d45e.html",
+      "kind": "content",
+      "source_text_nodes": 22,
+      "preserved_images": 6
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/5.html",
+      "local": "iras-6d546400d5.html",
+      "kind": "content",
+      "source_text_nodes": 31,
+      "preserved_images": 5
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/osszefog.html",
+      "local": "iras-ff18584cc5.html",
+      "kind": "content",
+      "source_text_nodes": 27,
+      "preserved_images": 4
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/pontnyilz.html",
+      "local": "iras-e6196a97b2.html",
+      "kind": "content",
+      "source_text_nodes": 26,
+      "preserved_images": 6
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/6.html",
+      "local": "iras-3749ebe3ad.html",
+      "kind": "content",
+      "source_text_nodes": 18,
+      "preserved_images": 5
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/7.html",
+      "local": "iras-9aecfccb65.html",
+      "kind": "content",
+      "source_text_nodes": 19,
+      "preserved_images": 4
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/lokzs.html",
+      "local": "iras-3f750b55ff.html",
+      "kind": "content",
+      "source_text_nodes": 24,
+      "preserved_images": 5
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/11.html",
+      "local": "iras-41d526c526.html",
+      "kind": "content",
+      "source_text_nodes": 18,
+      "preserved_images": 4
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/aranyij.html",
+      "local": "iras-4fa0b9af26.html",
+      "kind": "content",
+      "source_text_nodes": 14,
+      "preserved_images": 6
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/konyv/12.html",
+      "local": "iras-9dc445ff19.html",
+      "kind": "content",
+      "source_text_nodes": 14,
+      "preserved_images": 5
+    },
+    {
+      "source": "http://www.lovasharc.hu/index_elemei/LHSE AKTUAL/cenzurazatlan.html",
+      "local": "cenzurazatlan.html",
+      "kind": "content",
+      "source_text_nodes": 0,
+      "preserved_images": 7
+    }
+  ],
+  "non_source_text": []
+}
