@@ -1,1 +1,6 @@
-{{ output|striptags|trim|number_format(0, ',', ' ') }} Ft
+{% set price = output|striptags|trim %}
+{% if price is not same as('') %}
+  {{ price|number_format(0, ',', ' ') }} Ft
+{% elseif row._entity.field_description.value starts with 'Desszert.' %}
+  {{ 'menü része'|t }}
+{% endif %}
