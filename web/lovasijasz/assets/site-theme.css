@@ -1,0 +1,101 @@
+/* Shared homepage palette; subpage layouts and original imagery stay intact. */
+:root {
+  --color-page: #20281f;
+  --color-header: #111b15;
+  --color-footer: #111a13;
+  --color-surface: #293126;
+  --color-hero: #1a241b;
+  --color-text: #e9dfcb;
+  --color-muted: #c0b69f;
+  --color-border: #4b4738;
+  --color-gold: #b89a60;
+  --color-link: #d0b97e;
+  --color-button: #806031;
+  --color-button-hover: #8a6834;
+  --color-burgundy: #441c1e;
+}
+.site-page {
+  --paper: var(--color-text);
+  --ink: var(--color-text);
+  --muted: var(--color-muted);
+  --line: var(--color-border);
+  --gold: var(--color-gold);
+  color: var(--color-text);
+  background-color: var(--color-page);
+  background-image: radial-gradient(rgba(199,179,132,.055) .6px, transparent .6px);
+  background-size: 5px 5px;
+  color-scheme: dark;
+}
+.site-page .site-header {
+  background: var(--color-header);
+  border-bottom-color: #6d603d;
+}
+.site-page .topline { background: var(--color-header); color: var(--color-muted); }
+.site-page .brand { color: #e3d4b1; }
+.site-page .brand small { color: #bbb094; }
+.site-page .navigation a { color: #d6ccb6; }
+.site-page .navigation a:hover { color: #e4bf72; }
+.site-page .menu-toggle { color: #e5d7b9; border-color: #655b43; }
+.site-page .button {
+  color: #fff4d9;
+  background: var(--color-button);
+  border-color: #b1955d;
+}
+.site-page .button:hover { background: var(--color-button-hover); }
+.site-page .text-link { color: var(--color-link); border-color: #756442; }
+.site-page .site-footer { background: var(--color-footer); }
+.site-page .footer-brand { color: #c4ac77; }
+.site-page .footer-links a { color: #b9b29d; }
+.site-page .footer-bottom { color: #a6a48f; border-color: #3e4435; }
+.site-page .contact-band {
+  background: linear-gradient(90deg,rgba(12,25,16,.91),rgba(12,25,16,.73)),url('photos/design-meadow.webp') center 60%/cover;
+  border-top: 1px solid #6a5c3d;
+  border-bottom: 1px solid #6a5c3d;
+  color: var(--color-text);
+}
+.site-page .contact-band p { color: #c9c5ac; }
+.subpage .page-heading { background: var(--color-hero); border-color: #6d603d; }
+.subpage .page-heading h1 { color: var(--color-text); }
+.subpage .page-heading p,
+.subpage .breadcrumbs,
+.subpage .heading-art figcaption { color: var(--color-muted); }
+.subpage .breadcrumbs a { color: var(--color-link); }
+.subpage .eyebrow { color: #c6ac76; }
+.subpage .sidebar h2 { color: #d4b977; }
+.subpage .sidebar a { color: #d6ccb6; border-color: var(--color-border); }
+.subpage .sidebar a:hover,
+.subpage .sidebar a[aria-current=page] { color: #e4bf72; }
+.subpage .sidebar .source-note,
+.subpage .note { color: var(--color-muted); }
+.subpage .prose h2,
+.subpage .prose h3 { color: #eee1c8; }
+.subpage .prose a:not(.button) { color: var(--color-link); }
+.subpage .prose a:not(.button):hover { color: #e4bf72; }
+.subpage .source-body hr,
+.subpage .prose td { border-color: var(--color-border); }
+.subpage .source-body img { background: transparent; }
+.subpage .related-list a { color: var(--color-link); border-color: var(--color-border); }
+.subpage .notice { color: #eee1c8; background: var(--color-burgundy); }
+.subpage .gallery-item a { background: var(--color-surface); }
+.subpage .gallery-item figcaption,
+.subpage .gallery-count { color: var(--color-muted); }
+.subpage .filter { color: #d6ccb6; border-color: #766546; background: transparent; }
+.subpage .filter:hover { background: var(--color-surface); }
+.subpage .filter[aria-pressed=true] {
+  background: var(--color-button);
+  color: #fff4d9;
+  border-color: #b1955d;
+}
+.subpage dialog { background: var(--color-header); color: var(--color-text); border-color: #766546; }
+.subpage dialog button { color: #e5d7b9; border-color: #766546; }
+.site-page .skip { background: var(--color-header); color: var(--color-text); }
+@media print {
+  .site-page { color-scheme: light; color: #111; background: white; }
+  .subpage .page-heading { background: white; }
+  .subpage .page-heading h1,
+  .subpage .prose h2,
+  .subpage .prose h3,
+  .subpage .prose a:not(.button),
+  .subpage .related-list a,
+  .subpage .breadcrumbs { color: #111; }
+}

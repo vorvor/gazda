@@ -15,6 +15,9 @@ for f in files:
     if len(soup.find_all('h1'))!=1: errors.append(f'{f.name}: expected one h1')
     if soup.html.get('lang')!='hu': errors.append(f'{f.name}: missing Hungarian language')
     if '\ufffd' in f.read_text(): errors.append(f'{f.name}: replacement character')
+    ids=[tag['id'] for tag in soup.select('[id]')]
+    if len(ids)!=len(set(ids)):errors.append(f'{f.name}: duplicate IDs')
+    if soup.select('div:not([id]),div:not([class])'):errors.append(f'{f.name}: missing div editing hooks')
     hero = soup.select_one('.hero-image img' if f.name == 'index.html' else '.heading-art img')
     if not hero or not hero.get('alt'): errors.append(f'{f.name}: missing illustrated hero or alternative text')
     for el in soup.select('[href], [src]'):
@@ -72,6 +75,9 @@ with sync_playwright() as p:
             page=browser.new_page(viewport={'width':width,'height':900})
             page.on('pageerror',lambda error:errors.append('JS: '+str(error)))
             navigate(f)
+            palette=page.evaluate('''() => ({body:getComputedStyle(document.body).backgroundColor, text:getComputedStyle(document.body).color, header:getComputedStyle(document.querySelector('.site-header')).backgroundColor, footer:getComputedStyle(document.querySelector('.site-footer')).backgroundColor})''')
+            if palette!={'body':'rgb(32, 40, 31)','text':'rgb(233, 223, 203)','header':'rgb(17, 27, 21)','footer':'rgb(17, 26, 19)'}:
+                errors.append(f'{f.name}: palette mismatch at {width}: {palette}')
             if page.evaluate('document.documentElement.scrollWidth > innerWidth + 1'): errors.append(f'{f.name}: horizontal overflow at {width}')
             bad=page.locator('img[src]').evaluate_all('(imgs)=>imgs.filter(i=>i.complete && i.naturalWidth===0).map(i=>i.getAttribute("src"))')
             if bad: errors.append(f'{f.name}: broken images {bad}')
@@ -106,5 +112,8 @@ with sync_playwright() as p:
     browser.close()
 report={'html_pages':len(files),'source_pages':len(pages),'viewport_widths':[1440,768,320,390],'gallery_photos':manifest['gallery_photos'],'interaction_tests':['mobile menu open/Escape','gallery filtering/reset','lightbox open/next/Escape'],'errors':errors,'warnings':warnings,'renderer_retries':renderer_retries}
 (ROOT/'source/verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+structure_report={'pages':len(files),'divs':sum(len(soup.find_all('div')) for soup in parsed.values()),'ids':sum(len(soup.select('[id]')) for soup in parsed.values()),'palette_checks':len(files)*4,'errors':errors}
+(ROOT/'source/structure-verification.json').write_text(json.dumps(structure_report,indent=2))
 print(json.dumps(report,ensure_ascii=False,indent=2))
+print(json.dumps(structure_report,indent=2))
 raise SystemExit(bool(errors))

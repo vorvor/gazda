@@ -136,10 +136,15 @@ def main():
         footer='<section class="contact-band"><div class="container"><div><h2>ELÉRHETŐSÉGEK</h2><p>LOVASHARC@GMAIL.HU</p></div><a class="button" href="elerhetosegek.html">KAPCSOLAT</a></div></section><footer class="site-footer"><div class="container"><div class="footer-top"><a class="footer-brand" href="index.html">LOVASHARC.HU</a><div class="footer-links">'+navigation(filename)+'</div></div><div class="footer-bottom"><span>Lovasíjász Hagyományőrző Sportegyesület</span><a href="forrasok.html">TARTALOM</a></div></div></footer>'
         output=f'<!doctype html>\n<html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="{E(title,quote=True)}"><meta name="theme-color" content="#182f26"><title>{E(title)} | LOVASHARC.HU</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/editorial.css"><link rel="stylesheet" href="assets/source-only.css"><script defer src="assets/site.js"></script></head><body>{header}<main id="main">{body}</main>{footer}</body></html>\n'
         output=re.sub(r'[ \t]+\n','\n',output.replace('\r\n','\n'))
+        output=output.replace('</head>', '<link rel="stylesheet" href="assets/site-theme.css"></head>')
         if filename=='index.html':
             output=output.replace('</head>', '<link rel="stylesheet" href="assets/home-reference.css"></head>')
             output=output.replace('<body>', '<body class="home-reference">')
             output=output.replace('<a class="brand" href="index.html"><span>', f'<a class="brand" href="index.html"><img src="{photo("egyesulet/lhse korb.jpg")}" alt="" width="58" height="58"><span>')
+        else:
+            output=output.replace('<body>', '<body class="subpage">')
+        from html_structure import decorate_structure
+        output=decorate_structure(output,filename)
         (ROOT/filename).write_text(output,encoding='utf-8')
     # Preserve existing article URLs while folding their source frames into them.
     groups={}
