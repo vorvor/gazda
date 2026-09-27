@@ -1,9 +1,9 @@
-id,name,allergy,cls,time,arrived,late,cancelled,reason,notes,checkedOut
-A-1042,"Kovács Judit",,,,0,0,0,,,0
-A-1043,"Ben Okafor",,,,0,0,0,,,0
-A-1044,"Priya Nair",,,,0,0,0,,,0
-A-1045,"Diego Marín",,,,0,0,0,,,0
-A-1046,"Sofia Lindqvist",,,,0,0,0,,,0
-A-1047,"Kwame Mensah",,,,0,0,0,,,0
-A-1048,"Elena Petrova",,,,0,0,0,,,0
-A-1049,"Noah Bergström",,,,0,0,0,,,0
+id,name,allergy,cls,time,arrived,late,cancelled,reason,notes,checkedOut,flag
+A-1042,"Kovács Judit",Vegan,vegan,,1,0,0,,,0,PROB
+A-1043,"Ben Okafor",,,"10:01 AM",0,1,0,,,0,
+A-1044,"Priya Nair",,,,0,0,0,,,0,
+A-1045,"Diego Marín",,,,0,0,0,,,0,
+A-1046,"Sofia Lindqvist",,,,0,0,0,,,0,
+A-1047,"Kwame Mensah",,,,0,0,0,,,0,
+A-1048,"Elena Petrova",,,,0,0,0,,,0,
+A-1049,"Noah Bergström",,,,0,0,0,,,0,

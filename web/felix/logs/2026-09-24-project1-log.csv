@@ -1,0 +1,6 @@
+event_id,timestamp,user,project,action,person_id,person_name,field,old_value,new_value
+f57bc09cc071184c4b10d8b2296e806e,2026-09-27T12:26:33.032409+02:00,Kecsu,2026-09-24-project1.csv,session,,,session,checkout,checkin
+3a8bec811d5c31a991b3e2fe13cb5f8a,2026-09-27T12:26:39.140464+02:00,Kecsu,2026-09-24-project1.csv,late,A-1043,"Ben Okafor",time,,"10:01 AM"
+3a8bec811d5c31a991b3e2fe13cb5f8a,2026-09-27T12:26:39.140464+02:00,Kecsu,2026-09-24-project1.csv,late,A-1043,"Ben Okafor",late,0,1
+82965184cee6c62eeb3a46ff6905696c,2026-09-27T12:26:43.850882+02:00,Kecsu,2026-09-24-project1.csv,arrived,A-1045,"Diego Marín",arrived,0,1
+39b6952eb9c2e101b37e7b480e6982fd,2026-09-27T12:27:00.720753+02:00,Kecsu,2026-09-24-project1.csv,undo,A-1045,"Diego Marín",arrived,1,0

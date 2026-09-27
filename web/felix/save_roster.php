@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/audit_log.php';
+
 // Receives { file, session, rows } as JSON and:
 //   - rewrites data/<file>.csv with the current rows
 //   - records that file's session (checkin/checkout) in data/meta.json
@@ -13,7 +16,7 @@ $metaPath = $dataDir . '/meta.json';
 $raw  = file_get_contents('php://input');
 $body = json_decode($raw, true);
 
-if (!is_array($body) || !isset($body['file']) || !isset($body['rows']) || !is_array($body['rows'])) {
+if (!is_array($body) || !isset($body['file']) || !is_string($body['file']) || !isset($body['rows']) || !is_array($body['rows'])) {
     http_response_code(400);
     echo json_encode(['ok' => false, 'error' => 'Invalid payload']);
     exit;
@@ -36,51 +39,32 @@ if (!is_file($csvPath)) {
     exit;
 }
 
-// --- Write the CSV rows ---
-$tmpPath = $csvPath . '.tmp';
-$handle  = fopen($tmpPath, 'w');
+$ids = [];
+foreach ($body['rows'] as $person) {
+    if (!is_array($person) || !isset($person['id']) || !is_scalar($person['id']) || (string) $person['id'] === '' || isset($ids[(string) $person['id']])) {
+        http_response_code(400);
+        echo json_encode(['ok' => false, 'error' => 'Invalid or duplicate person ID']);
+        exit;
+    }
+    foreach ($person as $value) {
+        if ($value !== null && !is_scalar($value)) {
+            http_response_code(400);
+            echo json_encode(['ok' => false, 'error' => 'Invalid person field']);
+            exit;
+        }
+    }
+    $ids[(string) $person['id']] = true;
+}
 
-if ($handle === false) {
+$actions = ['save', 'undo', 'session', 'checkout', 'arrived', 'diet', 'flag', 'notes', 'late', 'cancelled'];
+$action = isset($body['action']) && in_array($body['action'], $actions, true) ? $body['action'] : 'save';
+try {
+    saveRosterWithAudit($dataDir, $filename, $session, $body['rows'], $authenticatedUser, $action);
+} catch (Throwable $error) {
+    error_log('Roster/audit save failed: ' . $error->getMessage());
     http_response_code(500);
-    echo json_encode(['ok' => false, 'error' => 'Could not write ' . $filename]);
+    echo json_encode(['ok' => false, 'error' => 'Could not save roster and audit log']);
     exit;
 }
-
-fputcsv($handle, [
-    'id', 'name', 'allergy', 'cls', 'time',
-    'arrived', 'late', 'cancelled', 'reason', 'notes', 'checkedOut',
-]);
-
-foreach ($body['rows'] as $person) {
-    fputcsv($handle, [
-        isset($person['id']) ? $person['id'] : '',
-        isset($person['name']) ? $person['name'] : '',
-        isset($person['allergy']) ? $person['allergy'] : '',
-        isset($person['cls']) ? $person['cls'] : '',
-        isset($person['time']) ? $person['time'] : '',
-        !empty($person['arrived']) ? '1' : '0',
-        !empty($person['late']) ? '1' : '0',
-        !empty($person['cancelled']) ? '1' : '0',
-        isset($person['reason']) ? $person['reason'] : '',
-        isset($person['notes']) ? $person['notes'] : '',
-        !empty($person['checkedOut']) ? '1' : '0',
-    ]);
-}
-
-fclose($handle);
-rename($tmpPath, $csvPath);
-
-// --- Record this file's session state in meta.json ---
-$meta = [];
-if (is_file($metaPath)) {
-    $decoded = json_decode(file_get_contents($metaPath), true);
-    if (is_array($decoded)) {
-        $meta = $decoded;
-    }
-}
-
-$meta[$filename] = ['session' => $session];
-
-file_put_contents($metaPath, json_encode($meta, JSON_PRETTY_PRINT));
 
 echo json_encode(['ok' => true]);

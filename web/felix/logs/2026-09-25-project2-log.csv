@@ -1,0 +1,2 @@
+event_id,timestamp,user,project,action,person_id,person_name,field,old_value,new_value
+2e210c3d1465d2cbea0bc83018823f2f,2026-09-27T12:31:53.533296+02:00,Kecsu,2026-09-25-project2.csv,session,,,session,checkout,checkin

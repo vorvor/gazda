@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/auth.php';
+
 // Scans data/ for files named YYYY-MM-DD-projectname.csv and returns
 // them sorted by date, along with each file's saved session state
 // (checkin/checkout) from meta.json.

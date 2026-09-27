@@ -25,6 +25,23 @@ Any PHP host works (XAMPP, MAMP, a real server, etc.) — just keep the
 folder structure intact, and make sure data/ and its files are
 writable by the web server (needed to save changes).
 
+Prototype login
+---------------
+The browser displays an HTTP Basic username/password prompt. Demo users
+are Elek and Kecsu, both with the presentation password 12345. Usernames
+are case-sensitive. The roster greets the authenticated user at the top.
+The page and all three PHP data endpoints require authentication.
+Use "Log out" beside the greeting (also available in log views) to sign out.
+Pending saves finish before logout. You are then shown a username/password
+form, which can be used to sign in as either demo user. A server-side session
+marker prevents cached browser Basic credentials from silently signing you
+back in. Logout and form login require a CSRF token; use HTTPS remotely.
+
+These accounts are for mockup presentations only, not production use.
+Use HTTPS for remote presentations. Apache's .htaccess blocks direct
+CSV/JSON/tmp downloads; PHP's built-in local server ignores .htaccess,
+so use only mock data with that local development server.
+
 Multiple files / tabs
 ----------------------
 Every CSV in data/ named like YYYY-MM-DD-projectname.csv shows up as a
@@ -51,3 +68,44 @@ Any change — Arrived, Late, Cancelled, Diet, Save note, Check out, or
 switching check-in/check-out — is saved immediately to that file's CSV
 (and meta.json for the session). Reloading the page, switching tabs,
 or restarting the server all pick up right where you left off.
+
+Per-project audit logs
+----------------------
+Every saved action appends to logs/<project-filename-without-.csv>-log.csv.
+For example: logs/2026-09-24-project1-log.csv. Each file is created on
+that project's first saved action; historical actions are not backfilled.
+The web-server user needs permission to create/write the logs/ directory.
+
+Columns: event_id, timestamp, user, project, action, person_id,
+person_name, field, old_value, new_value.
+
+The user is taken from server authentication, never from a submitted name.
+Timestamps use Europe/Budapest time, including the UTC offset and microseconds.
+Actions cover arrived, late, cancelled, checkout, diet, flag, notes, session,
+undo, and generic saves. Each changed field has its own CSV row; rows from
+one action share an event_id. Repeated saves without changes use no_change.
+Boolean values are 0/1. UNDO appends its own before/after entries; it never
+removes earlier log entries. Searches, selections, and other unsaved UI
+interactions are not audit events.
+
+CSV quoting preserves commas, quotes, and multiline notes. A leading
+apostrophe protects values beginning with spreadsheet formula characters.
+Logs contain personal data: Apache blocks direct CSV downloads through
+.htaccess; the PHP development server does not. Use mock data locally.
+Saves are serialized and report a failure if the audit cannot be written.
+These CSV files are prototype audit records, not a tamper-proof database.
+
+General audit log (all dates)
+-----------------------------
+New saved actions are also appended to logs/general-log.csv, alongside
+the per-project log. Both contain identical event IDs, timestamps, users,
+project names and field changes, including undo and no-change events.
+The general log starts with the first save after this feature is enabled;
+older entries remain in their project logs and are not copied automatically.
+If either log cannot be written, the save reports a failure and reported
+write failures roll back both logs rather than leaving a one-sided event.
+
+Use "All logs" for the general view, with a Project / date column and
+newest records first. "View log" still shows only the selected project.
+"Back to roster" returns without resetting the current roster or undo history.
+Both views require authentication and do not modify log files.

@@ -1,5 +1,11 @@
 RewriteEngine On
+RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 RewriteRule ^ - [L]
+
+# Roster files are read through the authenticated PHP endpoints only.
+<FilesMatch "\.(csv|json|tmp)$">
+  Require all denied
+</FilesMatch>
 
 DirectoryIndex index.php
 <Files "index.php">

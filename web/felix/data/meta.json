@@ -1,8 +1,11 @@
 {
     "2026-09-24-project1.csv": {
-        "session": "checkout"
+        "session": "checkin"
     },
     "2026-09-26-project3.csv": {
+        "session": "checkin"
+    },
+    "2026-09-25-project2.csv": {
         "session": "checkin"
     }
 }

@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/auth.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -162,6 +163,16 @@
     flex-shrink: 0;
   }
   .file-tab.session-checkout .tab-dot { background: var(--checkedout); }
+  .file-tab .tab-state {
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: #1B4B47;
+    color: #fff;
+  }
+  .file-tab.session-checkout .tab-state { background: #2B5FA8; }
   .file-tab.active {
     border-color: var(--teal);
     background: var(--selected-bg);
@@ -349,7 +360,7 @@
     color: var(--muted);
     margin-right: 2px;
   }
-  .allergy-btn {
+  .allergy-btn, .flag-btn {
     border: none;
     padding: 7px 13px;
     border-radius: 999px;
@@ -360,8 +371,8 @@
     opacity: 0.72;
     transition: opacity 0.15s ease, box-shadow 0.15s ease;
   }
-  .allergy-btn:hover { opacity: 1; }
-  .allergy-btn.active {
+  .allergy-btn:hover, .flag-btn:hover { opacity: 1; }
+  .allergy-btn.active, .flag-btn.active {
     opacity: 1;
     font-weight: 600;
     box-shadow: 0 0 0 2px currentColor;
@@ -370,6 +381,9 @@
   .allergy-btn.vegan      { background: var(--pill-vegan-bg);    color: var(--pill-vegan-fg); }
   .allergy-btn.nopork     { background: var(--pill-nopork-bg);   color: var(--pill-nopork-fg); }
   .allergy-btn.diabetes   { background: var(--pill-diabetes-bg); color: var(--pill-diabetes-fg); }
+  .flag-btn.prob, .pill.prob { background: var(--pill-bee-bg); color: var(--pill-bee-fg); }
+  .flag-btn.data-error, .pill.data-error { background: var(--pill-gluten-bg); color: var(--pill-gluten-fg); }
+  .flag-btn.prio, .pill.prio { background: var(--pill-diabetes-bg); color: var(--pill-diabetes-fg); }
 
   .late-panel {
     display: none;
@@ -680,16 +694,18 @@
     display: none;
     align-items: center;
     gap: 7px;
-    padding: 10px 18px;
-    border-radius: 999px;
+    padding: 14px 22px;
+    border-radius: var(--radius-m);
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: 14px;
-    background: var(--selected-bg);
-    color: var(--teal);
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: #1B4B47;
+    color: #fff;
   }
   .session-badge.show { display: inline-flex; }
-  .session-badge.checkout { background: var(--checkedout-bg); color: var(--checkedout); }
+  .session-badge.checkout { background: #2B5FA8; color: #fff; }
   .session-switch-btn {
     display: none;
     padding: 12px 20px;
@@ -704,6 +720,27 @@
     box-shadow: var(--shadow);
   }
   .session-switch-btn.show { display: inline-flex; animation: btn-in 0.2s ease; }
+  .undo-btn {
+    padding: 10px 16px;
+    border: 2px solid var(--teal);
+    border-radius: var(--radius-m);
+    background: var(--surface);
+    color: var(--ink);
+    font: 700 14px 'Space Grotesk', sans-serif;
+    cursor: pointer;
+  }
+  .undo-btn:disabled { opacity: 0.4; cursor: default; }
+  .undo-btn:not(:disabled):hover { background: var(--selected-bg); }
+  .account-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+  .account-greeting { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .role-badge { padding: 4px 9px; border-radius: 999px; background: var(--selected-bg); color: var(--teal); font-size: 12px; font-weight: 600; }
+  .logout-form { margin: 0; flex-shrink: 0; }
+  #log-view { max-width: 1200px; }
+  #log-view[hidden] { display: none; }
+  #log-project { overflow-wrap: anywhere; color: var(--ink-soft); }
+  #log-body tr { cursor: default; }
+  #log-body td { white-space: pre-wrap; overflow-wrap: anywhere; min-width: 110px; max-width: 300px; }
+  #log-status { color: var(--ink-soft); }
   .session-switch-btn:hover { background: var(--teal-deep); }
   body[data-session="checkout"] .session-switch-btn { background: var(--checkedout); }
   body[data-session="checkout"] .session-switch-btn:hover { background: var(--checkedout-deep); }
@@ -746,8 +783,15 @@
 </head>
 <body>
 
-<div class="app">
+<div class="app" id="roster-view">
   <div class="head">
+    <div class="account-row">
+      <p class="title account-greeting">Hi <?= htmlspecialchars($authenticatedUser, ENT_QUOTES, 'UTF-8') ?>! <span class="role-badge"><?= htmlspecialchars($userRoleLabels[$authenticatedUser] ?? 'Reader', ENT_QUOTES, 'UTF-8') ?></span></p>
+      <form class="logout-form" action="logout.php" method="post">
+        <input type="hidden" name="csrf" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
+        <button class="undo-btn" type="submit">Log out</button>
+      </form>
+    </div>
     <div class="file-tabs" id="file-tabs"></div>
     <div class="eyebrow-row">
       <p class="title" id="title">Check-in roster</p>
@@ -769,6 +813,9 @@
       <button class="lock-btn" id="session-lock-btn" aria-label="Unlock to switch session">🔒</button>
       <button class="session-switch-btn" id="session-switch-btn">Start check-out session →</button>
       <button class="session-cancel-btn" id="session-cancel-btn" aria-label="Cancel, keep current session">✕</button>
+      <button class="undo-btn" id="undo-btn" disabled title="Undo the last change for this day">UNDO</button>
+      <button class="undo-btn" id="view-log-btn" disabled>View log</button>
+      <button class="undo-btn" id="all-logs-btn">All logs</button>
     </div>
     <div class="search-wrap">
       <input type="text" id="search" placeholder="Filter by name…" autocomplete="off" />
@@ -788,6 +835,12 @@
         <button class="allergy-btn vegan" data-value="Vegan" data-cls="vegan">Vegan</button>
         <button class="allergy-btn nopork" data-value="No pork" data-cls="nopork">No pork</button>
         <button class="allergy-btn diabetes" data-value="Diabetes" data-cls="diabetes">Diabetes</button>
+      </div>
+      <div class="allergy-row" id="flag-row">
+        <span class="allergy-label">Flag</span>
+        <button class="flag-btn prob" data-value="PROB">PROB</button>
+        <button class="flag-btn data-error" data-value="DATA ERROR">DATA ERROR</button>
+        <button class="flag-btn prio" data-value="PRIO">PRIO</button>
       </div>
       <div class="notes-row" id="notes-row">
         <textarea id="notes-input" rows="2" placeholder="Add a note…"></textarea>
@@ -820,6 +873,7 @@
           <th class="col-id">ID</th>
           <th class="col-name">Name</th>
           <th class="col-allergy">Allergy</th>
+          <th class="col-flag">Flag</th>
           <th class="col-time">Time</th>
           <th class="col-reason">Reason</th>
           <th class="col-notes">Notes</th>
@@ -837,6 +891,27 @@
   </div>
 </div>
 
+<section class="app" id="log-view" hidden aria-labelledby="log-title">
+  <div class="head">
+    <div class="account-row">
+      <button class="undo-btn" id="log-back-btn">Back to roster</button>
+      <form class="logout-form" action="logout.php" method="post">
+        <input type="hidden" name="csrf" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
+        <button class="undo-btn" type="submit">Log out</button>
+      </form>
+    </div>
+    <h1 class="title" id="log-title" tabindex="-1" style="margin-top:16px;">Project log</h1>
+    <p id="log-project"></p>
+    <p id="log-status" role="status"></p>
+  </div>
+  <div class="table-scroll">
+    <table aria-label="Audit log">
+      <thead><tr><th>When (Budapest)</th><th>User</th><th>Action</th><th>ID</th><th>Person</th><th>Field</th><th>Before</th><th>After</th><th id="log-project-column" hidden>Project / date</th></tr></thead>
+      <tbody id="log-body"></tbody>
+    </table>
+  </div>
+</section>
+
 <script>
   // Roster data is now loaded from get_roster.php (which reads data.csv)
   // instead of being hardcoded here — see the $.getJSON call below.
@@ -849,6 +924,70 @@
   var sessionUnlocked = false;
   var FILES = [];
   var currentFile = null;
+  var undoHistory = {};
+  var lastSnapshots = {};
+  var pendingSaves = {};
+  var rosterLoading = true;
+  var saveQueue = $.Deferred().resolve().promise();
+  var logRequestId = 0;
+  var rosterScrollPosition = 0;
+  var logReturnButton = '#view-log-btn';
+
+  function showProjectLog(allProjects) {
+    allProjects = allProjects === true;
+    if (!allProjects && (!currentFile || rosterLoading)) return;
+    var file = currentFile;
+    var requestId = ++logRequestId;
+    rosterScrollPosition = window.scrollY;
+    $('#roster-view').hide();
+    $('#log-view').prop('hidden', false);
+    logReturnButton = allProjects ? '#all-logs-btn' : '#view-log-btn';
+    $('#log-title').text(allProjects ? 'General log' : 'Project log');
+    $('#log-project').text(allProjects ? 'All projects / all dates' : file);
+    $('#log-project-column').prop('hidden', !allProjects);
+    $('#log-body').empty();
+    $('#log-status').text('Loading log records…');
+    $('#log-title').trigger('focus');
+    window.scrollTo(0, 0);
+    saveQueue.then(function () { return $.getJSON('get_log.php', allProjects ? { scope: 'all' } : { file: file }); })
+      .done(function (data) {
+        if (requestId !== logRequestId) return;
+        data.records.forEach(function (record) {
+          var $row = $('<tr>').attr('title', 'Event: ' + record.event_id);
+          [record.timestamp, record.user, record.action.toUpperCase(), record.person_id,
+            record.person_name, record.field, record.old_value, record.new_value].forEach(function (value) {
+              $row.append($('<td>').text(value === '' ? '—' : value));
+            });
+          if (allProjects) $row.append($('<td>').text(record.project));
+          $('#log-body').append($row);
+        });
+        $('#log-status').text(data.records.length ? data.records.length + ' log records · newest first' : (allProjects ? 'No general log records yet.' : 'No log records yet for this project.'));
+      }).fail(function () {
+        if (requestId !== logRequestId) return;
+        $('#log-status').text('Could not load the log. Go back and try again.');
+      });
+  }
+
+  function rosterSnapshot() {
+    return JSON.stringify({ rows: ROSTER, session: session });
+  }
+
+  function updateUndoUI() {
+    $('#view-log-btn').prop('disabled', rosterLoading || !currentFile);
+    $('#undo-btn').prop('disabled', rosterLoading || !!pendingSaves[currentFile] || !(undoHistory[currentFile] || []).length);
+  }
+
+  function restoreRoster(snapshot) {
+    var state = JSON.parse(snapshot);
+    ROSTER = state.rows;
+    session = state.session;
+    selectedId = null;
+    sessionUnlocked = false;
+    resetPanels();
+    updateSessionUI();
+    updateActionUI();
+    renderRows($('#search').val().trim());
+  }
 
   function formatTime12(value) {
     var parts = value.split(':');
@@ -879,21 +1018,40 @@
     return null;
   }
 
-  function saveRoster() {
+  function saveRoster(isUndo, action) {
     if (!currentFile) return;
-    $.ajax({
-      url: 'save_roster.php',
-      method: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify({ file: currentFile, session: session, rows: ROSTER }),
-      dataType: 'json'
-    }).done(function () {
-      var f = FILES.find(function (x) { return x.file === currentFile; });
-      if (f) f.session = session;
-      renderFileTabs();
-    }).fail(function () {
-      console.error('Could not save changes to ' + currentFile + '.');
+    var file = currentFile;
+    var snapshot = rosterSnapshot();
+    var state = JSON.parse(snapshot);
+    var result = $.Deferred();
+    if (!isUndo && lastSnapshots[file] && lastSnapshots[file] !== snapshot) {
+      undoHistory[file].push(lastSnapshots[file]);
+    }
+    lastSnapshots[file] = snapshot;
+    pendingSaves[file] = (pendingSaves[file] || 0) + 1;
+    updateUndoUI();
+    // Keep a quick sequence of edits and undos in the same order on disk.
+    saveQueue = saveQueue.then(function () {
+      return $.ajax({
+        url: 'save_roster.php',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ file: file, session: state.session, rows: state.rows, action: isUndo ? 'undo' : (action || 'save') }),
+        dataType: 'json'
+      }).then(function () {
+        var f = FILES.find(function (x) { return x.file === file; });
+        if (f) f.session = state.session;
+        renderFileTabs();
+        result.resolve();
+      }, function () {
+        result.reject();
+        window.alert('Could not save changes to ' + file + '. Please check your connection.');
+      }).always(function () {
+        pendingSaves[file]--;
+        updateUndoUI();
+      });
     });
+    return result.promise();
   }
 
   function renderFileTabs() {
@@ -905,12 +1063,15 @@
         .toggleClass('session-checkout', f.session === 'checkout')
         .append($('<span class="tab-dot">'))
         .append($('<span>').text(f.label))
+        .append($('<span class="tab-state">').text(f.session === 'checkout' ? 'CHECK-OUT' : 'CHECK-IN'))
         .appendTo($tabs);
     });
   }
 
   function loadRoster(file) {
     currentFile = file;
+    rosterLoading = true;
+    updateUndoUI();
     selectedId = null;
     mode = null;
     unlocked = false;
@@ -920,20 +1081,26 @@
     renderFileTabs();
 
     $('#roster-body').html(
-      '<tr><td colspan="7" style="text-align:center;padding:24px;color:var(--muted);">Loading roster…</td></tr>'
+      '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--muted);">Loading roster…</td></tr>'
     );
 
-    $.getJSON('get_roster.php', { file: file })
+    saveQueue.then(function () { return $.getJSON('get_roster.php', { file: file }); })
       .done(function (data) {
+        if (currentFile !== file) return;
         ROSTER = data.rows || [];
         session = data.session === 'checkout' ? 'checkout' : 'checkin';
+        var snapshot = rosterSnapshot();
+        if (lastSnapshots[file] !== snapshot) undoHistory[file] = [];
+        lastSnapshots[file] = snapshot;
+        rosterLoading = false;
+        updateUndoUI();
         updateSessionUI();
         updateActionUI();
         renderRows('');
       })
       .fail(function () {
         $('#roster-body').html(
-          '<tr><td colspan="7" style="text-align:center;padding:24px;color:var(--cancelled);">' +
+          '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--cancelled);">' +
           'Could not load ' + file + '.</td></tr>'
         );
       });
@@ -945,7 +1112,7 @@
         FILES = data || [];
         if (!FILES.length) {
           $('#roster-body').html(
-            '<tr><td colspan="7" style="text-align:center;padding:24px;color:var(--muted);">No CSV files found in /data.</td></tr>'
+            '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--muted);">No CSV files found in /data.</td></tr>'
           );
           return;
         }
@@ -954,7 +1121,7 @@
       })
       .fail(function () {
         $('#roster-body').html(
-          '<tr><td colspan="7" style="text-align:center;padding:24px;color:var(--cancelled);">' +
+          '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--cancelled);">' +
           'Could not load the file list from list_files.php.</td></tr>'
         );
       });
@@ -1002,6 +1169,13 @@
         $('<td>').append(
           person.allergy
             ? $('<span class="pill">').addClass(person.cls).text(person.allergy)
+            : $('<span class="cell-empty-dash">').text('–')
+        )
+      );
+      $row.append(
+        $('<td class="cell-flag">').append(
+          person.flag
+            ? $('<span class="pill">').addClass({ 'PROB': 'prob', 'DATA ERROR': 'data-error', 'PRIO': 'prio' }[person.flag] || '').text(person.flag)
             : $('<span class="cell-empty-dash">').text('–')
         )
       );
@@ -1056,6 +1230,10 @@
 
     $('#action-row').toggleClass('show', hasSelection && mode === null);
     $('#allergy-row').toggleClass('show', hasSelection && mode === null);
+    $('#flag-row').toggleClass('show', hasSelection && mode === null);
+    $('.flag-btn').each(function () {
+      $(this).toggleClass('active', !!person && person.flag === $(this).data('value'));
+    });
     $('#notes-row').toggleClass('show', hasSelection && mode === null);
     $('.allergy-btn').each(function () {
       $(this).toggleClass('active', !!person && person.allergy === $(this).data('value'));
@@ -1104,6 +1282,44 @@
     updateSessionUI();
     loadFileList();
 
+    $('.logout-form').on('submit', function (event) {
+      event.preventDefault();
+      var form = this;
+      $('.logout-form button').prop('disabled', true);
+      saveQueue.then(function () { form.submit(); });
+    });
+    $(window).on('pageshow', function (event) {
+      if (event.originalEvent.persisted) window.location.reload();
+    });
+
+    $('#view-log-btn').on('click', showProjectLog);
+    $('#all-logs-btn').on('click', function () { showProjectLog(true); });
+    $('#log-back-btn').on('click', function () {
+      logRequestId++;
+      $('#log-view').prop('hidden', true);
+      $('#roster-view').show();
+      $(logReturnButton).trigger('focus');
+      window.scrollTo(0, rosterScrollPosition);
+    });
+
+    $('#undo-btn').on('click', function () {
+      if (rosterLoading || pendingSaves[currentFile] || !(undoHistory[currentFile] || []).length) return;
+      var file = currentFile;
+      var history = undoHistory[file];
+      var before = rosterSnapshot();
+      var previous = history.pop();
+      restoreRoster(previous);
+      saveRoster(true).fail(function () {
+        // Keep the undo available for retry if its save fails.
+        history.push(previous);
+        if (currentFile === file && rosterSnapshot() === previous) {
+          restoreRoster(before);
+          lastSnapshots[file] = before;
+        }
+        updateUndoUI();
+      });
+    });
+
     $('#file-tabs').on('click', '.file-tab', function () {
       var file = $(this).attr('data-file');
       if (file === currentFile) return;
@@ -1146,7 +1362,7 @@
       updateSessionUI();
       updateActionUI();
       renderRows($('#search').val().trim());
-      saveRoster();
+      saveRoster(false, 'session');
     });
 
     $('#checkout-btn').on('click', function () {
@@ -1155,7 +1371,7 @@
       selectedId = null;
       updateActionUI();
       renderRows($('#search').val().trim());
-      saveRoster();
+      saveRoster(false, 'checkout');
     });
 
     $('#arrived-btn').on('click', function () {
@@ -1171,7 +1387,7 @@
       unlocked = false;
       updateActionUI();
       renderRows($('#search').val().trim());
-      saveRoster();
+      saveRoster(false, 'arrived');
     });
 
     $('#lock-btn').on('click', function () {
@@ -1187,14 +1403,22 @@
       }
       updateActionUI();
       renderRows($('#search').val().trim());
-      saveRoster();
+      saveRoster(false, 'diet');
+    });
+
+    $('.flag-btn').on('click', function () {
+      var person = ROSTER.find(function (p) { return p.id === selectedId; });
+      if (person) person.flag = $(this).data('value');
+      updateActionUI();
+      renderRows($('#search').val().trim());
+      saveRoster(false, 'flag');
     });
 
     $('#notes-save').on('click', function () {
       var person = ROSTER.find(function (p) { return p.id === selectedId; });
       if (person) person.notes = $('#notes-input').val();
       renderRows($('#search').val().trim());
-      saveRoster();
+      saveRoster(false, 'notes');
     });
 
     $('#late-btn').on('click', function () {
@@ -1233,7 +1457,7 @@
       resetPanels();
       updateActionUI();
       renderRows($('#search').val().trim());
-      saveRoster();
+      saveRoster(false, 'late');
     });
 
     $('#cancelled-btn').on('click', function () {
@@ -1272,7 +1496,7 @@
       resetPanels();
       updateActionUI();
       renderRows($('#search').val().trim());
-      saveRoster();
+      saveRoster(false, 'cancelled');
     });
   });
 </script>

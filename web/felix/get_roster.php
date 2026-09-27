@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/auth.php';
+
 // Reads data/<file>.csv (one dated project file) and returns its rows
 // plus its saved session state (checkin/checkout) as JSON.
 
@@ -47,6 +49,7 @@ if (($handle = fopen($csvPath, 'r')) !== false) {
             'reason'     => isset($row[8]) ? $row[8] : '',
             'notes'      => isset($row[9]) ? $row[9] : '',
             'checkedOut' => isset($row[10]) && $row[10] === '1',
+            'flag'       => isset($row[11]) ? $row[11] : '',
         ];
     }
 
