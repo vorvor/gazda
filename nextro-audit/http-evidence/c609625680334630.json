@@ -1,0 +1,27 @@
+{
+  "url": "https://nextro.hu/termekkategoria/autotoltok/",
+  "final_url": "https://nextro.hu/termekkategoria/autotoltok/",
+  "status": 200,
+  "redirects": [],
+  "headers": {
+    "Date": "Tue, 22 Sep 2026 11:03:51 GMT",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Content-Length": "44365",
+    "Connection": "keep-alive",
+    "Vary": "User-Agent,Accept-Encoding",
+    "Last-Modified": "Tue, 22 Sep 2026 01:47:16 GMT",
+    "Content-Encoding": "gzip",
+    "Cache-Control": "max-age=0, no-cache, no-store, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "Mon, 29 Oct 1923 20:30:00 GMT",
+    "Server": "RHProxy",
+    "Content-Security-Policy": "upgrade-insecure-requests",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Accept-Ranges": "bytes"
+  },
+  "elapsed_seconds": 0.237,
+  "decoded_bytes": 246051,
+  "body_file": "/workspace/nextro-audit/http-evidence/c609625680334630.body",
+  "sha256": "9c3343229c0d94d2f9dc56b2bc6971dfa79a1c37e01831b9938c3ab066aac62b"
+}

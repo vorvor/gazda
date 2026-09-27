@@ -1,0 +1,24 @@
+{
+  "url": "https://nextro.hu/robots.txt",
+  "final_url": "https://nextro.hu/robots.txt",
+  "status": 200,
+  "redirects": [],
+  "headers": {
+    "Date": "Tue, 22 Sep 2026 11:03:47 GMT",
+    "Content-Type": "text/plain; charset=utf-8",
+    "Content-Length": "214",
+    "Connection": "keep-alive",
+    "X-Robots-Tag": "noindex, follow",
+    "Link": "<https://nextro.hu/wp-json/>; rel=\"https://api.w.org/\"",
+    "Vary": "Accept-Encoding",
+    "Content-Encoding": "gzip",
+    "Server": "RHProxy",
+    "Content-Security-Policy": "upgrade-insecure-requests",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin"
+  },
+  "elapsed_seconds": 2.768,
+  "decoded_bytes": 437,
+  "body_file": "/workspace/nextro-audit/http-evidence/e009eeac1afecba5.body",
+  "sha256": "7dc4b280a96a705f12259bd8ef2caab8dedfaac07237dc71718b366da3e7c63e"
+}

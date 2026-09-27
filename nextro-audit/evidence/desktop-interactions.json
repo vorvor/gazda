@@ -1,0 +1,37 @@
+{
+  "counters": [
+    {
+      "text": "21",
+      "target": "21"
+    },
+    {
+      "text": "18",
+      "target": "18"
+    },
+    {
+      "text": "500+",
+      "target": "500"
+    }
+  ],
+  "references": [],
+  "tab0": {
+    "tag": "BUTTON",
+    "text": "‹",
+    "outline": "rgb(95, 145, 56) solid 2px"
+  },
+  "tab1": {
+    "tag": "BUTTON",
+    "text": "›",
+    "outline": "rgb(95, 145, 56) solid 2px"
+  },
+  "tab2": {
+    "tag": "BUTTON",
+    "text": "",
+    "outline": "rgb(95, 145, 56) solid 2px"
+  },
+  "tab3": {
+    "tag": "BUTTON",
+    "text": "",
+    "outline": "rgb(95, 145, 56) solid 2px"
+  }
+}

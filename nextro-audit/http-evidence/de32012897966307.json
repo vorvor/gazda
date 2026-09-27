@@ -1,0 +1,25 @@
+{
+  "url": "https://nextro.hu/technical-audit-not-found-20260922-7e21/",
+  "final_url": "https://nextro.hu/technical-audit-not-found-20260922-7e21/",
+  "status": 404,
+  "redirects": [],
+  "headers": {
+    "Date": "Tue, 22 Sep 2026 11:03:59 GMT",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Vary": "Accept-Encoding",
+    "Expires": "Wed, 11 Jan 1984 05:00:00 GMT",
+    "Cache-Control": "no-cache, must-revalidate, max-age=0, no-store, private",
+    "Link": "<https://nextro.hu/wp-json/>; rel=\"https://api.w.org/\"",
+    "Server": "RHProxy",
+    "Content-Security-Policy": "upgrade-insecure-requests",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Content-Encoding": "gzip"
+  },
+  "elapsed_seconds": 0.561,
+  "decoded_bytes": 138671,
+  "body_file": "/workspace/nextro-audit/http-evidence/de32012897966307.body",
+  "sha256": "cab79fe2f90e718b8980a866ba7187afeab2c7de972943394a2bd9f6d77dd022"
+}

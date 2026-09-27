@@ -1,0 +1,343 @@
+{
+  "url": "https://nextro.hu/kapcsolat/",
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT"
+      ],
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5f9138",
+                "bgColor": "#f5f7f9",
+                "contrastRatio": 3.49,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"wp-block-greenshift-blocks-container gspb_container gspb_container-gsbp-dbd6821\" id=\"gspb_container-id-gsbp-dbd6821\">",
+                  "target": [
+                    "#gspb_container-id-gsbp-dbd6821"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.49 (foreground color: #5f9138, background color: #f5f7f9, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<a href=\"tel:+36309531703\">+36 30 953 1703</a>",
+          "target": [
+            "#gspb_text-id-gsbp-9f0dd75 > a[href=\"tel:+36309531703\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.49 (foreground color: #5f9138, background color: #f5f7f9, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5f9138",
+                "bgColor": "#f5f7f9",
+                "contrastRatio": 3.49,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"wp-block-greenshift-blocks-container gspb_container gspb_container-gsbp-fb8900e\" id=\"gspb_container-id-gsbp-fb8900e\">",
+                  "target": [
+                    "#gspb_container-id-gsbp-fb8900e"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.49 (foreground color: #5f9138, background color: #f5f7f9, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<a href=\"mailto:info@nextro.hu\">info@nextro.hu</a>",
+          "target": [
+            "#gspb_text-id-gsbp-90ee857 > a[href$=\"mailto:info@nextro.hu\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.49 (foreground color: #5f9138, background color: #f5f7f9, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#0f1f2f",
+                "bgColor": "#5f9138",
+                "contrastRatio": 4.44,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<a class=\"wp-block-greenshift-blocks-buttonbox gspb-buttonbox wp-element-button\" href=\"/bolt/\" rel=\"noopener\">",
+                  "target": [
+                    "#gspb_button-id-gsbp-fe51d00 > .wp-block-greenshift-blocks-buttonbox.gspb-buttonbox.wp-element-button"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.44 (foreground color: #0f1f2f, background color: #5f9138, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"gspb-buttonbox-title\">Webáruház</span>",
+          "target": [
+            "#gspb_button-id-gsbp-fe51d00 > .wp-block-greenshift-blocks-buttonbox.gspb-buttonbox.wp-element-button > .gspb-buttonbox-textwrap > .gspb-buttonbox-text > .gspb-buttonbox-title"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.44 (foreground color: #0f1f2f, background color: #5f9138, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#0f1f2f",
+                "bgColor": "#5f9138",
+                "contrastRatio": 4.44,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<button class=\"wp-element-button\">\nFeliratkozás\t\t\t</button>",
+                  "target": [
+                    ".ct-newsletter-subscribe-form-elements > .wp-element-button"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.44 (foreground color: #0f1f2f, background color: #5f9138, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<button class=\"wp-element-button\">\nFeliratkozás\t\t\t</button>",
+          "target": [
+            ".ct-newsletter-subscribe-form-elements > .wp-element-button"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.44 (foreground color: #0f1f2f, background color: #5f9138, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#3a4a57",
+                "bgColor": "#0f1f2f",
+                "contrastRatio": 1.82,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"wp-block-greenshift-blocks-row alignfull gspb_row gspb_row-id-gsbp-fe7f173 gspb_row--gutter-custom-0\" id=\"gspb_row-id-gsbp-fe7f173\">",
+                  "target": [
+                    "#gspb_row-id-gsbp-fe7f173"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 1.82 (foreground color: #3a4a57, background color: #0f1f2f, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<div id=\"gspb_text-id-gsbp-3eec747\" class=\"gspb_text gspb_text-id-gsbp-3eec747 \">",
+          "target": [
+            "#gspb_text-id-gsbp-3eec747"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.82 (foreground color: #3a4a57, background color: #0f1f2f, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    },
+    {
+      "id": "link-in-text-block",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2a",
+        "wcag141",
+        "TTv5",
+        "TT13.a",
+        "EN-301-549",
+        "EN-9.1.4.1"
+      ],
+      "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
+      "help": "Links must be distinguishable without relying on color",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/link-in-text-block?application=axeAPI",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "link-in-text-block",
+              "data": {
+                "messageKey": "fgContrast",
+                "contrastRatio": 2.43,
+                "requiredContrastRatio": 3,
+                "nodeColor": "#5f9138",
+                "parentColor": "#3a4a57"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div id=\"gspb_text-id-gsbp-9f0dd75\" class=\"gspb_text gspb_text-id-gsbp-9f0dd75 \">Sürgős ügyben, hibabejelentéshez vagy gyors egyeztetéshez hívjon minket: <a href=\"tel:+36309531703\">+36 30 953 1703</a></div>",
+                  "target": [
+                    "#gspb_text-id-gsbp-9f0dd75"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "The link has insufficient color contrast of 2.43:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5f9138, surrounding text: #3a4a57)"
+            },
+            {
+              "id": "link-in-text-block-style",
+              "data": null,
+              "relatedNodes": [
+                {
+                  "html": "<div id=\"gspb_text-id-gsbp-9f0dd75\" class=\"gspb_text gspb_text-id-gsbp-9f0dd75 \">Sürgős ügyben, hibabejelentéshez vagy gyors egyeztetéshez hívjon minket: <a href=\"tel:+36309531703\">+36 30 953 1703</a></div>",
+                  "target": [
+                    "#gspb_text-id-gsbp-9f0dd75"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "The link has no styling (such as underline) to distinguish it from the surrounding text"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<a href=\"tel:+36309531703\">+36 30 953 1703</a>",
+          "target": [
+            "#gspb_text-id-gsbp-9f0dd75 > a[href=\"tel:+36309531703\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  The link has insufficient color contrast of 2.43:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5f9138, surrounding text: #3a4a57)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+        },
+        {
+          "any": [
+            {
+              "id": "link-in-text-block",
+              "data": {
+                "messageKey": "fgContrast",
+                "contrastRatio": 2.43,
+                "requiredContrastRatio": 3,
+                "nodeColor": "#5f9138",
+                "parentColor": "#3a4a57"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div id=\"gspb_text-id-gsbp-90ee857\" class=\"gspb_text gspb_text-id-gsbp-90ee857 \">Ajánlatkérését és kérdéseit várjuk az <a href=\"mailto:info@nextro.hu\">info@nextro.hu</a> címen. Az épület és a berendezés adatai sokat segítenek a pontos ajánlatban.</div>",
+                  "target": [
+                    "#gspb_text-id-gsbp-90ee857"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "The link has insufficient color contrast of 2.43:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5f9138, surrounding text: #3a4a57)"
+            },
+            {
+              "id": "link-in-text-block-style",
+              "data": null,
+              "relatedNodes": [
+                {
+                  "html": "<div id=\"gspb_text-id-gsbp-90ee857\" class=\"gspb_text gspb_text-id-gsbp-90ee857 \">Ajánlatkérését és kérdéseit várjuk az <a href=\"mailto:info@nextro.hu\">info@nextro.hu</a> címen. Az épület és a berendezés adatai sokat segítenek a pontos ajánlatban.</div>",
+                  "target": [
+                    "#gspb_text-id-gsbp-90ee857"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "The link has no styling (such as underline) to distinguish it from the surrounding text"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<a href=\"mailto:info@nextro.hu\">info@nextro.hu</a>",
+          "target": [
+            "#gspb_text-id-gsbp-90ee857 > a[href$=\"mailto:info@nextro.hu\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  The link has insufficient color contrast of 2.43:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5f9138, surrounding text: #3a4a57)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+        }
+      ]
+    }
+  ],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "nodes": 2
+    }
+  ],
+  "passes": [
+    "aria-allowed-attr",
+    "aria-conditional-attr",
+    "aria-deprecated-role",
+    "aria-hidden-body",
+    "aria-hidden-focus",
+    "aria-prohibited-attr",
+    "aria-required-attr",
+    "aria-roles",
+    "aria-valid-attr-value",
+    "aria-valid-attr",
+    "avoid-inline-spacing",
+    "button-name",
+    "bypass",
+    "color-contrast",
+    "document-title",
+    "duplicate-id-aria",
+    "form-field-multiple-labels",
+    "frame-title-unique",
+    "frame-title",
+    "html-has-lang",
+    "html-lang-valid",
+    "image-alt",
+    "label",
+    "link-in-text-block",
+    "link-name",
+    "list",
+    "listitem",
+    "meta-viewport",
+    "nested-interactive",
+    "select-name",
+    "target-size"
+  ]
+}

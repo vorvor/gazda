@@ -1,0 +1,27 @@
+{
+  "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-kompakt-beepitett-kabel-nelkul/",
+  "final_url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-kompakt-beepitett-kabel-nelkul/",
+  "status": 200,
+  "redirects": [],
+  "headers": {
+    "Date": "Tue, 22 Sep 2026 11:03:53 GMT",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Content-Length": "41774",
+    "Connection": "keep-alive",
+    "Vary": "User-Agent,Accept-Encoding",
+    "Last-Modified": "Tue, 22 Sep 2026 01:46:53 GMT",
+    "Content-Encoding": "gzip",
+    "Cache-Control": "max-age=0, no-cache, no-store, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "Mon, 29 Oct 1923 20:30:00 GMT",
+    "Server": "RHProxy",
+    "Content-Security-Policy": "upgrade-insecure-requests",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Accept-Ranges": "bytes"
+  },
+  "elapsed_seconds": 0.346,
+  "decoded_bytes": 204756,
+  "body_file": "/workspace/nextro-audit/http-evidence/57c96e4243a569aa.body",
+  "sha256": "2690f3a6907a73dfd807152e7b77ee4b9f511e6fbb56b2b4ad1d58ad92ff4a27"
+}

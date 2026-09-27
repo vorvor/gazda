@@ -1,0 +1,27 @@
+{
+  "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-11-kw-5-m-beepitett-toltokabellel/",
+  "final_url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-11-kw-5-m-beepitett-toltokabellel/",
+  "status": 200,
+  "redirects": [],
+  "headers": {
+    "Date": "Tue, 22 Sep 2026 11:03:52 GMT",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Content-Length": "41728",
+    "Connection": "keep-alive",
+    "Vary": "User-Agent,Accept-Encoding",
+    "Last-Modified": "Tue, 22 Sep 2026 01:46:51 GMT",
+    "Content-Encoding": "gzip",
+    "Cache-Control": "max-age=0, no-cache, no-store, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "Mon, 29 Oct 1923 20:30:00 GMT",
+    "Server": "RHProxy",
+    "Content-Security-Policy": "upgrade-insecure-requests",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Accept-Ranges": "bytes"
+  },
+  "elapsed_seconds": 0.256,
+  "decoded_bytes": 204582,
+  "body_file": "/workspace/nextro-audit/http-evidence/cb5dc1bafc395c30.body",
+  "sha256": "da66bfc7c819294e1c6cc9ac5fbd17ee75104ced0fb34cb37639688d1f2ea4df"
+}

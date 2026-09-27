@@ -1,0 +1,477 @@
+{
+  "checks": [
+    {
+      "url": "https://nextro.hu/sitemap.xml",
+      "status": 200,
+      "final": "https://nextro.hu/sitemap_index.xml",
+      "redirects": [
+        [
+          301,
+          "https://nextro.hu/sitemap_index.xml"
+        ]
+      ],
+      "title": null,
+      "robots": [],
+      "canonical": []
+    },
+    {
+      "url": "https://nextro.hu/kosar/",
+      "status": 200,
+      "final": "https://nextro.hu/kosar/",
+      "redirects": [],
+      "title": "Kosár – Légtechnikai webshop",
+      "robots": [
+        "noindex, follow"
+      ],
+      "canonical": [
+        "https://nextro.hu/kosar/"
+      ]
+    },
+    {
+      "url": "https://nextro.hu/penztar/",
+      "status": 200,
+      "final": "https://nextro.hu/kosar/",
+      "redirects": [
+        [
+          302,
+          "https://nextro.hu/kosar/"
+        ]
+      ],
+      "title": "Kosár – Légtechnikai webshop",
+      "robots": [
+        "noindex, follow"
+      ],
+      "canonical": [
+        "https://nextro.hu/kosar/"
+      ]
+    },
+    {
+      "url": "https://nextro.hu/fiokom/",
+      "status": 200,
+      "final": "https://nextro.hu/fiokom/",
+      "redirects": [],
+      "title": "Fiókom – Rendelések és vásárlói adatok",
+      "robots": [
+        "noindex, follow"
+      ],
+      "canonical": [
+        "https://nextro.hu/fiokom/"
+      ]
+    },
+    {
+      "url": "https://nextro.hu/bolt/?orderby=price",
+      "status": 200,
+      "final": "https://nextro.hu/bolt/?orderby=price",
+      "redirects": [],
+      "title": "Webshop - NEXTRO Kft.",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "canonical": [
+        "https://nextro.hu/bolt/"
+      ]
+    }
+  ],
+  "pagespeed": {
+    "status": 429,
+    "body": {
+      "error": {
+        "code": 429,
+        "message": "Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for consumer 'project_number:583797351490'.",
+        "errors": [
+          {
+            "message": "Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for consumer 'project_number:583797351490'.",
+            "domain": "global",
+            "reason": "rateLimitExceeded"
+          }
+        ],
+        "status": "RESOURCE_EXHAUSTED",
+        "details": [
+          {
+            "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+            "reason": "RATE_LIMIT_EXCEEDED",
+            "domain": "googleapis.com",
+            "metadata": {
+              "quota_location": "global",
+              "consumer": "projects/583797351490",
+              "quota_limit": "defaultPerDayPerProject",
+              "quota_metric": "pagespeedonline.googleapis.com/default",
+              "quota_unit": "1/d/{project}",
+              "service": "pagespeedonline.googleapis.com",
+              "quota_limit_value": "0"
+            }
+          },
+          {
+            "@type": "type.googleapis.com/google.rpc.Help",
+            "links": [
+              {
+                "description": "Request a higher quota limit.",
+                "url": "https://cloud.google.com/docs/quotas/help/request_increase"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "organization": [
+    {
+      "@type": "Organization",
+      "@id": "https://nextro.hu/#organization",
+      "name": "NEXTRO Kft.",
+      "url": "https://nextro.hu/",
+      "logo": {
+        "@type": "ImageObject",
+        "inLanguage": "hu",
+        "@id": "https://nextro.hu/#/schema/logo/image/",
+        "url": "https://nextro.hu/wp-content/uploads/2026/08/logo-atlatszo.png",
+        "contentUrl": "https://nextro.hu/wp-content/uploads/2026/08/logo-atlatszo.png",
+        "width": 803,
+        "height": 213,
+        "caption": "NEXTRO Kft."
+      },
+      "image": {
+        "@id": "https://nextro.hu/#/schema/logo/image/"
+      }
+    }
+  ],
+  "favicon": [
+    {
+      "rel": [
+        "icon"
+      ],
+      "href": "https://nextro.hu/wp-content/uploads/2026/08/favicon-150x150.png",
+      "sizes": "32x32"
+    },
+    {
+      "rel": [
+        "icon"
+      ],
+      "href": "https://nextro.hu/wp-content/uploads/2026/08/favicon-300x300.png",
+      "sizes": "192x192"
+    },
+    {
+      "rel": [
+        "apple-touch-icon"
+      ],
+      "href": "https://nextro.hu/wp-content/uploads/2026/08/favicon-300x300.png"
+    }
+  ],
+  "home_scripts": [
+    {
+      "src": "https://nextro.hu/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+      "defer": false,
+      "async": false
+    },
+    {
+      "src": "https://nextro.hu/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+      "defer": false,
+      "async": false
+    },
+    {
+      "src": "https://nextro.hu/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.11.0.1",
+      "defer": true,
+      "async": false
+    },
+    {
+      "src": "https://nextro.hu/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=11.0.1",
+      "defer": true,
+      "async": false
+    },
+    {
+      "src": "https://nextro.hu/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.11.0.1",
+      "defer": true,
+      "async": false
+    },
+    {
+      "src": "https://nextro.hu/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=11.0.1",
+      "defer": true,
+      "async": false
+    },
+    {
+      "src": "https://nextro.hu/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=11.0.1",
+      "defer": true,
+      "async": false
+    },
+    {
+      "src": "https://nextro.hu/wp-content/plugins/gdpr-compliant-recaptcha-for-all-forms/scripts/recaptcha-gdpr-pow.js?ver=6.0.0",
+      "defer": false,
+      "async": false
+    },
+    {
+      "src": "https://nextro.hu/wp-content/plugins/fluentform/assets/js/form-submission.js?ver=6.2.13",
+      "defer": false,
+      "async": false
+    },
+    {
+      "src": "https://nextro.hu/wp-content/themes/blocksy/static/bundle/main.js?ver=2.1.53",
+      "defer": false,
+      "async": false
+    },
+    {
+      "src": "https://nextro.hu/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=11.0.1",
+      "defer": false,
+      "async": false
+    },
+    {
+      "src": "https://nextro.hu/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=11.0.1",
+      "defer": false,
+      "async": false
+    },
+    {
+      "src": "https://nextro.hu/wp-content/plugins/complianz-gdpr/cookiebanner/js/complianz.min.js?ver=1787659936",
+      "defer": true,
+      "async": false
+    },
+    {
+      "src": "https://nextro.hu/wp-content/plugins/greenshift-animation-and-page-builder-blocks/libs/counter/index.js?ver=1.7",
+      "defer": false,
+      "async": false
+    }
+  ],
+  "home_images": [
+    {
+      "src": "https://pixel.barion.com/a.gif?ba_pixel_id='BP-WuzUUakxUQ-DA'&ev=contentView&noscript=1",
+      "srcset": null,
+      "alt": "Barion Pixel",
+      "width": "1",
+      "height": "1",
+      "loading": null,
+      "fetchpriority": null
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/logo-atlatszo.png",
+      "srcset": "https://nextro.hu/wp-content/uploads/2026/08/logo-atlatszo.png 803w, https://nextro.hu/wp-content/uploads/2026/08/logo-atlatszo-300x80.png 300w, https://nextro.hu/wp-content/uploads/2026/08/logo-atlatszo-768x204.png 768w, https://nextro.hu/wp-content/uploads/2026/08/logo-atlatszo-800x213.png 800w",
+      "alt": "NEXTRO Kft. logó",
+      "width": "803",
+      "height": "213",
+      "loading": null,
+      "fetchpriority": "high"
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/logo-atlatszo.png",
+      "srcset": "https://nextro.hu/wp-content/uploads/2026/08/logo-atlatszo.png 803w, https://nextro.hu/wp-content/uploads/2026/08/logo-atlatszo-300x80.png 300w, https://nextro.hu/wp-content/uploads/2026/08/logo-atlatszo-768x204.png 768w, https://nextro.hu/wp-content/uploads/2026/08/logo-atlatszo-800x213.png 800w",
+      "alt": "NEXTRO Kft. logó",
+      "width": "803",
+      "height": "213",
+      "loading": null,
+      "fetchpriority": null
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/referencia-1.png",
+      "srcset": null,
+      "alt": "Ipari üzem – Légkezelő telepítés",
+      "width": null,
+      "height": null,
+      "loading": "lazy",
+      "fetchpriority": null
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/referencia-2.png",
+      "srcset": null,
+      "alt": "Szálloda – Felújítás és korszerűsítés",
+      "width": null,
+      "height": null,
+      "loading": "lazy",
+      "fetchpriority": null
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/referencia-3.png",
+      "srcset": null,
+      "alt": "Nagykonyha – Komplett rendszer",
+      "width": null,
+      "height": null,
+      "loading": "lazy",
+      "fetchpriority": null
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/referencia-4.png",
+      "srcset": null,
+      "alt": "Ipari létesítmény – Rendszerbővítés",
+      "width": null,
+      "height": null,
+      "loading": "lazy",
+      "fetchpriority": null
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-garazs.jpg",
+      "srcset": "https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-garazs.jpg 493w, https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-garazs-270x300.jpg 270w",
+      "alt": "Elektromos autótöltő garázsban, töltés közben",
+      "width": "493",
+      "height": "548",
+      "loading": "lazy",
+      "fetchpriority": null
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-hazban.jpg",
+      "srcset": "https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-hazban.jpg 492w, https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-hazban-271x300.jpg 271w",
+      "alt": "Elektromos autótöltő családi ház falán",
+      "width": "492",
+      "height": "545",
+      "loading": "lazy",
+      "fetchpriority": null
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-feher-kozeli-1.jpg",
+      "srcset": "https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-feher-kozeli-1.jpg 472w, https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-feher-kozeli-1-300x300.jpg 300w, https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-feher-kozeli-1-150x150.jpg 150w",
+      "alt": "Teltonika EVC2 okos AC autótöltő 11 kW – kompakt (beépített kábel nélkül)",
+      "width": "472",
+      "height": "472",
+      "loading": "lazy",
+      "fetchpriority": null
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/autotolto-termek-oszlopos-fa-182x600.png",
+      "srcset": null,
+      "alt": "Oszlopos Teltonika EVC2 autótöltő termékfotó",
+      "width": "182",
+      "height": "600",
+      "loading": "lazy",
+      "fetchpriority": null
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-oszlopos-kek-800x515.jpg",
+      "srcset": null,
+      "alt": "Teltonika EVC2 oszlopos elektromos autótöltő kék burkolattal",
+      "width": "800",
+      "height": "515",
+      "loading": "lazy",
+      "fetchpriority": null
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-feher-kozeli-2.jpg",
+      "srcset": "https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-feher-kozeli-2.jpg 472w, https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-feher-kozeli-2-300x300.jpg 300w, https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-feher-kozeli-2-150x150.jpg 150w",
+      "alt": "Teltonika EVC2 okos AC autótöltő 22 kW – kompakt (beépített kábel nélkül)",
+      "width": "472",
+      "height": "472",
+      "loading": "lazy",
+      "fetchpriority": null
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/logo-feher.png",
+      "srcset": null,
+      "alt": "NEXTRO Kft. logó",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "fetchpriority": null
+    },
+    {
+      "src": "https://nextro.hu/wp-content/uploads/2026/08/wpb-dsp-logo.png",
+      "srcset": null,
+      "alt": "Demján Sándor Program",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "fetchpriority": null
+    }
+  ],
+  "priced_product_schema": [
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "@id": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-75-m-beepitett-toltokabellel/#product",
+      "name": "Teltonika EVC2 okos AC autótöltő 22 kW – 7,5 m beépített töltőkábellel",
+      "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-75-m-beepitett-toltokabellel/",
+      "description": "Okos AC elektromos autótöltő, 22 kW töltési teljesítmény (3 fázis), beépített, 7,5 m hosszú töltőkábellel. Alkalmazásból vezérelhető, NFC-kártyás engedélyezéssel. 36 hónap garancia.",
+      "image": "https://nextro.hu/wp-content/uploads/2026/08/autotolto-lifestyle-oszlopos-kek.jpg",
+      "sku": 977,
+      "offers": [
+        {
+          "@type": "Offer",
+          "priceSpecification": [
+            {
+              "@type": "UnitPriceSpecification",
+              "price": "99999",
+              "priceCurrency": "HUF",
+              "validThrough": "2027-12-31",
+              "valueAddedTaxIncluded": true
+            }
+          ],
+          "priceValidUntil": "2027-12-31",
+          "availability": "https://schema.org/InStock",
+          "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-75-m-beepitett-toltokabellel/",
+          "seller": {
+            "@type": "Organization",
+            "name": "NEXTRO Kft.",
+            "url": "https://nextro.hu"
+          },
+          "price": "99999",
+          "priceCurrency": "HUF"
+        }
+      ]
+    },
+    {
+      "@type": "Offer",
+      "priceSpecification": [
+        {
+          "@type": "UnitPriceSpecification",
+          "price": "99999",
+          "priceCurrency": "HUF",
+          "validThrough": "2027-12-31",
+          "valueAddedTaxIncluded": true
+        }
+      ],
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock",
+      "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-75-m-beepitett-toltokabellel/",
+      "seller": {
+        "@type": "Organization",
+        "name": "NEXTRO Kft.",
+        "url": "https://nextro.hu"
+      },
+      "price": "99999",
+      "priceCurrency": "HUF"
+    }
+  ],
+  "product_schema_counts": {
+    "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-11-kw-5-m-beepitett-toltokabellel/": 0,
+    "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-11-kw-75-m-beepitett-toltokabellel/": 0,
+    "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-11-kw-kompakt-beepitett-kabel-nelkul/": 0,
+    "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-5-m-beepitett-toltokabellel/": 0,
+    "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-75-m-beepitett-toltokabellel/": 1,
+    "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-kompakt-beepitett-kabel-nelkul/": 0,
+    "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-74-kw-5-m-beepitett-toltokabellel/": 0,
+    "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-74-kw-75-m-beepitett-toltokabellel/": 0,
+    "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-74-kw-kompakt-beepitett-kabel-nelkul/": 0
+  },
+  "description_missing_count": 17,
+  "price_products": [
+    {
+      "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-11-kw-5-m-beepitett-toltokabellel/",
+      "price": ""
+    },
+    {
+      "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-11-kw-75-m-beepitett-toltokabellel/",
+      "price": ""
+    },
+    {
+      "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-11-kw-kompakt-beepitett-kabel-nelkul/",
+      "price": ""
+    },
+    {
+      "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-5-m-beepitett-toltokabellel/",
+      "price": ""
+    },
+    {
+      "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-75-m-beepitett-toltokabellel/",
+      "price": "99 999 Ft"
+    },
+    {
+      "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-kompakt-beepitett-kabel-nelkul/",
+      "price": ""
+    },
+    {
+      "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-74-kw-5-m-beepitett-toltokabellel/",
+      "price": ""
+    },
+    {
+      "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-74-kw-75-m-beepitett-toltokabellel/",
+      "price": ""
+    },
+    {
+      "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-74-kw-kompakt-beepitett-kabel-nelkul/",
+      "price": ""
+    }
+  ]
+}

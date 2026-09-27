@@ -1,0 +1,174 @@
+[
+  {
+    "url": "https://nextro.hu/szolgaltatasok/",
+    "w": 390,
+    "doc": 390,
+    "height": 9019,
+    "errors": [],
+    "fonts": [
+      {
+        "tag": "H1",
+        "text": "SZOLGÁLTATÁSAINK",
+        "font": "31.0941px"
+      },
+      {
+        "tag": "P",
+        "text": "Tíz szolgáltatás, egy felelős partner – mérnöki tervezéstől ",
+        "font": "16px"
+      },
+      {
+        "tag": "P",
+        "text": "Új rendszerek szakszerű telepítése, teljes körű kivitelezéss",
+        "font": "14px"
+      },
+      {
+        "tag": "P",
+        "text": "Új légkezelők értékesítése és szakszerű telepítése, laprasze",
+        "font": "14px"
+      },
+      {
+        "tag": "P",
+        "text": "Intelligens légkezelő-, fan-coil- és kapulégfüggöny-vezérlés",
+        "font": "14px"
+      },
+      {
+        "tag": "P",
+        "text": "Új és meglévő rendszerek automatikai kiépítése: intelligens ",
+        "font": "14px"
+      },
+      {
+        "tag": "P",
+        "text": "Bekötések ellenőrzése, az automatika felprogramozása, beszab",
+        "font": "14px"
+      },
+      {
+        "tag": "P",
+        "text": "A bekötések ellenőrzése légkezelőknél, fan-coiloknál, kapulé",
+        "font": "14px"
+      },
+      {
+        "tag": "P",
+        "text": "Rendszeres, dokumentált karbantartás a hatékony és biztonság",
+        "font": "14px"
+      },
+      {
+        "tag": "P",
+        "text": "Légkezelők, párásítók, fan-coilok, ventilátorok, hőszivattyú",
+        "font": "14px"
+      },
+      {
+        "tag": "P",
+        "text": "EC-motoros ventilátor, forgódob-csere, zsaluk és korszerű au",
+        "font": "14px"
+      },
+      {
+        "tag": "P",
+        "text": "Elavult rendszerek energiahatékony felújítása: EC-motoros ve",
+        "font": "14px"
+      },
+      {
+        "tag": "P",
+        "text": "Régi gép kikötése, elbontása, elszállítása, új gépalap és be",
+        "font": "14px"
+      },
+      {
+        "tag": "P",
+        "text": "A régi gép villamos és csővezeték oldali kikötése, elbontása",
+        "font": "14px"
+      },
+      {
+        "tag": "P",
+        "text": "Egyedi és szabványos légtechnikai szűrők saját gyártása, gyo",
+        "font": "14px"
+      },
+      {
+        "tag": "P",
+        "text": "Egyedi és szabványos légtechnikai szűrők saját gyártása és f",
+        "font": "14px"
+      }
+    ]
+  },
+  {
+    "url": "https://nextro.hu/kapcsolat/",
+    "w": 390,
+    "doc": 390,
+    "height": 5568,
+    "errors": [],
+    "fonts": [
+      {
+        "tag": "H1",
+        "text": "KAPCSOLAT",
+        "font": "31.0941px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "font": "16px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "font": "16px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "font": "16px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "font": "16px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "font": "16px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "font": "16px"
+      },
+      {
+        "tag": "TEXTAREA",
+        "text": "",
+        "font": "16px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "font": "13.3333px"
+      },
+      {
+        "tag": "P",
+        "text": "Az ÁSZF-et és az Adatkezelési tájékoztatót elolvastam, annak",
+        "font": "15px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "font": "16px"
+      }
+    ]
+  },
+  {
+    "url": "https://nextro.hu/bolt/",
+    "w": 390,
+    "doc": 390,
+    "height": 5752,
+    "errors": [],
+    "fonts": [
+      {
+        "tag": "H1",
+        "text": "WEBSHOP",
+        "font": "31.0941px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "font": "16px"
+      }
+    ]
+  }
+]

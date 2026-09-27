@@ -1,0 +1,27 @@
+{
+  "url": "https://nextro.hu/cookie-nyilatkozat/",
+  "final_url": "https://nextro.hu/cookie-nyilatkozat/",
+  "status": 200,
+  "redirects": [],
+  "headers": {
+    "Date": "Tue, 22 Sep 2026 11:03:50 GMT",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Content-Length": "33834",
+    "Connection": "keep-alive",
+    "Vary": "User-Agent,Accept-Encoding",
+    "Last-Modified": "Mon, 21 Sep 2026 09:56:06 GMT",
+    "Content-Encoding": "gzip",
+    "Cache-Control": "max-age=0, no-cache, no-store, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "Mon, 29 Oct 1923 20:30:00 GMT",
+    "Server": "RHProxy",
+    "Content-Security-Policy": "upgrade-insecure-requests",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Accept-Ranges": "bytes"
+  },
+  "elapsed_seconds": 0.373,
+  "decoded_bytes": 146725,
+  "body_file": "/workspace/nextro-audit/http-evidence/afffff1dd0b96f97.body",
+  "sha256": "946751f9ade7ec0f13e2e687403080708a7cfa4af3a79b10222574fc10234d57"
+}

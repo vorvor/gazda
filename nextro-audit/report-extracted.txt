@@ -1,0 +1,2191 @@
+PAGE 1
+INDEPENDENT • EVIDENCE-LED • ACTIONABLE
+nextro.hu
+Full website
+audit
+SEO · Web design · UX/UI · Accessibility
+Performance · Content · Conversion
+Prepared for the website owner,
+development and marketing teams
+Inspection date: 22 September 2026
+Public website · Desktop and mobile review
+The core business story is credible and clearly structured.
+The immediate opportunity is to finish the commercial journey,
+repair readability and turn expertise into verifiable proof.
+
+
+PAGE 2
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+2
+Contents
+3
+1. Executive summary
+5
+Scope, methods and limitations
+6
+2. Technical SEO
+8
+3. Performance audit
+10
+4. On-page SEO
+12
+5. Information architecture
+13
+6. UX audit: first-time visitor journeys
+15
+7. UI audit
+16
+8. Professional web design evaluation
+17
+9. Accessibility audit
+19
+10. Mobile audit
+21
+11. Content quality audit
+22
+12. Conversion effectiveness
+23
+13. Page-by-page findings
+30
+14. Screenshots and evidence
+32
+15. Prioritized implementation roadmap
+42
+16. Final recommendations
+43
+Appendix A · Technical inventory
+45
+Appendix B · Evidence and validation register
+How to use this report
+Read the executive summary and final priorities first. Use the finding IDs (F01–F24) to connect
+observations to the implementation roadmap. Screenshots are dated inspection evidence, not
+proposed designs. All website quotations are retained in Hungarian; analysis is in English.
+Priority is a business/implementation judgment. CRITICAL denotes a launch/readiness blocker; HIGH denotes a substantial
+access, trust or conversion obstacle; MEDIUM denotes meaningful improvement; LOW denotes polish. Effort is relative scope,
+not a time or cost quotation.
+
+
+PAGE 3
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+3
+BUSINESS VIEW
+1. Executive summary
+NEXTRO presents a capable HVAC business with a coherent navy/green identity, a broad service offer, a
+nationwide operating message and prominently published contact details. The service and industry
+overviews contain useful technical explanations and FAQs. Basic crawlability, canonical URLs, HTTPS
+normalization and a real 404 response are in place.
+Overall condition: a sound brochure foundation, an unfinished commercial journey
+The site should not be treated as fully ready for conversion-focused promotion until its policy
+placeholders, product purchase/quotation states and obvious reading barriers are resolved. No traffic,
+ranking or conversion-rate data was available; this judgment is based on observed content and
+behavior.
+Strongest aspects
+• Clear service breadth: installation, controls, commissioning, maintenance, renovation and in-house filter
+manufacture are explained rather than merely named.
+• Trust foundations: company registration/tax details, distinct headquarters and warehouse addresses,
+working phone/email links, documented-work claims and a visible enquiry route.
+• Technically accessible content: the main offer is present in raw HTML; all 29 content pages crawled
+returned 200, with titles and canonical tags. Sampled navigation did not lead to an HTTP error.
+Most important weaknesses
+• The privacy, terms and shipping pages are placeholders, while forms ask visitors to accept them. Product
+shipping tabs expose an internal “[HIÁNYZIK: …]” note (F01).
+• The shop offers nine EV-charger variants, but only one has a visible price/add-to-cart action; seven
+advertised HVAC categories are empty (F02–F03).
+• Dark text on dark hero panels, ambiguous homepage links and a 2.62 MB restaurant image create
+avoidable access, navigation and loading costs (F04–F06).
+• Reference pages describe anonymous project types, not documented case studies. Commercial service
+detail pages are not yet developed (F07–F08).
+Biggest opportunity and expected impact
+Make NEXTRO’s specialist delivery capability easier to verify and easier to buy or enquire about. Fixing the
+unfinished steps should reduce uncertainty; readable interfaces and contextual quote paths should
+improve access; deeper service pages should improve relevance to qualified searches. These are expected
+directional benefits—not forecasts of ranking, revenue or percentage uplift.
+
+
+PAGE 4
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+4
+THE TEN MOST IMPORTANT ACTIONS
+Executive priorities: act in this order
+Order / priority
+Action
+Expected business effect
+1 · CRITICAL
+Replace privacy, terms and shipping placeholders;
+remove internal product-tab notes. F01
+Restore informed decision-making and
+reduce immediate trust/readiness risk.
+2 · HIGH
+Approve purchase vs quotation mode, price and
+availability for every product. F02
+Remove ambiguity at the buying decision.
+3 · HIGH
+Fix text contrast and unnamed/color-only links in
+shared templates. F04, F23
+Make proof points, navigation and contact
+usable by more visitors.
+4 · HIGH
+Repair homepage self-links, pseudo-links and
+context-losing cards. F05
+Help visitors reach the information the
+interface promises.
+5 · HIGH
+Replace empty shop routes with useful quote-led
+category pages or unpublish unfinished navigation.
+F03
+Avoid commercial dead ends.
+6 · HIGH
+Optimize restaurant/hero images and below-fold
+loading. F06
+Reduce transferred data and
+slower-network exposure.
+7 · HIGH
+Verify consent states, form delivery and transaction
+flows in an approved test environment. F15, F24
+Prove that enquiries, permissions and
+orders are handled reliably.
+8 · HIGH
+Publish evidence-backed case studies and validate
+company claims. F08
+Support procurement confidence.
+9 · HIGH
+Create substantive priority service detail pages and
+cross-links. F07
+Improve search-intent fit and contextual
+enquiries.
+10 · MEDIUM
+Finish snippets, category headings and sitemap
+hygiene; simplify the mobile enquiry. F09–F12, F14
+Polish discoverability and reduce effort.
+Impact is qualitative. No analytics, Search Console, advertising, CRM, payment configuration, server logs or verified
+keyword-volume data was supplied. Establish a baseline before assigning financial targets.
+
+
+PAGE 5
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+5
+READ BEFORE INTERPRETING THE NUMBERS
+Scope, methods and limitations
+Workstream
+What was actually inspected
+HTTP and SEO
+29 public content pages: homepage, six primary navigation destinations, five
+policy/company-information pages, eight categories and nine products. Raw HTML, metadata,
+headings, images, links and JSON-LD were saved.
+Discovery and routes
+robots.txt; sitemap.xml redirect; sitemap index and three child sitemaps; host/protocol variants;
+one slash variant; UTM and shop-sort parameters; a deliberately nonexistent URL. Cart/account
+and empty-session checkout were probed separately.
+Browser / visual
+Desktop at 1280 × 720; mobile at 390 × 844; narrow reflow spot checks at 320 px. Homepage,
+service/sector/reference/about/contact/shop, category and product templates, policies, cart and
+404 were inspected.
+Interaction /
+accessibility
+Menu open/close, cookie rejection, product shipping tab, industry-card Enter/click behavior,
+skip-link activation, carousel focus and form labels/validity metadata. axe-core 4.10.3 on home,
+services, contact and the priced product.
+Performance
+Browser Navigation/Resource Timing and buffered LCP/layout-shift entries; raw response headers
+and selected assets. One desktop sample is reported in detail, not a benchmark distribution.
+PDF evidence
+Saved page extracts, screenshots, HTTP bodies, machine-readable crawl and accessibility output.
+Original screenshots are retained alongside the annotated copies used here.
+What was deliberately not done
+No enquiry, newsletter subscription, login, account creation, payment or order was submitted. No
+production content or settings were changed. End-to-end mail delivery, checkout payment, CRM handoff
+and server-side validation remain unverified. Native form validity was inspected without a live submission.
+No penetration test, exhaustive external-link test or formal WCAG conformance certification was
+performed.
+Evidence labels and cautions
+Verified means observed in saved HTTP/DOM/browser evidence. Assessment is an expert interpretation
+of that evidence. Unverified is a named test or fact still requiring access. The initial third-party text
+extractor returned an old maintenance page; subsequent live browser and five HTTP user-agent variants
+returned the live site. That discrepancy is not evidence of cloaking or a current maintenance outage.
+The raw crawl’s combined sitemap-location field contains page and image locations. This report uses the corrected XML
+count: 25 unique page URLs (26 entries) and 26 unique image URLs. It does not misreport image locations as pages.
+
+
+PAGE 6
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+6
+CRAWLING, INDEXING AND URL BEHAVIOR
+2. Technical SEO
+Check
+Verified result
+Interpretation / next step
+Content
+responses
+29/29 crawled content pages returned 200; 29
+unique ordinary internal navigation targets
+checked, none with HTTP errors.
+Healthy sample. This is not an exhaustive
+guarantee covering external links, query
+actions, assets and every possible URL.
+robots.txt
+Accessible; disallows admin/log/upload utility
+paths and add-to-cart queries; permits
+admin-ajax. Advertises sitemap_index.xml.
+No sitewide crawl block observed. Repeated
+User-agent groups are not by themselves an
+error.
+Sitemaps
+Index plus page/product/product-category maps
+fetched. sitemap.xml → 301 →
+sitemap_index.xml. 25 unique page URLs.
+F12: cart/account noindex routes and
+empty-session redirecting checkout are
+included. Shop is duplicated across two maps.
+Indexability
+All 29 content pages show index/follow;
+cart/account separately show noindex/follow.
+Indexable placeholders and thin categories are
+not useful search destinations. Actual Google
+inclusion is unverified.
+Canonical URLs
+All 29 content pages have canonical tags. Tested
+UTM and shop-orderby pages canonicalize to the
+clean base URL.
+Good duplicate-control foundation. Canonical is
+a hint, not a promise that engines accept it.
+HTTPS / host
+HTTP non-www and HTTPS www each 301 to
+HTTPS non-www. HTTP www takes two 301 hops.
+Preferred host is consistent. Combine the
+two-hop route as a low-priority improvement
+(F21).
+Trailing slash
+/szolgaltatasok → 301 → /szolgaltatasok/. Internal
+sampled URLs use trailing slashes.
+Consistent in the tested case; not an exhaustive
+route normalization test.
+404 handling
+The deliberately nonexistent path returns 404
+and noindex/follow, with home/contact recovery
+links.
+Correct status and useful recovery, not a soft
+404.
+Utility routes
+Empty cart is a clear empty state. /penztar/
+redirects 302 to /kosar/ without a cart.
+Expected empty-session behavior; a completed
+purchase was not tested.
+404 test URL: https://nextro.hu/technical-audit-not-found-20260922-7e21/
+
+
+PAGE 7
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+7
+WHAT THE HTML CONFIRMS
+Technical SEO: metadata and semantics
+Area
+Finding
+Recommended treatment
+Titles and
+descriptions
+No missing or exact-duplicate titles in the
+29-page sample. Seventeen missing meta
+descriptions: all nine products and all eight
+categories.
+Keep good main-page metadata. Finish
+commercial snippets and remove “Archives”
+(F10).
+Heading structure
+23 pages have one H1; six empty categories
+have none. Homepage/contact skip H2 in places;
+sector peers use mixed H2/H3.
+Repair semantic templates and peer levels
+(F11). Multiple levels are not an automatic
+ranking penalty.
+Internal linking
+Navigation reaches the major hubs in one click.
+Four homepage learn-more links return home;
+apparent industry links are spans.
+F05: repair destinations and introduce
+contextual links to matching service/sector
+sections.
+Orphans /
+reachability
+No ordinary commercial orphan identified within
+the union of this crawl and the sitemap. Utility
+routes appear in the map.
+A public crawl cannot prove absence of
+unlinked pages. Reconcile CMS export, logs
+and Search Console later.
+Structured data
+Parseable JSON-LD present:
+WebPage/WebSite/Organization/breadcrumbs,
+with Product/Offer on only the priced product.
+Enrich verified entity data; quote-only
+products must not receive invented offers
+(F16). Rich-result eligibility not tested.
+Image alternatives
+288 img elements across the crawl; zero missing
+alt attributes; 11 empty alt values.
+Do not treat intentional decorative/pixel empty
+alt as a defect. Review informative imagery
+and generic repeated reference-image
+descriptions contextually.
+Language / social /
+icons
+HTML language is hu. OG and Twitter-card
+metadata are present; shop/contact/categories
+have no og:image. Favicon/apple icon links exist.
+Translate residual UI and complete purposeful
+previews (F20, F22). File names alone do not
+prove icon dimension errors.
+JavaScript SEO
+Core offer, links, FAQs and product text are in
+raw HTML, not only in a rendered app.
+Keep meaningful links as anchors. Counters
+start at zero in source but reached 21/18/500+
+after viewport-triggered animation; they are
+not reported as broken.
+Duplication and parameter risk
+The nine EV-charger pages legitimately differ by power and cable configuration but share substantial
+descriptive copy. Add meaningful selection guidance and specifications; consider variants only after
+search-demand and migration analysis. Do not blindly canonicalize real distinct products to the shop. The
+clean canonical on orderby=price and a UTM request is positive; broader filters/search/pagination were not
+exhaustively tested.
+
+
+PAGE 8
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+8
+MEASUREMENTS, NOT ESTIMATED SCORES
+3. Performance audit
+A fast-looking lab sample is not a Core Web Vitals pass
+The PageSpeed Insights API attempt returned HTTP 429 (quota exceeded). No Lighthouse score, CrUX
+field distribution or Search Console Core Web Vitals report was obtained. INP was not measured. The
+figures below are one unthrottled desktop browser observation, not real-user percentiles.
+Metric / observation
+Recorded value
+Meaning / limitation
+Desktop viewport
+1280 × 720 CSS px
+No network/CPU throttling applied; not a controlled
+cold-cache multi-run benchmark.
+Navigation TTFB
+315.5 ms from navigation start
+Browser responseStart. Includes navigation setup; not a pure
+server-processing measurement.
+LCP candidate
+1,084 ms
+Last buffered entry at collection, associated with
+background-pattern-2.svg. Later changes or field visits may
+differ.
+Observed layout shifts
+0.002466 sum excluding
+recent-input entries
+Short observation; not a lifetime/session-window CLS audit or
+a field CLS value.
+Load event end
+2,779.7 ms from navigation
+start
+Load event is not “fully interactive” or a complete
+performance verdict.
+Document size
+286,100 decoded bytes;
+52,597 compressed body
+bytes
+Navigation entry records gzip. HTML transfer including
+browser-reported overhead: 52,897 bytes.
+Known resource
+transfer
+5,559,340 bytes across 65
+recorded resource entries
+Excludes injected axe and includes only observable transfer
+sizes. Cross-origin zeros may hide additional bytes.
+Known document +
+resources
+5,612,237 bytes (~5.61 MB,
+decimal)
+A partial page-load payload at collection, before full-page
+scrolling, not an exhaustive fully scrolled page weight.
+Blocking / scripts
+21 render-blocking entries; 20
+script-initiated requests
+About 330 kB decoded visible-size script bodies. Counts do
+not establish unused code or main-thread cost.
+A later 390 px mobile sample was warm/reused-browser and therefore is not used as a comparable speed benchmark. No
+observed runtime exceptions were recorded by the injected error listener on the sampled later navigations; console
+messages, cross-origin errors and all interaction failures were not exhaustively captured.
+
+
+PAGE 9
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+9
+F06 · F19
+Performance: fix bytes before chasing
+scores
+Observed resource
+Encoded body
+bytes
+Why it deserves attention
+megoldas-etterem.png
+2,624,647
+Largest recorded homepage resource. A
+photographic restaurant image in PNG is a
+strong format/resize candidate.
+hero-legkezelo-gepterem.jpg
+645,151
+Large initial visual asset; optimize without
+lazy-loading the real hero.
+megoldas-ipar-2.jpg
+545,178
+Below-fold industry imagery is requested early
+as CSS background content.
+megoldas-nagykonyha-2.jpg
+336,917
+Use viewport-appropriate dimensions and defer
+until needed.
+legtechnika-szellozo-kozeli.jpg
+306,614
+Shared illustration/image can be served more
+economically.
+Local font files
+20,468 + 12,764
+transfer bytes
+Two WOFF2 Latin/Latin-ext requests observed;
+local delivery is a positive. Font-display was not
+validated.
+What is already working
+Sampled CSS/JS responses are gzipped and have Cache-Control max-age=10368000. The browser uses
+HTTP/2. Minified stylesheet bundles are present. Product images generally carry intrinsic dimensions and
+several have srcset; homepage reference/product img elements use loading=lazy. These are meaningful
+foundations, so a “no compression/no caching/no lazy loading” diagnosis would be incorrect.
+What should change
+• Convert and resize the large restaurant image first. Replace meaningful CSS backgrounds with
+responsive images where practical, and gate offscreen industry/background loading. Measure actual
+saved bytes; no savings percentage is assumed.
+• Profile per-template CSS/JS coverage before removing assets. Homepage shop widgets, forms, consent
+and third-party integrations justify some code, but not necessarily every shared asset. Unused CSS, long
+tasks and total blocking time were not measured.
+• Assess anonymous HTML caching carefully: the homepage returns no-cache/no-store while sampled
+static assets have long lifetimes; a conditional HTML request still returned 304. This does not reveal the
+entire origin/plugin cache architecture. Do not cache carts, accounts, checkout or personalized pages
+publicly.
+• After changes run repeated cold mobile/desktop lab tests and collect real-user LCP/CLS/INP over time.
+Separate consent states and service/product templates so a homepage improvement does not conceal a
+checkout regression.
+Complete resource URLs and headers are retained in evidence/performance-desktop.json and technical.json. Third-party
+MailerLite/Barion resource timing sizes were zero/opaque; those entries are not counted as genuinely zero-cost transfers.
+
+
+PAGE 10
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+10
+SEARCH INTENT AND PAGE-LEVEL CLARITY
+4. On-page SEO
+The core pages are written in Hungarian and have a clear HVAC theme. The largest SEO opportunity is not
+inserting more repeated keywords; it is matching a specific need to a substantive destination, then
+connecting that destination to credible evidence and a useful next step. No search volumes, rankings or
+competitor positions were measured.
+Page / likely intent
+Observed strength
+Gap and recommended direction
+Home / contractor
+discovery
+Title explicitly says Légtechnika egy kézből;
+introduction describes
+industrial/commercial services.
+The H1 is the slogan FRISS LEVEGŐ. TISZTA
+MEGOLDÁS. Retain it as a brand line but give
+the main heading explicit service meaning
+(F17).
+Services / evaluate
+provider
+Ten service sections, a concrete
+maintenance FAQ and descriptions of
+commissioning/renovation.
+Short summaries do not fully satisfy
+individual high-intent queries. Build priority
+detail pages and link specific cards/FAQs to
+them (F07).
+Solutions / sector fit
+Hotel, restaurant, kitchen, wellness,
+industry and residential needs are
+differentiated.
+The process comes before sector answers
+and section levels differ. Add a sector index,
+aligned H2s and relevant project proof.
+References / reduce risk
+Work types and delivery scope are
+explained, with
+experience/team/filter-production claims.
+No identifiable case evidence or quantified
+documented outcomes. Convert examples
+into substantiated case studies (F08).
+About / company
+validation
+Foundation year, specialist team and
+named rating provider are stated.
+Inconsistent tenure language and no
+verification link in main content. Add people,
+evidence and precise dates (F08, F20).
+EV category / choose
+charger
+Power, phases, cable lengths, IP56,
+warranty and VAT/installation exclusions
+are mentioned.
+No meta description; title ends Archives;
+products are difficult to compare and mostly
+unpriced (F02, F10, F13).
+Product / buy or request
+quote
+Model/variant names and useful technical
+features are explicit.
+Dense shared copy, missing snippet
+descriptions and inconsistent commercial
+states reduce decision clarity.
+Contact / act now
+Phone, email, addresses and enquiry types
+are present.
+Use a specific next-step explanation and
+contextual form defaults rather than
+promising an unverified response time (F09).
+Keyword use, depth and E-E-A-T
+Technical language such as EC-motor, forgódob-csere and szűrő nyomásesése supports topic relevance.
+Add plain-language explanations, maintenance deliverables, downtime planning and suitability questions
+rather than repetitive keyword strings. Named responsible experts, original project media, documented
+claims and complete policies would provide stronger experience/trust signals than additional generic
+assurances.
+
+
+PAGE 11
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+11
+DRAFTS TO VALIDATE WITH THE BUSINESS
+On-page SEO: proposed Hungarian copy
+These are editorial proposals, not measured keyword opportunities or guaranteed search snippets. Google
+may rewrite snippets. Use approved service and availability claims; do not promise price, stock or
+turnaround until confirmed.
+URL / field
+Suggested replacement
+/ · title
+Légtechnika: telepítés, felújítás, karbantartás | NEXTRO
+/ · H1
+Légtechnikai rendszerek telepítése és karbantartása egy kézből
+/ · description
+Légkezelők telepítése, automatika, felújítás és karbantartás saját
+szakembergárdával. NEXTRO: 2005 óta, Budapesten és országosan. Kérjen
+ajánlatot.
+/szolgaltatasok/ · H1
+Légtechnikai szolgáltatások a tervezéstől a karbantartásig
+/szolgaltatasok/ · description
+Légkezelő telepítés, beüzemelés, karbantartás, forgódob-csere és egyedi
+szűrőgyártás. Ismerje meg a NEXTRO szolgáltatásait, és kérjen ajánlatot.
+/megoldasok/ · title
+Légtechnika hoteleknek, iparnak és otthonoknak | NEXTRO
+/bolt/ · title
+Teltonika autótöltők és légtechnikai ajánlatkérés | NEXTRO
+/termekkategoria/autotoltok/ ·
+title
+Teltonika EVC2 autótöltők: 7,4–22 kW | NEXTRO
+/termekkategoria/autotoltok/ ·
+description
+Hasonlítsa össze a Teltonika EVC2 autótöltők teljesítményét és kábelváltozatait. 7,4,
+11 és 22 kW, 36 hónap garancia. Kérjen segítséget a választáshoz.
+11 kW / 5 m product · title
+Teltonika EVC2 11 kW autótöltő, 5 m kábel | NEXTRO
+11 kW / 5 m product · description
+Háromfázisú Teltonika EVC2 11 kW autótöltő 5 m beépített kábellel, app- és
+NFC-vezérléssel. Kérjen ajánlatot a készülékre és a telepítésre.
+/rolunk/ · H1
+NEXTRO Kft. – légtechnika saját szakembergárdával, 2005 óta
+A useful service-page outline
+H1: Légkezelő karbantartás • H2: Mikor és kinek ajánlott? • H2: Mit tartalmaz a karbantartás? • H2:
+Felmérés, ütemezés és dokumentáció • H2: Kapcsolódó referenciák • H2: Gyakori kérdések • H2:
+Karbantartási ajánlat kérése. Link back to the hub, relevant filter supply and an actual reference. Do not
+create thin pages for every synonym.
+Product example URL: https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-11-kw-5-m-beepitett-toltokabellel/
+
+
+PAGE 12
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+12
+MAKE THE NEXT CLICK SPECIFIC
+5. Information architecture
+Current structure and reachability
+The top-level menu is understandable: Szolgáltatások, Megoldások, Referenciák, Rólunk, Webshop,
+Kapcsolat. Each hub is one navigation click away from the homepage. Shop categories are exposed from
+navigation and the shop; a product can be reached directly from the homepage carousel/grid or via shop →
+product. Contact is consistently available. These are good foundations, not a case for a completely new
+navigation system.
+The weakness is depth: ten service cards all lead to the same overview, while six industry cards expose
+non-link “Megoldások →” text. Four benefit CTAs return to the current homepage. Important commercial
+information can be close in clicks but still difficult to reach semantically because the destination does not
+preserve the visitor’s choice (F05, F07).
+Proposed grouping
+Contents / behavior
+Services hub
+Installation; automation; commissioning; maintenance; renovation/rotor replacement;
+removal/replacement; filter manufacture. Start with detailed pages for the strongest,
+evidence-backed offers.
+Sector solutions
+Hotels, hospitality/kitchens, wellness, industrial and residential. Add a sector index
+immediately; use anchors until each sector can justify a substantive page.
+References
+A filterable or clearly grouped case-study list linked to the relevant service and sector, with
+real project evidence.
+Products and enquiries
+Clearly separate buy-online EV chargers from quote-led HVAC/filter ranges. A quotation
+range should collect specifications, not show a zero-product store state.
+About and contact
+Company/team/qualifications and verification links; a direct quote path, phone and
+address-role information. Keep policies consistently in the footer.
+Concrete linking changes
+• Homepage “KARBANTARTÁS” → services maintenance anchor now; a dedicated maintenance page later.
+Carry that service selection into the contact form.
+• Homepage Hotel card → /megoldasok/#hotel or a substantive hotel detail page. Use an actual anchor
+with “Szállodai légtechnikai megoldások” as the accessible purpose.
+• Filter manufacture section → useful /termekkategoria/szurok/ quote-led page with
+dimensions/type/quantity guidance, not an empty product list.
+• Each approved case study → the service used and a “Hasonló feladatra kérek ajánlatot” enquiry carrying
+case context.
+Do not change established URLs merely to improve their appearance. Existing Hungarian slugs are readable. If consolidating
+product variants or introducing new routes, keep a mapping and deliberate redirects/canonicals. Public discovery cannot
+exclude unknown orphan pages outside the sampled link/sitemap graph.
+
+
+PAGE 13
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+13
+WHERE PEOPLE MAY HESITATE
+6. UX audit: first-time visitor journeys
+Journey step
+What happens on Nextro
+Likely hesitation / improvement
+1 · Arrive from search
+The page is a real Hungarian HVAC business,
+with logo, core navigation and a quote CTA.
+Cookie controls may cover substantial mobile
+space.
+A slogan alone is less explicit than a service
+promise. Explain offer/audience above the
+fold and keep consent concise and
+accessible.
+2 · Choose a relevant
+service
+Services hub has ten useful summaries;
+homepage cards all use the same
+destination.
+The user must search again after clicking.
+Land at the matching section and develop
+true detail pages.
+3 · Assess fit and trust
+Services/solutions FAQs explain work;
+references describe generic
+industrial/hotel/kitchen jobs.
+Procurement users cannot verify a
+comparable completed project. Add approved
+cases, dates, scope and evidence.
+4 · Contact the
+company
+Quote CTA reaches /kapcsolat/; phone/email
+and a labelled form are available.
+Form burden and incomplete policies
+interrupt the last step. Simplify required fields
+and complete disclosures before promoting
+the funnel.
+5 · Buy a charger
+Shop lists nine variants; one has a
+price/add-to-cart control; eight show
+read-more.
+Unclear stock/quote mode, uncertain delivery
+cost and internal shipping notes weaken
+purchase confidence. Fix readiness before
+advertising.
+6 · Urgent mobile repair
+Mobile navigation works, but the desktop
+phone strip disappears.
+A call-oriented visitor needs immediate
+contact, not a long scroll or an exploratory
+shop journey. Add a comfortable call action.
+Interaction patterns: positives and friction
+Working skip navigation, labelled forms, large primary hero buttons and recognizable top-level naming
+support usability. Industry cards do respond to Enter by flipping, so they are not keyboard-inert; the
+problem is the link-like “Megoldások →” text that does not navigate. Carousel controls show visible focus.
+No universal “keyboard navigation is broken” claim is justified.
+Hover/reveal cards, an animated service ticker, a reference carousel and shop hover controls add
+interaction variety. Reduce hidden information and motion where it does not support a task. Ensure touch
+users can see the same information, and verify reduced-motion behavior in a separate test; it was not
+formally measured here.
+Recommended journey test after fixes
+Ask unfamiliar users to find maintenance scope, verify a relevant project, request a filter quotation and
+compare 11 kW versus 22 kW chargers. Observe wrong turns and unclear language before running an A/B
+test. No user-testing sessions or task-completion rates were collected in this audit.
+
+
+PAGE 14
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+14
+F01 · F09 · F24
+UX: enquiry form and feedback
+Contact form at 390 px. Labels are visible and associated; several required fields and a long message/terms sequence increase
+the effort before sending. Screenshot records the inspected layout, not a form submission.
+Observed detail
+Meaning and concrete change
+Correctly associated labels
+Keep them. Do not replace them with placeholder-only inputs. First/last name, email,
+phone, company, subject, type and message are individually identified.
+Both email and phone marked
+required
+The plugin exposes aria-required=true; HTML native required is not used for most
+fields. This is not proof that server/plugin validation is absent. Make phone optional
+unless callback is selected.
+Phone input is type=text
+No inputmode/autocomplete was present. Use type=tel and autocomplete=tel; add
+name/email/organization autocomplete tokens for faster completion.
+Blank native validity check
+The unchecked policy checkbox made native checkValidity() false. Plugin error
+presentation and backend validation were not tested with a live submission.
+Policy acceptance and vague
+response timing
+Visitors are asked to accept unfinished documents. Complete F01 first. Explain next
+steps and publish only a response expectation the team can meet.
+Technical message prompt
+Offer examples: town/site, service needed, equipment/model, urgency and preferred
+contact. Add optional attachments only if handling, storage and privacy are ready.
+A safe authorized QA plan should cover empty/invalid values, focus moving to errors, aria-describedby/announcements,
+network failures, duplicate-send prevention, success confirmation and actual lead delivery. No customer request or test
+message was sent from the public site.
+
+
+PAGE 15
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+15
+READABILITY AND CONSISTENCY BEFORE COSMETIC REDESIGN
+7. UI audit
+E1 · https://nextro.hu/szolgaltatasok/ · Desktop 1280 × 720. The checklist inherits dark body text on a navy panel. Automated
+contrast measurement for these lines is 1.82:1. The outlined area identifies the affected component.
+Visual hierarchy and typography
+The modern sans-serif family (Wix Madefor Display), generous whitespace, aligned card layouts and
+consistent navy/green identity generally support a professional impression. Main headings have strong
+scale. The service hero’s most important proof points, however, are visually suppressed by contrast—not
+by a lack of content. Fixing semantic text colors will have more immediate value than replacing the
+typeface (F04).
+Service-card paragraphs measured 14 px on the 390 px viewport while general text/form inputs were 16
+px. Fourteen pixels is not automatically a WCAG failure, but dense technical copy is harder to scan at that
+size. Prefer a comfortable body scale, use short paragraphs/bullets and restrict long desktop text blocks to
+a readable measure.
+Components and spacing
+• Buttons: preserve one clear quote/purchase primary action; distinguish secondary navigation. Some
+green/navy button text measured just below 4.5:1. Apply consistent tokens to all states, not isolated
+overrides.
+• Cards and images: standardize product media frames and baseline alignment. Varied lifestyle crops can
+make nominally similar products feel inconsistent and hide variant differences (F13).
+• Icons and links: decorative icons can remain decorative, but clickable containers must have names.
+Inline links need persistent non-color identification; repair the service overlay anchor (F23).
+• Visual rhythm: reduce repetitive benefits and oversized repeated intro sections before changing the
+entire grid. The existing brand palette and layout system are worth retaining.
+
+
+PAGE 16
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+16
+FROM TEMPLATE POLISH TO DEMONSTRABLE EXPERTISE
+8. Professional web design evaluation
+E2 · https://nextro.hu/referenciak/ · Product filter imagery leads into generic project descriptions. The issue is relevance and
+proof, not image ownership: this audit does not establish whether any imagery is stock, commissioned or AI-generated.
+Brand coherence and perceived quality
+The navy panels, green accents, line illustrations and generous spacing create a recognizably technical and
+current visual language. NEXTRO does not need a redesign solely to “look modern.” The perceived-quality
+gap comes from unfinished policy content, low-contrast proof text, generic project evidence and
+mixed-language ecommerce components. These are consistency and credibility problems, not a subjective
+need for a new style.
+A concrete homepage redesign direction
+Sequence
+Design decision
+1 · Explicit promise
+A descriptive HVAC H1, short audience/service statement, one quote CTA and a secondary
+phone/service link. Retain the slogan as supporting brand copy.
+2 · Choose a path
+Group service entry points by installation, maintenance/renovation and filters; preserve
+access to the complete offer.
+3 · Proof
+Show three real projects with sector, scope and one documented result. Replace anonymous
+claims with permission-cleared evidence.
+4 · Fit and process
+A compact sector selection, four clear work stages and concise team/quality assurance. Avoid
+repeating the same benefit three times.
+5 · Commercial next
+step
+Contextual enquiry or product selection; a short contact section with completed policy links.
+Keep the shop as a separate, coherent subjourney.
+Treat decorative overlays/tickers as optional. They should not reduce contrast, inflate image cost or make
+the site’s actual offer harder to read. Establish a small component specification for buttons, cards, media
+crops, headings, form states and light/dark surfaces; verify it on one service and one product template
+before wider rollout.
+
+
+PAGE 17
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+17
+WCAG-RELATED FINDINGS; NOT A CONFORMANCE CERTIFICATION
+9. Accessibility audit
+Automated scans used axe-core 4.10.3 against WCAG 2 A/AA, 2.1 AA and 2.2 AA rule tags. Home/services
+were scanned on desktop; contact/priced product on a mobile viewport. Automated checks detect only part
+of accessibility. The counts below are node instances in specific snapshots, not a count of unique sitewide
+defects.
+Snapshot
+Automated violation types / instances
+Homepage
+Color contrast: 4 nodes.
+Services
+Color contrast: 12; inline link distinguished only by color: 1; unnamed link: 1.
+Contact
+Color contrast: 5; inline link distinguished only by color: 2.
+Priced product
+Color contrast: 7. No other violation type returned in this snapshot.
+Severity / WCAG
+relevance
+Concrete evidence
+Fix / verification
+HIGH · 1.4.3 Contrast
+Service checklist #3a4a57 on #0f1f2f =
+1.82:1 at 16 px. Active nav = 2.71:1; contact
+links = 3.49:1.
+F04: correct theme tokens; verify 4.5:1
+normal / 3:1 large text in all states.
+HIGH · 2.4.4 Link purpose
+/ 4.1.2 Name
+A focusable .gspb-containerlink on services
+has no text, aria-label or other accessible
+name.
+F23: remove redundant overlay or label the
+real intended action; confirm screen-reader
+output.
+HIGH · 1.4.1 Use of color
+Service/contact inline links lack underlines
+and sufficient distinction from surrounding
+text.
+F23: persistent underline or another
+non-color cue; do not rely on hover alone.
+MEDIUM · 1.3.1
+Relationships
+Missing category H1s, mixed peer sector
+levels and H1→H3 jumps make the outline
+inconsistent.
+F11: logical heading hierarchy. Missing H1
+alone is not a blanket conformance verdict.
+MEDIUM · input purpose /
+mobile ergonomics
+Phone field uses generic text input;
+personal-data inputs lack autocomplete.
+Menu box is 18 × 18 px.
+F09/F14: appropriate autocomplete/type
+and larger target area. Target-spacing
+exceptions mean the small menu box is not
+here declared a proven 2.5.8 failure.
+
+
+PAGE 18
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+18
+KEEP WHAT ALREADY WORKS
+Accessibility: strengths and remaining
+tests
+Verified positives
+• The visible-on-focus “Ugrás a tartalomra” skip link received focus, showed a 2 px outline and moved
+focus to MAIN#main when activated.
+• Form controls have associated text labels; newsletter email has an accessible label. Main HTML
+documents declare Hungarian language.
+• All 288 crawled img elements have an alt attribute. Empty values occur on 11 instances and may be
+appropriate for decoration/tracking; do not replace them with redundant text indiscriminately.
+• Carousel previous/next/dot controls have accessible names and visible focus in the tested sequence.
+Industry cards can be focused and toggled with Enter, although their displayed pseudo-links still need
+repair.
+• Tested major mobile layouts did not show horizontal document overflow at 390 px; homepage and priced
+product also fit 320 px. The viewport configuration permits zoom rather than explicitly disabling it.
+Manual checks still needed
+Area
+Required follow-up
+Screen readers
+NVDA/Firefox and VoiceOver/Safari journeys: heading outline, menu state, product tabs, card
+links, form errors and success announcements. No screen-reader session was conducted.
+Keyboard / overlays
+Full tab order, focus trap/return, Escape close behavior, dropdown submenus, cookie settings
+and product gallery. The partial keyboard test does not prove every modal is accessible.
+Reflow / scaling
+200% text zoom and 400% browser zoom; landscape and additional phone/tablet widths. The
+320 px spot check is not a complete reflow test.
+Motion
+Reduced-motion preference for counters, ticker, flip cards and carousel; user controls for
+persistent moving content where required.
+Form feedback
+Authorized staging tests for validation association, required instructions, error summaries,
+aria-live messages and network failure recovery.
+Images / graphics
+Contextual review of decorative vs informative backgrounds and generic alt text; contrast over
+images must be checked in all responsive crops, not only by automated rules.
+Use WCAG 2.2 AA as the implementation target, with human testing after automated fixes. The absence of a rule violation in
+one snapshot is not proof of compliance. Legal applicability and formal certification are outside this audit.
+
+
+PAGE 19
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+19
+390 × 844 VIEWPORT; 320 PX SPOT CHECKS
+10. Mobile audit
+E3 · First-visit cookie panel occupies a substantial part of the
+390 px viewport. Accept/reject/settings buttons are present
+and measured 350 × 45 px.
+E4 · Opened mobile menu is legible and exposes the six
+principal destinations. The trigger itself has an 18 × 18 px
+measured box.
+What works
+The menu opened and closed, the major page layouts stacked, form inputs remained readable at 16 px and
+no horizontal overflow was found on homepage, services, contact, shop and sampled product at 390 px.
+Homepage and the priced product also fit 320 px. The primary hero CTA is a comfortable size; the shop
+category list wraps within the viewport.
+Mobile-specific friction
+• Consent: the long banner delays reading the offer, even though rejecting is available. Shorten the
+first-layer explanation and move detail into accessible settings/policy content without weakening choice
+(F15).
+• Urgent contact: the desktop phone strip is hidden. On the measured mobile homepage, visible phone
+links appeared far down the document. Add immediate call/quote access rather than assuming desktop
+contact prominence carries over (F14).
+• Navigation: enlarge the menu and close hit areas. Add aria-expanded state if the theme does not expose
+it, and verify state announcement and return focus rather than inferring behavior from appearance.
+• Length and scanning: the homepage snapshot is 17,155 px tall, services 9,019, contact 5,568 and shop
+5,752. These are viewport-specific layout observations, not performance scores. Consolidate repetition
+and add in-page indexes (F17).
+
+
+PAGE 20
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+20
+DESIGN FOR TOUCH, NOT JUST A NARROW COLUMN
+Mobile: detailed recommendations
+Component
+Observed behavior / risk
+Mobile improvement
+Hero
+Brand slogan and CTA fit; subtle
+preheading/proof text is difficult to see against
+dark imagery.
+Use an explicit readable service promise;
+maintain contrast in the mobile crop. Do not
+spend the full first screen on decorative
+spacing.
+Industry cards
+Copy says to move the cursor over the card;
+Enter flips on desktop, but the displayed
+solution arrow is not a real link.
+Use visible summaries or tap-expanding
+content with explicit state and a separate
+navigable CTA. Replace cursor-specific
+instructions.
+Services
+Stacked summaries use 14 px paragraph text
+and many similar blocks.
+Increase comfortable reading scale where
+possible, add jump navigation and link to detail
+rather than repeating full summaries.
+Products
+Lifestyle image plus long title pushes buying
+context down; power/cable differences require
+reading dense names.
+Show key selection attributes early; place
+approved price/availability or quote action with
+the product summary.
+Forms
+Multiple stacked fields, telephone mandatory
+via ARIA and generic text keyboard metadata.
+Use appropriate input types/autofill, fewer
+necessary fields and contextual defaults. Keep
+a persistent label and clear error feedback.
+Sticky controls
+No useful persistent mobile call action was
+visible in the sampled homepage view.
+If adding a bottom bar, reserve safe-area space
+and verify it does not cover cookie controls,
+validation errors, product tabs or the submit
+button.
+Cookies / popups
+Consent is the main observed overlay;
+newsletter component exists. A complete
+popup timing audit was not performed.
+Check clean/returning sessions, settings
+reopening and any delayed promotions across
+devices; keep decline and close controls usable.
+Release acceptance
+At 320, 390 and 430 px, verify a first-time visitor can dismiss or configure consent, open/close navigation,
+reach a selected service, identify a credible reference and contact the company. Then compare charger
+variants and reach an honest purchase or quote state. Test with touch and keyboard, in portrait/landscape
+and with text zoom. Do not substitute a desktop screenshot squeezed to phone width for this journey test.
+
+
+PAGE 21
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+21
+MAKE EXPERTISE SPECIFIC, CONSISTENT AND EVIDENCED
+11. Content quality audit
+The better passages are concrete: service FAQs describe filter replacement, heat-exchanger cleaning,
+controls checks and documentation; sector copy recognizes hospitality disruption and kitchen make-up air.
+The recurring weakness is unsupported breadth or repeated reassurance rather than poor grammar
+overall. Editing should preserve engineering specificity while making customer decisions easier.
+Observed example
+Why it falls short
+Suggested improvement
+“Contact us now”; “Price:”;
+“Archives”
+Template English appears in
+Hungarian commercial journeys.
+Use “Telepítési ajánlatot kérek”, “Ár” and
+customer-facing category titles. F20.
+“Közel 20 év” vs “20 éve” vs
+“21 év”
+Tenure statements are
+inconsistent; the About text says
+foundation was at the end of 2005.
+Use stable “2005 óta” unless a precise
+anniversary claim is intentionally dated.
+“Tudjon meg többet” →
+homepage
+Generic wording is coupled to a
+non-progressing destination.
+Use “Légkezelő karbantartás részletei” or
+“Ismerje meg szakembergárdánkat”, with the
+matching link.
+“vigye a kurzort a kártyára”
+Desktop interaction instructions
+are not appropriate to a touch-first
+visitor.
+Prefer visible information and a real “Szállodai
+megoldások” link; explain tap/expand only if
+necessary.
+Anonymous Ipari üzem /
+Szálloda references
+Descriptions summarize work
+types but do not verify experience.
+Add approved project/date/site context,
+challenge, delivered scope, photos and
+measured results only where documented.
+“rövid időn belül” / general
+guarantees
+The prospect cannot infer response
+timing or warranty conditions.
+Publish an achievable response window only
+after internal approval; link to specific
+warranty/scope conditions.
+Shared dense charger
+paragraph
+IP ratings, voltages and control
+functions are hard to compare.
+Split into “Kinek ajánlott?”, power/network/cable
+table, included items, installation requirements
+and warranty/shipping sections.
+Example of more customer-oriented wording
+For maintenance: “Üzemelő légkezelő karbantartására van szüksége? Felmérjük a rendszer állapotát,
+egyeztetjük a leállási lehetőségeket, és dokumentált karbantartási tervet készítünk. Írja meg a helyszínt, a
+berendezés típusát és a tapasztalt hibát.” Validate the promised scope with the technical team before
+publication.
+Do not manufacture testimonials, logos, qualifications, warranty terms or efficiency savings to fill the gaps. CompanyWall
+ranking, partner counts and annual filter-production statements were observed as site claims, not independently verified
+facts.
+
+
+PAGE 22
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+22
+TWO FUNNELS NEED TWO CLEAR PROMISES
+12. Conversion effectiveness
+Likely primary goals
+Service funnel: qualified quote requests, urgent service calls and filter enquiries. Commerce funnel:
+direct EV-charger orders where products are configured for purchase, with installation quotations as a
+related service. Newsletter subscription is secondary. These goals are inferred from the UI; business
+targets and channel economics were not supplied.
+Conversion lever
+Current observation
+Specific recommendation
+CTA clarity
+Repeated Ajánlatot kérek works well on
+service pages; product cards mostly say
+Tovább olvasom.
+Keep explicit service actions; use purchase or
+model-specific quote wording consistently
+(F02).
+Context preservation
+Service cards funnel to the general hub; the
+product contact panel leads to the generic
+contact page.
+Prefill or visibly summarize selected
+service/model in the enquiry. Let the user edit
+it.
+Trust at decision time
+Claims of team size, experience, guarantees
+and AA+ rating; few verifiable project
+specifics.
+Place approved case evidence, warranty scope
+and accountable company information beside
+the decision (F08, F18).
+Form effort
+Eight data fields plus policy acceptance, with
+phone and email both marked required.
+Offer minimal initial contact and progressive
+qualification. Complete policies before requiring
+acceptance (F01, F09).
+Purchase certainty
+One listed price; unclear delivery costs/timing
+and an internal shipping note.
+Business sign-off of prices, stock/lead times,
+VAT, installation, shipping, returns and
+payment rules (F01–F02).
+Competing actions
+Shop controls expose wishlist, comparison
+and quick view; homepage also promotes
+newsletter/products.
+Keep secondary tools visually secondary. Test
+whether a simple variant table serves a
+nine-item range better than multiple overlays.
+Outcome
+measurement
+No analytics/CRM/payment access; live
+submissions intentionally not made.
+Consent-aware events plus authorized
+end-to-end QA; judge qualified leads and
+completed orders, not only button clicks (F24).
+What to measure after implementation
+Track service/product entry page → quote start → valid successful submission → qualified lead; separate
+phone/email clicks from confirmed enquiries. For ecommerce track product views, variant choices,
+add-to-cart, checkout start, payment outcome and fulfilment issues. Review mobile versus desktop and
+traffic source under approved privacy rules. Establish baseline and sample sufficiency before an
+experiment; no conversion-rate estimate is justified from this inspection.
+
+
+PAGE 23
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+23
+HOME AND CORE SERVICE OFFER
+13. Page-by-page findings
+Homepage
+https://nextro.hu/
+Purpose: Introduce NEXTRO, route service enquiries and expose the shop.
+Strengths: Broad offer, explicit phone/email on desktop, distinct primary navigation and repeated quote access. Raw HTML
+and metadata describe HVAC clearly.
+SEO: Slogan-only H1 is less topical than the title; no distinct destinations from service cards, and four learn-more links return
+home. Large background images are the main payload issue.
+UX: Repeated experience/quality/speed sections and flip cards increase scanning effort. The apparent sector links do not
+navigate.
+UI / design: Coherent palette and large CTA; some CTA text fails 4.5:1. Mobile consent dominates the first viewport and the
+phone strip disappears.
+Content: Useful process explanation, but claims and anonymous project summaries need proof. Counters animate correctly
+when brought into view; the initial zeros are not a confirmed defect.
+Recommended change: F04–F08, F14, F17: explicit offer heading, fewer repeated benefits, real context-preserving
+service/sector links, approved cases and optimized imagery.
+Services
+https://nextro.hu/szolgaltatasok/
+Purpose: Explain the service portfolio and generate qualified enquiries.
+Strengths: Ten service areas and useful practical FAQs; title and description are present. One responsible-partner story is
+easy to understand.
+SEO: One hub carries many different intents; there are no deep service landing pages in the discovered commercial set. H1
+“Szolgáltatásaink” is generic.
+UX: The overview helps orientation but makes maintenance/filter prospects scan all services. Main links are predominantly
+generic contact actions.
+UI / design: Dark hero checklist text measured 1.82:1; an unnamed overlay link is focusable. Mobile card copy is 14 px.
+Content: Service descriptions are credible summaries, but need deliverables, suitability, scheduling, exclusions and linked
+case proof on detail pages.
+Recommended change: F04, F07, F11, F23: fix hero/link semantics; add jump links, expand three priority service intents
+and attach a contextual enquiry to each.
+
+
+PAGE 24
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+24
+FIT AND PROOF
+Page findings: solutions and references
+Industry and residential solutions
+https://nextro.hu/megoldasok/
+Purpose: Help visitors identify a solution relevant to their building/sector.
+Strengths: Differentiates hotel comfort, kitchen extraction, wellness humidity, industrial operations and residential needs.
+FAQs explain practical constraints.
+SEO: Hotel/Wellness use H2 while peer sectors use H3; no dedicated sector detail URLs found. Title is descriptive and
+metadata is present.
+UX: General four-stage process appears before sector detail; no immediate sector index was observed. Generic links do not
+preserve industry context.
+UI / design: Consistent hero styling, but the dark checklist inherits the same visually weak treatment seen on related
+templates.
+Content: Sector copy is more customer-oriented than generic slogans, but short summaries do not establish delivery
+evidence or sector-specific scopes.
+Recommended change: F04, F07, F11, F17: add a sector jump index, equal H2 levels, service/case links and a “this sector”
+quote path. Expand separate pages only with substantive content.
+References
+https://nextro.hu/referenciak/
+Purpose: Provide evidence that NEXTRO has delivered comparable work.
+Strengths: Lists industrial, hotel, kitchen and expansion work and explains the technical scope rather than showing logos
+alone.
+SEO: Unique title/description; the missing opportunity is substantive project content, not a missing meta tag. No case-study
+URLs were discovered.
+UX: A buyer cannot evaluate an identifiable comparable project, date, constraints or documented outcome. The only main
+CTA is generic contact.
+UI / design: Filter-product imagery leads the page even though the headline promise is completed project experience. This
+weakens visual relevance.
+Content: Anonymous project-type labels and partner/volume claims are not independent evidence. They may be true, but
+the page does not demonstrate them.
+Recommended change: F08: create three permission-cleared cases with original project images, date/context/scope and
+documented results; link each to relevant services. Explicitly label confidential cases.
+
+
+PAGE 25
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+25
+CREDIBILITY AND ENQUIRY
+Page findings: about and contact
+About NEXTRO
+https://nextro.hu/rolunk/
+Purpose: Establish company expertise, stability and working methods.
+Strengths: Foundation year, in-house trades, team size, manufacturer role and a named financial-rating provider give a
+useful company story.
+SEO: Title and description exist; tenure wording can age badly. Add verified entity/contact details to the shared schema
+rather than more generic keywords.
+UX: Claims are repeated more than demonstrated; there is no obvious named expert/team introduction in the inspected main
+content.
+UI / design: Current navy/green style, with the related low-contrast checklist. The page would gain credibility from actual
+team/facility imagery and verified badges.
+Content: 20 years / nearly 20 / more than 20 is inconsistent with references’ 21-year language. AA+ and top 1.1% claims
+need current evidence and dates.
+Recommended change: F08, F18, F20: use “2005 óta,” show accountable people and qualification evidence, and link
+current rating verification. Do not infer the rating is false simply because proof is missing.
+Contact
+https://nextro.hu/kapcsolat/
+Purpose: Accept quotations, faults, service and filter enquiries.
+Strengths: Phone/email links work as tel/mailto destinations; registered and warehouse/correspondence addresses are
+clearly distinguished. Labels and enquiry types are useful.
+SEO: Title/description are specific; H1→H3 section jump is inconsistent and OG image is absent. Local listing accuracy outside
+the site was not verified.
+UX: Phone and email are both required by the plugin’s ARIA state; separate subject/type fields add burden. Response time
+remains vague. Terms/privacy links lead to placeholders.
+UI / design: Inputs are 16 px on mobile and fit the viewport. Contact links have 3.49:1 contrast and are color-only within
+prose.
+Content: No approved visiting/collection hours or appointment expectations are provided; technical message guidance can
+be more concrete.
+Recommended change: F01, F04, F09, F18, F23–F24: complete notices, simplify the initial form, add autofill/telephone
+semantics and test real delivery in an authorized environment.
+
+
+PAGE 26
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+26
+CATALOGUE PROMISE VERSUS REAL AVAILABILITY
+Page findings: shop and category routes
+Webshop
+https://nextro.hu/bolt/
+Purpose: Browse and compare the catalogue, then purchase or enquire.
+Strengths: Nine charger variants are discoverable, category navigation is visible and a sort control exists. Main shop
+description names the actual charger range.
+SEO: Generic title; duplicate shop entry across sitemaps. Eight zero-product category destinations remain indexable and
+linked.
+UX: Only one product has a price/add-to-cart; eight show read-more. Price filtering is of limited value for this price
+configuration.
+UI / design: Consistent grid but inconsistent lifestyle crops and long near-identical titles complicate comparisons. “Price:” is
+left in English.
+Content: The broad HVAC-store implication exceeds the purchasable catalogue seen. Empty-category fallback copy exists, so
+these are not literal blank pages.
+Recommended change: F02–F03, F10, F13: explicitly separate online purchases from quote ranges, approve commercial
+states, add comparison attributes and simplify secondary shop actions.
+Air handlers: representative empty category
+https://nextro.hu/termekkategoria/legkezelok/
+Purpose: Offer air handlers or capture equipment-specific quotations.
+Strengths: Intro explains new equipment/installation and provides a phone/contact fallback rather than only a no-results
+message.
+SEO: No H1 or meta description; title ends “Archives”; indexable despite an empty catalogue. The same no-H1 issue affects
+five other categories.
+UX: “Still being uploaded” and “no displayable product” are an unfinished-store message. EV chargers under popular
+products distract from air-handler intent.
+UI / design: Category navigation occupies space without advancing this task; the empty-state hierarchy should instead
+emphasize a specification request.
+Content: “A kategória termékei még nem tölthetők fel” sounds like an implementation limitation, not customer guidance.
+Recommended change: F03, F10–F11: make this a purposeful quote-led page with device/application data, scope and a
+targeted CTA—or temporarily remove unfinished commerce navigation.
+Peer coverage: /automatika/, /alkatreszek/, /futoegysegek/, /legfuggonyok/ and /szurok/ also lack H1s. /parasitok/ is empty
+but does have an H1. All eight category pages lack meta descriptions. These distinctions come from the complete category
+crawl, not extrapolation from one page.
+
+
+PAGE 27
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+27
+SELECTION AND ENQUIRY-ONLY STATE
+Page findings: charger category and
+product
+EV charger category
+https://nextro.hu/termekkategoria/autotoltok/
+Purpose: Compare power and cable options across the nine Teltonika EVC2 variants.
+Strengths: Introduction specifies 7.4/11/22 kW, phases, IP56, app/NFC, warranty and VAT versus installation scope.
+SEO: H1 is present but description metadata is absent and title is an English archive default. Product-to-category internal
+links exist.
+UX: No concise variant matrix; most items do not show a price or availability explanation. One priced item makes the others
+look incomplete.
+UI / design: Grid fits mobile; long names and varying image compositions make scanning harder. The category strip also
+exposes seven zero-product ranges.
+Content: Technical feature density is useful but needs plain-language selection advice: supply phases, cable need, site
+capacity and installation assessment.
+Recommended change: F02, F10, F13: add a visible comparison table, intentional quote/purchase states and a tailored
+Hungarian search snippet.
+11 kW / 5 m: sampled unpriced product
+https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-11-kw-5-m-beepitett-toltokabellel/
+Purpose: Explain one charger configuration and convert product interest.
+Strengths: Specific product heading and short summary; cable, phases and 36-month warranty are mentioned; image alt
+text is descriptive.
+SEO: No meta description and no Product JSON-LD in the parsed page. Shared technical text limits differentiation, although
+the variant is real.
+UX: No price or buy control; the separate “Contact us now” panel offers a generic installation enquiry, not an obvious
+model-specific request.
+UI / design: Image and summary establish a product layout, but the commercial next step is visually subordinate to
+wishlist/compare and long text.
+Content: Shipping tab contains the same internal missing-information note found in all nine product HTML pages. General
+network wording should be reviewed for model-specific clarity.
+Recommended change: F01–F02, F13, F16, F20: label quotation mode, place a Hungarian contextual quote CTA beside the
+summary, publish approved delivery terms and accurate product facts.
+
+
+PAGE 28
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+28
+PURCHASE-READINESS BLOCKERS
+Page findings: priced product and
+policies
+22 kW / 7.5 m: priced product
+https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-75-m-beepitett-toltokabellel/
+Purpose: Support a direct product purchase with optional installation.
+Strengths: Visible 99 999 Ft price, quantity/add-to-cart and Product/Offer JSON-LD. Offer markup matches the displayed
+price and says InStock.
+SEO: No meta description; structured data presence is not a Rich Results Test pass. Price/stock correctness is a business
+validation task, not independently proven by matching markup.
+UX: The shipping tab exposes “[HIÁNYZIK: a konkrét szállítási díjak, határidők …]” and links to an unfinished policy. No order
+was placed.
+UI / design: Wide landscape product image and dense summary compete with the selection task; green breadcrumbs/tabs
+trigger contrast findings.
+Content: Shared features do not clearly separate included product, installation, delivery and optional equipment at the point
+of purchase.
+Recommended change: F01–F02, F04, F13, F16, F24: approve transaction terms/stock/price, show total-cost scope,
+improve product media/specifications and run an authorized checkout test.
+Privacy, terms and shipping information
+https://nextro.hu/adatkezelesi-tajekoztato/ • https://nextro.hu/aszf/ • https://nextro.hu/fizetesi-es-szallitasi-tajekoztato/
+Purpose: Explain data handling and contractual/delivery conditions. Strength: These destinations exist and are consistently
+linked. SEO: Each returns 200 and is indexable; descriptions repeat “feltöltés alatt” placeholder wording. UX: The user cannot
+inspect what the form asks them to accept. UI: A clean template cannot compensate for absent policy substance. Content:
+Main content consists of a short “currently being uploaded; return later” statement. Action: F01 is CRITICAL. Publish
+approved policies and remove internal notes before conversion-focused promotion; a qualified adviser must assess legal
+obligations.
+
+
+PAGE 29
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+29
+POSITIVE FOUNDATIONS TO PRESERVE
+Page findings: company details and
+recovery
+Impresszum
+https://nextro.hu/impresszum/
+Purpose: Identify the operator and hosting provider.
+Strengths: NEXTRO name, Budapest address, email, tax number, company registration and registering court are present;
+hosting provider details are supplied.
+SEO: Specific title/description and H1 are present. The shared Organization JSON-LD could reuse confirmed visible details.
+UX: Company identity is reachable from the footer, supporting trust. It does not replace the incomplete
+privacy/contract/delivery policies.
+UI / design: Plain text company details are readable; template phrasing such as company/sole-trader alternatives can be
+tailored.
+Content: Values were observed but not independently reconciled with a registry. Registered address is distinct from the
+contact page’s Szentendre warehouse.
+Recommended change: F16, F18, F20: retain transparency, confirm accuracy, streamline template labels and align verified
+business data consistently across site/listings.
+Empty cart and 404 recovery
+https://nextro.hu/kosar/ ; https://nextro.hu/technical-audit-not-found-20260922-7e21/
+Purpose: Recover empty-shopping and nonexistent-page journeys.
+Strengths: Cart explains that it is empty and offers continue shopping. The 404 offers home/contact links and a clear
+Hungarian explanation.
+SEO: Cart is noindex/follow but included in the sitemap; 404 returns an actual 404/noindex response. Empty-session checkout
+redirects to cart.
+UX: Recovery is clear. This test does not prove add-to-cart persistence, populated checkout, payments or confirmation
+delivery.
+UI / design: Both use the shared clean template; no severe layout defect was observed in these states.
+Content: Error copy is understandable and avoids blaming the user. No additional promotional text is needed here.
+Recommended change: F12: clean sitemap utility entries. F24: validate the full authorized transaction journey later;
+preserve real 404 status and the existing recovery links.
+
+
+PAGE 30
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+30
+DIRECT PROOF OF THE HIGHEST-PRIORITY CONTENT GAP
+14. Screenshots and evidence
+E5 · https://nextro.hu/adatkezelesi-tajekoztato/ · The live policy page says the privacy notice is still being uploaded. The terms
+and shipping policy pages showed equivalent placeholders.
+E6 · Priced 22 kW / 7.5 m product, “Szállítás és átvétel” tab. The public [HIÁNYZIK: …] note says specific delivery fees, deadlines
+and carrier decisions are missing. The link above leads to the unfinished shipping policy. F01.
+These screenshots are original live-browser captures with red outline annotations added for location only. They are not
+mockups. The product screenshot also shows the untranslated “Contact us now” link (F20).
+
+
+PAGE 31
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+31
+F02 · F03 · F05
+Evidence: commercial dead ends
+E7 · https://nextro.hu/termekkategoria/legkezelok/ · An empty HVAC category remains prominent in the shop taxonomy. Contact
+fallback exists, but the page still communicates catalogue incompleteness and promotes unrelated chargers.
+E8 · 11 kW / 5 m product. Product name and features are present, but no price or direct purchase control is shown. The
+installation contact panel is not a prominent model-specific quote path.
+Evidence that is better expressed as DOM/HTTP data
+The four homepage “Tudjon meg többet” anchors have href=https://nextro.hu/. Industry “Megoldások →”
+text is a span inside a focusable flip card, not an anchor. All ten homepage service cards link to
+/szolgaltatasok/ without a section fragment. These observations are retained in home-browser.json and the
+raw homepage response. A screenshot alone would not prove link destinations.
+Contrast values are from saved axe node reports, payload from Resource Timing, and response/canonical/sitemap statements
+from saved HTTP bodies/headers. The evidence inventory at the end explains exactly which files support each class of claim.
+
+
+PAGE 32
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+32
+BUSINESS OWNER + DEVELOPMENT + MARKETING
+15. Prioritized implementation roadmap
+The roadmap contains 24 distinct recommendations: 1 CRITICAL, 10 HIGH, 11 MEDIUM, 2 LOW. IDs remain
+stable throughout the report. Expected impact is qualitative; effort describes relative implementation
+scope and dependencies, not a quoted duration.
+Phase
+Actions and dependencies
+Release evidence
+1 · Restore
+readiness
+F01 policies/shipping; F02 product-state/price approval;
+F04/F23 access fixes; F05 link repair; F15 consent review.
+Approved content; usable CTAs; no
+editorial placeholders;
+contrast/name tests pass; privacy
+behavior documented.
+2 · Remove friction
+F03 category strategy; F06 images; F09/F14 forms/mobile;
+F10–F12 snippets/headings/sitemap; F20 language.
+No advertised dead ends;
+measured payload reduction;
+mobile/form QA; clean indexing
+signals.
+3 · Build authority
+F07 detailed commercial services; F08 case studies; F13
+product selection; F16/F18 business/schema/local facts;
+F17 homepage simplification.
+Approved expert content and
+evidence; contextual internal links
+and quotation handoff; consistent
+business data.
+4 · Optimize and
+prove
+F19 measured asset work; F21–F22 polish; F24 end-to-end
+testing, baseline and experiments.
+Repeatable lab/functional results
+and consent-aware outcome
+measurement. F24 testing must
+also gate initial transactional
+promotion.
+Quick Wins
+• Repair navigation: replace four homepage self-links, convert pseudo-links into real destinations and
+add stable service/sector anchors (F05).
+• Correct shared tokens: fix dark checklist text, button/link contrast and anonymous overlay links rather
+than patching every page separately (F04, F23).
+• Finish obvious template text: replace Contact us now / Archives / Price: and normalize tenure to 2005
+óta (F10, F20).
+• Clean SEO signals: populate metadata from approved product facts, restore category H1s and remove
+noindex utility routes from the sitemap (F10–F12).
+• Improve mobile inputs: enlarge menu targets and add correct input types/autocomplete without
+rebuilding the whole form (F09, F14).
+Immediate containment of F01 is essential, but the full policy/fulfilment solution is Moderate effort because it needs business
+and legal approval. Deleting a placeholder is not equivalent to publishing an adequate policy.
+
+
+PAGE 33
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+33
+IMPLEMENTATION CARDS · PRIORITY ORDER
+Roadmap: F01 / F02 / F03
+F01 · Published legal and shipping placeholders undermine informed enquiries and
+purchases
+CRITICAL | Effort: Moderate | Expected impact: High | Content / trust / conversion
+Affected URLs: https://nextro.hu/adatkezelesi-tajekoztato/ • https://nextro.hu/aszf/ • https://nextro.hu/fizetesi-es-szallitasi-tajekoztato/ • All 
+nine /termek/ pages; homepage and /kapcsolat/ forms
+Why it matters: Visitors cannot review the information they are asked to accept or determine delivery costs and timing. This
+is an immediate trust and operational-readiness risk; legal compliance requires qualified review.
+Recommended solution: Publish company-approved privacy, terms, delivery/payment and returns information; remove
+internal editorial notes from all product tabs. Review the enquiry checkbox's legal basis and wording with counsel. Gate
+transactional promotion until purchase policies and fulfilment are approved.
+Owner: Business owner + legal/privacy + ecommerce
+Done when: All linked policies contain approved, dated text; no public HIÁNYZIK or feltöltés alatt placeholders; enquiry
+consent wording matches the actual processing.
+F02 · Eight of nine products lack a clear commercial next step
+HIGH | Effort: Moderate | Expected impact: High | CRO / ecommerce
+Affected URLs: https://nextro.hu/bolt/ • https://nextro.hu/termekkategoria/autotoltok/ • All /termek/ pages
+Why it matters: Buyers cannot tell whether a product is available, quotation-only, temporarily unavailable or unfinished. The
+price is observed, not independently validated as correct.
+Recommended solution: Choose purchase or quote mode per product. Show approved price, stock/lead-time and
+VAT/installation scope for purchasable products. For quote mode use Ár és telepítési ajánlat kérése beside the product title
+and preserve model/variant in the enquiry.
+Owner: Ecommerce + development
+Done when: Every product has one unambiguous primary action and availability state; business owner signs off prices; quote
+requests carry product context.
+F03 · Navigation prominently exposes seven empty product categories
+HIGH | Effort: Moderate | Expected impact: High | IA / SEO / CRO
+Affected URLs: https://nextro.hu/bolt/ • https://nextro.hu/termekkategoria/legkezelok/ • https://nextro.hu/termekkategoria/automatika/ • 
+https://nextro.hu/termekkategoria/szurok/ • https://nextro.hu/termekkategoria/alkatreszek/ • 
+https://nextro.hu/termekkategoria/legfuggonyok/ • https://nextro.hu/termekkategoria/futoegysegek/ • 
+https://nextro.hu/termekkategoria/parasitok/
+Why it matters: The site promises a broad HVAC store but exposes an EV-charger-only catalogue. Empty, indexable pages
+offer little search or purchase value.
+Recommended solution: Turn quote-led categories into useful specification/enquiry landing pages, clearly distinguish them
+from buy-online ranges, and remove irrelevant popular-product widgets. If a category is genuinely unfinished, hide it from
+purchase navigation and temporarily noindex it rather than presenting a dead end.
+Owner: Marketing + ecommerce + SEO
+Done when: Each promoted category offers useful products or a focused specification/quote path; no unexplained zero-result
+routes remain.
+
+
+PAGE 34
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+34
+IMPLEMENTATION CARDS · PRIORITY ORDER
+Roadmap: F04 / F05 / F06
+F04 · Shared color tokens make important text difficult to read
+HIGH | Effort: Quick | Expected impact: High | Accessibility / UI
+Affected URLs: https://nextro.hu/szolgaltatasok/ • https://nextro.hu/kapcsolat/ • https://nextro.hu/ • Sampled product page; related dark 
+hero templates
+Why it matters: Users with low vision and people viewing a phone in glare may miss the very proof points and actions
+intended to persuade them. Normal text requires 4.5:1 for WCAG AA.
+Recommended solution: Introduce semantic light-on-dark and dark-on-light text tokens; do not inherit body color inside
+dark heroes. Adjust green text/button combinations, add non-color active/link cues and retest default, hover, focus and
+disabled states across templates.
+Owner: Design + frontend
+Done when: All normal text in audited templates reaches 4.5:1, large text 3:1; regressions checked by automated and visual
+tests.
+F05 · Homepage discovery controls imply destinations they do not reach
+HIGH | Effort: Quick | Expected impact: High | UX / internal linking
+Affected URLs: https://nextro.hu/
+Why it matters: Users repeat work, lose context and may interpret the interface as broken. Search engines receive no
+distinct destination from pseudo-links.
+Recommended solution: Link the four benefit CTAs to relevant service/about/proof sections. Replace industry pseudo-links
+with actual anchors to matching industry sections/pages. Add stable service anchors immediately; use dedicated detail URLs
+when substantive pages are ready.
+Owner: Content + frontend
+Done when: Every apparent link reaches a relevant destination using mouse, touch and keyboard; each service/industry
+card preserves context.
+F06 · Large, eagerly requested background images dominate homepage payload
+HIGH | Effort: Moderate | Expected impact: High | Performance
+Affected URLs: https://nextro.hu/ • /wp-content/uploads/2026/08/megoldas-etterem.png • 
+/wp-content/uploads/2026/08/hero-legkezelo-gepterem.jpg
+Why it matters: Fast desktop rendering does not remove mobile data and slower-network costs. Offscreen industry imagery
+competes for bandwidth with the initial experience.
+Recommended solution: Create appropriately sized WebP/AVIF variants, preserve visual quality, use responsive picture/img
+markup for meaningful imagery and load below-fold backgrounds on demand. Keep the actual LCP image eager; avoid
+indiscriminately lazy-loading the hero.
+Owner: Frontend + media/content
+Done when: Restaurant image is right-sized and modern-format; offscreen cards no longer download unnecessarily at initial
+load; cold mobile lab tests show a smaller measured payload without image or layout regressions.
+
+
+PAGE 35
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+35
+IMPLEMENTATION CARDS · PRIORITY ORDER
+Roadmap: F07 / F08 / F15
+F07 · Ten services and six sectors lack deep, intent-specific landing paths
+HIGH | Effort: Significant | Expected impact: High | SEO / information architecture
+Affected URLs: https://nextro.hu/szolgaltatasok/ • https://nextro.hu/megoldasok/ • https://nextro.hu/
+Why it matters: A high-intent visitor cannot land directly on a complete explanation of one need. The existing breadth is
+diluted rather than organized into useful search destinations.
+Recommended solution: Retain the two hubs. Build original detail pages first for légkezelő karbantartás, légkezelő
+felújítás/forgódob-csere and egyedi légtechnikai szűrőgyártás; connect them to sector examples, relevant products and a
+contextual enquiry. Add further pages only when genuine unique detail is available.
+Owner: SEO + subject-matter experts + content
+Done when: Each new page answers scope, fit, process, proof and next-step questions and is linked from its hub; no
+near-duplicate doorway pages.
+F08 · Reference content describes project types rather than evidenced case studies
+HIGH | Effort: Significant | Expected impact: High | Content / E-E-A-T / CRO
+Affected URLs: https://nextro.hu/referenciak/ • https://nextro.hu/ • https://nextro.hu/rolunk/
+Why it matters: A procurement buyer needs evidence of comparable delivery, not only an assertion of capability. Generic
+imagery weakens the connection between claim and proof.
+Recommended solution: Publish permission-cleared case studies with site/sector, date, problem, scope, real project
+photographs and documented results. Where clients are confidential, say so and include verifiable technical specifics. Link to
+current certification/rating evidence and identify responsible experts.
+Owner: Sales + project engineers + marketing
+Done when: Three representative case studies have approved evidence; numerical claims and ratings have a source/date;
+no fabricated testimonials or savings.
+F15 · Consent and third-party integration need a documented verification pass
+HIGH | Effort: Moderate | Expected impact: High | Privacy assurance / performance
+Affected URLs: https://nextro.hu/ • https://nextro.hu/cookie-nyilatkozat/ • Shared newsletter and cookie components
+Why it matters: The incomplete privacy notice and third-party integrations make it important to verify what loads, stores or
+transmits data under each consent choice rather than assume the banner controls everything.
+Recommended solution: In a clean-browser matrix, compare no choice/reject/granular/accept/revoke states. Classify each
+integration and its legal basis, gate non-essential behavior as appropriate and publish matching disclosures. Translate
+residual English preference/help text and verify newsletter confirmation handling.
+Owner: Privacy lead + analytics/development
+Done when: A retained request/storage audit maps each integration to purpose and consent behavior; policy and banner
+agree. This is a verification task, not a finding of a legal violation.
+
+
+PAGE 36
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+36
+IMPLEMENTATION CARDS · PRIORITY ORDER
+Roadmap: F23 / F24 / F09
+F23 · Anonymous overlay links and color-only inline links need semantic repairs
+HIGH | Effort: Quick | Expected impact: High | Accessibility / frontend
+Affected URLs: https://nextro.hu/szolgaltatasok/ • https://nextro.hu/kapcsolat/ • Related hero/container link templates
+Why it matters: A screen-reader user can land on a link with no purpose; color-dependent links are harder to identify. These
+are more specific than a blanket claim that keyboard access is broken.
+Recommended solution: Remove redundant overlay anchors or give the intended link a meaningful accessible name; use
+real text links and underlines where links occur within prose. Test tab order and avoid nested interactive elements when
+making cards clickable.
+Owner: Frontend + accessibility QA
+Done when: No unnamed links in affected templates; links are identifiable without color alone; screen-reader and keyboard
+spot checks agree with automated results.
+F24 · Conversion measurement and end-to-end reliability are not yet evidenced
+HIGH | Effort: Moderate | Expected impact: High | CRO / analytics / QA
+Affected URLs: https://nextro.hu/kapcsolat/ • https://nextro.hu/bolt/ • Product-to-cart/checkout journey • Shared newsletter
+Why it matters: A visually improved funnel may still lose leads after submission. Without a baseline, no uplift or
+conversion-rate claim is defensible.
+Recommended solution: With owner approval use staging/test mode to verify form validation, delivery, spam handling,
+success feedback, product/cart totals, shipping, payment failure and confirmation. Implement consent-aware
+quote/call/email/add-to-cart/checkout events and review lead quality as well as volume.
+Owner: QA + sales operations + analytics
+Done when: Authorized test evidence proves end-to-end delivery and transaction states; events are documented,
+privacy-reviewed and deduplicated; a baseline is established before optimization experiments.
+F09 · The enquiry form asks for more effort than necessary
+MEDIUM | Effort: Moderate | Expected impact: High | UX / forms / accessibility
+Affected URLs: https://nextro.hu/kapcsolat/ • https://nextro.hu/
+Why it matters: Required telephone plus email, a separate subject and unassisted technical description add friction,
+especially on phones. This is a design concern, not a measured abandonment rate.
+Recommended solution: Keep clear labels; make phone optional unless callback is chosen; consider a single full-name field
+and remove redundant subject. Use type=tel, autocomplete tokens and concise prompts for building/location/equipment.
+Preserve incoming service/product context. Explain what happens next using an approved response expectation.
+Owner: Sales + UX + development
+Done when: Mobile autofill and keyboard types work; only necessary inputs are mandatory; empty/invalid/error/success
+states and email delivery pass an authorized staging test.
+
+
+PAGE 37
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+37
+IMPLEMENTATION CARDS · PRIORITY ORDER
+Roadmap: F10 / F11 / F12
+F10 · Product and category search snippets are unfinished
+MEDIUM | Effort: Quick | Expected impact: Medium | On-page SEO
+Affected URLs: All nine /termek/ pages • All eight /termekkategoria/ pages • https://nextro.hu/bolt/
+Why it matters: Search snippets and shared links communicate less clearly than the underlying product data allows. Meta
+descriptions influence presentation, not guaranteed ranking or click-through gains.
+Recommended solution: Write differentiated Hungarian descriptions for commercial pages and replace archive defaults
+with customer-facing category titles. Include model/power/cable variants on products and use a specific shop title. Resolve
+real catalogue availability before promising online purchase.
+Owner: SEO + content
+Done when: All intended commercial landing pages have relevant distinct titles and descriptions; previews are reviewed by
+pixel width, not only character count.
+F11 · Category headings and section hierarchy are inconsistent
+MEDIUM | Effort: Quick | Expected impact: Medium | Semantic SEO / accessibility
+Affected URLs: Six category URLs listed in the technical inventory • https://nextro.hu/megoldasok/ • https://nextro.hu/kapcsolat/ • 
+https://nextro.hu/
+Why it matters: Visual peers do not form predictable document sections for scanning and assistive navigation. Missing H1s
+reduce topic clarity; they are not proof of a ranking penalty.
+Recommended solution: Render one descriptive H1 on category templates, make peer sectors the same heading level and
+use H2 section labels with H3 subtopics. Do not select heading tags to achieve a font size.
+Owner: Frontend + SEO
+Done when: Category pages have a meaningful H1 and all audited templates have a logical outline independent of visual
+styling.
+F12 · The sitemap includes noindex and redirecting utility routes
+MEDIUM | Effort: Quick | Expected impact: Medium | Technical SEO
+Affected URLs: https://nextro.hu/page-sitemap.xml • https://nextro.hu/kosar/ • https://nextro.hu/penztar/ • https://nextro.hu/fiokom/
+Why it matters: The sitemap sends mixed discovery/indexing signals and contains routes that are not organic landing
+pages. The duplicate shop entry is redundant, not a duplicate-content penalty.
+Recommended solution: Exclude utility/noindex routes from the sitemap and deduplicate shop inclusion. Keep cart/account
+noindex and allow crawlers to see that directive. Submit the cleaned sitemap in Search Console once access is available.
+Owner: SEO + WordPress developer
+Done when: Every sitemap page entry resolves directly to an intended indexable canonical 200 URL; cart, checkout and
+account are absent.
+
+
+PAGE 38
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+38
+IMPLEMENTATION CARDS · PRIORITY ORDER
+Roadmap: F13 / F14 / F16
+F13 · Product presentation makes model comparison unnecessarily difficult
+MEDIUM | Effort: Moderate | Expected impact: Medium | UI / content / ecommerce
+Affected URLs: https://nextro.hu/bolt/ • https://nextro.hu/termekkategoria/autotoltok/ • All /termek/ pages
+Why it matters: Users must read repetitive names to compare power, phases and cable options and cannot easily assess
+included hardware versus installation imagery.
+Recommended solution: Use consistent product packshots and aspect ratios, a power/phase/cable comparison table and a
+labelled installation/gallery section. Keep imagery accurate to the offered SKU. Consider a single variant selector only after
+assessing URL demand and migration implications.
+Owner: Ecommerce + design + product expert
+Done when: Variant differences and included items are visible without opening every product; any URL consolidation has an
+explicit redirect/canonical plan.
+F14 · Mobile contact access and menu ergonomics can be improved
+MEDIUM | Effort: Quick | Expected impact: Medium | Mobile UX / accessibility
+Affected URLs: https://nextro.hu/ • Shared mobile header • https://nextro.hu/kapcsolat/
+Why it matters: A small target is harder to hit; an urgent maintenance visitor has no immediate call action in the mobile
+header. This is an ergonomic finding, not a proven WCAG target-size violation because spacing exceptions may apply.
+Recommended solution: Give menu/close controls a 44 × 44 px design target with visible focus; add a labelled call action
+and/or compact quote/call bar after consent. Respect safe areas and avoid obscuring the form or cookie controls. Test
+opened-menu keyboard focus, Escape and return focus across devices.
+Owner: UX + frontend
+Done when: Menu and close controls have comfortable touch areas; phone/quote access is immediate on mobile; no overlay
+collision at 320–430 px.
+F16 · Structured data is basic and uneven across the catalogue
+MEDIUM | Effort: Moderate | Expected impact: Medium | Structured data / local SEO
+Affected URLs: https://nextro.hu/ • All /termek/ pages • https://nextro.hu/kapcsolat/ • https://nextro.hu/impresszum/
+Why it matters: The entity graph omits useful verified business details; quote-only items are not represented consistently.
+Rich-result eligibility cannot be inferred from valid JSON alone.
+Recommended solution: Enrich one consistent business entity with confirmed contact, address, social profiles and
+appropriate business type. Add accurate Product data where applicable; include Offer only when real price/availability
+supports it. Validate with Google's rich-result tooling and align shipping/returns markup only after policies are complete.
+Owner: SEO + development
+Done when: Schema matches visible, approved facts; no fabricated prices/reviews/offers; validators pass relevant checks
+without guaranteeing rich-result display.
+
+
+PAGE 39
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+39
+IMPLEMENTATION CARDS · PRIORITY ORDER
+Roadmap: F17 / F18 / F19
+F17 · The homepage repeats assurances and delays specific visitor decisions
+MEDIUM | Effort: Moderate | Expected impact: High | UX / content / design
+Affected URLs: https://nextro.hu/ • https://nextro.hu/megoldasok/
+Why it matters: Length alone is not a defect, but repeated assurances compete with service choice and proof. Mobile
+visitors must scan a long sequence to find the information relevant to them.
+Recommended solution: Lead with explicit HVAC service scope and a quote/call action; follow with service pathways, proof,
+relevant sectors, concise process and contact. Consolidate repeated benefits. On solutions, add an immediate sector index
+before the general process. Retain useful depth in contextual detail pages.
+Owner: UX + content + design
+Done when: A first-time user can explain the offer, choose a relevant path and locate proof/contact without reading repeated
+sections; verify through observed usability sessions.
+F18 · Local contact and credibility information is present but incomplete for
+decision-making
+MEDIUM | Effort: Moderate | Expected impact: Medium | Local SEO / trust / content
+Affected URLs: https://nextro.hu/kapcsolat/ • https://nextro.hu/impresszum/ • https://nextro.hu/rolunk/
+Why it matters: Prospects need to distinguish legal headquarters from a service/collection location. Search listings should
+not imply a staffed walk-in venue without business confirmation.
+Recommended solution: Confirm and publish hours, appointment/collection rules, service area and appropriate directions.
+Keep name/address/phone consistent across the website and verified listings; review Google Business Profile separately with
+owner access. Add named technical contacts or accountable expert profiles where appropriate.
+Owner: Business owner + local SEO + content
+Done when: Each address has a clear role and approved visitor information; external listings are reconciled using authorized
+access.
+F19 · Shared assets and render-blocking requests warrant optimization after imagery
+MEDIUM | Effort: Moderate | Expected impact: Medium | Performance / engineering
+Affected URLs: https://nextro.hu/ • Shared templates
+Why it matters: Plugin/template assets can add work on pages where features are not used. Presence does not prove
+unused code or justify indiscriminate removal.
+Recommended solution: Profile CSS/JS coverage and long tasks by template; conditionally enqueue shop/form assets, defer
+only compatible scripts and remove redundant styles after dependency tests. Assess anonymous HTML caching separately
+from cart/account/checkout. Keep local WOFF2 fonts and review font-display/weight use in a controlled trace.
+Owner: WordPress performance developer
+Done when: Coverage and repeatable lab traces justify removals; cart, forms, consent and navigation still work; personalized
+pages are not cached publicly.
+
+
+PAGE 40
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+40
+IMPLEMENTATION CARDS · PRIORITY ORDER
+Roadmap: F20 / F21 / F22
+F20 · Inconsistent and partly untranslated wording weakens polish
+MEDIUM | Effort: Quick | Expected impact: Medium | Content / UI
+Affected URLs: https://nextro.hu/rolunk/ • https://nextro.hu/referenciak/ • https://nextro.hu/bolt/ • All /termek/ pages
+Why it matters: Inconsistent dates and template language make a recently updated site look unfinished. Strong promises
+should match an operationally deliverable commitment.
+Recommended solution: Prefer stable 2005 óta wording, translate customer-facing defaults and simplify technical jargon
+without losing accuracy. Publish approved warranty scope and response expectations, not invented guarantees. Have a
+Hungarian HVAC specialist review nomenclature and customer-facing explanations.
+Owner: Hungarian editor + business owner
+Done when: No unexplained English UI remains in primary journeys; tenure and guarantees are consistent and fact-checked.
+F21 · The HTTP www variant has an avoidable redirect hop
+LOW | Effort: Quick | Expected impact: Low | Technical SEO / performance
+Affected URLs: http://www.nextro.hu/
+Why it matters: This adds a small delay for visitors and crawlers using the old host/protocol; it is not an indexation
+emergency.
+Recommended solution: Where hosting rules permit, combine host and scheme normalization into one permanent redirect
+directly to the preferred HTTPS non-www URL, preserving path/query and avoiding loops.
+Owner: Hosting/development
+Done when: Every supported legacy host/scheme test reaches the preferred canonical host in one hop; paths and queries
+remain correct.
+F22 · Social preview and secondary metadata need finishing
+LOW | Effort: Quick | Expected impact: Low | Social sharing / technical polish
+Affected URLs: https://nextro.hu/bolt/ • https://nextro.hu/kapcsolat/ • All /termekkategoria/ pages • Shared favicon markup
+Why it matters: Commercial links can be less recognizable in messaging/social previews. This is presentation polish, not a
+demonstrated search-ranking issue.
+Recommended solution: Add a purposeful branded fallback preview image and category-specific images where useful;
+validate rendered previews. Verify icon dimensions and browser appearance rather than inferring a failure from filenames.
+Owner: Design + SEO/development
+Done when: Key pages generate intentional previews; favicon metadata agrees with actual assets or is corrected where
+necessary.
+
+
+PAGE 41
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+41
+BUILD USEFUL DEPTH, NOT MORE TEMPLATE PAGES
+Strategic Improvements
+Initiative
+Scope and dependencies
+How to judge success
+Service-intent architecture
+Expand maintenance, renovation/rotor replacement
+and filter manufacture first. Interview engineers,
+assemble scope/fit/process content and connect
+real cases. F07.
+Prospects can answer suitability and
+scope questions on one page;
+contextual enquiries preserve
+service intent. Assess organic/lead
+outcomes only after a baseline.
+Evidence-led reference
+library
+Create at least three approved project stories
+across representative sectors. Use dates, actual
+photos, named or transparently confidential clients
+and documented outcomes. F08.
+Sales can send a relevant case to a
+real prospect; every numerical
+result has evidence and permission.
+Coherent
+product/quotation system
+Choose the commercial model of each range, align
+stock/price/fulfilment data, complete policy content
+and make product selection easier. F01–F03, F13,
+F16.
+Every advertised range has a
+purchase or quote route and known
+commercial terms; authorized
+checkout/enquiry tests succeed.
+Reusable accessible
+components
+Set a light/dark token system, headings, card link
+semantics, product media, form states, focus and
+motion rules. F04, F09, F11, F14, F23.
+Shared-template fixes pass
+automated and human tests at
+multiple widths without regressions.
+Measured optimization
+program
+Image/loading work followed by coverage-driven
+CSS/JS changes, documented consent and reliable
+outcome events. F06, F15, F19, F24.
+Repeated cold lab traces and
+real-user monitoring improve;
+privacy and functional tests remain
+valid.
+Suggested governance
+Assign a business approver to prices, warranties, fulfilment, company claims and response expectations; a
+technical owner to templates, performance and schema; and a content owner to service/case pages.
+Maintain one finding backlog with evidence, owner, acceptance test and release status. A single person
+should verify that the policy, product and form journeys tell the same story.
+Do not start with a cosmetic sitewide rebuild. Resolve readiness/access blockers first, then prototype one commercial service
+and one product journey. Reuse proven components and preserve existing useful URLs and content.
+
+
+PAGE 42
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+42
+RECOMMENDED ORDER OF IMPLEMENTATION
+16. Final recommendations
+NEXTRO’s service story and visual identity provide a workable foundation. The site’s largest weaknesses
+are concentrated in unfinished commercial details, inaccessible contrast, ambiguous navigation and
+insufficient proof—not a total absence of content or technical SEO. Address those weaknesses before
+spending on more traffic.
+Top 10
+Action
+1
+Publish approved privacy, terms and shipping information; eliminate public internal notes.
+2
+Give every product a validated purchase or contextual quotation state.
+3
+Fix text contrast, unnamed links and color-only inline links in shared templates.
+4
+Repair homepage self-links/pseudo-links and preserve selected service/sector context.
+5
+Replace empty store categories with useful quote-led ranges or remove unfinished promotion.
+6
+Reduce the large restaurant/hero/background image payload and verify mobile loading.
+7
+Complete consent and authorized end-to-end enquiry/checkout testing before transactional promotion.
+8
+Publish verifiable case studies, expert/company evidence and current claim sources.
+9
+Build original priority service detail pages and link them to proof and enquiry.
+10
+Finish commercial metadata, category headings, sitemap hygiene and mobile form ergonomics.
+Priorities by discipline
+SEO: useful commercial depth and evidence first; then product/category snippets, headings, sitemap and
+accurate entity data.
+UX/UI: readable dark surfaces, real destination links, shorter repeated homepage narrative, comfortable
+mobile call/menu access.
+Technical: image bytes and conditional loading, carefully tested template assets, explicit indexing signals
+and reliable form/checkout behavior.
+Content: complete policies, approve claims, replace anonymous references with evidence and remove
+template English.
+Conversion: honest product availability/pricing, contextual quote paths, minimal necessary form effort
+and operationally verified handoff.
+Success criteria
+A new visitor should understand the relevant offer, verify credible evidence, know the applicable
+terms and complete a clear enquiry or purchase journey. Verify that outcome with real tests and
+approved analytics; do not equate a better-looking homepage or a higher lab score with proven
+business success.
+
+
+PAGE 43
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+43
+29 CRAWLED CONTENT PAGES
+Appendix A · Technical inventory
+All rows below returned HTTP 200 and had a title, canonical tag and index/follow robots metadata in the raw crawl. “Meta”
+indicates presence of a description, not quality. Empty utility routes and the 404 probe are listed separately in the technical
+section. URLs below are relative to https://nextro.hu/.
+Path
+H1s
+Meta
+/
+1
+Yes
+/szolgaltatasok/
+1
+Yes
+/megoldasok/
+1
+Yes
+/referenciak/
+1
+Yes
+/rolunk/
+1
+Yes
+/bolt/
+1
+Yes
+/kapcsolat/
+1
+Yes
+/adatkezelesi-tajekoztato/
+1
+Yes
+/aszf/
+1
+Yes
+/cookie-nyilatkozat/
+1
+Yes
+/impresszum/
+1
+Yes
+/fizetesi-es-szallitasi-tajekoztato/
+1
+Yes
+/termekkategoria/alkatreszek/
+0
+Missing
+/termekkategoria/automatika/
+0
+Missing
+/termekkategoria/autotoltok/
+1
+Missing
+/termekkategoria/futoegysegek/
+0
+Missing
+/termekkategoria/legfuggonyok/
+0
+Missing
+/termekkategoria/legkezelok/
+0
+Missing
+/termekkategoria/parasitok/
+1
+Missing
+/termekkategoria/szurok/
+0
+Missing
+
+
+PAGE 44
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+44
+CONTINUATION OF THE 29-PAGE CONTENT CRAWL
+Technical inventory: products and
+utilities
+All nine products below returned 200 with one H1, a title and a self-referencing canonical. All nine lack a meta description.
+The eight unpriced variants do not contain Product JSON-LD; the priced 22 kW / 7.5 m variant does. Paths are relative to
+https://nextro.hu/.
+Product path
+Visible price
+/termek/teltonika-evc2-okos-ac-autotolto-11-kw-5-m-beepitett-toltokabellel/
+Not shown
+/termek/teltonika-evc2-okos-ac-autotolto-11-kw-75-m-beepitett-toltokabellel/
+Not shown
+/termek/teltonika-evc2-okos-ac-autotolto-11-kw-kompakt-beepitett-kabel-nelkul/
+Not shown
+/termek/teltonika-evc2-okos-ac-autotolto-22-kw-5-m-beepitett-toltokabellel/
+Not shown
+/termek/teltonika-evc2-okos-ac-autotolto-22-kw-75-m-beepitett-toltokabellel/
+99 999 Ft
+/termek/teltonika-evc2-okos-ac-autotolto-22-kw-kompakt-beepitett-kabel-nelkul/
+Not shown
+/termek/teltonika-evc2-okos-ac-autotolto-74-kw-5-m-beepitett-toltokabellel/
+Not shown
+/termek/teltonika-evc2-okos-ac-autotolto-74-kw-75-m-beepitett-toltokabellel/
+Not shown
+/termek/teltonika-evc2-okos-ac-autotolto-74-kw-kompakt-beepitett-kabel-nelkul/
+Not shown
+Separately tested utility routes
+Route
+Response / index directive
+/kosar/
+200; noindex, follow
+/fiokom/
+200; noindex, follow; no login attempted
+/penztar/
+302 to /kosar/ in the empty-session request
+These utility probes are not included in the 29 content-page crawl total. No customer data, authentication or live order was
+submitted.
+
+
+PAGE 45
+NEXTRO.HU  /  WEBSITE AUDIT
+Public-site inspection · 22 September 2026
+Evidence-led findings • Recommendations are not legal advice
+45
+TRACEABILITY AND UNKNOWNS
+Appendix B · Evidence and validation
+register
+Evidence file / source
+What it supports
+technical.json + http-evidence/
+Raw crawl, metadata, HTTP status/redirects, canonical/robots tags,
+headings, image attributes, structured data, robots and sitemap
+responses, user-agent variations, caching samples.
+aggregates.json
+Corrected namespace-aware sitemap counts: 25 unique page URLs,
+26 page entries and 26 unique image locations. Resource
+aggregates exclude injected axe.
+supplement.json
+Utility/noindex/checkout behavior, sitemap.xml redirect, orderby
+canonical, price states, Product/Offer data, basic Organization graph
+and favicon/OG checks.
+home-browser.json; services.json;
+megoldasok.json; referenciak.json; rolunk.json
+Rendered text, heading outlines and main-page link destinations.
+Homepage pseudo-link behavior was also manually exercised.
+kapcsolat.json; product-priced.json;
+product-unpriced.json; category/shop JSON
+Forms/labels and rendered product/category commercial content;
+tab content confirmed with a browser click.
+axe-home/services/contact/product.json
+Saved axe-core 4.10.3 node-level results. Home/services are
+desktop; contact/product mobile. A transient blank-tab test was
+discarded and the product file was replaced with a valid live-page
+scan.
+performance-desktop.json;
+performance-mobile.json
+Navigation/Resource Timing and buffered LCP/layout shifts. Desktop
+is the reported one-off observation; mobile was warm/reused and
+not a comparable benchmark.
+pagespeed-api.json
+The HTTP 429/quota response. No PSI score or CrUX field result was
+available from this attempt.
+mobile-layouts.json; desktop-interactions.json;
+screenshots
+Viewport sizes/overflow, fonts, visible errors, resolved counters and
+tested focus behavior; original and annotated screenshot evidence.
+Unverified items requiring follow-up
+Actual Google indexing, rankings, search demand, backlinks, analytics/conversion rates, field Core Web
+Vitals, INP, full-page lifetime CLS, unused CSS/JS coverage, long tasks, backend cache architecture,
+authenticated areas, payment completion, live email delivery, newsletter confirmation, registry/rating
+accuracy, full third-party consent payload/storage behavior and formal WCAG conformance. No metric in
+these areas is invented.
+Audit files: /workspace/nextro-audit/ · Final PDF: /workspace/nextro.hu_full_website_audit.pdf. The report reflects the public
+site observed on 22 September 2026; later changes may supersede a finding. Raw server Date headers are retained as
+received; the inspection date is the local audit record.

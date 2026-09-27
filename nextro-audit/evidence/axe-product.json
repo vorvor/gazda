@@ -1,0 +1,295 @@
+{
+  "url": "https://nextro.hu/termek/teltonika-evc2-okos-ac-autotolto-22-kw-75-m-beepitett-toltokabellel/",
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT"
+      ],
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#78ab4a",
+                "bgColor": "#fdfdfd",
+                "contrastRatio": 2.67,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body data-cmplz=\"1\" class=\"wp-singular product-template-default single single-product postid-977 wp-custom-logo wp-embed-responsive wp-theme-blocksy theme-blocksy woocommerce woocommerce-page woocommerce-js gspbody gspb-bodyfront cmplz-functional cmplz-eu cmplz-optin\" data-link=\"type-2\" data-prefix=\"product\" data-header=\"type-1\" data-footer=\"type-1\" data-ajax-filters=\"yes:scroll\" itemscope=\"itemscope\" itemtype=\"https://schema.org/WebPage\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.67 (foreground color: #78ab4a, background color: #fdfdfd, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span itemprop=\"name\">Kezdőlap</span>",
+          "target": [
+            "a[itemprop=\"item\"][href$=\"nextro.hu/\"] > span[itemprop=\"name\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #78ab4a, background color: #fdfdfd, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#78ab4a",
+                "bgColor": "#fdfdfd",
+                "contrastRatio": 2.67,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body data-cmplz=\"1\" class=\"wp-singular product-template-default single single-product postid-977 wp-custom-logo wp-embed-responsive wp-theme-blocksy theme-blocksy woocommerce woocommerce-page woocommerce-js gspbody gspb-bodyfront cmplz-functional cmplz-eu cmplz-optin\" data-link=\"type-2\" data-prefix=\"product\" data-header=\"type-1\" data-footer=\"type-1\" data-ajax-filters=\"yes:scroll\" itemscope=\"itemscope\" itemtype=\"https://schema.org/WebPage\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.67 (foreground color: #78ab4a, background color: #fdfdfd, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span itemprop=\"name\">Webshop</span>",
+          "target": [
+            "a[itemprop=\"item\"][href$=\"bolt/\"] > span[itemprop=\"name\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #78ab4a, background color: #fdfdfd, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#78ab4a",
+                "bgColor": "#fdfdfd",
+                "contrastRatio": 2.67,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body data-cmplz=\"1\" class=\"wp-singular product-template-default single single-product postid-977 wp-custom-logo wp-embed-responsive wp-theme-blocksy theme-blocksy woocommerce woocommerce-page woocommerce-js gspbody gspb-bodyfront cmplz-functional cmplz-eu cmplz-optin\" data-link=\"type-2\" data-prefix=\"product\" data-header=\"type-1\" data-footer=\"type-1\" data-ajax-filters=\"yes:scroll\" itemscope=\"itemscope\" itemtype=\"https://schema.org/WebPage\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.67 (foreground color: #78ab4a, background color: #fdfdfd, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span itemprop=\"name\">Autótöltők</span>",
+          "target": [
+            ".item-1 > a[itemprop=\"item\"] > span[itemprop=\"name\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #78ab4a, background color: #fdfdfd, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#758089",
+                "bgColor": "#fdfdfd",
+                "contrastRatio": 3.96,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body data-cmplz=\"1\" class=\"wp-singular product-template-default single single-product postid-977 wp-custom-logo wp-embed-responsive wp-theme-blocksy theme-blocksy woocommerce woocommerce-page woocommerce-js gspbody gspb-bodyfront cmplz-functional cmplz-eu cmplz-optin\" data-link=\"type-2\" data-prefix=\"product\" data-header=\"type-1\" data-footer=\"type-1\" data-ajax-filters=\"yes:scroll\" itemscope=\"itemscope\" itemtype=\"https://schema.org/WebPage\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.96 (foreground color: #758089, background color: #fdfdfd, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<a href=\"https://nextro.hu/termekkategoria/autotoltok/\" rel=\"tag\">Autótöltők</a>",
+          "target": [
+            "a[rel=\"tag\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #758089, background color: #fdfdfd, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#78ab4a",
+                "bgColor": "#fdfdfd",
+                "contrastRatio": 2.67,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body data-cmplz=\"1\" class=\"wp-singular product-template-default single single-product postid-977 wp-custom-logo wp-embed-responsive wp-theme-blocksy theme-blocksy woocommerce woocommerce-page woocommerce-js gspbody gspb-bodyfront cmplz-functional cmplz-eu cmplz-optin\" data-link=\"type-2\" data-prefix=\"product\" data-header=\"type-1\" data-footer=\"type-1\" data-ajax-filters=\"yes:scroll\" itemscope=\"itemscope\" itemtype=\"https://schema.org/WebPage\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.67 (foreground color: #78ab4a, background color: #fdfdfd, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<a href=\"#tab-description\" role=\"tab\" aria-controls=\"tab-description\" aria-selected=\"true\" tabindex=\"0\">\nLeírás\t\t\t\t\t</a>",
+          "target": [
+            "a[href$=\"#tab-description\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #78ab4a, background color: #fdfdfd, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#0f1f2f",
+                "bgColor": "#5f9138",
+                "contrastRatio": 4.44,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<button class=\"wp-element-button\">\nFeliratkozás\t\t\t</button>",
+                  "target": [
+                    ".ct-newsletter-subscribe-form-elements > .wp-element-button"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.44 (foreground color: #0f1f2f, background color: #5f9138, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<button class=\"wp-element-button\">\nFeliratkozás\t\t\t</button>",
+          "target": [
+            ".ct-newsletter-subscribe-form-elements > .wp-element-button"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.44 (foreground color: #0f1f2f, background color: #5f9138, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#3a4a57",
+                "bgColor": "#0f1f2f",
+                "contrastRatio": 1.82,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"wp-block-greenshift-blocks-row alignfull gspb_row gspb_row-id-gsbp-fe7f173 gspb_row--gutter-custom-0\" id=\"gspb_row-id-gsbp-fe7f173\">",
+                  "target": [
+                    "#gspb_row-id-gsbp-fe7f173"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 1.82 (foreground color: #3a4a57, background color: #0f1f2f, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<div id=\"gspb_text-id-gsbp-3eec747\" class=\"gspb_text gspb_text-id-gsbp-3eec747 \">",
+          "target": [
+            "#gspb_text-id-gsbp-3eec747"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.82 (foreground color: #3a4a57, background color: #0f1f2f, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    }
+  ],
+  "incomplete": [],
+  "passes": [
+    "aria-allowed-attr",
+    "aria-conditional-attr",
+    "aria-deprecated-role",
+    "aria-hidden-body",
+    "aria-hidden-focus",
+    "aria-prohibited-attr",
+    "aria-required-attr",
+    "aria-required-children",
+    "aria-required-parent",
+    "aria-roles",
+    "aria-valid-attr-value",
+    "aria-valid-attr",
+    "autocomplete-valid",
+    "avoid-inline-spacing",
+    "button-name",
+    "bypass",
+    "color-contrast",
+    "document-title",
+    "duplicate-id-aria",
+    "form-field-multiple-labels",
+    "html-has-lang",
+    "html-lang-valid",
+    "image-alt",
+    "label",
+    "link-name",
+    "list",
+    "listitem",
+    "meta-viewport",
+    "nested-interactive",
+    "target-size"
+  ]
+}

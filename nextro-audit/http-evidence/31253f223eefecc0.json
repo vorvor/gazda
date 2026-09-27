@@ -1,0 +1,27 @@
+{
+  "url": "https://nextro.hu/termekkategoria/legkezelok/",
+  "final_url": "https://nextro.hu/termekkategoria/legkezelok/",
+  "status": 200,
+  "redirects": [],
+  "headers": {
+    "Date": "Tue, 22 Sep 2026 11:03:52 GMT",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Content-Length": "39683",
+    "Connection": "keep-alive",
+    "Vary": "User-Agent,Accept-Encoding",
+    "Last-Modified": "Tue, 22 Sep 2026 01:47:17 GMT",
+    "Content-Encoding": "gzip",
+    "Cache-Control": "max-age=0, no-cache, no-store, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "Mon, 29 Oct 1923 20:30:00 GMT",
+    "Server": "RHProxy",
+    "Content-Security-Policy": "upgrade-insecure-requests",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Accept-Ranges": "bytes"
+  },
+  "elapsed_seconds": 0.399,
+  "decoded_bytes": 188337,
+  "body_file": "/workspace/nextro-audit/http-evidence/31253f223eefecc0.body",
+  "sha256": "5fc08cea527f6e7e2aaa842a8383fe52804fc0720d627128d1db403427978358"
+}

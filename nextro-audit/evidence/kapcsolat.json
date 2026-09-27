@@ -1,0 +1,236 @@
+{
+  "url": "https://nextro.hu/kapcsolat/",
+  "title": "🐴 Kapcsolat | NEXTRO Kft. – légtechnika, klíma, szűrőgyártás",
+  "text": "Ugrás a tartalomra\ninfo@nextro.hu\n+36 30 953 1703\n1082 Budapest, Kisfaludy utca 40. fszt. 4.\nSZOLGÁLTATÁSOK\nMEGOLDÁSOK\nREFERENCIÁK\nRÓLUNK\nWEBSHOP\nKAPCSOLAT\nKosár\nKEZDŐLAP\nKAPCSOLAT\nKAPCSOLAT\nKérdése van, ajánlatot kérne, vagy hibát jelentene be? Írja meg nekünk, és kollégáink a lehető leghamarabb keresik Önt a válasszal.\nTelefon\nSürgős ügyben, hibabejelentéshez vagy gyors egyeztetéshez hívjon minket: +36 30 953 1703\nE-mail\nAjánlatkérését és kérdéseit várjuk az info@nextro.hu címen. Az épület és a berendezés adatai sokat segítenek a pontos ajánlatban.\nCímeink\nSzékhely: 1082 Budapest, Kisfaludy utca 40. földszint 4. ajtó.\nRaktár és levelezési cím: H-2000 Szentendre, Kőzúzó köz 8/B.\nKapcsolatfelvételi űrlap\nKeresztnév\nVezetéknév\nE-mail-cím\nTelefonszám\nCégnév (ha van)\nTárgy\nMegkeresés típusa\nVálasszon\nAjánlatkérés\nHibabejelentés\nKarbantartás, szerviz\nSzűrőrendelés\nEgyéb kérdés\nÜzenet / a feladat leírása\n\t\n\nAz ÁSZF-et és az Adatkezelési tájékoztatót elolvastam, annak tartalmát megismertem, megértettem és elfogadom.\n\nÜzenet küldése\n0\néve dolgozunk a légtechnikában, 2005-ös alapításunk óta.\n0\nfős állandó, saját szakembergárda: mérnökök, klíma- és csőhálózat-szerelők, villanyszerelők, automatikai szakemberek.\n0\nelégedett partner szerte az országban, generálkivitelezőktől a lakossági megrendelőkig.\nFriss levegő, tiszta megoldás – több mint 20 éve\nA felméréstől a tervezésen és a kivitelezésen át a karbantartásig mindent egy kézben tartunk, saját szakembergárdával. Írjon nekünk, és megkeressük az épületéhez illő légtechnikai megoldást.\nTeljes körű szolgáltatás a felméréstől a karbantartásig\n18 fős saját szakembergárda, alvállalkozói láncok nélkül\nSaját gyártású légtechnikai szűrők, gyors kiszállítással\nGaranciát vállalunk minden elvégzett munkánkra\nWebáruház\nSzolgáltatásaink\nA NEXTRO Kft. 2005 óta nyújt teljes körű légtechnikai szolgáltatást Budapesten és az egész országban: légkezelők telepítése, automatika, beüzemelés, karbantartás, felújítás és saját gyártású szűrők.\nTelefon:\n+36 30 953 1703\nE-mail:\ninfo@nextro.hu\nHírlevél\nIratkozzon fel, és értesüljön elsőként légtechnikai újdonságainkról, szűrőkínálatunkról és akcióinkról.\nFeliratkozás\nÁltalános Szerződési Feltételek\nAdatkezelési tájékoztató\nCookie nyilatkozat\nImpresszum\nFizetési és szállítási tájékoztató\n© 2026 NEXTRO Kft. Minden jog fenntartva. \nA weboldal a Demján Sándor Program keretében és támogatásával valósult meg.\nSüti beállítások",
+  "headings": [
+    [
+      "H1",
+      "KAPCSOLAT"
+    ],
+    [
+      "H3",
+      "Telefon"
+    ],
+    [
+      "H3",
+      "E-mail"
+    ],
+    [
+      "H3",
+      "Címeink"
+    ],
+    [
+      "H2",
+      "Friss levegő, tiszta megoldás – több mint 20 éve"
+    ],
+    [
+      "H3",
+      "Hírlevél"
+    ]
+  ],
+  "links": [
+    [
+      "KEZDŐLAP",
+      "https://nextro.hu/"
+    ],
+    [
+      "+36 30 953 1703",
+      "tel:+36309531703"
+    ],
+    [
+      "info@nextro.hu",
+      "mailto:info@nextro.hu"
+    ],
+    [
+      "ÁSZF-et",
+      "https://nextro.hu/aszf/"
+    ],
+    [
+      "Adatkezelési tájékoztatót",
+      "https://nextro.hu/adatkezelesi-tajekoztato/"
+    ],
+    [
+      "Webáruház",
+      "https://nextro.hu/bolt/"
+    ],
+    [
+      "Szolgáltatásaink",
+      "https://nextro.hu/szolgaltatasok/"
+    ]
+  ],
+  "forms": [
+    {
+      "action": "https://nextro.hu/kapcsolat/",
+      "fields": [
+        {
+          "tag": "INPUT",
+          "type": "hidden",
+          "name": "__fluent_form_embded_post_id",
+          "id": "",
+          "required": false,
+          "aria": null,
+          "placeholder": "",
+          "labels": []
+        },
+        {
+          "tag": "INPUT",
+          "type": "hidden",
+          "name": "_fluentform_1_fluentformnonce",
+          "id": "_fluentform_1_fluentformnonce",
+          "required": false,
+          "aria": null,
+          "placeholder": "",
+          "labels": []
+        },
+        {
+          "tag": "INPUT",
+          "type": "hidden",
+          "name": "_wp_http_referer",
+          "id": "",
+          "required": false,
+          "aria": null,
+          "placeholder": "",
+          "labels": []
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "name": "names[first_name]",
+          "id": "ff_1_names_first_name_",
+          "required": false,
+          "aria": null,
+          "placeholder": "Keresztnév",
+          "labels": [
+            "Keresztnév"
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "name": "names[last_name]",
+          "id": "ff_1_names_last_name_",
+          "required": false,
+          "aria": null,
+          "placeholder": "Vezetéknév",
+          "labels": [
+            "Vezetéknév"
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "email",
+          "name": "email",
+          "id": "ff_1_email",
+          "required": false,
+          "aria": null,
+          "placeholder": "E-mail-cím",
+          "labels": [
+            "E-mail-cím"
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "name": "telefon",
+          "id": "ff_1_telefon",
+          "required": false,
+          "aria": null,
+          "placeholder": "+36 …",
+          "labels": [
+            "Telefonszám"
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "name": "ceg_nev",
+          "id": "ff_1_ceg_nev",
+          "required": false,
+          "aria": null,
+          "placeholder": "Cégnév",
+          "labels": [
+            "Cégnév (ha van)"
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "name": "subject",
+          "id": "ff_1_subject",
+          "required": false,
+          "aria": null,
+          "placeholder": "Tárgy",
+          "labels": [
+            "Tárgy"
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "type": "select-one",
+          "name": "megkereses_tipusa",
+          "id": "ff_1_megkereses_tipusa",
+          "required": false,
+          "aria": null,
+          "labels": [
+            "Megkeresés típusa"
+          ]
+        },
+        {
+          "tag": "TEXTAREA",
+          "type": "textarea",
+          "name": "message",
+          "id": "ff_1_message",
+          "required": false,
+          "aria": null,
+          "placeholder": "Írja le, miben segíthetünk",
+          "labels": [
+            "Üzenet / a feladat leírása"
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "elfogadas",
+          "id": "elfogadas_a1198a80f33869016975f513abf9ade7",
+          "required": true,
+          "aria": null,
+          "placeholder": "",
+          "labels": [
+            "\t\n\nAz ÁSZF-et és az Adatkezelési tájékoztatót elolvastam, annak tartalmát megismertem, megértettem és elfogadom."
+          ]
+        },
+        {
+          "tag": "BUTTON",
+          "type": "submit",
+          "name": "",
+          "id": "",
+          "aria": "Üzenet küldése",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "action": "https://nextro.hu/kapcsolat/#",
+      "fields": [
+        {
+          "tag": "INPUT",
+          "type": "email",
+          "name": "EMAIL",
+          "id": "",
+          "required": true,
+          "aria": "E-mail cím",
+          "placeholder": "E-mail címe *",
+          "labels": []
+        },
+        {
+          "tag": "BUTTON",
+          "type": "submit",
+          "name": "",
+          "id": "",
+          "aria": null,
+          "labels": []
+        }
+      ]
+    }
+  ]
+}

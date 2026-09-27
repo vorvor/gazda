@@ -1,0 +1,26 @@
+{
+  "url": "https://nextro.hu/wp-content/cache/wpfc-minified/fejj2amc/fmlfe.css",
+  "final_url": "https://nextro.hu/wp-content/cache/wpfc-minified/fejj2amc/fmlfe.css",
+  "status": 200,
+  "redirects": [],
+  "headers": {
+    "Date": "Tue, 22 Sep 2026 11:04:01 GMT",
+    "Content-Type": "text/css",
+    "Content-Length": "4010",
+    "Connection": "keep-alive",
+    "Last-Modified": "Thu, 27 Aug 2026 14:32:02 GMT",
+    "Cache-Control": "max-age=10368000",
+    "Expires": "max-age=A10368000, public",
+    "Vary": "Accept-Encoding",
+    "Content-Encoding": "gzip",
+    "Server": "RHProxy",
+    "Content-Security-Policy": "upgrade-insecure-requests",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Accept-Ranges": "bytes"
+  },
+  "elapsed_seconds": 0.304,
+  "decoded_bytes": 26071,
+  "body_file": "/workspace/nextro-audit/http-evidence/c30a3b2939d476ca.body",
+  "sha256": "2e0f8af13dbe9c836762633addd5e2148c40dc8e8e55d13c2b6d281f940e3630"
+}

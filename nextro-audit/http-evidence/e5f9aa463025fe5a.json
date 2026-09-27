@@ -1,0 +1,24 @@
+{
+  "url": "https://nextro.hu/wp-content/uploads/2026/08/referencia-1.png",
+  "final_url": "https://nextro.hu/wp-content/uploads/2026/08/referencia-1.png",
+  "status": 200,
+  "redirects": [],
+  "headers": {
+    "Date": "Tue, 22 Sep 2026 11:04:03 GMT",
+    "Content-Type": "image/png",
+    "Content-Length": "11699",
+    "Connection": "keep-alive",
+    "Last-Modified": "Tue, 25 Aug 2026 12:04:53 GMT",
+    "Cache-Control": "max-age=10368000",
+    "Expires": "max-age=A10368000, public",
+    "Server": "RHProxy",
+    "Content-Security-Policy": "upgrade-insecure-requests",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Accept-Ranges": "bytes"
+  },
+  "elapsed_seconds": 0.474,
+  "decoded_bytes": 11699,
+  "body_file": "/workspace/nextro-audit/http-evidence/e5f9aa463025fe5a.body",
+  "sha256": "1f4295cbc3f2361eccb14f99015722af4758f08e6d5cc527291da0485ce4e619"
+}

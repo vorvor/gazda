@@ -1,0 +1,26 @@
+{
+  "url": "https://pixel.barion.com/a.gif?ba_pixel_id='BP-WuzUUakxUQ-DA'&ev=contentView&noscript=1",
+  "final_url": "https://pixel.barion.com/a.gif?ba_pixel_id='BP-WuzUUakxUQ-DA'&ev=contentView&noscript=1",
+  "status": 200,
+  "redirects": [],
+  "headers": {
+    "Date": "Tue, 22 Sep 2026 11:04:02 GMT",
+    "Content-Type": "image/gif",
+    "Content-Length": "43",
+    "Connection": "keep-alive",
+    "strict-transport-security": "max-age=15552000; includeSubDomains; preload",
+    "access-control-allow-origin": "*",
+    "access-control-allow-credentials": "true",
+    "Cache-Control": "no-store",
+    "Accept-Ranges": "bytes",
+    "Vary": "accept-encoding",
+    "cf-cache-status": "BYPASS",
+    "X-Content-Type-Options": "nosniff",
+    "Server": "cloudflare",
+    "CF-RAY": "a3f0d3992d6568bf-BUD"
+  },
+  "elapsed_seconds": 0.351,
+  "decoded_bytes": 43,
+  "body_file": "/workspace/nextro-audit/http-evidence/245df8fe7de68984.body",
+  "sha256": "afe0dcfca292a0fae8bce08a48c14d3e59c9d82c6052ab6d48a22ecc6c48f277"
+}
