@@ -69,6 +69,12 @@ body.path-kulturalis-programok #block-gazda-content {
 
 body.path-kulturalis-programok .view-cultural-programs {
   padding-bottom: 68px;
+
+  form {
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
 }
 
 body.path-kulturalis-programok .view-cultural-programs .view-filters {
