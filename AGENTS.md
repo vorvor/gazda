@@ -99,3 +99,16 @@ After changing code:
 5. Report what changed.
 
 Do not commit or push unless explicitly requested.
+
+## Discord messaging
+
+When the user explicitly asks to send a Discord message from the CLI,
+use the terminal tool and run:
+
+hermes send --to discord "<message>"
+
+Use `discord:#setaljbe-hermes` when the target channel must be explicit.
+
+Only send messages when the user explicitly requests it.
+Do not claim Discord sending is unavailable merely because no model-facing
+send_message tool is exposed.

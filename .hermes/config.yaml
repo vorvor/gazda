@@ -1,0 +1,20 @@
+# ~/.hermes/config.yaml
+
+display:
+  tool_progress: off
+
+tool_output:
+  max_bytes: 6000
+  max_lines: 300
+  max_line_length: 1000
+
+compression:
+  enabled: true
+  threshold_tokens: 30000
+  tail_mode: lean
+  protect_first_n: 0
+  protect_last_n: 8
+
+  proactive_prune_tokens: 20000
+  proactive_prune_min_result_chars: 2000
+  proactive_prune_min_reclaim_tokens: 2048
