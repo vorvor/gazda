@@ -1,0 +1,35 @@
+Fényképes termékfelismerés – 8 fénykép
+
+CSV: products_20260915_101600_101635.csv
+Termékmegfigyelések száma: 209
+Kódolás: UTF-8 BOM; elválasztó: vessző.
+Kiválasztás: EXIF DateTimeOriginal és másodperc-töredék szerint növekvő sorrendben; processed_ előtagú képek kizárva.
+Minden feldolgozásra váró kép rendelkezett EXIF felvételi idővel. A 101600 képnél az időzóna nincs megadva; a sorozat helyi idejével számoltunk.
+Az azonosítók az eredeti fájlnevet és a képen belüli sorszámot tartalmazzák.
+A sorok képenkénti megfigyelések, nem ellenőrzött cikkszámok vagy készletdarabszámok. Ugyanaz a termék több képen külön sorban szerepelhet.
+Az egy képen látható azonos példányokat összevontuk. A pusztán takarásból vagy perspektívából adódó különbségeket nem tekintettük külön terméknek.
+A nem olvasható márkát, modellt, méretet nem pótoltuk találgatással; ilyenkor leíró nevet vagy bizonytalanságjelölést használtunk. Teljesen takart termékek, polcelemek, állványok, árcímkék és padlónyilak nem kerültek a CSV-be.
+
+processed_20260915_101600.jpg | EXIF: 2026:09:15 10:16:00.597  | 18 sor
+Bemozdult kép. A felismerhető formák szerepelnek; olvashatatlan dobozok, csomagolt apró alkatrészek és takart kések nem kaptak találgatott típust.
+
+processed_20260915_101608.jpg | EXIF: 2026:09:15 10:16:08.188 +02:00 | 28 sor
+Agro-Largo fűmagok és gyeptrágyák, alul elektromos hosszabbítók és horganyzott bilincsek. Bal oldali apró villamossági alkatrészek közül csak az egyértelmű formák; dobozok takart nevei kimaradtak.
+
+processed_20260915_101609.jpg | EXIF: 2026:09:15 10:16:10.092 +02:00 | 32 sor
+Napelemes lámpák formák alapján, dobozos ventilátorok és rágcsálóriasztók; fent postaládák. LED-izzók pontos wattja/foglalata nem olvasható, ezért nem kitalált változatok.
+
+processed_20260915_101612.jpg | EXIF: 2026:09:15 10:16:12.931 +02:00 | 28 sor
+Gardena PowerMax 1100/32, Gardena szegélynyírók és lámpadobozok. LED-izzók csak márka/forma szinten, olvashatatlan teljesítmények nem kitalálva.
+
+processed_20260915_101618.jpg | EXIF: 2026:09:15 10:16:18.509 +02:00 | 29 sor
+Elöl kötéldobok, Stanley kalapácstartó, horganyzott szegletvasak és GAH Alberts csomagolt vasalat. Köteleket csak szín/minta szerint különítettük el, átmérő és anyag nincs bizonyítva. Háttérben vegyszerek címkéi olvashatatlanok.
+
+processed_20260915_101625.jpg | EXIF: 2026:09:15 10:16:25.974 +02:00 | 28 sor
+Vasalatállvány: felső sor L vasak eltérő szélességgel, furatokkal és merevítőbordával; középen/alsó sor pántok, összekötő lemezek és sárga felületű sarokvasak. Pontos mm-méretek nem olvashatók; az egyforma egymásba rakott vasalatok együtt.
+
+processed_20260915_101629.jpg | EXIF: 2026:09:15 10:16:29.651 +02:00 | 21 sor
+Alsó vasalatpolc közelről: lakatpántok, tolózárak, kapupántcsavarok és rugós rögzítők. Bizonytalan apró vasalatok kimaradtak; a szerkezet alapján elkülönített tételek nem ellenőrzött cikkszámok.
+
+processed_20260915_101635.jpg | EXIF: 2026:09:15 10:16:35.446 +02:00 | 25 sor
+Szerszámosládák, rekeszes tárolók, ragasztó- és jelölőszalagok, légzésvédők és arcvédők. A felszerelt klíma és falitérkép nem készlettermék, ezért kimaradt. FFP3 jelölés olvasható, a felső piros szelepes maszknál pontos osztály nem.

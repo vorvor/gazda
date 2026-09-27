@@ -1,0 +1,11 @@
+Selection: first five unprocessed JPGs by EXIF DateTimeOriginal; filenames starting processed_ excluded.
+
+20260915_101119.jpg | 2026:09:15 10:11:20 | 36 observations
+20260915_101121.jpg | 2026:09:15 10:11:22 | 20 observations
+20260915_101125.jpg | 2026:09:15 10:11:26 | 37 observations
+20260915_101127.jpg | 2026:09:15 10:11:28 | 31 observations
+20260915_101129.jpg | 2026:09:15 10:11:31 | 9 observations
+
+Rows are visual product/variant observations, not verified SKUs or physical counts. Repeated identical copies within a photo are grouped; products appearing in multiple photos are recorded separately. IDs encode the source filename. Sizes are relative visual descriptions, not measurements; exact capacities and model numbers are unreadable. Colours and materials are appearance-based. Partly obscured and uncertain items are explicitly described. Display shelving and attached sprinkler roses are not independent entries.
+
+Photos remain in the parent directory, renamed with processed_. Image bytes and metadata are unchanged. Existing CSVs, including merged_products.csv, are not edited.

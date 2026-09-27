@@ -1,0 +1,26 @@
+Fényképes termékfelismerés – 5 fénykép
+
+CSV: products_20260915_101656_101709.csv
+Termékmegfigyelések száma: 181
+Kódolás: UTF-8 BOM; elválasztó: vessző.
+Kiválasztás: EXIF DateTimeOriginal és másodperc-töredék szerint növekvő sorrendben; processed_ előtagú képek kizárva.
+Minden feldolgozásra váró kép rendelkezett EXIF felvételi idővel. Mind az öt kiválasztott kép időzóna-eltolása +02:00.
+Az azonosítók az eredeti fájlnevet és a képen belüli sorszámot tartalmazzák.
+A sorok képenkénti megfigyelések, nem ellenőrzött cikkszámok vagy készletdarabszámok. Ugyanaz a termék több képen külön sorban szerepelhet.
+Az egy képen látható azonos példányokat összevontuk. A pusztán takarásból vagy perspektívából adódó különbségeket nem tekintettük külön terméknek.
+A nem olvasható márkát, modellt, méretet nem pótoltuk találgatással; ilyenkor leíró nevet vagy bizonytalanságjelölést használtunk. Teljesen takart termékek, polcelemek, állványok, árcímkék és padlónyilak nem kerültek a CSV-be.
+
+processed_20260915_101656.jpg | EXIF: 2026:09:15 10:16:56.356 +02:00 | 40 sor
+Kéziszerszámpolc: spaklik, reszelők, kulcsok, fogók, kőműves szerszámok és fűrészek. Azonos példányok összevonva, takart dobozok tartalma nem találgatva.
+
+processed_20260915_101658.jpg | EXIF: 2026:09:15 10:16:58.860 +02:00 | 39 sor
+Felső polcon eltérő alakú kannák és fedeles vödrök, lent korábbi szerszámpolc. Méretjelölések nem olvashatók; a kannák nem darabszámonként szerepelnek.
+
+processed_20260915_101701.jpg | EXIF: 2026:09:15 10:17:01.868 +02:00 | 42 sor
+Kék dobozok felirata vízálló csiszolópapír, P1200; korábbi bitkészlet-feltételezés javítva. Középen serpenyő alakú habarcsmerők és kőművesszerszámok, lent térdvédők, csiszolóblokkok, ponyvák és szorítók.
+
+processed_20260915_101703.jpg | EXIF: 2026:09:15 10:17:03.771 +02:00 | 33 sor
+Kerékpáros termékek közelről: spirálzárak, defektjavító spray és belső gumik (a 24 colos doboz egyértelmű). A korábban tömlőnek nevezett ugyanilyen spiráltekercsek kerékpárzárra javítva.
+
+processed_20260915_101709.jpg | EXIF: 2026:09:15 10:17:09.323 +02:00 | 27 sor
+Benman/Graphite fúrók és keverőszárak. Benman 6/8/10 mm jelölések olvashatók, egyéb átmérők nem. Az eltérő hosszúság csak egyértelmű rövid/hosszú változatként; takart méretek nem kitalálva. Narancssárga térdvédő C0006 jelöléssel.

@@ -1,0 +1,35 @@
+Fényképes termékfelismerés – 8 fénykép
+
+CSV: products_20260915_101433_101506.csv
+Termékmegfigyelések száma: 229
+Kódolás: UTF-8 BOM; elválasztó: vessző.
+Kiválasztás: EXIF DateTimeOriginal és másodperc-töredék szerint növekvő sorrendben; processed_ előtagú képek kizárva.
+Minden feldolgozásra váró kép rendelkezett EXIF felvételi idővel. A 101450 és 101506 képnél az időzóna nincs megadva; a sorozat helyi idejével számoltunk.
+Az azonosítók az eredeti fájlnevet és a képen belüli sorszámot tartalmazzák.
+A sorok képenkénti megfigyelések, nem ellenőrzött cikkszámok vagy készletdarabszámok. Ugyanaz a termék több képen külön sorban szerepelhet.
+Az egy képen látható azonos példányokat összevontuk. A pusztán takarásból vagy perspektívából adódó különbségeket nem tekintettük külön terméknek.
+A nem olvasható márkát, modellt, méretet nem pótoltuk találgatással; ilyenkor leíró nevet vagy bizonytalanságjelölést használtunk. Teljesen takart termékek, polcelemek, állványok, árcímkék és padlónyilak nem kerültek a CSV-be.
+
+processed_20260915_101433.jpg | EXIF: 2026:09:15 10:14:33.467 +02:00 | 50 sor
+Négy polc: fent fedeles élelmiszertárolók és McFresh tálak, középen citrusprés/jégkockatartók és csatos dobozok, lent tálak, kosarak és csepegtetők. A színek/formák elkülöníthetők, méretek és anyagösszetétel nem biztosak.
+
+processed_20260915_101440.jpg | EXIF: 2026:09:15 10:14:40.180 +02:00 | 38 sor
+Fent lámpaolaj és bordázott üvegek; középen borászati/befőzési szerek, üvegmosók; zöld rekeszekben parafa- és műanyag dugók, kupakok. Alul kanalak, kampók és papíráruk. Olvashatatlan zacskós porok és barna dobozok kimaradtak. A kiegészítő közeli képek alapján a fényes nyeles tárgyak zuhanyfejek; a korábbi bizonytalan konyhaieszköz-jelöltek elvetve.
+
+processed_20260915_101442.jpg | EXIF: 2026:09:15 10:14:42.493 +02:00 | 11 sor
+Felső polcon tárolóládák és centrifugás felmosószett doboza. Középen PÉPÓ, Aranyfény és petróleum; két eltérő méretű csatos üveg és fermentálóüveg-készlet. Alul csak a jól felismerhető üvegmosók kerültek felvételre; olvashatatlan palackok nem.
+
+processed_20260915_101447.jpg | EXIF: 2026:09:15 10:14:47.493 +02:00 | 36 sor
+Dugórekeszek közeli képe: a látható rekeszjelölések alapján külön parafaváltozatok. Ezek bolti rekeszjelölések, nem igazolt méretek/cikkszámok. Üres rekeszek kimaradtak. Alul eltérő akasztók és reszelők. A kiegészítő közeli képek alapján a fényes nyeles tárgyak zuhanyfejek; a korábbi bizonytalan konyhaieszköz-jelöltek elvetve.
+
+processed_20260915_101450.jpg | EXIF: 2026:09:15 10:14:50.396  | 21 sor
+Két kosárban eltérő színű és alakú öntapadós akasztók; csomagolt fém akasztók. Alsó polcon Nicky Lemon, Family XL Roll, Szilvia papírtörlő és fa papírtörlőtartó. A kosarak bolti tárolásra szolgálhatnak, ezért itt nem új terméktételként szerepelnek.
+
+processed_20260915_101457.jpg | EXIF: 2026:09:15 10:14:57.919 +02:00 | 20 sor
+HORI címkés fedeles ételtárolók, középen három eltérő alakú/méretű fehér fedeles doboz. Alul rendszerezők, tortabúra, kék szűrőtál és vállfák. Azonos egymásra rakott példányok összevonva.
+
+processed_20260915_101500.jpg | EXIF: 2026:09:15 10:15:00.335 +02:00 | 25 sor
+Felső polcon McFresh háromrészes tálkészletek és olvasható 0,75/1,2/0,8/2,7 literes türkiz fedeles dobozok. Alul csatos dobozok alak és zárszín szerint, jobb szélen adagolós fedél. Háttérben néhány azonosítható szemetes és vízforraló; takart vegyszerek kimaradtak.
+
+processed_20260915_101506.jpg | EXIF: 2026:09:15 10:15:06.639  | 28 sor
+Bal alsó polcon eltérő WC-kefetartók, középen pótkefék, gumiharangok, sziták és füles dézsák. Jobbra zuhanyfejek és dobozos zuhanyszettek; felső polcon színes lavórok. A bolti kosarak és felismerhetetlen apró alkatrészek kimaradtak.

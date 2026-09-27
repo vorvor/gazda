@@ -1,0 +1,24 @@
+Batch selected by EXIF DateTimeOriginal, ascending, excluding filenames starting with processed_.
+
+Original filename          EXIF capture time
+20260915_101100.jpg         2026-09-15 10:11:01
+20260915_101106.jpg         2026-09-15 10:11:07
+20260915_101109.jpg         2026-09-15 10:11:09
+
+CSV: products_20260915_101100_101109.csv
+Columns: unique id, product name, product type
+
+Photos remain in the parent folder and receive the prefix processed_.
+Only filenames change; image bytes and EXIF metadata are preserved.
+Previous batch outputs are not modified.
+
+Rows are visual product observations, not physical stock counts or verified SKUs.
+The unique ID contains the source filename stem and a per-photo sequence.
+Products visible in multiple photos are deliberately listed for each photo.
+Identical visible copies within a photo are grouped. Distinguishable shapes,
+colors and apparent sizes are listed separately. Small/medium/large are
+relative visual descriptions, not measured diameters or manufacturer sizes.
+Colors may be affected by lighting; exact materials and model numbers are
+not confirmed. Generic descriptive names are used when labels are unreadable.
+Partly obscured and uncertain identifications are marked in the product name.
+Verify the visual inventory before using it as a sales catalogue or SKU list.

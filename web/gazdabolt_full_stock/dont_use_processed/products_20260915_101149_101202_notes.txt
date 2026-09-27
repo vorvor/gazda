@@ -1,0 +1,11 @@
+First five unprocessed JPGs by EXIF DateTimeOriginal; processed_ filenames excluded.
+
+20260915_101149.jpg | 2026:09:15 10:11:49 | 18 observations
+20260915_101153.jpg | 2026:09:15 10:11:53 | 38 observations
+20260915_101155.jpg | 2026:09:15 10:11:55 | 42 observations
+20260915_101157.jpg | 2026:09:15 10:11:57 | 31 observations
+20260915_101202.jpg | 2026:09:15 10:12:03 | 33 observations
+
+Rows are visual product variants, not stock counts or verified SKUs. Identical copies within each photo are grouped; products repeated across photos are listed separately. IDs encode the source photo. Relative size descriptions are not measurements. Colours and materials are appearance-based; partly obscured items and provisional identifications are marked. Pipe shelf-label values are preserved verbatim without inventing units. Fitted hangers and sprinkler roses are not counted separately.
+
+Only the five selected photo filenames receive processed_; image bytes and EXIF remain unchanged. Previous files, including merged_products.csv, are preserved.

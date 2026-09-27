@@ -1,0 +1,14 @@
+First ten unprocessed JPGs by EXIF DateTimeOriginal, excluding processed_ filenames.
+
+20260915_101206.jpg | 2026:09:15 10:12:06 | 19 observations
+20260915_101210.jpg | 2026:09:15 10:12:11 | 24 observations
+20260915_101212.jpg | 2026:09:15 10:12:13 | 22 observations
+20260915_101214.jpg | 2026:09:15 10:12:14 | 22 observations
+20260915_101217.jpg | 2026:09:15 10:12:17 | 13 observations
+20260915_101219.jpg | 2026:09:15 10:12:20 | 23 observations
+20260915_101223.jpg | 2026:09:15 10:12:24 | 15 observations
+20260915_101227.jpg | 2026:09:15 10:12:27 | 20 observations
+20260915_101233.jpg | 2026:09:15 10:12:33 | 30 observations
+20260915_101236.jpg | 2026:09:15 10:12:36 | 24 observations
+
+Rows are visual product observations, not verified SKUs or physical stock counts. Identical copies within each photo are grouped; repeated products across photos are recorded separately. IDs encode the source photo. Sizes and colours are appearance-based; exact dimensions and models are not inferred. Uncertain identifications and partly obscured items are marked. Previous CSVs, including merged_products.csv, are not updated. Only the selected photo filenames change; bytes and metadata remain unchanged.

@@ -1,0 +1,21 @@
+Source: 20260915_101112.jpg
+EXIF DateTimeOriginal: 2026:09:15 10:11:13
+Selection: earliest JPG by EXIF capture time excluding processed_ filenames.
+CSV: products_20260915_101112.csv
+Renamed image: ../processed_20260915_101112.jpg
+
+Rows represent visually distinguishable product observations, not physical
+quantities or verified SKUs. Repeated identical copies are grouped.
+IDs use the source filename stem followed by a per-photo sequence.
+
+Names are descriptive because manufacturer labels and capacities are not
+readable. Pot sizes are relative visual groups, not measured dimensions.
+Colours may be affected by lighting. Partially obscured items and uncertain
+sizes are explicitly marked. Crates are distinguished by visible side-panel
+construction; their dimensions and intended use are not confirmed. The two
+green watering-can designs differ in visible spout/body construction.
+Attached sprinkler roses are included with their watering cans, not counted
+as independent sale items. Shelving and display hardware are excluded.
+
+Original image bytes and EXIF metadata are preserved; only the filename
+receives the processed_ prefix. Earlier output files are not modified.

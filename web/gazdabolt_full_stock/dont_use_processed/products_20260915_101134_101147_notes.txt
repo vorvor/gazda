@@ -1,0 +1,11 @@
+Selected first five unprocessed JPGs by EXIF DateTimeOriginal; processed_ filenames excluded.
+
+20260915_101134.jpg | 2026:09:15 10:11:35 | 27 observations
+20260915_101138.jpg | 2026:09:15 10:11:38 | 33 observations
+20260915_101140.jpg | 2026:09:15 10:11:41 | 24 observations
+20260915_101144.jpg | 2026:09:15 10:11:44 | 36 observations
+20260915_101147.jpg | 2026:09:15 10:11:47 | 24 observations
+
+Rows describe visual product variants, not stock quantities or verified SKUs. Identical copies within each photo are grouped; repeated products across photos are separate observations. IDs encode the source photo. Size terms are relative visual groups, not measured diameters. Occlusion and lighting limit identification, especially rear stacks. Descriptive names are used where labels are unreadable. Hangers attached to hanging planters are not counted separately.
+
+Only the five selected photo filenames receive processed_; image bytes and metadata remain unchanged. Previous files, including merged_products.csv, are preserved.

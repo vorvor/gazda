@@ -1,0 +1,35 @@
+Fényképes termékfelismerés – 8 fénykép
+
+CSV: products_20260915_101509_101551.csv
+Termékmegfigyelések száma: 285
+Kódolás: UTF-8 BOM; elválasztó: vessző.
+Kiválasztás: EXIF DateTimeOriginal és másodperc-töredék szerint növekvő sorrendben; processed_ előtagú képek kizárva.
+Minden feldolgozásra váró kép rendelkezett EXIF felvételi idővel. A 101514, 101520 és 101528 képnél az időzóna nincs megadva; a sorozat helyi idejével számoltunk.
+Az azonosítók az eredeti fájlnevet és a képen belüli sorszámot tartalmazzák.
+A sorok képenkénti megfigyelések, nem ellenőrzött cikkszámok vagy készletdarabszámok. Ugyanaz a termék több képen külön sorban szerepelhet.
+Az egy képen látható azonos példányokat összevontuk. A pusztán takarásból vagy perspektívából adódó különbségeket nem tekintettük külön terméknek.
+A nem olvasható márkát, modellt, méretet nem pótoltuk találgatással; ilyenkor leíró nevet vagy bizonytalanságjelölést használtunk. Teljesen takart termékek, polcelemek, állványok, árcímkék és padlónyilak nem kerültek a CSV-be.
+
+processed_20260915_101509.jpg | EXIF: 2026:09:15 10:15:09.518 +02:00 | 33 sor
+Balra függő konyhai eszközök; fent ételhordók, középen keverőtálak, lent lavórok. Jobbra NITRO-FLOW palackok. A színváltozatok külön, azonos példányok összevonva.
+
+processed_20260915_101514.jpg | EXIF: 2026:09:15 10:15:14.740  | 39 sor
+Középen fém süteménykiszúrók, fokhagymanyomók, kotyogóskávéfőző-tömítés; fent konyharuhák, habzsákok és evőeszközök. Alul WC-kefék. Az apró takart tárgyak kimaradtak.
+
+processed_20260915_101520.jpg | EXIF: 2026:09:15 10:15:20.391  | 15 sor
+Középen két eltérő kivitelű krómszínű fürdőszobai tartó, mögötte fedeles tárolók; jobbra kék és áttetsző szóróflakonok. Háttérben csak felismerhető papíráruk és lavórok; elmosódott apróságok kimaradtak.
+
+processed_20260915_101528.jpg | EXIF: 2026:09:15 10:15:28.563  | 33 sor
+Festőszerszámállvány: laposecsetek nyél és látható szélesség szerint; pontos mm-méretek nem olvashatók. Alul hengerek, keretek és tálcák. Jobbra színes légycsapók; ismeretlen tasakok és távoli üvegpolc kimaradt. A következő képen látható forma alapján a színes hosszú nyelű tárgyak szemétlapátok, nem légycsapók.
+
+processed_20260915_101533.jpg | EXIF: 2026:09:15 10:15:33.286 +02:00 | 28 sor
+Tasakos borászati kezelőszerek, mágnesbemutató és hosszú nyelű szemétlapátok. Olvashatatlan fantázianevek helyett csomagolásszín, nem feltételezett hatóanyag. Mágnesméretek nem olvashatók; azonos alakok összevonva.
+
+processed_20260915_101536.jpg | EXIF: 2026:09:15 10:15:36.860 +02:00 | 31 sor
+Kerti ollók nyél és pengeforma alapján; YATO felirat két csomagon olvasható. Sok az átfedés, nem minden nyél jelent külön modellt. Háttérbeli olvashatatlan vegyszerek kimaradtak.
+
+processed_20260915_101546.jpg | EXIF: 2026:09:15 10:15:46.847 +02:00 | 57 sor
+Háztartási műanyagáru polc, elöl jól látható tárolók/tálak/kosarak. Hátsó magas polc dobozai túl távoliak a biztos típusfelismeréshez. Eltérő szín/formák külön, egymásba rakott azonos darabok együtt.
+
+processed_20260915_101551.jpg | EXIF: 2026:09:15 10:15:51.222 +02:00 | 49 sor
+Pyrex mérőkancsók és beosztásos műanyag mérőpoharak; tölcsérek több színben. Középen gyermekmintás ételtartók és poharak; alul kézi szűrők és perforált kosarak. A hátulsó dobozok és vegyszerek kimaradtak.

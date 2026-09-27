@@ -1,0 +1,7 @@
+EXIF DateTimeOriginal szerinti öt fénykép. Az azonosító a forrásfájl neve és háromjegyű sorszám.
+20260915_101758.jpg | 2026:09:15 10:17:59 | 24
+20260915_101802.jpg | 2026:09:15 10:18:02 | 18
+20260915_101805.jpg | 2026:09:15 10:18:05 | 20
+20260915_101808.jpg | 2026:09:15 10:18:08 | 21
+20260915_101810.jpg | 2026:09:15 10:18:10 | 30
+Képenkénti termékmegfigyelések, nem készletmennyiségek vagy igazolt cikkszámok. Képek között nincs összevonás. A méretleírások becslések, kivéve az olvasható címkeadatokat.

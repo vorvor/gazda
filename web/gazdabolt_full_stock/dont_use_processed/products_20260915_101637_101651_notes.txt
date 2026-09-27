@@ -1,0 +1,26 @@
+Fényképes termékfelismerés – 5 fénykép
+
+CSV: products_20260915_101637_101651.csv
+Termékmegfigyelések száma: 180
+Kódolás: UTF-8 BOM; elválasztó: vessző.
+Kiválasztás: EXIF DateTimeOriginal és másodperc-töredék szerint növekvő sorrendben; processed_ előtagú képek kizárva.
+Minden feldolgozásra váró kép rendelkezett EXIF felvételi idővel. A 101647 képnél az időzóna nincs megadva; a sorozat helyi idejével számoltunk.
+Az azonosítók az eredeti fájlnevet és a képen belüli sorszámot tartalmazzák.
+A sorok képenkénti megfigyelések, nem ellenőrzött cikkszámok vagy készletdarabszámok. Ugyanaz a termék több képen külön sorban szerepelhet.
+Az egy képen látható azonos példányokat összevontuk. A pusztán takarásból vagy perspektívából adódó különbségeket nem tekintettük külön terméknek.
+A nem olvasható márkát, modellt, méretet nem pótoltuk találgatással; ilyenkor leíró nevet vagy bizonytalanságjelölést használtunk. Teljesen takart termékek, polcelemek, állványok, árcímkék és padlónyilak nem kerültek a CSV-be.
+
+processed_20260915_101637.jpg | EXIF: 2026:09:15 10:16:37.618 +02:00 | 41 sor
+Vegyszerek, ragasztók, tömítők és védőeszközök. Csak olvasható termékcsaládok és számok, bizonytalan kartusok leíró néven. Azonos palackok együtt.
+
+processed_20260915_101639.jpg | EXIF: 2026:09:15 10:16:39.888 +02:00 | 47 sor
+Közelebbi kép ragasztószalagokról, karbantartó szerekről. Hexol G2 felirat igazolja a zsírt; a korábbi Yato olvasat javítva. Kisebb dobozok tartalma nem biztos, kimaradt.
+
+processed_20260915_101641.jpg | EXIF: 2026:09:15 10:16:41.826 +02:00 | 26 sor
+FFG felső doboz FFP2, középső FFP3, alsó kék doboz FFP1; balra hegesztőpajzs és szemüvegek. A falra szerelt klíma nem készlet. Ládák csak látható forma/zár szerint.
+
+processed_20260915_101647.jpg | EXIF: 2026:09:15 10:16:47.453  | 21 sor
+Víztároló kannák, edények, tölcsérek és védőeszközök. A kannák eltérő kupak/csap és alak alapján, nem perspektíva szerinti állítólagos űrtartalommal.
+
+processed_20260915_101651.jpg | EXIF: 2026:09:15 10:16:51.645 +02:00 | 45 sor
+Ragasztószalagok, fogók, vágókések, fűrészek, simítók. Csak látható forma/nyél alapján elkülönített változatok, ismeretlen méretek nélkül. Takart apróságok kihagyva.

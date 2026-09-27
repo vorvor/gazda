@@ -1,0 +1,9 @@
+Source: 20260915_101117.jpg
+EXIF DateTimeOriginal: 2026:09:15 10:11:18
+Selected as the earliest unprocessed JPG by EXIF capture time, excluding processed_ filenames.
+Output image: ../processed_20260915_101117.jpg
+CSV: products_20260915_101117.csv
+
+Entries represent visually distinguishable products/variants, not quantities or verified SKUs. Identical copies within the photo are grouped. Relative size groups are visual estimates, not measured dimensions. Colour descriptions depend on lighting. Unreadable product names, formulas and units are not inferred. Several bagged gardening products remain provisional identifications; these are explicitly marked. Attached sprinkler roses are not counted separately. IDs use the source filename stem; a gap in the sequence reflects a duplicate observation removed during review.
+
+Only the photo filename changes. Image bytes and EXIF metadata are preserved. Earlier CSVs and photos are not edited.

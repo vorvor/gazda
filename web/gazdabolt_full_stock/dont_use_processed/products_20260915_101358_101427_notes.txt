@@ -1,0 +1,35 @@
+Fényképes termékfelismerés – 8 fénykép
+
+CSV: products_20260915_101358_101427.csv
+Termékmegfigyelések száma: 130
+Kódolás: UTF-8 BOM; elválasztó: vessző.
+Kiválasztás: EXIF DateTimeOriginal és másodperc-töredék szerint növekvő sorrendben; processed_ előtagú képek kizárva.
+Minden feldolgozásra váró kép rendelkezett EXIF felvételi idővel. A 101419 és 101422 képnél az időzóna nincs megadva; a sorozat helyi idejével számoltunk.
+Az azonosítók az eredeti fájlnevet és a képen belüli sorszámot tartalmazzák.
+A sorok képenkénti megfigyelések, nem ellenőrzött cikkszámok vagy készletdarabszámok. Ugyanaz a termék több képen külön sorban szerepelhet.
+Az egy képen látható azonos példányokat összevontuk. A pusztán takarásból vagy perspektívából adódó különbségeket nem tekintettük külön terméknek.
+A nem olvasható márkát, modellt, méretet nem pótoltuk találgatással; ilyenkor leíró nevet vagy bizonytalanságjelölést használtunk. Teljesen takart termékek, polcelemek, állványok, árcímkék és padlónyilak nem kerültek a CSV-be.
+
+processed_20260915_101358.jpg | EXIF: 2026:09:15 10:13:58.647 +02:00 | 7 sor
+Fiskars fejszeállvány és szomszédos lapátok; alsó sarokban zöld kézi lombgyűjtők, balra faszenes zsákok. Fejszemodellek nem olvashatók.
+
+processed_20260915_101403.jpg | EXIF: 2026:09:15 10:14:03.322 +02:00 | 10 sor
+Balra fémgereblyék, középen hosszú nyelű szerszámok és fejszék, jobbra ásók/lapátok, alul fekete lombseprűk és zöld kézi lombgyűjtők. Balra 2,5 kg faszén felirat.
+
+processed_20260915_101407.jpg | EXIF: 2026:09:15 10:14:07.687 +02:00 | 13 sor
+Felső sor balról: Classic univerzális olló, kék olló, kis hegyes olló, Classic olló pengavédővel, fekete mellévágó és rávágó metszőolló, rózsaszín Special edition, fekete-narancs és fehér mellévágó. Alul Solid kés és fejszeélező. Bal szélen fémgereblye, jobb szélen sötét üvegek.
+
+processed_20260915_101410.jpg | EXIF: 2026:09:15 10:14:10.293 +02:00 | 19 sor
+Fiskars állvány: D fogantyús ásók/lapátok, Solid kés, fejszeélező, mellévágó ágvágó, teleszkópos ágvágó, sövénynyírók; középen kék és narancs gyűrűs tömlőcsatlakozók. Alul lombseprűfejek és lombgyűjtő. Jobbra üvegáru.
+
+processed_20260915_101413.jpg | EXIF: 2026:09:15 10:14:14.066 +02:00 | 17 sor
+Középen forgatható fejű fűnyíró olló, fent nagy szürke nyelű rávágó ágvágó, balra mellévágó; alul lombseprűk és lombgyűjtő. Jobb polcon szögletes csavaros üvegek, magas palackok, nagy befőttesüvegek és zöld palacktartók. Az űrtartalmak nem olvashatók.
+
+processed_20260915_101419.jpg | EXIF: 2026:09:15 10:14:20.039  | 20 sor
+Középen feliratozott Basic 20 m 13 mm és Classic 20 m/50 m tömlők; balra narancs 25 m és fekete-narancs tömlők; fent barna nyelű kéziszerszámok; jobbra Gardena ollók, alul Samba kör- és négyszögesőztetők. Balra kétféle műanyag fellépő, szürke ülőke és fa ülőke.
+
+processed_20260915_101422.jpg | EXIF: 2026:09:15 10:14:22.274  | 26 sor
+Fent fém lombseprű, kerti zuhany és hosszú szemétszedő csipesz; balra ívelt Gardena fűrész, Y tömlőelosztó, kis kerti szerszámok. Jobbra Water Stop szórópisztolyszett, eltérő csatlakozók, 20 mm EasyCut és 18 mm olló. Lent tömlők/fellépők.
+
+processed_20260915_101427.jpg | EXIF: 2026:09:15 10:14:27.500 +02:00 | 18 sor
+Elöl szürke/fehér ülőkék, mögöttük fehér fellépők és fa ülőke. RAMP flexible garden hose doboz, narancs és fekete tömlőtekercsek. Háttérben kék kerekes szórókocsi, fém hosszú nyelű lapátok, lombseprűfejek, kézi lapát; jobbra Fiskars állvány részlete, balra piros seprű.
