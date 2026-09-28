@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Restaurant selection for daily meal Views.
+ */
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function daily_meal_filters_views_data_alter(array &$data): void {
+  if (isset($data['node__field_restaurant']['field_restaurant_target_id'])) {
+    $definition = $data['node__field_restaurant']['field_restaurant_target_id'];
+    $data['node__field_restaurant']['restaurant_selection'] = [
+      'title' => t('Restaurant selection'),
+      'help' => t('Filter by restaurant using a select list.'),
+      'filter' => array_replace($definition['filter'], [
+        'id' => 'entity_reference',
+      ]),
+    ];
+  }
+}
