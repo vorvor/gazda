@@ -15,6 +15,9 @@ dependencies:
     - link
     - node
     - user
+  enforced:
+    module:
+      - daily_meal_filters
 id: daily_meal
 label: 'Daily meal'
 module: views
@@ -406,6 +409,18 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
+              field_restaurant_target_id:
+                plugin_id: bef
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+                  hide_label: false
+                  field_classes: daily-meal-restaurants
+                select_all_none: false
+                select_all_none_nested: false
+                display_inline: true
+                soft_limit: 0
+                scrollable: false
       access:
         type: perm
         options:
@@ -545,6 +560,45 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_restaurant_target_id:
+          id: field_restaurant_target_id
+          table: node__field_restaurant
+          field: restaurant_selection
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: entity_reference
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: restaurant_op
+            label: Étterem
+            description: ''
+            use_operator: false
+            operator: restaurant_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: restaurant
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          reduce_duplicates: false
+          sub_handler: daily_meal_restaurants
+          widget: select
+          sub_handler_settings:
+            target_bundles:
+              restaurant: restaurant
+            sort:
+              field: title
+              direction: ASC
+            auto_create: false
+            auto_create_bundle: ''
       style:
         type: default
       row:
