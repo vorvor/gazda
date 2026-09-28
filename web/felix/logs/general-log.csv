@@ -1,0 +1,3 @@
+event_id,timestamp,user,project,action,person_id,person_name,field,old_value,new_value
+c02fb3ea3bd96588f6912f33755481c0,2026-09-27T19:27:18.297200+02:00,Elek,2026-09-24-project1.csv,close,,,closed,0,1
+a8dbf2640456b677e1678735431eb7ec,2026-09-27T19:32:34.757682+02:00,Elek,2026-09-24-project1.csv,reopen,,,closed,1,0
