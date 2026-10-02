@@ -125,6 +125,13 @@ header .layout-container {
   border-color: #dedfce;
 }
 
+#block-gazda-main-menu .menu-item a.is-active,
+#block-gazda-main-menu .menu-item--active-trail > a {
+  color: #fff;
+  background: #173f35;
+  border-color: #173f35;
+}
+
 #block-gazda-main-menu .menu-item a:focus-visible {
   outline: 3px solid #f1bb61 !important;
   outline-offset: 2px;
