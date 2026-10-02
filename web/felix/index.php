@@ -123,8 +123,7 @@
 
   /* ---- Header / search ---- */
   .head {
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 5;
     padding: calc(20px + env(safe-area-inset-top, 0px)) 18px 14px;
     background: linear-gradient(180deg, var(--bg) 70%, transparent);
@@ -494,7 +493,7 @@
   .table-scroll {
     flex: 1;
     padding: 4px 18px 28px;
-    overflow-x: auto;
+    overflow: visible;
   }
   table {
     width: 100%;
