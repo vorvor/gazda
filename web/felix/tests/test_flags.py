@@ -44,7 +44,7 @@ with tempfile.TemporaryDirectory(prefix='felix-flags-') as directory:
             files = page.evaluate('FILES')
             for item in files:
                 tab = page.locator(f'[data-file="{item["file"]}"]')
-                expected = 'CHECK-OUT' if item['session'] == 'checkout' else 'CHECK-IN'
+                expected = 'CHECK OUT' if item['session'] == 'checkout' else 'CHECK IN'
                 assert tab.locator('.tab-state').count() == 1, 'Each day needs an explicit session label'
                 assert tab.locator('.tab-state').inner_text() == expected
             for phase in ['checkin', 'checkout']:
@@ -63,13 +63,13 @@ with tempfile.TemporaryDirectory(prefix='felix-flags-') as directory:
             original = page.evaluate('JSON.parse(JSON.stringify(ROSTER))')
             person_id = original[0]['id']
             page.locator(f'tr[data-id="{person_id}"]').click()
-            assert page.get_by_role('button', name='PROB', exact=True).count() == 1, 'Missing PROB flag control'
-            for flag in ['PROB', 'DATA ERROR', 'PRIO']:
+            assert page.get_by_role('button', name='Probléma', exact=True).count() == 1, 'Missing PROB flag control'
+            for flag, label in [('PROB', 'Probléma'), ('DATA ERROR', 'Adathiba'), ('PRIO', 'Kiemelt')]:
                 with page.expect_response(lambda response: response.url.endswith('/save_roster.php') and response.request.method == 'POST') as saved:
-                    page.get_by_role('button', name=flag, exact=True).click()
+                    page.get_by_role('button', name=label, exact=True).click()
                 assert saved.value.json()['ok'] is True
-                assert page.locator('.flag-btn.active').inner_text() == flag
-                assert page.locator(f'tr[data-id="{person_id}"] .cell-flag').inner_text() == flag
+                assert page.locator('.flag-btn.active').inner_text() == label
+                assert page.locator(f'tr[data-id="{person_id}"] .cell-flag').inner_text() == label
                 data = page.request.get(url + '/get_roster.php', params={'file': target}).json()
                 assert data['rows'][0]['flag'] == flag
                 for before, after in zip(original, data['rows']):
@@ -80,7 +80,7 @@ with tempfile.TemporaryDirectory(prefix='felix-flags-') as directory:
             page.wait_for_function('ROSTER.length > 0 && ROSTER[0].flag === "PRIO"')
             page.locator(f'tr[data-id="{person_id}"]').click()
             with page.expect_response(lambda response: response.url.endswith('/save_roster.php')):
-                page.get_by_role('button', name='Vegan', exact=True).click()
+                page.get_by_role('button', name='Vegán', exact=True).click()
             data = page.request.get(url + '/get_roster.php', params={'file': target}).json()
             assert data['rows'][0]['flag'] == 'PRIO'
             assert data['rows'][0]['allergy'] == 'Vegan'

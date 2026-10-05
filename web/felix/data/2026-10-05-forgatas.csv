@@ -1,0 +1,17 @@
+id,name,allergy,cls,time,arrived,late,cancelled,reason,notes,checkedOut,flag
+2,"Bársony Bence",,,,0,0,1,"Demó: előre jelzett lemondás",,0,
+3,"Csillag Cili",Vegan,vegan,08:15,1,1,0,,"Demó: jelmezpróba a koordinátorral",0,PRIO
+5,"Ezüst Eszter",Gluten,gluten,,0,0,0,,,0,"DATA ERROR"
+6,"Felhő Ferenc",,,08:15,1,0,0,,,0,PROB
+8,"Harmat Henrik",Vegan,vegan,08:15,1,0,0,,"Demó: jelmezpróba a koordinátorral",0,
+9,"Ibolya Ilona",Gluten,gluten,,0,0,0,,,0,PRIO
+11,"Kökény Kristóf",,,,0,0,1,"Demó: előre jelzett lemondás",,0,"DATA ERROR"
+12,"Levendula Lili",Vegan,vegan,08:15,1,0,0,,"Demó: jelmezpróba a koordinátorral",0,PROB
+14,"Ben Okafor",Gluten,gluten,,0,0,0,,,0,
+15,"Priya Nair",,,08:15,1,1,0,,,0,PRIO
+17,"Sofia Lindqvist",Vegan,vegan,08:15,1,0,0,,"Demó: jelmezpróba a koordinátorral",0,"DATA ERROR"
+18,"Kwame Mensah",Gluten,gluten,,0,0,0,,,0,PROB
+20,"Noah Bergström",,,,0,0,1,"Demó: előre jelzett lemondás",,0,
+21,"Maya Torres",Vegan,vegan,08:15,1,1,0,,"Demó: jelmezpróba a koordinátorral",0,PRIO
+23,"Aiko Tanaka",Gluten,gluten,,0,0,0,,,0,"DATA ERROR"
+24,"Lucía Fernández",,,08:15,1,0,0,,,0,PROB

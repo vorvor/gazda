@@ -43,7 +43,7 @@ with tempfile.TemporaryDirectory(prefix='felix-undo-') as directory:
             page.on('pageerror', lambda error: errors.append(str(error)))
             page.goto(url)
             page.wait_for_function('ROSTER.length > 0')
-            undo = page.get_by_role('button', name='UNDO', exact=True)
+            undo = page.get_by_role('button', name='Visszavonás', exact=True)
             assert undo.count() == 1, 'Missing UNDO button'
             assert undo.is_disabled()
             def state():
@@ -58,7 +58,7 @@ with tempfile.TemporaryDirectory(prefix='felix-undo-') as directory:
             def undo_to(expected):
                 save_click('#undo-btn')
                 assert state() == expected
-                assert page.evaluate('({rows:ROSTER, session:session})') == expected
+                assert page.evaluate('({rows:ROSTER, session:session, closed:fileClosed})') == expected
             baseline = state()
             for selector in ['.flag-btn.prob','.allergy-btn.vegan','#arrived-btn']:
                 select()
@@ -93,7 +93,7 @@ with tempfile.TemporaryDirectory(prefix='felix-undo-') as directory:
             save_click('#checkout-btn')
             undo_to(checkout)
             undo_to(arrived)
-            assert page.locator('.file-tab.active .tab-state').inner_text() == 'CHECK-IN'
+            assert page.locator('.file-tab.active .tab-state').inner_text() == 'CHECK IN'
             page.locator(f'[data-file="{files[1]}"]').click()
             page.wait_for_function('(file) => currentFile === file && ROSTER.length && !ROSTER[0].arrived', arg=files[1])
             assert undo.is_disabled()
@@ -121,7 +121,7 @@ with tempfile.TemporaryDirectory(prefix='felix-undo-') as directory:
             undo.click()
             page.wait_for_function('!pendingSaves[currentFile]')
             assert state() == flagged
-            assert page.evaluate('({rows:ROSTER, session:session})') == flagged
+            assert page.evaluate('({rows:ROSTER, session:session, closed:fileClosed})') == flagged
             assert undo.is_enabled()
             page.unroute('**/save_roster.php')
             undo_to(baseline)
@@ -135,46 +135,46 @@ with tempfile.TemporaryDirectory(prefix='felix-undo-') as directory:
             assert all(entry['user'] == 'Elek' for entry in audit)
             assert any(entry['action'] == 'undo' and entry['field'] == 'session' for entry in audit)
             assert any(entry['action'] == 'undo' and entry['field'] == 'flag' and entry['new_value'] == '' for entry in audit)
-            log_button = page.get_by_role('button', name='View log', exact=True)
+            log_button = page.get_by_role('button', name='Napló megtekintése', exact=True)
             assert log_button.count() == 1, 'Missing current-project log button'
             page.locator('#search').fill('Test')
             log_button.click()
             page.wait_for_selector('#log-body tr')
             assert page.locator('#log-body tr').count() == len(audit)
             assert page.locator('#log-project').inner_text() == files[0]
-            assert page.locator('#log-body tr').first.locator('td').nth(2).inner_text() == 'UNDO'
+            assert page.locator('#log-body tr').first.locator('td').nth(2).inner_text() == 'Visszavonás'
             assert not page.locator('#roster-body').is_visible()
-            page.get_by_role('button', name='Back to roster', exact=True).click()
+            page.get_by_role('button', name='Vissza a névsorhoz', exact=True).click()
             assert page.locator('#search').input_value() == 'Test'
             assert page.evaluate('currentFile') == files[0]
             assert state() == baseline
             page.locator(f'[data-file="{files[1]}"]').click()
             page.wait_for_function('(file) => currentFile === file && !rosterLoading', arg=files[1])
             log_button.click()
-            page.wait_for_function("document.querySelector('#log-status').textContent === 'No log records yet for this project.'")
+            page.wait_for_function("document.querySelector('#log-status').textContent === 'Ehhez a projekthez még nincs naplóbejegyzés.'")
             assert page.locator('#log-body tr').count() == 0
             assert page.locator('#log-project').inner_text() == files[1]
-            page.get_by_role('button', name='Back to roster', exact=True).click()
+            page.get_by_role('button', name='Vissza a névsorhoz', exact=True).click()
             select()
             save_click('.flag-btn.prio')
-            all_logs = page.get_by_role('button', name='All logs', exact=True)
+            all_logs = page.get_by_role('button', name='Összes napló', exact=True)
             assert all_logs.count() == 1, 'Missing general log button'
             all_logs.click()
             page.wait_for_selector('#log-body tr')
-            assert page.locator('#log-title').inner_text() == 'General log'
+            assert page.locator('#log-title').inner_text() == 'Összesített napló'
             assert page.locator('#log-body tr').count() == len(audit) + 1
             assert page.locator('#log-body tr').first.locator('td').last.inner_text() == files[1]
             assert files[0] in page.locator('#log-body').inner_text()
             response = page.request.get(url + '/get_log.php?scope=all')
             assert response.status == 200 and len(response.json()['records']) == len(audit) + 1
-            page.get_by_role('button', name='Back to roster', exact=True).click()
+            page.get_by_role('button', name='Vissza a névsorhoz', exact=True).click()
             assert page.evaluate('currentFile') == files[1]
             assert page.request.get(url + '/get_log.php', params={'file': '../' + files[0]}).status == 400
             assert page.request.get(url + '/get_log.php', params={'file': '2026-09-24-missing.csv'}).status == 404
             page.route('**/get_log.php?*', lambda route: route.fulfill(status=500, body='Read failed'))
             log_button.click()
-            page.wait_for_function("document.querySelector('#log-status').textContent.includes('Could not load')")
-            page.get_by_role('button', name='Back to roster', exact=True).click()
+            page.wait_for_function("document.querySelector('#log-status').textContent.includes('Nem sikerült betölteni')")
+            page.get_by_role('button', name='Vissza a névsorhoz', exact=True).click()
             assert page.locator('#roster-view').is_visible()
             assert not errors, errors
             browser.close()

@@ -1,27 +1,29 @@
 <?php
 // Server-side CSV audit trail. Call only after authenticating and validating input.
-function saveRosterWithAudit($dataDir, $filename, $session, array $rows, $user, $action) {
+function saveRosterWithAudit($dataDir, $filename, $session, array $rows, $user, $action, array $options = []) {
     $columns = ['id', 'name', 'allergy', 'cls', 'time', 'arrived', 'late', 'cancelled', 'reason', 'notes', 'checkedOut', 'flag'];
     $booleans = ['arrived', 'late', 'cancelled', 'checkedOut'];
     $csvPath = $dataDir . '/' . $filename;
     $metaPath = $dataDir . '/meta.json';
     $logDir = dirname($dataDir) . '/logs';
-    $lock = fopen($dataDir . '/.save.lock', 'c');
+    $ownsLock = !isset($options['lock']);
+    $lock = $options['lock'] ?? fopen($dataDir . '/.save.lock', 'c');
     if (!$lock) throw new RuntimeException('Could not open save lock');
     $log = null;
     $generalLog = null;
     $csvTemp = null;
     $metaTemp = null;
     try {
-        if (!flock($lock, LOCK_EX)) throw new RuntimeException('Could not lock saves');
-        $oldCsv = file_get_contents($csvPath);
+        if ($ownsLock && !flock($lock, LOCK_EX)) throw new RuntimeException('Could not lock saves');
+        $oldCsv = !empty($options['create']) && !file_exists($csvPath) ? null : file_get_contents($csvPath);
         $oldMeta = is_file($metaPath) ? file_get_contents($metaPath) : null;
         if ($oldCsv === false || $oldMeta === false) throw new RuntimeException('Could not read existing data');
         $meta = $oldMeta !== null ? json_decode($oldMeta, true) : [];
         if (!is_array($meta)) throw new RuntimeException('Invalid session metadata');
+        if (!empty($meta[$filename]['closed'])) throw new RuntimeException('Ez a nap le van zárva, nem szerkeszthető.', 423);
         $oldSession = $meta[$filename]['session'] ?? 'checkin';
         $before = [];
-        $input = fopen($csvPath, 'r');
+        $input = $oldCsv === null ? fopen('php://temp', 'r+') : fopen($csvPath, 'r');
         if (!$input) throw new RuntimeException('Could not read roster');
         fgetcsv($input, 0, ',', '"', '');
         while (($row = fgetcsv($input, 0, ',', '"', '')) !== false) {
@@ -40,6 +42,14 @@ function saveRosterWithAudit($dataDir, $filename, $session, array $rows, $user, 
                     ? (!empty($row[$column]) ? '1' : '0') : (string) ($row[$column] ?? '');
             }
             $after[$person['id']] = $person;
+        }
+        if (($meta[$filename]['source'] ?? '') === 'assignments' && $action !== 'assignment') {
+            if (array_diff_key($before, $after) || array_diff_key($after, $before)) {
+                throw new RuntimeException('A névsor beosztása megváltozott. Töltse újra a névsort.', 409);
+            }
+            foreach ($before as $id => $person) {
+                if ($person['name'] !== $after[$id]['name']) throw new RuntimeException('A beosztott személy neve nem módosítható.', 409);
+            }
         }
         $changes = [];
         if ($oldSession !== $session) $changes[] = ['', '', 'session', $oldSession, $session];
@@ -86,7 +96,7 @@ function saveRosterWithAudit($dataDir, $filename, $session, array $rows, $user, 
         } finally {
             fclose($output);
         }
-        $meta[$filename] = ['session' => $session];
+        $meta[$filename] = array_merge($meta[$filename] ?? [], $options['metadata'] ?? [], ['session' => $session]);
         if (file_put_contents($metaTemp, json_encode($meta, JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR)) === false) {
             throw new RuntimeException('Could not write session metadata');
         }
@@ -116,7 +126,10 @@ function saveRosterWithAudit($dataDir, $filename, $session, array $rows, $user, 
             if (!rename($metaTemp, $metaPath)) throw new RuntimeException('Could not replace session metadata');
             $metaWritten = true;
         } catch (Throwable $error) {
-            if ($csvWritten) file_put_contents($csvPath, $oldCsv);
+            if ($csvWritten) {
+                if ($oldCsv === null) unlink($csvPath);
+                else file_put_contents($csvPath, $oldCsv);
+            }
             if ($metaWritten) {
                 if ($oldMeta === null) unlink($metaPath);
                 else file_put_contents($metaPath, $oldMeta);
@@ -133,7 +146,6 @@ function saveRosterWithAudit($dataDir, $filename, $session, array $rows, $user, 
         }
         if (is_resource($log)) { flock($log, LOCK_UN); fclose($log); }
         if (is_resource($generalLog)) { flock($generalLog, LOCK_UN); fclose($generalLog); }
-        flock($lock, LOCK_UN);
-        fclose($lock);
+        if ($ownsLock) { flock($lock, LOCK_UN); fclose($lock); }
     }
 }

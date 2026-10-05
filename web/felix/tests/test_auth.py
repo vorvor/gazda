@@ -44,8 +44,8 @@ with tempfile.TemporaryDirectory(prefix='felix-auth-') as directory:
         for user in ['Elek', 'Kecsu']:
             status, headers, body = request('index.php', user + ':12345')
             assert status == 200
-            assert f'Hi {user}!' in body
-            role = {'Elek': 'Administrator', 'Kecsu': 'Crowd marshall'}[user]
+            assert f'Szia {user}!' in body
+            role = {'Elek': 'Adminisztrátor', 'Kecsu': 'Résztvevői koordinátor'}[user]
             assert f'<span class="role-badge">{role}</span>' in body, 'Missing role beside greeting'
             assert request('list_files.php', user + ':12345')[0] == 200
             assert request('get_roster.php?file=2026-09-24-project1.csv', user + ':12345')[0] == 200

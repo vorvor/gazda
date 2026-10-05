@@ -17,7 +17,7 @@ if (!empty($_SESSION['logged_out'])) {
     } else {
         http_response_code(401);
         header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(['error' => 'You are logged out. Please sign in again.']);
+        echo json_encode(['error' => 'Ön ki van jelentkezve. Jelentkezzen be újra.']);
     }
     exit;
 }
@@ -41,7 +41,7 @@ if (!isset($demoUsers[$authenticatedUser]) || !password_verify($password, $demoU
     header('WWW-Authenticate: Basic realm="Felix Roster", charset="UTF-8"');
     http_response_code(401);
     header('Content-Type: text/plain; charset=utf-8');
-    echo 'Please sign in to view the roster.';
+    echo 'A névsor megtekintéséhez jelentkezzen be.';
     exit;
 }
 unset($password, $demoUsers, $authorization, $credentials);

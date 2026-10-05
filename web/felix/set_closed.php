@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/assignments_db.php';
 
 // Closes or reopens a project day. Only an Administrator may call this —
 // enforced here server-side, not just hidden in the UI. While closed,
@@ -10,7 +11,7 @@ header('Content-Type: application/json; charset=utf-8');
 
 if (($userRoleLabels[$authenticatedUser] ?? '') !== 'Administrator') {
     http_response_code(403);
-    echo json_encode(['ok' => false, 'error' => 'Only an administrator can close or reopen a day.']);
+    echo json_encode(['ok' => false, 'error' => 'Csak adminisztrátor zárhat le vagy nyithat újra egy napot.']);
     exit;
 }
 
@@ -19,7 +20,7 @@ $body = json_decode($raw, true);
 
 if (!is_array($body) || !isset($body['file']) || !is_string($body['file']) || !array_key_exists('closed', $body)) {
     http_response_code(400);
-    echo json_encode(['ok' => false, 'error' => 'Invalid payload']);
+    echo json_encode(['ok' => false, 'error' => 'Érvénytelen kérésadatok']);
     exit;
 }
 
@@ -28,25 +29,25 @@ $closed   = (bool) $body['closed'];
 
 if ($filename === '' || !preg_match('/^\d{4}-\d{2}-\d{2}-.+\.csv$/', $filename)) {
     http_response_code(400);
-    echo json_encode(['ok' => false, 'error' => 'Invalid file name']);
+    echo json_encode(['ok' => false, 'error' => 'Érvénytelen fájlnév']);
     exit;
 }
 
-$dataDir  = __DIR__ . '/data';
+$dataDir  = felixDataDir();
 $csvPath  = $dataDir . '/' . $filename;
 $metaPath = $dataDir . '/meta.json';
-$logDir   = __DIR__ . '/logs';
+$logDir   = dirname($dataDir) . '/logs';
 
 if (!is_file($csvPath)) {
     http_response_code(404);
-    echo json_encode(['ok' => false, 'error' => 'File not found']);
+    echo json_encode(['ok' => false, 'error' => 'A fájl nem található']);
     exit;
 }
 
 $lock = fopen($dataDir . '/.save.lock', 'c');
 if (!$lock || !flock($lock, LOCK_EX)) {
     http_response_code(500);
-    echo json_encode(['ok' => false, 'error' => 'Could not lock saves']);
+    echo json_encode(['ok' => false, 'error' => 'Nem sikerült zárolni a mentést']);
     exit;
 }
 
@@ -111,7 +112,7 @@ try {
 } catch (Throwable $error) {
     error_log('set_closed failed: ' . $error->getMessage());
     http_response_code(500);
-    echo json_encode(['ok' => false, 'error' => 'Could not update the closed state']);
+    echo json_encode(['ok' => false, 'error' => 'Nem sikerült módosítani a nap lezárási állapotát']);
 } finally {
     flock($lock, LOCK_UN);
     fclose($lock);

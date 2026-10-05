@@ -1,12 +1,23 @@
 {
-    "2026-09-24-project1.csv": {
-        "session": "checkin",
-        "closed": false
-    },
-    "2026-09-26-project3.csv": {
+    "2026-10-05-forgatas.csv": {
+        "source": "assignments",
+        "assignment_date": "2026-10-05",
+        "closed": false,
+        "demo": true,
         "session": "checkin"
     },
-    "2026-09-25-project2.csv": {
-        "session": "checkin"
+    "2026-10-06-forgatas.csv": {
+        "source": "assignments",
+        "assignment_date": "2026-10-06",
+        "closed": false,
+        "demo": true,
+        "session": "checkout"
+    },
+    "2026-10-07-forgatas.csv": {
+        "source": "assignments",
+        "assignment_date": "2026-10-07",
+        "closed": true,
+        "demo": true,
+        "session": "checkout"
     }
 }

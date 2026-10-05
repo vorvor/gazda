@@ -1,12 +1,13 @@
 <?php
 require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/assignments_db.php';
 
 // Reads data/<file>.csv (one dated project file) and returns its rows
 // plus its saved session state (checkin/checkout) as JSON.
 
 header('Content-Type: application/json; charset=utf-8');
 
-$dataDir  = __DIR__ . '/data';
+$dataDir  = felixDataDir();
 $metaPath = $dataDir . '/meta.json';
 
 $requested = isset($_GET['file']) ? $_GET['file'] : '';
@@ -15,7 +16,7 @@ $filename  = basename($requested); // strip any path components
 // Only accept files that actually match our naming convention and exist.
 if ($filename === '' || !preg_match('/^\d{4}-\d{2}-\d{2}-.+\.csv$/', $filename)) {
     http_response_code(400);
-    echo json_encode(['error' => 'Invalid or missing file parameter']);
+    echo json_encode(['error' => 'Érvénytelen vagy hiányzó fájlparaméter']);
     exit;
 }
 
@@ -23,7 +24,7 @@ $csvPath = $dataDir . '/' . $filename;
 
 if (!is_file($csvPath)) {
     http_response_code(404);
-    echo json_encode(['error' => 'File not found']);
+    echo json_encode(['error' => 'A fájl nem található']);
     exit;
 }
 
@@ -56,7 +57,7 @@ if (($handle = fopen($csvPath, 'r')) !== false) {
     fclose($handle);
 } else {
     http_response_code(500);
-    echo json_encode(['error' => 'Could not open ' . $filename]);
+    echo json_encode(['error' => 'Nem sikerült megnyitni a fájlt: ' . $filename]);
     exit;
 }
 

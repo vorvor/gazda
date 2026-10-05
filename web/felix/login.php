@@ -6,10 +6,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
     if (!validLoginCsrf()) {
         http_response_code(403);
-        $error = 'Please reload this page and try again.';
+        $error = 'Töltse újra az oldalt, majd próbálja meg ismét.';
     } elseif (!is_string($username) || !is_string($password) || !isset($demoUsers[$username]) || !password_verify($password, $demoUsers[$username])) {
         http_response_code(400);
-        $error = 'Incorrect username or password.';
+        $error = 'Hibás felhasználónév vagy jelszó.';
     } else {
         session_regenerate_id(true);
         $_SESSION = ['user' => $username, 'csrf' => bin2hex(random_bytes(32))];
@@ -26,11 +26,11 @@ unset($password, $demoUsers);
 session_write_close();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sign in — Felix Roster</title>
+<title>Bejelentkezés — Felix névsor</title>
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; background: #F7F4EE; color: #1E2422; font-family: system-ui, sans-serif; }
@@ -44,16 +44,16 @@ session_write_close();
 </head>
 <body>
 <main>
-  <h1>Sign in</h1>
-  <p>You are signed out. Enter your credentials to continue.</p>
+  <h1>Bejelentkezés</h1>
+  <p>Ön ki van jelentkezve. A folytatáshoz adja meg bejelentkezési adatait.</p>
   <?php if ($error !== ''): ?><p class="error" role="alert"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p><?php endif; ?>
   <form method="post" action="login.php">
     <input type="hidden" name="csrf" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
-    <label for="username">Username</label>
+    <label for="username">Felhasználónév</label>
     <input id="username" name="username" autocomplete="username" required autofocus>
-    <label for="password">Password</label>
+    <label for="password">Jelszó</label>
     <input id="password" name="password" type="password" autocomplete="current-password" required>
-    <button type="submit">Sign in</button>
+    <button type="submit">Bejelentkezés</button>
   </form>
 </main>
 </body>

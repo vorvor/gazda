@@ -32,7 +32,7 @@ with tempfile.TemporaryDirectory(prefix='felix-logout-') as directory:
             page = browser.new_page(http_credentials={'username':'Elek','password':'12345'})
             page.goto(url)
             page.wait_for_function('ROSTER.length > 0')
-            logout = page.get_by_role('button', name='Log out', exact=True)
+            logout = page.get_by_role('button', name='Kijelentkezés', exact=True)
             assert logout.count() >= 1, 'Missing Log out button'
             assert page.request.post(url + '/logout.php', form={'csrf':'invalid'}).status == 403
             logout.filter(visible=True).click()
@@ -48,9 +48,9 @@ with tempfile.TemporaryDirectory(prefix='felix-logout-') as directory:
             assert response.status == 200
             page.goto(url + '/index.php')
             page.wait_for_function('ROSTER.length > 0')
-            assert 'Hi Kecsu!' in page.locator('#roster-view .head').inner_text()
-            page.get_by_role('button', name='All logs', exact=True).click()
-            page.get_by_role('button', name='Log out', exact=True).filter(visible=True).click()
+            assert 'Szia Kecsu!' in page.locator('#roster-view .head').inner_text()
+            page.get_by_role('button', name='Összes napló', exact=True).click()
+            page.get_by_role('button', name='Kijelentkezés', exact=True).filter(visible=True).click()
             page.wait_for_url('**/login.php')
             assert page.request.get(url + '/list_files.php').status == 401
             browser.close()

@@ -1,10 +1,10 @@
 <?php require_once __DIR__ . '/auth.php'; ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Check-in Roster</title>
+<title>Check in / Check out névsor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -816,6 +816,8 @@
   .empty p { margin: 0; font-size: 14px; }
   .empty b { color: var(--ink-soft); font-weight: 500; }
 
+  #roster-day-label { color: var(--ink-soft); font-size: 14px; margin: 8px 0 16px; }
+
   @media (max-width: 380px) {
     .head { padding-left: 14px; padding-right: 14px; }
     .table-scroll { padding-left: 14px; padding-right: 14px; }
@@ -826,83 +828,85 @@
 
 <div class="app" id="roster-view">
   <div class="head">
+    <?php if ($authenticatedUser === 'Elek'): ?><p><a id="assignments-link" class="undo-btn" href="assignments.php">Forgatási nap beosztása</a></p><?php endif; ?>
     <div class="account-row">
-      <p class="title account-greeting">Hi <?= htmlspecialchars($authenticatedUser, ENT_QUOTES, 'UTF-8') ?>! <span class="role-badge"><?= htmlspecialchars($userRoleLabels[$authenticatedUser] ?? 'Reader', ENT_QUOTES, 'UTF-8') ?></span></p>
+      <p class="title account-greeting">Szia <?= htmlspecialchars($authenticatedUser, ENT_QUOTES, 'UTF-8') ?>! <span class="role-badge"><?= htmlspecialchars(['Administrator' => 'Adminisztrátor', 'Reader' => 'Olvasó', 'Crowd marshall' => 'Résztvevői koordinátor'][$userRoleLabels[$authenticatedUser] ?? 'Reader'] ?? 'Olvasó', ENT_QUOTES, 'UTF-8') ?></span></p>
       <form class="logout-form" action="logout.php" method="post">
         <input type="hidden" name="csrf" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
-        <button class="undo-btn" type="submit">Log out</button>
+        <button class="undo-btn" type="submit">Kijelentkezés</button>
       </form>
     </div>
     <div class="file-tabs" id="file-tabs"></div>
+    <p id="roster-day-label" aria-live="polite"></p>
     <div class="day-lock" id="day-lock">
-      <span class="day-lock-badge" id="day-lock-badge">🔒 This day is closed — read-only</span>
+      <span class="day-lock-badge" id="day-lock-badge">🔒 Ez a nap le van zárva — csak olvasható</span>
       <?php if (($userRoleLabels[$authenticatedUser] ?? '') === 'Administrator'): ?>
-      <button class="day-lock-btn close" id="close-day-btn">Close this day</button>
-      <button class="day-lock-btn reopen" id="reopen-day-btn">Reopen this day</button>
+      <button class="day-lock-btn close" id="close-day-btn">Nap lezárása</button>
+      <button class="day-lock-btn reopen" id="reopen-day-btn">Nap újranyitása</button>
       <?php endif; ?>
     </div>
     <div class="eyebrow-row">
-      <p class="title" id="title">Check-in roster</p>
-      <span class="count-badge"><b id="visible-count">8</b> / <span id="visible-total">8</span> shown</span>
+      <p class="title" id="title">Check in névsor</p>
+      <span class="count-badge"><b id="visible-count">8</b> / <span id="visible-total">8</span> megjelenítve</span>
     </div>
     <div class="stat-bar" id="stat-bar-checkin">
-      <div class="stat"><span class="dot all"></span><b id="stat-all">0</b><span>all records</span></div>
-      <div class="stat"><span class="dot waiting"></span><b id="stat-waiting">0</b><span>waiting</span></div>
-      <div class="stat"><span class="dot arrived"></span><b id="stat-arrived">0</b><span>arrived</span></div>
-      <div class="stat"><span class="dot cancelled"></span><b id="stat-cancelled">0</b><span>cancelled</span></div>
+      <div class="stat"><span class="dot all"></span><b id="stat-all">0</b><span>összes résztvevő</span></div>
+      <div class="stat"><span class="dot waiting"></span><b id="stat-waiting">0</b><span>várakozik</span></div>
+      <div class="stat"><span class="dot arrived"></span><b id="stat-arrived">0</b><span>megérkezett</span></div>
+      <div class="stat"><span class="dot cancelled"></span><b id="stat-cancelled">0</b><span>lemondva</span></div>
     </div>
     <div class="stat-bar" id="stat-bar-checkout">
-      <div class="stat"><span class="dot all"></span><b id="stat-all-2">0</b><span>all records</span></div>
-      <div class="stat"><span class="dot checkedout"></span><b id="stat-checkedout">0</b><span>checked out</span></div>
-      <div class="stat"><span class="dot waiting"></span><b id="stat-waiting-2">0</b><span>waiting</span></div>
+      <div class="stat"><span class="dot all"></span><b id="stat-all-2">0</b><span>összes résztvevő</span></div>
+      <div class="stat"><span class="dot checkedout"></span><b id="stat-checkedout">0</b><span>Check out kész</span></div>
+      <div class="stat"><span class="dot waiting"></span><b id="stat-waiting-2">0</b><span>várakozik</span></div>
     </div>
     <div class="session-switch" id="session-switch">
-      <span class="session-badge" id="session-badge">Check-in session</span>
-      <button class="lock-btn" id="session-lock-btn" aria-label="Unlock to switch session">🔒</button>
-      <button class="session-switch-btn" id="session-switch-btn">Start check-out session →</button>
-      <button class="session-cancel-btn" id="session-cancel-btn" aria-label="Cancel, keep current session">✕</button>
-      <button class="undo-btn" id="undo-btn" disabled title="Undo the last change for this day">UNDO</button>
-      <button class="undo-btn" id="view-log-btn" disabled>View log</button>
-      <button class="undo-btn" id="all-logs-btn">All logs</button>
+      <span class="session-badge" id="session-badge">Check in mód</span>
+      <button class="lock-btn" id="session-lock-btn" aria-label="Feloldás a módváltáshoz">🔒</button>
+      <button class="session-switch-btn" id="session-switch-btn">Check out indítása →</button>
+      <button class="session-cancel-btn" id="session-cancel-btn" aria-label="Mégse, a jelenlegi mód megtartása">✕</button>
+      <button class="undo-btn" id="undo-btn" disabled title="A nap utolsó módosításának visszavonása">Visszavonás</button>
+      <button class="undo-btn" id="view-log-btn" disabled>Napló megtekintése</button>
+      <button class="undo-btn" id="all-logs-btn">Összes napló</button>
     </div>
     <div class="search-wrap">
-      <input type="text" id="search" placeholder="Filter by name…" autocomplete="off" />
+      <input type="text" id="search" placeholder="Szűrés név alapján…" autocomplete="off" />
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      <button class="clear-btn" id="clear-btn" aria-label="Clear search">✕</button>
+      <button class="clear-btn" id="clear-btn" aria-label="Keresés törlése">✕</button>
     </div>
     <div id="checkin-controls">
       <div class="action-row" id="action-row">
-        <button class="action-btn arrived" id="arrived-btn">Arrived</button>
-        <button class="action-btn late" id="late-btn">Late</button>
-        <button class="action-btn cancelled" id="cancelled-btn">Cancelled</button>
-        <button class="lock-btn" id="lock-btn" aria-label="Unlock to change status">🔒</button>
+        <button class="action-btn arrived" id="arrived-btn">Megérkezett</button>
+        <button class="action-btn late" id="late-btn">Késik</button>
+        <button class="action-btn cancelled" id="cancelled-btn">Lemondva</button>
+        <button class="lock-btn" id="lock-btn" aria-label="Feloldás az állapot módosításához">🔒</button>
       </div>
       <div class="allergy-row" id="allergy-row">
-        <span class="allergy-label">Diet</span>
-        <button class="allergy-btn gluten" data-value="Gluten" data-cls="gluten">Gluten</button>
-        <button class="allergy-btn vegan" data-value="Vegan" data-cls="vegan">Vegan</button>
-        <button class="allergy-btn nopork" data-value="No pork" data-cls="nopork">No pork</button>
-        <button class="allergy-btn diabetes" data-value="Diabetes" data-cls="diabetes">Diabetes</button>
+        <span class="allergy-label">Étrend</span>
+        <button class="allergy-btn gluten" data-value="Gluten" data-cls="gluten">Gluténmentes</button>
+        <button class="allergy-btn vegan" data-value="Vegan" data-cls="vegan">Vegán</button>
+        <button class="allergy-btn nopork" data-value="No pork" data-cls="nopork">Sertéshúsmentes</button>
+        <button class="allergy-btn diabetes" data-value="Diabetes" data-cls="diabetes">Cukorbeteg</button>
       </div>
       <div class="allergy-row" id="flag-row">
-        <span class="allergy-label">Flag</span>
-        <button class="flag-btn prob" data-value="PROB">PROB</button>
-        <button class="flag-btn data-error" data-value="DATA ERROR">DATA ERROR</button>
-        <button class="flag-btn prio" data-value="PRIO">PRIO</button>
+        <span class="allergy-label">Jelölés</span>
+        <button class="flag-btn prob" data-value="PROB">Probléma</button>
+        <button class="flag-btn data-error" data-value="DATA ERROR">Adathiba</button>
+        <button class="flag-btn prio" data-value="PRIO">Kiemelt</button>
       </div>
       <div class="notes-row" id="notes-row">
-        <textarea id="notes-input" rows="2" placeholder="Add a note…"></textarea>
-        <button class="notes-save-btn" id="notes-save">Save note</button>
+        <textarea id="notes-input" rows="2" placeholder="Megjegyzés hozzáadása…"></textarea>
+        <button class="notes-save-btn" id="notes-save">Megjegyzés mentése</button>
       </div>
       <div class="late-panel" id="late-panel">
-        <input type="time" id="late-time" aria-label="Arrival time" />
-        <button class="late-submit" id="late-submit" disabled>Submit</button>
-        <button class="late-cancel" id="late-cancel" aria-label="Cancel">✕</button>
+        <input type="time" id="late-time" aria-label="Érkezési idő" />
+        <button class="late-submit" id="late-submit" disabled>Rögzítés</button>
+        <button class="late-cancel" id="late-cancel" aria-label="Mégse">✕</button>
       </div>
       <div class="cancel-panel" id="cancel-panel">
-        <input type="text" id="cancel-reason" placeholder="Reason for cancelling…" autocomplete="off" />
-        <button class="cancel-submit" id="cancel-submit" disabled>Submit</button>
-        <button class="cancel-close" id="cancel-close" aria-label="Cancel">✕</button>
+        <input type="text" id="cancel-reason" placeholder="Lemondás oka…" autocomplete="off" />
+        <button class="cancel-submit" id="cancel-submit" disabled>Rögzítés</button>
+        <button class="cancel-close" id="cancel-close" aria-label="Mégse">✕</button>
       </div>
     </div>
     <div id="checkout-controls">
@@ -918,13 +922,13 @@
       <thead>
         <tr>
           <th class="col-counter">#</th>
-          <th class="col-id">ID</th>
-          <th class="col-name">Name</th>
-          <th class="col-allergy">Allergy</th>
-          <th class="col-flag">Flag</th>
-          <th class="col-time">Time</th>
-          <th class="col-reason">Reason</th>
-          <th class="col-notes">Notes</th>
+          <th class="col-id">Azonosító</th>
+          <th class="col-name">Név</th>
+          <th class="col-allergy">Allergia / étrend</th>
+          <th class="col-flag">Jelölés</th>
+          <th class="col-time">Időpont</th>
+          <th class="col-reason">Indok</th>
+          <th class="col-notes">Megjegyzés</th>
         </tr>
       </thead>
       <tbody id="roster-body">
@@ -934,7 +938,7 @@
 
     <div class="empty" id="empty-state">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      <p>No one named <b id="empty-term"></b> on the list.</p>
+      <p>Nincs találat a névsorban erre: <b id="empty-term"></b>.</p>
     </div>
   </div>
 </div>
@@ -942,19 +946,19 @@
 <section class="app" id="log-view" hidden aria-labelledby="log-title">
   <div class="head">
     <div class="account-row">
-      <button class="undo-btn" id="log-back-btn">Back to roster</button>
+      <button class="undo-btn" id="log-back-btn">Vissza a névsorhoz</button>
       <form class="logout-form" action="logout.php" method="post">
         <input type="hidden" name="csrf" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
-        <button class="undo-btn" type="submit">Log out</button>
+        <button class="undo-btn" type="submit">Kijelentkezés</button>
       </form>
     </div>
-    <h1 class="title" id="log-title" tabindex="-1" style="margin-top:16px;">Project log</h1>
+    <h1 class="title" id="log-title" tabindex="-1" style="margin-top:16px;">Projektnapló</h1>
     <p id="log-project"></p>
     <p id="log-status" role="status"></p>
   </div>
   <div class="table-scroll">
-    <table aria-label="Audit log">
-      <thead><tr><th>When (Budapest)</th><th>User</th><th>Action</th><th>ID</th><th>Person</th><th>Field</th><th>Before</th><th>After</th><th id="log-project-column" hidden>Project / date</th></tr></thead>
+    <table aria-label="Változásnapló">
+      <thead><tr><th>Időpont (Budapest)</th><th>Felhasználó</th><th>Művelet</th><th>Azonosító</th><th>Résztvevő</th><th>Mező</th><th>Előtte</th><th>Utána</th><th id="log-project-column" hidden>Projekt / dátum</th></tr></thead>
       <tbody id="log-body"></tbody>
     </table>
   </div>
@@ -982,6 +986,47 @@
   var rosterScrollPosition = 0;
   var logReturnButton = '#view-log-btn';
 
+
+  // Translate presentation only; CSV values and API identifiers stay unchanged.
+  function displayDiet(value) {
+    var labels = { peanut: 'Földimogyoró', peanuts: 'Földimogyoró', shellfish: 'Kagyló és rákfélék', dairy: 'Tejtermék', pollen: 'Pollen', bee: 'Méhcsípés', 'bee sting': 'Méhcsípés', penicillin: 'Penicillin', peni: 'Penicillin', none: 'Nincs', gluten: 'Gluténmentes', vegan: 'Vegán', 'no pork': 'Sertéshúsmentes', nopork: 'Sertéshúsmentes', diabetes: 'Cukorbeteg' };
+    return labels[String(value).toLowerCase()] || value;
+  }
+
+  function displayFlag(value) {
+    return { 'PROB': 'Probléma', 'DATA ERROR': 'Adathiba', 'PRIO': 'Kiemelt' }[value] || value;
+  }
+
+  function displayTime(value) {
+    return parseTime12(value) || value;
+  }
+
+  function displayLogField(value) {
+    return { id: 'Azonosító', name: 'Név', allergy: 'Allergia / étrend', cls: 'Étrendjelölés', time: 'Időpont', arrived: 'Megérkezett', late: 'Késik', cancelled: 'Lemondva', reason: 'Indok', notes: 'Megjegyzés', checkedOut: 'Check out', flag: 'Jelölés', session: 'Mód', closed: 'Lezárva', person_added: 'Résztvevő hozzáadva', person_removed: 'Résztvevő eltávolítva', no_change: 'Nincs változás' }[value] || value;
+  }
+
+  function displayLogAction(value) {
+    return { save: 'Mentés', undo: 'Visszavonás', arrived: 'Megérkezett', late: 'Késik', cancelled: 'Lemondva', diet: 'Étrend', flag: 'Jelölés', notes: 'Megjegyzés', checkout: 'Check out', session: 'Módváltás', close: 'Lezárás', reopen: 'Újranyitás', assignment: 'Beosztás' }[value] || value;
+  }
+
+  function displayLogValue(field, value) {
+    if (value === '') return value;
+    if (field === 'allergy' || field === 'cls') return displayDiet(value);
+    if (field === 'flag') return displayFlag(value);
+    if (field === 'time') return displayTime(value);
+    if (field === 'session') return { checkin: 'Check in', checkout: 'Check out' }[value] || value;
+    if (['arrived', 'late', 'cancelled', 'checkedOut', 'closed'].indexOf(field) !== -1) {
+      return { '1': 'Igen', '0': 'Nem', 'true': 'Igen', 'false': 'Nem' }[value] || value;
+    }
+    if (field === 'person_added' || field === 'person_removed') {
+      try {
+        var person = JSON.parse(value);
+        return Object.keys(person).map(function (key) { return displayLogField(key) + ': ' + displayLogValue(key, String(person[key])); }).join('; ');
+      } catch (error) { return value; }
+    }
+    return value;
+  }
+
   function showProjectLog(allProjects) {
     allProjects = allProjects === true;
     if (!allProjects && (!currentFile || rosterLoading)) return;
@@ -991,29 +1036,29 @@
     $('#roster-view').hide();
     $('#log-view').prop('hidden', false);
     logReturnButton = allProjects ? '#all-logs-btn' : '#view-log-btn';
-    $('#log-title').text(allProjects ? 'General log' : 'Project log');
-    $('#log-project').text(allProjects ? 'All projects / all dates' : file);
+    $('#log-title').text(allProjects ? 'Összesített napló' : 'Projektnapló');
+    $('#log-project').text(allProjects ? 'Minden projekt / minden dátum' : file);
     $('#log-project-column').prop('hidden', !allProjects);
     $('#log-body').empty();
-    $('#log-status').text('Loading log records…');
+    $('#log-status').text('Naplóbejegyzések betöltése…');
     $('#log-title').trigger('focus');
     window.scrollTo(0, 0);
     saveQueue.then(function () { return $.getJSON('get_log.php', allProjects ? { scope: 'all' } : { file: file }); })
       .done(function (data) {
         if (requestId !== logRequestId) return;
         data.records.forEach(function (record) {
-          var $row = $('<tr>').attr('title', 'Event: ' + record.event_id);
-          [record.timestamp, record.user, record.action.toUpperCase(), record.person_id,
-            record.person_name, record.field, record.old_value, record.new_value].forEach(function (value) {
+          var $row = $('<tr>').attr('title', 'Esemény: ' + record.event_id);
+          [record.timestamp, record.user, displayLogAction(record.action), record.person_id,
+            record.person_name, displayLogField(record.field), displayLogValue(record.field, record.old_value), displayLogValue(record.field, record.new_value)].forEach(function (value) {
               $row.append($('<td>').text(value === '' ? '—' : value));
             });
           if (allProjects) $row.append($('<td>').text(record.project));
           $('#log-body').append($row);
         });
-        $('#log-status').text(data.records.length ? data.records.length + ' log records · newest first' : (allProjects ? 'No general log records yet.' : 'No log records yet for this project.'));
+        $('#log-status').text(data.records.length ? data.records.length + ' naplóbejegyzés · legújabb elöl' : (allProjects ? 'Még nincs bejegyzés az összesített naplóban.' : 'Ehhez a projekthez még nincs naplóbejegyzés.'));
       }).fail(function () {
         if (requestId !== logRequestId) return;
-        $('#log-status').text('Could not load the log. Go back and try again.');
+        $('#log-status').text('Nem sikerült betölteni a naplót. Lépj vissza, és próbáld újra.');
       });
   }
 
@@ -1101,14 +1146,22 @@
         result.resolve();
       }, function (xhr) {
         result.reject();
-        if (xhr && xhr.status === 423) {
-          fileClosed = true;
-          updateDayLockUI();
-          updateActionUI();
-          window.alert('This day was closed and can no longer be edited. Reloading…');
-          loadRoster(file);
+        if (xhr && (xhr.status === 409 || xhr.status === 423)) {
+          undoHistory[file] = [];
+          delete lastSnapshots[file];
+          if (currentFile === file) {
+            if (xhr.status === 423) {
+              fileClosed = true;
+              updateDayLockUI();
+              updateActionUI();
+            }
+            window.alert(xhr.status === 409
+              ? 'Időközben megváltozott a nap beosztása. A friss névsort újratöltjük; a mostani módosítást ismételd meg.'
+              : 'Ezt a napot lezárták, már nem szerkeszthető. Újratöltés…');
+            loadRoster(file);
+          }
         } else {
-          window.alert('Could not save changes to ' + file + '. Please check your connection.');
+          window.alert('Nem sikerült menteni a módosításokat: ' + file + '. Ellenőrizd az internetkapcsolatot.');
         }
       }).always(function () {
         pendingSaves[file]--;
@@ -1128,7 +1181,7 @@
         .toggleClass('tab-closed', !!f.closed)
         .append($('<span class="tab-dot">'))
         .append($('<span>').text(f.label))
-        .append($('<span class="tab-state">').text(f.session === 'checkout' ? 'CHECK-OUT' : 'CHECK-IN'));
+        .append($('<span class="tab-state">').text(f.session === 'checkout' ? 'CHECK OUT' : 'CHECK IN'));
       if (f.closed) $tab.append($('<span class="tab-lock">').text('🔒'));
       $tab.appendTo($tabs);
     });
@@ -1136,6 +1189,15 @@
 
   function loadRoster(file) {
     currentFile = file;
+    var selectedFile = FILES.find(function (entry) { return entry.file === file; });
+    if (selectedFile) {
+      var url = new URL(window.location.href);
+      url.searchParams.set('file', file);
+      url.searchParams.set('date', selectedFile.date);
+      window.history.replaceState(null, '', url);
+      $('#roster-day-label').text(selectedFile.label);
+      $('#assignments-link').attr('href', 'assignments.php?date=' + encodeURIComponent(selectedFile.date));
+    }
     rosterLoading = true;
     updateUndoUI();
     selectedId = null;
@@ -1149,7 +1211,7 @@
     renderFileTabs();
 
     $('#roster-body').html(
-      '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--muted);">Loading roster…</td></tr>'
+      '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--muted);">Névsor betöltése…</td></tr>'
     );
 
     saveQueue.then(function () { return $.getJSON('get_roster.php', { file: file }); })
@@ -1171,7 +1233,7 @@
       .fail(function () {
         $('#roster-body').html(
           '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--cancelled);">' +
-          'Could not load ' + file + '.</td></tr>'
+          'Nem sikerült betölteni: ' + escapeHtml(file) + '.</td></tr>'
         );
       });
   }
@@ -1182,17 +1244,24 @@
         FILES = data || [];
         if (!FILES.length) {
           $('#roster-body').html(
-            '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--muted);">No CSV files found in /data.</td></tr>'
+            '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--muted);">Nem található CSV-fájl a /data mappában.</td></tr>'
           );
           return;
         }
         renderFileTabs();
-        loadRoster(FILES[0].file);
+        var query = new URLSearchParams(window.location.search);
+        var requestedFile = query.get('file');
+        var requestedDate = query.get('date');
+        var selected = FILES.find(function (entry) { return entry.file === requestedFile; })
+          || FILES.find(function (entry) { return entry.source === 'assignments' && entry.date === requestedDate; })
+          || FILES.find(function (entry) { return entry.date === requestedDate; })
+          || FILES[0];
+        loadRoster(selected.file);
       })
       .fail(function () {
         $('#roster-body').html(
           '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--cancelled);">' +
-          'Could not load the file list from list_files.php.</td></tr>'
+          'Nem sikerült betölteni a fájllistát.</td></tr>'
         );
       });
   }
@@ -1238,21 +1307,21 @@
       $row.append(
         $('<td>').append(
           person.allergy
-            ? $('<span class="pill">').addClass(person.cls).text(person.allergy)
+            ? $('<span class="pill">').addClass(person.cls).text(displayDiet(person.allergy))
             : $('<span class="cell-empty-dash">').text('–')
         )
       );
       $row.append(
         $('<td class="cell-flag">').append(
           person.flag
-            ? $('<span class="pill">').addClass({ 'PROB': 'prob', 'DATA ERROR': 'data-error', 'PRIO': 'prio' }[person.flag] || '').text(person.flag)
+            ? $('<span class="pill">').addClass({ 'PROB': 'prob', 'DATA ERROR': 'data-error', 'PRIO': 'prio' }[person.flag] || '').text(displayFlag(person.flag))
             : $('<span class="cell-empty-dash">').text('–')
         )
       );
       $row.append(
         $('<td class="cell-time">')
           .toggleClass('is-empty', !person.time)
-          .text(person.time || '–')
+          .text(person.time ? displayTime(person.time) : '–')
       );
       $row.append(
         $('<td class="cell-reason">')
@@ -1335,12 +1404,12 @@
 
   function updateSessionUI() {
     $('body').attr('data-session', session);
-    $('#title').text(session === 'checkin' ? 'Check-in roster' : 'Check-out roster');
+    $('#title').text(session === 'checkin' ? 'Check in névsor' : 'Check out névsor');
     $('#session-badge')
-      .text(session === 'checkin' ? 'Check-in session' : 'Check-out session')
+      .text(session === 'checkin' ? 'Check in mód' : 'Check out mód')
       .toggleClass('checkout', session === 'checkout');
     $('#session-switch-btn').text(
-      session === 'checkin' ? 'Start check-out session →' : '← Back to check-in'
+      session === 'checkin' ? 'Check out indítása →' : '← Vissza a Check in módhoz'
     );
     $('#session-badge').toggleClass('show', !sessionUnlocked);
     $('#session-lock-btn').toggleClass('show', !sessionUnlocked);
@@ -1351,6 +1420,11 @@
   $(function () {
     updateSessionUI();
     loadFileList();
+    $('#assignments-link').on('click', function (event) {
+      event.preventDefault();
+      var destination = this.href;
+      saveQueue.then(function () { window.location.assign(destination); });
+    });
 
     $('.logout-form').on('submit', function (event) {
       event.preventDefault();
@@ -1446,7 +1520,7 @@
         renderFileTabs();
         renderRows($('#search').val().trim());
       }).fail(function (xhr) {
-        var msg = 'Could not update the closed state.';
+        var msg = 'Nem sikerült módosítani a nap lezárási állapotát.';
         try {
           var body = JSON.parse(xhr.responseText);
           if (body && body.error) msg = body.error;
@@ -1457,7 +1531,7 @@
 
     $('#close-day-btn').on('click', function () {
       if (!currentFile) return;
-      if (!window.confirm('Close ' + currentFile + ' for editing? Only an administrator will be able to reopen it.')) return;
+      if (!window.confirm('Lezárod a nap szerkesztését: ' + currentFile + '? Csak adminisztrátor nyithatja újra.')) return;
       setDayClosed(true);
     });
 

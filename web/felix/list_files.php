@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/assignments_db.php';
 
 // Scans data/ for files named YYYY-MM-DD-projectname.csv and returns
 // them sorted by date, along with each file's saved session state
@@ -7,7 +8,7 @@ require_once __DIR__ . '/auth.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
-$dataDir  = __DIR__ . '/data';
+$dataDir  = felixDataDir();
 $metaPath = $dataDir . '/meta.json';
 
 $meta = [];
@@ -35,7 +36,7 @@ foreach (glob($dataDir . '/*.csv') as $path) {
     $label = ucwords($label);
 
     $dateObj  = DateTime::createFromFormat('Y-m-d', $date);
-    $dateText = $dateObj ? $dateObj->format('M j') : $date;
+    $dateText = $dateObj ? $dateObj->format('Y. m. d.') : $date;
 
     $files[] = [
         'file'    => $filename,
@@ -44,6 +45,10 @@ foreach (glob($dataDir . '/*.csv') as $path) {
         'session' => isset($meta[$filename]['session']) ? $meta[$filename]['session'] : 'checkin',
         'closed'  => !empty($meta[$filename]['closed']),
     ];
+    if (($meta[$filename]['source'] ?? '') === 'assignments') {
+        $files[count($files) - 1]['source'] = 'assignments';
+        $files[count($files) - 1]['assignment_date'] = $meta[$filename]['assignment_date'] ?? $date;
+    }
 }
 
 usort($files, function ($a, $b) {
