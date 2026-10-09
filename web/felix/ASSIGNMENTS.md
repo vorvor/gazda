@@ -141,6 +141,44 @@ The requested `.filming-summary` element was already absent in the starting
 
 ## Verification
 
+### Personal cards and QR codes
+
+The roster, assignment pool/assigned cards, and both audit-log views show a
+small personal-card icon beside each person name. The shared `person_qr.php`
+component opens a responsive, keyboard-accessible dialog with the name, existing
+ID, photo placeholder (no upload), and a large scan-ready SVG.
+Codes contain UTF-8 JSON with string `id` and `name` fields. Audit codes use the
+identity recorded in that historical entry. No identifiers or stored rows are
+changed; scanning displays identity text, not a check-in action or login token.
+
+The authenticated, GET-only `person_card.php` loads current saved registry fields
+(ID, name, city, fictional marker), each linked active daily roster's saved fields,
+and assignment dates/titles/provenance. Daily values remain separated by source
+file: they are not inferred to be permanent personal attributes. Internal demo
+keys and identity matching keys are not displayed. No credentials are returned.
+Roster and audit requests resolve through `sources.csv` using source filename
+and legacy ID (with the recorded name as a stale-identity guard), never by name
+alone or by treating a legacy ID as a canonical ID. Missing/ambiguous mappings
+show an explicit unavailable message rather than another person's data. Missing,
+archived, symlinked or replaced roster rows are not folded into current details.
+Cards show saved state, not unsaved edits or a reconstruction of audit history.
+All text is rendered as text, requests bypass caches, and closing/switching cards
+invalidates pending responses. Card reads do not change roster or registry rows.
+
+```sh
+web/felix/.venv/bin/python web/felix/tests/test_person_card.py
+```
+
+Generation stays in the browser using the locally vendored MIT-licensed
+`qrcode-generator` 1.4.4 (`person_qr_vendor.php`); no person data is sent to a QR
+service. The QR integration test decodes rendered images and requires Playwright,
+Pillow, and zxing-cpp in the existing test virtualenv:
+
+```sh
+uv pip install --python web/felix/.venv/bin/python pillow zxing-cpp
+web/felix/.venv/bin/python web/felix/tests/test_person_qr.py
+```
+
 ```sh
 php web/felix/tests/test_csv_store.php
 php web/felix/tests/test_csv_sync.php

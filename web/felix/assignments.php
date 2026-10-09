@@ -26,6 +26,7 @@
 </div>
 <p class="note"><strong>CSV-alapú személynyilvántartás.</strong> Az azonos nevű személyeket külön azonosító különbözteti meg. Az első személy beosztásakor a naphoz CSV-névsor készül, amely a névsor dátumfülei között választható. A beosztás módosítása megőrzi a névsorban maradó személyek Check in / Check out állapotát, jelöléseit és megjegyzéseit. Lezárt nap beosztása csak újranyitás után módosítható.</p>
 </main>
+<?php require __DIR__ . '/person_qr.php'; ?>
 <script>
 $(function(){
   const csrf = <?= json_encode($csrfToken) ?>;
@@ -49,8 +50,8 @@ $(function(){
   }
   function card(person, action){
     const row = $('<div>').addClass('person');
-    $('<div>').append($('<strong>').text(person.name), $('<small>').text((person.city ? person.city + ' · ' : '') + 'ID: ' + person.id + (Number(person.fictional) ? ' · Fiktív személy' : ''))).appendTo(row);
-    const button = $('<button>').attr('type','button').text(action === 'remove' ? 'Eltávolítás' : action === 'assigned' ? 'Beosztva ✓' : 'Hozzáadás');
+    $('<div>').append($('<strong>').text(person.name).append(FelixPersonQR.button(person)), $('<small>').text((person.city ? person.city + ' · ' : '') + 'ID: ' + person.id + (Number(person.fictional) ? ' · Fiktív személy' : ''))).appendTo(row);
+    const button = $('<button class="assignment-action">').attr('type','button').text(action === 'remove' ? 'Eltávolítás' : action === 'assigned' ? 'Beosztva ✓' : 'Hozzáadás');
     button.attr('aria-label', (action === 'remove' ? 'Eltávolítás: ' : 'Hozzáadás: ') + person.name);
     if(action === 'remove') button.addClass('remove');
     button.prop('disabled', pending || action === 'assigned');
@@ -62,7 +63,7 @@ $(function(){
     const params = {q:$('#person-search').val()};
     if(date) params.date = date;
     loading = true;
-    $('#people button, #assigned button').prop('disabled',true);
+    $('.assignment-action').prop('disabled',true);
     $('#filming-date').prop('disabled',pending);
     status('Beosztás betöltése…');
     return $.getJSON('assignments_api.php', params).done(function(data){
@@ -90,7 +91,7 @@ $(function(){
     const saveDate = date;
     ++requestNumber;
     clearTimeout(timer);
-    pending = true; $('button').prop('disabled',true); $('#filming-date, #person-search').prop('disabled',true); status('Mentés…');
+    pending = true; $('.assignment-action').prop('disabled',true); $('#filming-date, #person-search').prop('disabled',true); status('Mentés…');
     $.ajax({url:'assignments_api.php',method:'POST',dataType:'json',data:{csrf:csrf,date:saveDate,person_id:id,action:action}})
       .done(function(){ pending=false; load(action === 'remove' ? 'A személyt eltávolítottuk a beosztásból.' : 'A személy beosztását elmentettük.'); })
       .fail(function(xhr){ pending=false; load().always(function(){status(xhr.responseJSON?.error || 'A mentés sikertelen. Próbálja újra.',true);}); })

@@ -71,7 +71,7 @@ with tempfile.TemporaryDirectory(prefix='felix-date-ui-') as directory:
             page.locator('#filming-date').fill('2026-11-13')
             page.wait_for_function("document.querySelector('#count').textContent === '0 fő'")
             assert 'Teszt Anna' not in page.locator('#assigned').inner_text()
-            page.locator('#people button').click()
+            page.locator('#people .assignment-action').click()
             page.locator('#assigned .person').wait_for()
             assert posts == ['2026-11-13']
             page.reload()

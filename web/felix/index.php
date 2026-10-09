@@ -964,6 +964,7 @@
   </div>
 </section>
 
+<?php require __DIR__ . '/person_qr.php'; ?>
 <script>
   // Roster data is now loaded from get_roster.php (which reads data.csv)
   // instead of being hardcoded here — see the $.getJSON call below.
@@ -1049,8 +1050,12 @@
         data.records.forEach(function (record) {
           var $row = $('<tr>').attr('title', 'Esemény: ' + record.event_id);
           [record.timestamp, record.user, displayLogAction(record.action), record.person_id,
-            record.person_name, displayLogField(record.field), displayLogValue(record.field, record.old_value), displayLogValue(record.field, record.new_value)].forEach(function (value) {
-              $row.append($('<td>').text(value === '' ? '—' : value));
+            record.person_name, displayLogField(record.field), displayLogValue(record.field, record.old_value), displayLogValue(record.field, record.new_value)].forEach(function (value, index) {
+              var $cell = $('<td>').text(value === '' ? '—' : value);
+              if (index === 4 && record.person_id && record.person_name) {
+                $cell.append(FelixPersonQR.button({id: record.person_id, name: record.person_name}, {file: record.project, audit: true}));
+              }
+              $row.append($cell);
             });
           if (allProjects) $row.append($('<td>').text(record.project));
           $('#log-body').append($row);
@@ -1303,7 +1308,7 @@
 
       $row.append($('<td class="cell-counter">').text(i + 1));
       $row.append($('<td class="cell-id">').text(person.id));
-      $row.append($('<td class="cell-name">').html(highlight(person.name, term)));
+      $row.append($('<td class="cell-name">').html(highlight(person.name, term)).append(FelixPersonQR.button(person, {file: currentFile})));
       $row.append(
         $('<td>').append(
           person.allergy

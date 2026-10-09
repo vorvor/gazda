@@ -13,7 +13,12 @@ ROOT = Path(__file__).resolve().parents[1]
 with tempfile.TemporaryDirectory(prefix='felix-auth-') as directory:
     for source in ROOT.glob('*.php'):
         shutil.copy2(source, Path(directory) / source.name)
-    shutil.copytree(ROOT / 'data', Path(directory) / 'data')
+    # Auth tests must not depend on a dated live demo roster still existing.
+    (Path(directory) / 'data').mkdir()
+    (Path(directory) / 'data/2026-09-24-project1.csv').write_text(
+        'id,name,allergy,cls,time,arrived,late,cancelled,reason,notes,checkedOut,flag\n'
+        '1,Test Person,,,,0,0,0,,,0,\n'
+    )
     with socket.socket() as sock:
         sock.bind(('127.0.0.1', 0))
         port = sock.getsockname()[1]
