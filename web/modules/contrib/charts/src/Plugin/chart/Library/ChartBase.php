@@ -89,11 +89,32 @@ abstract class ChartBase extends PluginBase implements ChartInterface {
    * {@inheritdoc}
    */
   public function getSupportedChartTypes(): array {
-    $types = $this->pluginDefinition['types'];
+    $types = array_diff($this->pluginDefinition['types'], $this->getUnsupportedChartTypes());
     $chart_plugin_id = $this->getPluginId();
     $this->moduleHandler->alter('charts_plugin_supported_chart_types', $types, $chart_plugin_id);
 
-    return $types;
+    return array_values($types);
+  }
+
+  /**
+   * Gets chart types the library declares but cannot currently render.
+   *
+   * A library may add whole chart types through an optional asset (for example,
+   * a separate "heatmap" script). When that asset is disabled through the
+   * library's configuration, the types it provides should not be offered.
+   * Subclasses override this method to remove those types; the
+   * charts_plugin_supported_chart_types alter hook still runs afterwards, so
+   * this is additive rather than a replacement for the hook.
+   *
+   * Note this concerns type-*providing* libraries only. Feature libraries that
+   * merely enhance an existing type (a Pareto line, a color axis) must not be
+   * listed here: their options stay available and their assets load on demand.
+   *
+   * @return string[]
+   *   Chart type IDs to exclude from the supported types.
+   */
+  protected function getUnsupportedChartTypes(): array {
+    return [];
   }
 
   /**
@@ -150,6 +171,26 @@ abstract class ChartBase extends PluginBase implements ChartInterface {
   public function addBaseSettingsElementOptions(array &$element, array $options, FormStateInterface $form_state, array &$complete_form = []): void {
     // Hide the fieldset by default.
     $element['#access'] = FALSE;
+  }
+
+  /**
+   * Whether the library can render plot lines from the #plot_lines property.
+   *
+   * Plot lines are straight lines drawn across the plot area at a fixed axis
+   * value (Highcharts "plotLines", C3.js/Billboard.js "grid lines", Chart.js
+   * "line" annotations, ...). Libraries that support them should override this
+   * method to return TRUE and map the #plot_lines property of chart_xaxis and
+   * chart_yaxis child elements in their preRender() implementation.
+   *
+   * This method is intentionally not (yet) part of ChartInterface to avoid
+   * breaking chart library plugins that implement the interface directly.
+   * Consumers should guard calls with method_exists().
+   *
+   * @return bool
+   *   TRUE when the library supports plot lines, FALSE otherwise.
+   */
+  public function supportsPlotLines(): bool {
+    return FALSE;
   }
 
   /**

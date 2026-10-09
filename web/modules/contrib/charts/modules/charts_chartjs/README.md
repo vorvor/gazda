@@ -75,6 +75,9 @@ remove "web/" from the lines below:
                 "web/libraries/chartjs-plugin-datalabels": [
                   "npm-asset/chartjs-plugin-datalabels"
                 ],
+                "web/libraries/chartjs-plugin-annotation": [
+                  "npm-asset/chartjs-plugin-annotation"
+                ],
             },
         }
 
@@ -115,6 +118,7 @@ them. So: create a new directory in your project root called "scripts".
           "web/libraries/chart.js/dist/scales"
           "web/libraries/chart.js/dist/types"
           "web/libraries/chartjs-plugin-datalabels/types"
+          "web/libraries/chartjs-plugin-annotation/types"
         )
         counter=0
         echo "Deleting unneeded directories inside web/libraries/chartjs"
@@ -152,6 +156,9 @@ them. So: create a new directory in your project root called "scripts".
           "web/libraries/chartjs-plugin-datalabels/LICENSE.md"
           "web/libraries/chartjs-plugin-datalabels/package.json"
           "web/libraries/chartjs-plugin-datalabels/bower.json"
+          "web/libraries/chartjs-plugin-annotation/README.md"
+          "web/libraries/chartjs-plugin-annotation/LICENSE.md"
+          "web/libraries/chartjs-plugin-annotation/package.json"
         )
         counter=0
         echo "Deleting unneeded files inside web/libraries/chartjs"
@@ -183,6 +190,7 @@ them. So: create a new directory in your project root called "scripts".
 7. Run the following command; you should find that new directories have been
    created under "/libraries".
 
-        composer require --prefer-dist npm-asset/chart.js:^4.4
+        composer require --prefer-dist npm-asset/chart.js:^4.5
         npm-asset/chartjs-adapter-date-fns:^3.0
         npm-asset/chartjs-plugin-datalabels:^2.0
+        npm-asset/chartjs-plugin-annotation:^3.1

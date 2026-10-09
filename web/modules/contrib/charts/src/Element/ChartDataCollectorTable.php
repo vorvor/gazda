@@ -3,6 +3,9 @@
 namespace Drupal\charts\Element;
 
 use Drupal\Component\Utility\Environment;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\InsertCommand;
+use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\Unicode;
@@ -45,6 +48,15 @@ class ChartDataCollectorTable extends FormElementBase {
       // Allows to toggle on/off drupal tabledrag functionality.
       '#table_drag' => TRUE,
       '#default_colors' => [],
+      // Optional per-series chart type override options, as [type_id => label].
+      // When empty (the default), no per-series type control is rendered.
+      '#series_type_options' => [],
+      // Other parts of the form that are derived from this table's contents and
+      // must therefore be refreshed whenever the table changes. Each item is an
+      // associative array with two keys:
+      // - wrapper_id: the HTML id of the element to replace.
+      // - array_parents: the #array_parents of the element in the form.
+      '#ajax_companions' => [],
       '#process' => [
         [$class, 'processDataCollectorTable'],
       ],
@@ -125,6 +137,8 @@ class ChartDataCollectorTable extends FormElementBase {
       '#attributes' => [
         'class' => ['data-collector-table'],
       ],
+      '#prefix' => '<div class="data-collector-table__viewport">',
+      '#suffix' => '</div>',
     ];
 
     $table_drag = $element['#table_drag'];
@@ -150,6 +164,7 @@ class ChartDataCollectorTable extends FormElementBase {
     else {
       $element['data_collector_table'] = &$table;
     }
+    $element['#attached']['library'][] = 'charts/data_collector_table';
 
     $rows = count($element_state['data_collector_table']);
 
@@ -215,6 +230,22 @@ class ChartDataCollectorTable extends FormElementBase {
             '#maxlength' => 7,
             '#default_value' => $column['color'],
           ];
+
+          // Optional per-series chart type override, shown beside the color.
+          // An empty value means "inherit the chart's base type".
+          if (!empty($element['#series_type_options'])) {
+            $row_form[$j]['chart_type'] = [
+              '#type' => 'select',
+              '#title' => t('Series type'),
+              '#title_display' => 'invisible',
+              '#options' => $element['#series_type_options'],
+              '#empty_option' => t('- Chart default -'),
+              '#default_value' => is_array($column) ? ($column['chart_type'] ?? '') : '',
+              '#attributes' => [
+                'class' => ['data-collector-table--series-type'],
+              ],
+            ];
+          }
         }
       }
 
@@ -271,9 +302,12 @@ class ChartDataCollectorTable extends FormElementBase {
           'class' => ['data-collector-table--row--move-up'],
         ]);
       }
-      $row_form['operations']['delete'] = self::buildOperationButton('delete', 'row', $id_prefix, $wrapper_id, $i, [], [
-        'class' => ['data-collector-table--row--delete'],
-      ]);
+      $is_single_row = count($element_state['data_collector_table']) === 1;
+      if (!$is_single_row) {
+        $row_form['operations']['delete'] = self::buildOperationButton('delete', 'row', $id_prefix, $wrapper_id, $i, [], [
+          'class' => ['data-collector-table--row--delete'],
+        ]);
+      }
       if (!$is_last_data_row) {
         $row_form['operations']['move_down'] = self::buildOperationButton('move_down', 'row', $id_prefix, $wrapper_id, $i, [], [
           'class' => ['data-collector-table--row--move-down'],
@@ -320,9 +354,13 @@ class ChartDataCollectorTable extends FormElementBase {
           'class' => ['data-collector-table--column--move-left'],
         ]);
       }
-      $table['_delete_column_buttons'][$column]['delete'] = self::buildOperationButton('delete', 'column', $id_prefix, $wrapper_id, $column, [], [
-        'class' => ['data-collector-table--column--delete'],
-      ]);
+      $first_row = current($element_state['data_collector_table']);
+      $is_single_column = count($first_row) === 1;
+      if (!$is_single_column) {
+        $table['_delete_column_buttons'][$column]['delete'] = self::buildOperationButton('delete', 'column', $id_prefix, $wrapper_id, $column, [], [
+          'class' => ['data-collector-table--column--delete'],
+        ]);
+      }
       if ($column !== $max_column) {
         $table['_delete_column_buttons'][$column]['move_right'] = self::buildOperationButton('move_right', 'column', $id_prefix, $wrapper_id, $column, [], [
           'class' => ['data-collector-table--column--move-right'],
@@ -481,7 +519,41 @@ class ChartDataCollectorTable extends FormElementBase {
       $length = -4;
     }
     $element_parents = array_slice($triggering_element['#array_parents'], 0, $length);
-    return NestedArray::getValue($form, $element_parents);
+    $element = NestedArray::getValue($form, $element_parents);
+
+    // Elements outside this one can be derived from the table's contents (for
+    // example the plot lines section, whose rows are the table's series). They
+    // register themselves through #ajax_companions so that they are refreshed
+    // in the same request; otherwise they would keep showing stale data until
+    // the form is saved and re-opened.
+    $companions = $element['#ajax_companions'] ?? [];
+    if (!$companions) {
+      return $element;
+    }
+
+    // No server-computed id can address this element's own wrapper reliably.
+    // #wrapper_id comes from Html::getUniqueId(), whose registry of issued ids
+    // is per request, so the id produced during an AJAX rebuild need not match
+    // the one in the DOM; #ajax['wrapper'] on the rebuilt triggering element
+    // has the same problem. A command carrying either one can silently match
+    // nothing, leaving the browser showing a table that the server has already
+    // changed. Passing a NULL selector is what returning a render array does
+    // internally: the client falls back to the wrapper and method recorded in
+    // its own Drupal.Ajax settings, which are the values the page was actually
+    // rendered with.
+    $response = new AjaxResponse();
+    $response->addCommand(new InsertCommand(NULL, $element));
+    foreach ($companions as $companion) {
+      if (empty($companion['wrapper_id']) || empty($companion['array_parents'])) {
+        continue;
+      }
+      $companion_element = NestedArray::getValue($form, $companion['array_parents']);
+      if ($companion_element) {
+        $response->addCommand(new ReplaceCommand('#' . $companion['wrapper_id'], $companion_element));
+      }
+    }
+
+    return $response;
   }
 
   /**
@@ -551,6 +623,14 @@ class ChartDataCollectorTable extends FormElementBase {
       \Drupal::messenger()->addMessage(t('Successfully imported @file', [
         '@file' => $file_upload->getClientOriginalName(),
       ]));
+
+      // A CSV import rebuilds the table from scratch and therefore only carries
+      // the imported cell data. Copy the previously configured series colors
+      // back onto the freshly imported table so that uploading new data does
+      // not reset the colors to the default/random ones.
+      $identifier = $series['table_categories_identifier'] ?? self::FIRST_COLUMN;
+      $existing_table = $series['data_collector_table'] ?? [];
+      self::retainExistingColors($element_state['data_collector_table'], $existing_table, $identifier);
 
       // Updating form state storage.
       self::setElementState($element_parents, $form_state, $element_state);
@@ -974,6 +1054,7 @@ class ChartDataCollectorTable extends FormElementBase {
         $name_key = key($row);
         $series[$i]['name'] = $row[$name_key]['data'] ?? [];
         $series[$i]['color'] = $row[$name_key]['color'] ?? '';
+        $series[$i]['chart_type'] = $row[$name_key]['chart_type'] ?? '';
         // Removing the name from a data array.
         unset($row[$name_key]);
         foreach ($row as $column) {
@@ -1021,6 +1102,7 @@ class ChartDataCollectorTable extends FormElementBase {
           // This is the first column that holds the data names and colors.
           $series[$j]['name'] = $column['data'] ?? $column;
           $series[$j]['color'] = $column['color'] ?? self::randomColor();
+          $series[$j]['chart_type'] = $column['chart_type'] ?? '';
           $j++;
           continue;
         }
@@ -1072,6 +1154,74 @@ class ChartDataCollectorTable extends FormElementBase {
       'floatval',
       array_map('trim', explode(',', $value))
     );
+  }
+
+  /**
+   * Retains manually configured series colors after a CSV import.
+   *
+   * A CSV import rebuilds the data collector table from scratch, so the newly
+   * imported table only contains cell "data" and loses any colors the user had
+   * previously set. This copies the colors from the pre-import table onto the
+   * matching cells of the freshly imported table so they are not reset to the
+   * default/random colors when the element is re-rendered.
+   *
+   * A series' color lives on a single cell: on the first row (one per column)
+   * when categories are identified by the first column, and on the first column
+   * (one per row) when categories are identified by the first row. The color of
+   * a cell is therefore always copied from the cell at the same coordinates in
+   * the pre-import table, which keeps the mapping correct for both orientations
+   * and for tables whose dimensions changed during the import.
+   *
+   * @param array $new_table
+   *   The freshly imported table. Passed by reference and updated in place.
+   * @param array $existing_table
+   *   The pre-import table holding the previously configured colors.
+   * @param string $identifier
+   *   The categories identifier: self::FIRST_COLUMN or self::FIRST_ROW.
+   */
+  public static function retainExistingColors(array &$new_table, array $existing_table, string $identifier) {
+    if (!$new_table || !$existing_table) {
+      return;
+    }
+
+    $is_first_column = $identifier === self::FIRST_COLUMN;
+    $first_row_key = array_key_first($new_table);
+
+    foreach ($new_table as $i => $row) {
+      $first_col_key = NULL;
+      foreach ($row as $j => $column) {
+        if ($j === 'weight') {
+          continue;
+        }
+        $first_col_key = $first_col_key ?? $j;
+
+        // The top-left cell never holds a color.
+        if ($i === $first_row_key && $j === $first_col_key) {
+          continue;
+        }
+
+        // Only the series cells carry a color. This mirrors the rule used when
+        // the color inputs are rendered: the first row for "first column"
+        // tables, and the first column for "first row" tables.
+        $is_color_cell = $is_first_column
+          ? ($i === $first_row_key)
+          : ($j === $first_col_key);
+        if (!$is_color_cell) {
+          continue;
+        }
+
+        // Copy the color from the matching cell of the pre-import table when it
+        // had one. Otherwise leave the cell untouched so the render logic can
+        // fall back to the default/random color.
+        $existing_color = $existing_table[$i][$j]['color'] ?? NULL;
+        if (!empty($existing_color)) {
+          if (!is_array($new_table[$i][$j])) {
+            $new_table[$i][$j] = ['data' => $new_table[$i][$j]];
+          }
+          $new_table[$i][$j]['color'] = $existing_color;
+        }
+      }
+    }
   }
 
   /**

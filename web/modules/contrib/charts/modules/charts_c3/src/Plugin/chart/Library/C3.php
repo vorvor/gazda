@@ -4,6 +4,7 @@ namespace Drupal\charts_c3\Plugin\chart\Library;
 
 use Drupal\charts\ApplyRawOptionsTrait;
 use Drupal\charts\Attribute\Chart;
+use Drupal\charts\BackgroundColorTrait;
 use Drupal\charts\Plugin\chart\Library\ChartBase;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Extension\ModuleHandlerInterface;
@@ -38,6 +39,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class C3 extends ChartBase implements ContainerFactoryPluginInterface {
 
   use ApplyRawOptionsTrait;
+  use BackgroundColorTrait;
 
   /**
    * The element info manager.
@@ -132,6 +134,13 @@ class C3 extends ChartBase implements ContainerFactoryPluginInterface {
   /**
    * {@inheritdoc}
    */
+  public function supportsPlotLines(): bool {
+    return TRUE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function preRender(array $element) {
     // Ensure ID is set early so we can use it for 'bindto'.
     if (!isset($element['#id'])) {
@@ -163,6 +172,12 @@ class C3 extends ChartBase implements ContainerFactoryPluginInterface {
       $chart_definition = $this->populateData($element, $chart_definition);
       $chart_definition = $this->populateAxes($element, $chart_definition);
     }
+
+    // Workaround because C3.js does not natively support background color.
+    $element = $this->applyBackgroundColor($element);
+
+    // Merge in chart raw options (applies to both methods).
+    $chart_definition = $this->applyRawOptions($element, $chart_definition);
 
     // Ensure the chart knows where to render.
     // This must happen regardless of how the definition was built.
@@ -407,6 +422,24 @@ class C3 extends ChartBase implements ContainerFactoryPluginInterface {
         }
         else {
           $chart_definition['data']['columns'] = array_map(NULL, $categories, $chart_definition['data']['columns']);
+        }
+      }
+      // Map the #plot_lines property of axis elements to grid lines.
+      // Note: grid lines do not extend the axis range and this library has no
+      // equivalent of a "soft" minimum or maximum, so a line whose value falls
+      // outside the range of the series data is not visible. Set an explicit
+      // axis minimum or maximum in the chart settings to bring it into view.
+      if (($type === 'chart_xaxis' || $type === 'chart_yaxis') && !empty($element[$child]['#plot_lines'])) {
+        $grid_axis = $type === 'chart_xaxis' ? 'x' : 'y';
+        foreach ($element[$child]['#plot_lines'] as $plot_line) {
+          if (!isset($plot_line['value']) || !is_numeric($plot_line['value'])) {
+            continue;
+          }
+          $line = ['value' => (float) $plot_line['value']];
+          if (!empty($plot_line['label'])) {
+            $line['text'] = $plot_line['label'];
+          }
+          $chart_definition['grid'][$grid_axis]['lines'][] = $line;
         }
       }
       if ($type === 'chart_yaxis') {

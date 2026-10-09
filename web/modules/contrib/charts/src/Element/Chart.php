@@ -16,6 +16,7 @@ use Drupal\charts\Plugin\chart\Library\ChartBase;
 use Drupal\charts\Plugin\chart\Library\ChartInterface;
 use Drupal\charts\Plugin\chart\Library\LibraryRetrieverTrait;
 use Drupal\charts\TypeManager;
+use Drupal\charts\Util\Util;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -373,6 +374,42 @@ class Chart extends RenderElementBase implements ContainerFactoryPluginInterface
       '#decimal_count' => $settings['yaxis']['decimal_count'],
     ];
 
+    // Render the series selected as plot lines in the settings as axis plot
+    // lines instead of regular series.
+    if (!$single_axis && !empty($settings['plot_lines']['sources'])) {
+      foreach ($settings['plot_lines']['sources'] as $source_key => $plot_line_settings) {
+        if (empty($plot_line_settings['enabled']) || !preg_match('/^series_(\d+)$/', (string) $source_key, $matches)) {
+          continue;
+        }
+        $series_index = (int) $matches[1];
+        if (!isset($series_data[$series_index]['data']) || !is_array($series_data[$series_index]['data'])) {
+          continue;
+        }
+        $value = Util::firstNumericValue($series_data[$series_index]['data']);
+        if ($value === NULL) {
+          // No numeric value available: keep rendering the regular series.
+          continue;
+        }
+        $plot_line = [
+          'value' => $value,
+          'label' => $plot_line_settings['label_text'] ?? '',
+          'color' => $plot_line_settings['color'] ?? '',
+        ];
+        if (($plot_line_settings['orientation'] ?? 'horizontal') === 'vertical') {
+          $element['xaxis']['#plot_lines'][] = $plot_line;
+        }
+        else {
+          $element['yaxis']['#plot_lines'][] = $plot_line;
+        }
+        // The series is represented by the plot line; do not render it as a
+        // regular series as well.
+        unset($series_data[$series_index]);
+      }
+      if (!$series_data) {
+        return $element;
+      }
+    }
+
     // Create a secondary axis if needed.
     $series_count = count($series_data);
     if (!empty($settings['yaxis']['inherit']) && $series_count === 2) {
@@ -422,6 +459,9 @@ class Chart extends RenderElementBase implements ContainerFactoryPluginInterface
         ];
         if (!empty($data['color'])) {
           $element[$key]['#color'] = $data['color'];
+        }
+        if (!empty($data['chart_type'])) {
+          $element[$key]['#chart_type'] = $data['chart_type'];
         }
         if (isset($element['yaxis'])) {
           $element[$key]['#prefix'] = $settings['yaxis']['prefix'];

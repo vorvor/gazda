@@ -697,7 +697,7 @@ class LeafletMap extends StylePluginBase implements ContainerFactoryPluginInterf
       $form['entity_source'] = [
         '#type' => 'select',
         '#title' => new TranslatableMarkup('Entity Source'),
-        '#description' => new TranslatableMarkup('Select which Entity should be used as Leaflet Mapping base Entity.<br><u>Leave as "View Base Entity" to rely on default Views behaviour, and don\'t specifically needed otherwise</u>.'),
+        '#description' => new TranslatableMarkup('Select which Entity should be used as Leaflet Mapping base Entity.<br>Leave as "View Base Entity" to rely on default Views behaviour, and don\'t specifically needed otherwise.'),
         '#options' => $entity_sources,
         '#default_value' => !empty($this->options['entity_source']) ? $this->options['entity_source'] : '__base_table',
         '#ajax' => [
@@ -1220,7 +1220,7 @@ class LeafletMap extends StylePluginBase implements ContainerFactoryPluginInterf
    *
    * @param string $entity_type
    *   The entity type.
-   * @param string $entity_id
+   * @param string|int $entity_id
    *   The entity ID.
    * @param object|null $entity
    *   The entity or NULL.
@@ -1232,7 +1232,7 @@ class LeafletMap extends StylePluginBase implements ContainerFactoryPluginInterf
    * @return string
    *   The popup content.
    */
-  protected function getPopupContent(string $entity_type, string $entity_id, $entity, $result, string $langcode) {
+  protected function getPopupContent(string $entity_type, string|int $entity_id, $entity, $result, string $langcode) {
     // Define the Popup source and Popup view mode with backward
     // compatibility with Leaflet release < 2.x.
     $popup_source = !empty($this->options['description_field']) ?
@@ -1333,7 +1333,7 @@ class LeafletMap extends StylePluginBase implements ContainerFactoryPluginInterf
    *
    * @param array $feature
    *   The feature to process.
-   * @param string $entity_id
+   * @param string|int $entity_id
    *   The entity ID.
    * @param string|MarkupInterface $popup_content
    *   The popup content.
@@ -1350,7 +1350,7 @@ class LeafletMap extends StylePluginBase implements ContainerFactoryPluginInterf
    */
   protected function processFeature(
     array &$feature,
-    string $entity_id,
+    string|int $entity_id,
     string|MarkupInterface $popup_content,
     array $tokens,
     int $id,
@@ -1452,18 +1452,15 @@ class LeafletMap extends StylePluginBase implements ContainerFactoryPluginInterf
         case '#rendered_view_fields':
           // Normal rendering via view/row fields
           // (with labels options, formatters, classes, etc.).
-          $render_row = [
-            "markup" => $this->view->rowPlugin->render($result),
-          ];
-          // Render popup content, ensuring backward compatibility
+          $render_row = $this->view->rowPlugin->render($result);
+
+          // Render popup content, ensuring backward compatibility.
           $feature['tooltip']['value'] = $this->renderer->renderInIsolation($render_row);
           break;
 
         default:
-          // Decode every entity because JS will encode them again,
-          // and we don't want double encoding.
           $feature['tooltip']['value'] = array_key_exists($this->options['leaflet_tooltip']['value'], $this->rendered_fields[$result->index]) ?
-            Html::decodeEntities((string) $this->rendered_fields[$result->index][$this->options['leaflet_tooltip']['value']]) : '';
+            (string) $this->rendered_fields[$result->index][$this->options['leaflet_tooltip']['value']] : '';
       }
 
       // Associate dynamic tooltip options (token based).

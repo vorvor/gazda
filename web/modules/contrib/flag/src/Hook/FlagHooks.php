@@ -170,10 +170,9 @@ class FlagHooks {
     $flags = $flag_service->getAllFlags($entity->getEntityTypeId(), $entity->bundle());
     // Check the first flag and return early if the form isn't considered to be
     // an edit form.
-    $first_flag = reset($flags);
-    if ($first_flag instanceof FlagInterface) {
+    if (!empty($flags) && isset($flags[0]) && $flags[0] instanceof FlagInterface) {
       /** @var \Drupal\flag\Plugin\Flag\EntityFlagType $flag_type */
-      $flag_type = $first_flag->getFlagTypePlugin();
+      $flag_type = $flags[0]->getFlagTypePlugin();
       if (!$flag_type->isAddEditForm($object->getOperation())) {
         return;
       }

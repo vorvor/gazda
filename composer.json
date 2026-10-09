@@ -23,6 +23,7 @@
         "drupal/backup_migrate": "^5.1",
         "drupal/better_exposed_filters": "^7.1",
         "drupal/blazy": "^3.0",
+        "drupal/charts": "^5.2",
         "drupal/clipboardjs": "^2.0",
         "drupal/colorbox": "^2.2",
         "drupal/config_ignore": "^3.4",

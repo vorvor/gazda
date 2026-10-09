@@ -655,7 +655,7 @@ display:
         type: normal
         title: 'Napi menü'
         description: ''
-        weight: -42
+        weight: -50
         expanded: false
         menu_name: main
         parent: ''
