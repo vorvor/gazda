@@ -50,6 +50,42 @@ final class CsvProductSearch {
   public function __construct(private readonly string $appRoot) {}
 
   /**
+   * Counts distinct nonempty product names within each configured stock source.
+   */
+  public function countProducts(): int {
+    $count = 0;
+    foreach (self::SOURCES as $source) {
+      $handle = @fopen($this->appRoot . $source['path'], 'r');
+      if ($handle === FALSE) {
+        continue;
+      }
+      try {
+        $header = fgetcsv($handle, 0, ',', '"', '');
+        if ($header === FALSE) {
+          continue;
+        }
+        $header[0] = preg_replace('/^\xEF\xBB\xBF/', '', $header[0] ?? '');
+        $column = array_search($source['column'], array_map('trim', $header), TRUE);
+        if ($column === FALSE) {
+          continue;
+        }
+        $names = [];
+        while (($row = fgetcsv($handle, 0, ',', '"', '')) !== FALSE) {
+          $name = trim($row[$column] ?? '');
+          if ($name !== '') {
+            $names[mb_strtolower($name, 'UTF-8')] = TRUE;
+          }
+        }
+        $count += count($names);
+      }
+      finally {
+        fclose($handle);
+      }
+    }
+    return $count;
+  }
+
+  /**
    * Returns names matching any whitespace- or plus-separated keyword.
    */
   public function search(string $keyword, string $source = 'gazdabolt'): array {

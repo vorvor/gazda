@@ -143,6 +143,8 @@ final class ProductSearchController extends ControllerBase {
       ->count()
       ->execute();
 
+    $local_offering_count += $this->csvProductSearch->countProducts();
+
     $shop_count = (int) $node_storage->getQuery()
       ->accessCheck(TRUE)
       ->condition('type', 'shop')
