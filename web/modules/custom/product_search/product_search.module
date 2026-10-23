@@ -9,6 +9,7 @@ function product_search_theme($existing, $type, $theme, $path) {
       'variables' => [
         'placeholder' => NULL,
         'keyword' => NULL,
+        'shop_id' => NULL,
         'marketingblock' => NULL,
         'results' => NULL,
         'is_front' => FALSE,

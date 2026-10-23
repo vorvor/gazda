@@ -3,6 +3,10 @@
 namespace Drupal\product_search\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\NodeInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides an AJAX product search block.
@@ -13,16 +17,40 @@ use Drupal\Core\Block\BlockBase;
  *   category = @Translation("Custom")
  * )
  */
-final class ProductSearchBlock extends BlockBase {
+final class ProductSearchBlock extends BlockBase implements ContainerFactoryPluginInterface {
+
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, private readonly RouteMatchInterface $routeMatch) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): self {
+    return new self($configuration, $plugin_id, $plugin_definition, $container->get('current_route_match'));
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCacheContexts(): array {
+    return array_merge(parent::getCacheContexts(), ['route']);
+  }
 
   /**
    * {@inheritdoc}
    */
   public function build(): array {
-    $default_view = $this->buildProductsView();
+    $node = $this->routeMatch->getParameter('node');
+    $shop_id = $node instanceof NodeInterface && $node->bundle() === 'shop' ? (int) $node->id() : NULL;
+    $default_view = $shop_id === NULL
+      ? $this->buildProductsView()
+      : views_embed_view('products', 'block_1', $shop_id);
 
     return [
       '#theme' => 'product_search',
+      '#shop_id' => $shop_id,
+      '#cache' => ['contexts' => ['route']],
       '#placeholder' => $this->t('Search product'),
       '#marketingblock' => [
         '#type' => 'container',

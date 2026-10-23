@@ -53,7 +53,10 @@
                 'X-CSRF-Token': csrfToken,
                 'X-Requested-With': 'XMLHttpRequest'
               },
-              body: new URLSearchParams({ q: keyword }),
+              body: new URLSearchParams({
+                q: keyword,
+                ...(widget.dataset.shopId ? { shop_id: widget.dataset.shopId } : {})
+              }),
               credentials: 'same-origin',
               signal: requestController.signal
             });

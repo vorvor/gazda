@@ -1,4 +1,8 @@
 services:
+  product_search.csv_search:
+    class: Drupal\product_search\CsvProductSearch
+    arguments: ['%app.root%']
+
   logger.channel.product_search:
     parent: logger.channel_base
     arguments: ['product_search']

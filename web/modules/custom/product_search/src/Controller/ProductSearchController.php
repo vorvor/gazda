@@ -11,6 +11,8 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\product_search\SearchAnalytics;
+use Drupal\product_search\CsvProductSearch;
+use Drupal\path_alias\AliasManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,6 +40,8 @@ final class ProductSearchController extends ControllerBase {
     private readonly FileUrlGeneratorInterface $fileUrlGenerator,
     private readonly SearchAnalytics $searchAnalytics,
     private readonly CsrfTokenGenerator $csrfTokenGenerator,
+    private readonly CsvProductSearch $csvProductSearch,
+    private readonly AliasManagerInterface $aliasManager,
   ) {}
 
   /**
@@ -51,6 +55,8 @@ final class ProductSearchController extends ControllerBase {
       $container->get('file_url_generator'),
       $container->get('product_search.search_analytics'),
       $container->get('csrf_token'),
+      $container->get('product_search.csv_search'),
+      $container->get('path_alias.manager'),
     );
   }
 
@@ -65,12 +71,14 @@ final class ProductSearchController extends ControllerBase {
     );
 
     $nids = NULL;
+    $csv_names = [];
     if ($keyword !== '') {
       $nids = $this->findProductNodeIds($keyword);
-      $this->searchAnalytics->log($keyword, count($nids), $request->getClientIp());
+      $csv_names = $this->findCsvProducts($keyword);
+      $this->searchAnalytics->log($keyword, count($nids) + count($csv_names), $request->getClientIp());
     }
 
-    $results_view = $this->buildProductsView($nids);
+    $results_view = $this->buildSearchResults($nids, $csv_names);
     $discovery = $this->buildHomepageDiscovery();
 
     return [
@@ -241,9 +249,24 @@ final class ProductSearchController extends ControllerBase {
       self::MAX_SEARCH_TERM_LENGTH,
     );
 
-    // Empty keyword means: show the default products View with all products.
+    $shop_id = NULL;
+    if ($request->request->has('shop_id')) {
+      $scope = (string) $request->request->get('shop_id');
+      if (!preg_match('/^[1-9][0-9]*$/D', $scope)) {
+        return new JsonResponse(['message' => 'Invalid shop.'], 400);
+      }
+      $shop_id = (int) $scope;
+      $shop = $this->productSearchEntityTypeManager->getStorage('node')->load($shop_id);
+      if (!$shop || $shop->bundle() !== 'shop' || !$shop->isPublished() || !$shop->access('view')) {
+        return new JsonResponse(['message' => 'Shop not found.'], 404);
+      }
+    }
+
+    // Clearing the field must preserve the scope of the original widget.
     if ($keyword === '') {
-      $build = $this->buildProductsView();
+      $build = $shop_id === NULL
+        ? $this->buildProductsView()
+        : views_embed_view('products', 'block_1', $shop_id);
 
       if (!$build) {
         return new JsonResponse([
@@ -258,29 +281,112 @@ final class ProductSearchController extends ControllerBase {
       ]);
     }
 
-    $nids = $this->findProductNodeIds($keyword);
-    $this->searchAnalytics->log($keyword, count($nids), $request->getClientIp());
+    $nids = $this->findProductNodeIds($keyword, $shop_id);
+    $csv_names = $this->findCsvProducts($keyword, $shop_id);
+    $count = count($nids) + count($csv_names);
+    $this->searchAnalytics->log($keyword, $count, $request->getClientIp());
 
-    if ($nids === []) {
+    if ($count === 0) {
       return new JsonResponse([
         'html' => '<p class="product-search-no-results">No products found.</p>',
         'count' => 0,
       ]);
     }
 
-    $build = $this->buildProductsView($nids);
+    $build = $this->buildSearchResults($nids, $csv_names);
 
     if (!$build) {
       return new JsonResponse([
         'html' => '<p class="product-search-error">The products view could not be rendered.</p>',
-        'count' => count($nids),
+        'count' => $count,
       ], 500);
     }
 
     return new JsonResponse([
       'html' => (string) $this->productSearchRenderer->renderRoot($build),
-      'count' => count($nids),
+      'count' => $count,
     ]);
+  }
+
+  /**
+   * Limits stock sources to the current shop, or includes all for global search.
+   */
+  private function findCsvProducts(string $keyword, ?int $shop_id = NULL): array {
+    $sources = [];
+    foreach (CsvProductSearch::SOURCES as $source => $definition) {
+      if ($shop_id === NULL || $this->aliasManager->getPathByAlias($definition['alias']) === '/node/' . $shop_id) {
+        $sources[] = $source;
+      }
+    }
+    return $this->csvProductSearch->searchProducts($keyword, $sources);
+  }
+
+  /**
+   * Keeps the existing product View and appends escaped CSV name results.
+   */
+  private function buildSearchResults(?array $nids, array $csv_names): array {
+    $build = ['#cache' => ['max-age' => 0]];
+    if ($nids === NULL || $nids !== []) {
+      $build['products'] = $this->buildProductsView($nids) ?: [
+        '#markup' => '<p class="product-search-error">' . $this->t('The products view could not be rendered.') . '</p>',
+      ];
+    }
+    elseif (!$csv_names) {
+      $build['empty'] = [
+        '#markup' => '<p class="product-search-no-results">' . $this->t('No products found.') . '</p>',
+      ];
+    }
+    if ($csv_names) {
+      $build['csv'] = [
+        '#type' => 'container',
+        '#attributes' => ['class' => ['product-search-csv-results']],
+      ];
+      foreach ($csv_names as $product) {
+        $name = is_array($product) ? $product['name'] : $product;
+        $short_name = is_array($product) ? $product['short_name'] : $this->csvProductSearch->shortName($name);
+        $shop_name = is_array($product) ? $product['shop'] : CsvProductSearch::SOURCES['gazdabolt']['shop'];
+        $initial = mb_strtoupper(mb_substr(trim($short_name), 0, 1, 'UTF-8'), 'UTF-8');
+        // Keep the generated color stable for each initial across searches.
+        $hue = (mb_ord($initial, 'UTF-8') * 137) % 360;
+        $build['csv'][] = [
+          '#type' => 'container',
+          '#attributes' => ['class' => ['product-search-csv-result']],
+          'placeholder' => [
+            '#type' => 'html_tag',
+            '#tag' => 'div',
+            '#attributes' => [
+              'class' => ['product-search-csv-placeholder'],
+              'aria-hidden' => 'true',
+              'style' => '--initial-hue: ' . $hue . ';',
+            ],
+            'text' => ['#plain_text' => $initial],
+          ],
+          'name' => [
+            '#type' => 'html_tag',
+            '#tag' => 'h3',
+            'text' => ['#plain_text' => $short_name],
+          ],
+          'description' => [
+            '#type' => 'html_tag',
+            '#tag' => 'p',
+            '#attributes' => ['class' => ['product-search-csv-description']],
+            'text' => ['#plain_text' => $name],
+          ],
+          'shop' => [
+            '#type' => 'html_tag',
+            '#tag' => 'div',
+            '#attributes' => ['class' => ['product-search-csv-shop']],
+            'text' => ['#plain_text' => $shop_name],
+          ],
+          'notice' => [
+            '#type' => 'html_tag',
+            '#tag' => 'p',
+            'text' => ['#plain_text' => 'termék fotó nem elérhető jelenleg'],
+          ],
+        ];
+      }
+    }
+    return $build;
   }
 
   /**
@@ -305,10 +411,10 @@ final class ProductSearchController extends ControllerBase {
   /**
    * Finds product node IDs matching any submitted keyword.
    */
-  private function findProductNodeIds(string $keyword): array {
+  private function findProductNodeIds(string $keyword, ?int $shop_id = NULL): array {
     return array_map(
       'intval',
-      $this->buildProductSearchQuery($keyword)->execute()->fetchCol(),
+      $this->buildProductSearchQuery($keyword, $shop_id)->execute()->fetchCol(),
     );
   }
 
@@ -320,7 +426,7 @@ final class ProductSearchController extends ControllerBase {
    * conditions like field_tags.target_id, but it can break when trying to walk
    * from a node field to a referenced taxonomy term name.
    */
-  private function buildProductSearchQuery(string $keyword): SelectInterface {
+  private function buildProductSearchQuery(string $keyword, ?int $shop_id = NULL): SelectInterface {
     $query = $this->productSearchDatabase->select('node_field_data', 'nfd')
       ->fields('nfd', ['nid'])
       ->condition('nfd.type', ['product', 'service'], 'IN')
@@ -379,6 +485,16 @@ final class ProductSearchController extends ControllerBase {
     }
 
     $query->condition($or);
+
+    if ($shop_id !== NULL) {
+      if ($schema->tableExists('node__field_shop')) {
+        $query->condition('fs.field_shop_target_id', $shop_id);
+      }
+      else {
+        // Never fall back to a global lookup if the reference field is absent.
+        $query->where('1 = 0');
+      }
+    }
 
     return $query;
   }

@@ -81,6 +81,8 @@ $controller = new ProductSearchController(
   \Drupal::service('file_url_generator'),
   $analytics,
   \Drupal::service('csrf_token'),
+  \Drupal::service('product_search.csv_search'),
+  \Drupal::service('path_alias.manager'),
 );
 
 $flood = \Drupal::service('flood');

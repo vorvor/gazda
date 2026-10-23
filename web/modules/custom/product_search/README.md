@@ -14,6 +14,39 @@ nodes by:
 
 It then passes the matching node IDs to the View as a contextual argument.
 
+Searches also read `web/gazdabolt_full_stock/merged_products.csv` (`termék neve`)
+and `web/balint_full_stock/products.csv` (`product strict name`), matching
+only those name columns (case-insensitive partial matches). Spaces and
+plus signs separate keywords, with any keyword matching, as in node searches.
+Matching CSV names appear below the existing product results with the notice
+`termék fotó nem elérhető jelenleg`. Duplicate names appear once per shop;
+identical names sold by different shops remain separate cards. No nodes
+are imported or modified. Both the initial keyword page and AJAX responses
+include these results, and analytics counts include both sources. Empty
+searches keep the original default View. Missing/unreadable CSV files or a
+missing name column leave node search available. The CSV is read on each
+search, so stock-file changes do not require a cache rebuild.
+
+CSV cards use the optional `rövid terméknév` column as their title and keep
+the original name underneath as the full description. Initials and colors follow
+the short title; matching still uses the full original name. Empty/missing
+short titles fall back to the full name. The short-name column can be edited
+manually. To populate missing titles, run
+`python3 web/modules/custom/product_search/scripts/distill_stock_names.py web/gazdabolt_full_stock/merged_products.csv --write`.
+The script uses product nouns found in names and the existing product-type
+vocabulary, preserves original columns, and creates a backup before writing.
+Existing titles are preserved unless `--refresh` is explicitly supplied.
+
+On shop node pages, the search block sends the current shop ID with each AJAX
+request. Node searches additionally require that `field_shop` references that
+shop; clearing the search restores the shop-specific product View. The block
+cache varies by route. Each CSV is included only on its own shop's searches,
+or in unscoped site-wide searches. Source definitions in `CsvProductSearch::SOURCES`
+map file paths, name columns, labels, and shop aliases. Gazdabolt resolves from
+`/bolt/gazdabolt`; Bálint resolves from
+`/bolt/balint-es-tarsa-kft-villamossagi-szakuzlet`. Invalid or inaccessible
+shop IDs are rejected rather than falling back to global results.
+
 ## Required View setup
 
 Edit the `products` View, display `page_1`:

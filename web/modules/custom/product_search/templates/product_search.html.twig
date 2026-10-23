@@ -1,4 +1,4 @@
-<div class="product-search-widget product-search-block"{% if is_front %} data-homepage-discovery{% endif %}>
+<div class="product-search-widget product-search-block"{% if shop_id %} data-shop-id="{{ shop_id }}"{% endif %}{% if is_front %} data-homepage-discovery{% endif %}>
   {% if is_front %}
     <section class="discovery-hero" aria-labelledby="discovery-title">
       <div class="discovery-hero__content">
@@ -84,7 +84,7 @@
     #}
   {% else %}
     <div class="search-widget-header">
-      <h2>Keress a helyi kínálatban</h2>
+      <h2>{{ shop_id ? 'Keress az üzlet kínálatában' : 'Keress a helyi kínálatban' }}</h2>
     </div>
     <div class="product-search-form" role="search">
       <label class="visually-hidden" for="product-search-input">Termék vagy szolgáltatás keresése</label>
