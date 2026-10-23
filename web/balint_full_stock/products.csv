@@ -1,108 +1,214 @@
 ﻿unique_id,image filename,product strict name,short description,rövid terméknév
-BAL-b4a63d7edf477b8d,processed_20261002_094001.jpg,Fehér kábelkötegelő,Tasakos műanyag kábelkötegelők; a nem olvasható méretváltozatok összevonva.,Kábelkötegelő
-BAL-da2b2401bfc3889e,processed_20261002_094001.jpg,Fekete kábelkötegelő,Tasakos műanyag kábelkötegelők; pontos méretük nem olvasható.,Kábelkötegelő
-BAL-956bc882126a3f73,processed_20261002_094001.jpg,Fehér szeges kábelrögzítő,Fehér műanyag kábelrögzítő bilincsek szeggel; méretük nem olvasható.,Kábelrögzítő
-BAL-6734bd47f21e5e38,processed_20261002_094001.jpg,Csavaros sorkapocsléc,Fehér többpólusú elektromos vezetékösszekötő; terhelhetősége nem olvasható.,Sorkapocsléc
-BAL-9faa3008efd68ba7,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – fekete,Tekercses szigetelőszalag; színe: fekete. Pontos mérete nem olvasható.,Szigetelőszalag
-BAL-c88a0ad413ad57e8,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – kék,Tekercses szigetelőszalag; színe: kék. Pontos mérete nem olvasható.,Szigetelőszalag
-BAL-c7666bb8a0a7a3cd,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – piros,Tekercses szigetelőszalag; színe: piros. Pontos mérete nem olvasható.,Szigetelőszalag
-BAL-383e6fe3a875f9dd,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – fehér,Tekercses szigetelőszalag; színe: fehér. Pontos mérete nem olvasható.,Szigetelőszalag
-BAL-8a48c6df9e3538ec,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – zöld-sárga,Tekercses szigetelőszalag; színe: zöld-sárga. Pontos mérete nem olvasható.,Szigetelőszalag
-BAL-acff135d6cba9261,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – sárga,Tekercses szigetelőszalag; színe: sárga. Pontos mérete nem olvasható.,Szigetelőszalag
-BAL-055b2ebdef0a2aa0,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – zöld,Tekercses szigetelőszalag; színe: zöld. Pontos mérete nem olvasható.,Szigetelőszalag
+BAL-b4a63d7edf477b8d,processed_20261002_094001.jpg,Fehér kábelkötegelő,Tasakos műanyag kábelkötegelők méretváltozatok összevonva.,Kábelkötegelő
+BAL-da2b2401bfc3889e,processed_20261002_094001.jpg,Fekete kábelkötegelő,Tasakos műanyag kábelkötegelők.,Kábelkötegelő
+BAL-956bc882126a3f73,processed_20261002_094001.jpg,Fehér szeges kábelrögzítő,Fehér műanyag kábelrögzítő bilincsek szeggel.,Kábelrögzítő
+BAL-6734bd47f21e5e38,processed_20261002_094001.jpg,Csavaros sorkapocsléc,Fehér többpólusú elektromos vezetékösszekötő.,Sorkapocsléc
+BAL-9faa3008efd68ba7,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – fekete,Tekercses szigetelőszalag.,Szigetelőszalag
+BAL-c88a0ad413ad57e8,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – kék,Tekercses szigetelőszalag.,Szigetelőszalag
+BAL-c7666bb8a0a7a3cd,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – piros,Tekercses szigetelőszalag.,Szigetelőszalag
+BAL-383e6fe3a875f9dd,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – fehér,Tekercses szigetelőszalag.,Szigetelőszalag
+BAL-8a48c6df9e3538ec,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – zöld-sárga,Tekercses szigetelőszalag.,Szigetelőszalag
+BAL-acff135d6cba9261,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – sárga,Tekercses szigetelőszalag.,Szigetelőszalag
+BAL-055b2ebdef0a2aa0,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – zöld,Tekercses szigetelőszalag.,Szigetelőszalag
 BAL-d3e17ce05b44286a,processed_20261002_094001.jpg,EMOS villanyszerelési szigetelőszalag – többszínű készlet,Több különböző színű szigetelőszalagot tartalmazó csomag.,Szigetelőszalag
 BAL-753ed25fccbc7209,processed_20261002_094001.jpg,EMOS kétaljzatos hálózati elosztóadapter,"Fehér, közvetlenül konnektorba dugható elosztó két látható aljzattal.",Elosztóadapter
-BAL-cfdaed3ec04d8a22,processed_20261002_094001.jpg,"EMOS kapcsolós háromaljzatos hosszabbító – 1,5 m","Fehér földelt elosztó piros kapcsolóval; a címkén 3 aljzat és 1,5 m olvasható.",Hosszabbító
-BAL-37f1bec7653b03fb,processed_20261002_094001.jpg,EMOS kapcsolós háromaljzatos hosszabbító – 3 m,Fehér földelt elosztó piros kapcsolóval; a címkén 3 aljzat és 3 m olvasható.,Hosszabbító
-BAL-a5a3961137eb4517,processed_20261002_094001.jpg,EMOS kapcsolós háromaljzatos hosszabbító – 5 m,Fehér földelt elosztó piros kapcsolóval; a címkén 3 aljzat és 5 m olvasható.,Hosszabbító
-BAL-af59bf6c507a537c,processed_20261002_094001.jpg,EMOS négyaljzatos hosszabbító – 5 m,Fehér földelt elosztó; a címkén 4 aljzat és 5 m olvasható.,Hosszabbító
-BAL-3bf9451c1b6fbcc9,processed_20261002_094001.jpg,EMOS háromaljzatos hosszabbító – 3 m,Fehér földelt elosztó látható kapcsoló nélkül; a címkén 3 aljzat és 3 m olvasható.,Hosszabbító
-BAL-98fdfc1aa15cfb89,processed_20261002_094001.jpg,EMOS egyaljzatos hosszabbító – 3 m,Fehér hálózati hosszabbító egy csatlakozóaljzattal; a címkén 3 m olvasható.,Hosszabbító
+BAL-cfdaed3ec04d8a22,processed_20261002_094001.jpg,"EMOS kapcsolós háromaljzatos hosszabbító – 1,5 m","Fehér földelt elosztó piros kapcsolóval.",Hosszabbító
+BAL-37f1bec7653b03fb,processed_20261002_094001.jpg,EMOS kapcsolós háromaljzatos hosszabbító – 3 m,Fehér földelt elosztó piros kapcsolóval.,Hosszabbító
+BAL-a5a3961137eb4517,processed_20261002_094001.jpg,EMOS kapcsolós háromaljzatos hosszabbító – 5 m,Fehér földelt elosztó piros kapcsolóval.,Hosszabbító
+BAL-af59bf6c507a537c,processed_20261002_094001.jpg,EMOS négyaljzatos hosszabbító – 5 m,Fehér földelt elosztó.,Hosszabbító
+BAL-3bf9451c1b6fbcc9,processed_20261002_094001.jpg,EMOS háromaljzatos hosszabbító – 3 m,Fehér földelt elosztó látható kapcsoló nélkül.,Hosszabbító
+BAL-98fdfc1aa15cfb89,processed_20261002_094001.jpg,EMOS egyaljzatos hosszabbító – 3 m,Fehér hálózati hosszabbító egy csatlakozóaljzattal.,Hosszabbító
 BAL-efd52a8639659970,processed_20261002_094001.jpg,Szürke műanyag könyökidom,Hajlított csőidom; pontos mérete és rendeltetése nem állapítható meg.,Könyökidom
-BAL-df87a014691e138c,processed_20261002_094001.jpg,Fehér műanyag csőtoldó,Egyenes csatlakozóidom; mérete nem olvasható.,Csőtoldó
-BAL-c90de0b743b296e5,processed_20261002_094604.jpg,ANCO csíptetős asztali lámpa – fekete,Hajlítható szárú lámpa csíptetős rögzítéssel; az ANCO jelölés a bemutatófelületen látható. Pontos modell nem olvasható.,Asztali lámpa
-BAL-19a9bedf993228df,processed_20261002_094604.jpg,ANCO asztali lámpa – fekete,Hajlítható szárú lámpa kör alakú talppal; az ANCO jelölés a bemutatófelületen látható. Pontos modell nem olvasható.,Asztali lámpa
-BAL-c772111623610b14,processed_20261002_094604.jpg,ANCO csíptetős asztali lámpa – kék,Hajlítható szárú lámpa csíptetős rögzítéssel; az ANCO jelölés a bemutatófelületen látható. Pontos modell nem olvasható.,Asztali lámpa
-BAL-609415d1eb6153e9,processed_20261002_094604.jpg,ANCO asztali lámpa – kék,Hajlítható szárú lámpa kör alakú talppal; az ANCO jelölés a bemutatófelületen látható. Pontos modell nem olvasható.,Asztali lámpa
-BAL-18ade165e32bbfe7,processed_20261002_094604.jpg,ANCO csíptetős asztali lámpa – fehér,Hajlítható szárú lámpa csíptetős rögzítéssel; az ANCO jelölés a bemutatófelületen látható. Pontos modell nem olvasható.,Asztali lámpa
-BAL-94fdba060ae209b1,processed_20261002_094604.jpg,ANCO asztali lámpa – fehér,Hajlítható szárú lámpa kör alakú talppal; az ANCO jelölés a bemutatófelületen látható. Pontos modell nem olvasható.,Asztali lámpa
-BAL-25065b3e18be786a,processed_20261002_094604.jpg,ANCO csíptetős asztali lámpa – szürke,Hajlítható szárú lámpa csíptetős rögzítéssel; az ANCO jelölés a bemutatófelületen látható. Pontos modell nem olvasható.,Asztali lámpa
-BAL-fb36cdfa7b1a5c5c,processed_20261002_094604.jpg,ANCO asztali lámpa – szürke,Hajlítható szárú lámpa kör alakú talppal; az ANCO jelölés a bemutatófelületen látható. Pontos modell nem olvasható.,Asztali lámpa
-BAL-b3e40a7432a16430,processed_20261002_094604.jpg,ANCO csíptetős asztali lámpa – piros,Hajlítható szárú lámpa csíptetős rögzítéssel; az ANCO jelölés a bemutatófelületen látható. Pontos modell nem olvasható.,Asztali lámpa
-BAL-2b7af2fe163caf90,processed_20261002_094604.jpg,ANCO asztali lámpa – piros,Hajlítható szárú lámpa kör alakú talppal; az ANCO jelölés a bemutatófelületen látható. Pontos modell nem olvasható.,Asztali lámpa
+BAL-df87a014691e138c,processed_20261002_094001.jpg,Fehér műanyag csőtoldó,Egyenes csatlakozóidom.,Csőtoldó
+BAL-c90de0b743b296e5,processed_20261002_094604.jpg,ANCO csíptetős asztali lámpa – fekete,Hajlítható szárú lámpa csíptetős rögzítéssel.,Asztali lámpa
+BAL-19a9bedf993228df,processed_20261002_094604.jpg,ANCO asztali lámpa – fekete,Hajlítható szárú lámpa kör alakú talppal.,Asztali lámpa
+BAL-c772111623610b14,processed_20261002_094604.jpg,ANCO csíptetős asztali lámpa – kék,Hajlítható szárú lámpa csíptetős rögzítéssel.,Asztali lámpa
+BAL-609415d1eb6153e9,processed_20261002_094604.jpg,ANCO asztali lámpa – kék,Hajlítható szárú lámpa kör alakú talppal.,Asztali lámpa
+BAL-18ade165e32bbfe7,processed_20261002_094604.jpg,ANCO csíptetős asztali lámpa – fehér,Hajlítható szárú lámpa csíptetős rögzítéssel.,Asztali lámpa
+BAL-94fdba060ae209b1,processed_20261002_094604.jpg,ANCO asztali lámpa – fehér,Hajlítható szárú lámpa kör alakú talppal.,Asztali lámpa
+BAL-25065b3e18be786a,processed_20261002_094604.jpg,ANCO csíptetős asztali lámpa – szürke,Hajlítható szárú lámpa csíptetős rögzítéssel.,Asztali lámpa
+BAL-fb36cdfa7b1a5c5c,processed_20261002_094604.jpg,ANCO asztali lámpa – szürke,Hajlítható szárú lámpa kör alakú talppal.,Asztali lámpa
+BAL-b3e40a7432a16430,processed_20261002_094604.jpg,ANCO csíptetős asztali lámpa – piros,Hajlítható szárú lámpa csíptetős rögzítéssel.,Asztali lámpa
+BAL-2b7af2fe163caf90,processed_20261002_094604.jpg,ANCO asztali lámpa – piros,Hajlítható szárú lámpa kör alakú talppal.,Asztali lámpa
 BAL-31dccae606c54786,processed_20261002_094604.jpg,ANCO hálózati LED éjjeli fény,Konnektorba dugható fehér éjjeli fény; a nem azonosítható változatok összevonva.,Éjjeli fény
-BAL-a9d225798200f219,processed_20261002_094604.jpg,ANCO falra szerelhető mozgásérzékelő,"Fehér házas, állítható fejű érzékelő; kapcsolási adatai nem olvashatók.",Mozgásérzékelő
-BAL-8d1112aaf09404cd,processed_20261002_094604.jpg,ANCO kör alakú mozgásérzékelő,Kerek fehér érzékelő középen domború lencsével; pontos modell nem olvasható.,Mozgásérzékelő
+BAL-a9d225798200f219,processed_20261002_094604.jpg,ANCO falra szerelhető mozgásérzékelő,"Fehér házas, állítható fejű érzékelők.",Mozgásérzékelő
+BAL-8d1112aaf09404cd,processed_20261002_094604.jpg,ANCO kör alakú mozgásérzékelő,Kerek fehér érzékelő középen domború lencsével.,Mozgásérzékelő
 BAL-77cdbf81e35c50a7,processed_20261002_094604.jpg,ANCO ovális hajólámpa – fehér,"Ovális, fehér keretű falilámpa bordázott burával.",Hajólámpa
 BAL-43763f12b4bf0168,processed_20261002_094604.jpg,ANCO kör alakú hajólámpa – fekete,Fekete keretű kerek falilámpa bordázott burával.,Hajólámpa
-BAL-f0e848bfb80c2928,processed_20261002_094604.jpg,ANCO kerek mennyezeti lámpa – fehér,"Kerek, fehér keretes lámpatest opál burával; teljesítménye nem olvasható.",Mennyezeti lámpa
-BAL-160987456e0828d8,processed_20261002_094604.jpg,ANCO négyzetes LED panel – fehér,Fehér keretes négyzetes lapos lámpatest; teljesítménye és mérete nem olvasható.,LED panel
-BAL-9022a3e2a59ef7c8,processed_20261002_094604.jpg,ANCO kerek LED panel – fehér,Fehér keretes kerek lapos lámpatest; teljesítménye és mérete nem olvasható.,LED panel
+BAL-f0e848bfb80c2928,processed_20261002_094604.jpg,ANCO kerek mennyezeti lámpa – fehér,"Kerek, fehér keretes lámpatest opál burával.",Mennyezeti lámpa
+BAL-160987456e0828d8,processed_20261002_094604.jpg,ANCO négyzetes LED panel – fehér,Fehér keretes négyzetes lapos lámpatest.,LED panel
+BAL-9022a3e2a59ef7c8,processed_20261002_094604.jpg,ANCO kerek LED panel – fehér,Fehér keretes kerek lapos lámpatest.,LED panel
 BAL-783ca1c7cdf2b00b,processed_20261002_094604.jpg,ANCO gömb alakú asztali lámpa – fehér,Fehér opál gömbburás lámpa; az olvashatatlan méretváltozatok összevonva.,Asztali lámpa
-BAL-b1ab36e46409a8cb,processed_20261002_094604.jpg,LEDVANCE LINEAR LED MOBILE USB lámpa – fehér,Hosszúkás mobil LED lámpa USB-töltéssel; az ismétlődő dobozok összevonva.,USB lámpa
-BAL-d1060bfda8360630,processed_20261002_094604.jpg,"EMOS LED SLIM lámpatest – 120 cm, 40 W",Dobozolt hosszúkás lámpatest; a csomagoláson 120 cm és 40 W olvasható.,Lámpatest
-BAL-6eef2f5f647a5af6,processed_20261002_094604.jpg,Lumenet LED fényforrás – E27,"Dobozolt LED izzó; az E27 foglalat olvasható, teljesítménye nem állapítható meg biztosan.",Fényforrás
-BAL-dd7f86f0dcea6e95,processed_20261002_094604.jpg,EMOS hosszúkás LED lámpatest,Fehér keskeny lámpatest a bemutatópolc elején; típusa és teljesítménye nem olvasható.,Lámpatest
-BAL-2e529078f0d85778,processed_20261002_094604.jpg,EMOS kerek mennyezeti lámpatest,Kerek fehér lámpatest EMOS jelölésű csomagolásban; pontos mérete és típusa nem olvasható.,Mennyezeti lámpa
-BAL-87694dc44b5e6469,processed_20261002_094604.jpg,Fekete LED reflektor,Fekete téglalap alakú reflektor a polc alján; márkája és teljesítménye nem olvasható.,Reflektor
+BAL-b1ab36e46409a8cb,processed_20261002_094604.jpg,LEDVANCE LINEAR LED MOBILE USB lámpa – fehér,Hosszúkás mobil LED lámpa USB-töltéssel,USB lámpa
+BAL-d1060bfda8360630,processed_20261002_094604.jpg,"EMOS LED SLIM lámpatest – 120 cm, 40 W",Dobozolt hosszúkás lámpatest.,Lámpatest
+BAL-6eef2f5f647a5af6,processed_20261002_094604.jpg,Lumenet LED fényforrás – E27,"Dobozolt LED izzó, teljesítménye nem állapítható meg biztosan.",Fényforrás
+BAL-dd7f86f0dcea6e95,processed_20261002_094604.jpg,EMOS hosszúkás LED lámpatest,Fehér keskeny lámpatest a bemutatópolc elején.,Lámpatest
+BAL-2e529078f0d85778,processed_20261002_094604.jpg,EMOS kerek mennyezeti lámpatest,Kerek fehér lámpatest EMOS jelölésű csomagolásban.,Mennyezeti lámpa
+BAL-87694dc44b5e6469,processed_20261002_094604.jpg,Fekete LED reflektor,Fekete téglalap alakú reflektor a polc alján.,Reflektor
 BAL-b88d2bc9e466d753,processed_20261002_094616.jpg,"EMOS LED izzó – 13 W, E27, 1521 lm",Körte alakú LED fényforrás; 100 W-os hagyományos izzónak megfelelő jelöléssel.,LED izzó
 BAL-db5c53a7d5fa2485,processed_20261002_094616.jpg,"EMOS LED izzó – 17 W, E27, 2452 lm",Nagy fényerejű LED fényforrás; 150 W-os hagyományos izzónak megfelelő jelöléssel.,LED izzó
-BAL-511bac8eb8cfd584,processed_20261002_094616.jpg,EMOS LED izzó – 806 lm,Körte alakú LED fényforrás; 60 W-os hagyományos izzónak megfelelő jelölés. Tényleges teljesítménye nem olvasható biztosan.,LED izzó
-BAL-2a15941726da0ca5,processed_20261002_094616.jpg,EMOS LED izzó – 1055 lm,Körte alakú LED fényforrás; 75 W-os hagyományos izzónak megfelelő jelölés. Tényleges teljesítménye nem olvasható biztosan.,LED izzó
-BAL-7edb7fb8c7e4d644,processed_20261002_094616.jpg,EMOS LED gyertyaizzó,Keskeny gyertya formájú LED fényforrás; teljesítménye és foglalata nem olvasható.,Gyertyaizzó
-BAL-625b648bf2df59bb,processed_20261002_094616.jpg,Trixline LED izzó – 7 W,Körte alakú LED fényforrás narancssárga-fehér dobozban; ismétlődő csomagok összevonva.,LED izzó
-BAL-7bb7a55e294b23f5,processed_20261002_094616.jpg,Trixline LED izzó – 10 W,Körte alakú LED fényforrás narancssárga-fehér dobozban; ismétlődő csomagok összevonva.,LED izzó
-BAL-b9782ba45aaff904,processed_20261002_094616.jpg,Trixline LED izzó – 12 W,Körte alakú LED fényforrás narancssárga-fehér dobozban; ismétlődő csomagok összevonva.,LED izzó
-BAL-0233df6e27e8d8d3,processed_20261002_094616.jpg,Trixline LED izzó – 15 W,Körte alakú LED fényforrás narancssárga-fehér dobozban; ismétlődő csomagok összevonva.,LED izzó
-BAL-25831e8bf67bc671,processed_20261002_094616.jpg,Trixline LED izzó – 18 W,Körte alakú LED fényforrás narancssárga-fehér dobozban; ismétlődő csomagok összevonva.,LED izzó
-BAL-ce4b386506e24e94,processed_20261002_094616.jpg,EMOS LED reflektor – PROFI PLUS,Fekete téglalap alakú reflektor PROFI PLUS feliratú dobozban; teljesítménye nem olvasható.,Reflektor
-BAL-a0e372c6edae96ad,processed_20261002_094616.jpg,Elektromos hosszabbító kábeldob,Kék-fekete kábeldob fém állvánnyal és fekete vezetékkel; kábelhossza nem olvasható.,Kábeldob
-BAL-96d6b1e0c7cb004f,processed_20261002_094616.jpg,Fehér szellőzőrács,Téglalap alakú fehér műanyag szellőzőrácsok csomagolásban; méretük nem olvasható.,Szellőzőrács
-BAL-10549a9d15e5a397,processed_20261002_094630.jpg,Energizer LED fejlámpa – 400 lm,Fejpántos LED lámpa bliszteres csomagolásban; az Energizer márka és a 400 lumen jelölés olvasható.,Fejlámpa
-BAL-0d50b29636bad444,processed_20261002_094630.jpg,EMOS LED filament gömbizzó – borostyánszínű búra,Nagyméretű dekorációs gömbizzó látható izzószál-utánzattal; pontos teljesítménye nem olvasható.,Gömbizzó
-BAL-8e995bb40ac35a5e,processed_20261002_094630.jpg,Trixline LED filament dekorációs izzó – borostyánszínű búra,"Dobozolt, színezett üvegű dekorációs fényforrás; a pontos foglalat és teljesítmény nem olvasható biztosan.",Dekorációs izzó
-BAL-1b4e600e0c6c985d,processed_20261002_094630.jpg,"EMOS LED filament izzó – E27, 2700 K","Átlátszó burás LED fényforrás, 40 W-os hagyományos izzónak megfelelő jelöléssel; a tényleges teljesítmény nem olvasható biztosan.",Filament izzó
+BAL-511bac8eb8cfd584,processed_20261002_094616.jpg,EMOS LED izzó – 806 lm,Körte alakú LED fényforrás biztosan.,LED izzó
+BAL-2a15941726da0ca5,processed_20261002_094616.jpg,EMOS LED izzó – 1055 lm,Körte alakú LED fényforrás biztosan.,LED izzó
+BAL-7edb7fb8c7e4d644,processed_20261002_094616.jpg,EMOS LED gyertyaizzó,Keskeny gyertya formájú LED fényforrás.,Gyertyaizzó
+BAL-625b648bf2df59bb,processed_20261002_094616.jpg,Trixline LED izzó – 7 W,Körte alakú LED fényforrás,LED izzó
+BAL-7bb7a55e294b23f5,processed_20261002_094616.jpg,Trixline LED izzó – 10 W,Körte alakú LED fényforrás,LED izzó
+BAL-b9782ba45aaff904,processed_20261002_094616.jpg,Trixline LED izzó – 12 W,Körte alakú LED fényforrás,LED izzó
+BAL-0233df6e27e8d8d3,processed_20261002_094616.jpg,Trixline LED izzó – 15 W,Körte alakú LED fényforrás,LED izzó
+BAL-25831e8bf67bc671,processed_20261002_094616.jpg,Trixline LED izzó – 18 W,Körte alakú LED fényforrás,LED izzó
+BAL-ce4b386506e24e94,processed_20261002_094616.jpg,EMOS LED reflektor – PROFI PLUS,Fekete téglalap alakú reflektor PROFI PLUS,Reflektor
+BAL-a0e372c6edae96ad,processed_20261002_094616.jpg,Elektromos hosszabbító kábeldob,Kék-fekete kábeldob fém állvánnyal és fekete vezetékkel,Kábeldob
+BAL-96d6b1e0c7cb004f,processed_20261002_094616.jpg,Fehér szellőzőrács,Téglalap alakú fehér műanyag szellőzőrácsok csomagolásban,Szellőzőrács
+BAL-10549a9d15e5a397,processed_20261002_094630.jpg,Energizer LED fejlámpa – 400 lm,Fejpántos LED lámpa bliszteres csomagolásban.,Fejlámpa
+BAL-0d50b29636bad444,processed_20261002_094630.jpg,EMOS LED filament gömbizzó – borostyánszínű búra,Nagyméretű dekorációs gömbizzó látható izzószál-utánzattal.,Gömbizzó
+BAL-8e995bb40ac35a5e,processed_20261002_094630.jpg,Trixline LED filament dekorációs izzó – borostyánszínű búra,"Dobozolt, színezett üvegű dekorációs fényforrás biztosan.",Dekorációs izzó
+BAL-1b4e600e0c6c985d,processed_20261002_094630.jpg,"EMOS LED filament izzó – E27, 2700 K","Átlátszó burás LED fényforrás, 40 W-os hagyományos izzónak megfelelő jelöléssel biztosan.",Filament izzó
 BAL-b6872ee5d000b8ea,processed_20261002_094630.jpg,Konnektoros mechanikus időkapcsoló,Fehér hálózati kapcsolóóra kör alakú időbeállító tárcsával; az ismétlődő csomagok összevonva.,Időkapcsoló
-BAL-451fb735bae1ec64,processed_20261002_094630.jpg,Konnektoros digitális időkapcsoló,Fehér hálózati kapcsolóóra kijelzővel és nyomógombokkal; a pontos típus nem olvasható.,Időkapcsoló
-BAL-dc22d1fed6186245,processed_20261002_094630.jpg,Egypólusú kismegszakító,"DIN-sínre szerelhető, egy kapcsolókarral ellátott védelmi készülék; a nem olvasható névleges áramú változatok összevonva.",Kismegszakító
-BAL-fed3815002f3691b,processed_20261002_094630.jpg,Hárompólusú kismegszakító,Három összekapcsolt kapcsolókarral ellátott védelmi készülék; névleges árama és karakterisztikája nem olvasható.,Kismegszakító
-BAL-03ef7f66d2438b97,processed_20261002_094630.jpg,DIN-sínre szerelhető csatlakozóaljzat,Moduláris elektromos csatlakozóaljzat kék aljzatbetéttel; pontos villamos adatai nem olvashatók.,Csatlakozóaljzat
-BAL-baba577cc0ec849f,processed_20261002_094630.jpg,EMOS LED munkalámpa – 1000 lm,Fekete-narancssárga hordozható munkalámpa; a dobozon 1000 lm jelölés látható.,Munkalámpa
-BAL-8474c1bd10b4d377,processed_20261002_094630.jpg,Halogén ceruzaizzó – 60 W,"Kétvégű, egyenes halogén fényforrás; a polccímkén 60 W szerepel, a hossz nem olvasható.",Ceruzaizzó
-BAL-64df16843ee893a8,processed_20261002_094630.jpg,Halogén ceruzaizzó – 100 W,"Kétvégű, egyenes halogén fényforrás; a polccímkén 100 W szerepel, a hossz nem olvasható.",Ceruzaizzó
-BAL-8bf6eabc76ad709b,processed_20261002_094630.jpg,Halogén ceruzaizzó – 150 W,"Kétvégű, egyenes halogén fényforrás; a polccímkén 150 W szerepel, a hossz nem olvasható.",Ceruzaizzó
-BAL-ec74a18cbd2707c9,processed_20261002_094630.jpg,"Trixline LED spotizzó – GU10, 7 W",Dobozolt spot fényforrás; a polccímkén GU10 és 7 W jelölés olvasható.,Spotizzó
-BAL-aeee91bc069de496,processed_20261002_094630.jpg,"Trixline LED spotizzó – GU10, 10 W",Dobozolt spot fényforrás; a polccímkén GU10 és 10 W jelölés olvasható.,Spotizzó
-BAL-b5b3d5fcaf6645a6,processed_20261002_094630.jpg,EMOS LED spotizzó – 4 W,"Kis dobozos LED spot fényforrás; a címkén 4 W szerepel, a foglalat nem olvasható biztosan.",Spotizzó
-BAL-004c917cf4dcbe0c,processed_20261002_094630.jpg,Kerámia csavaros biztosítófoglalat,Fehér kerámia olvadóbiztosító-foglalatok; a pontos méret és névleges áram nem olvasható.,Biztosítófoglalat
+BAL-451fb735bae1ec64,processed_20261002_094630.jpg,Konnektoros digitális időkapcsoló,Fehér hálózati kapcsolóóra kijelzővel és nyomógombokkal.,Időkapcsoló
+BAL-dc22d1fed6186245,processed_20261002_094630.jpg,Egypólusú kismegszakító,"DIN-sínre szerelhető, egy kapcsolókarral ellátott védelmi készülék névleges áramú változatok összevonva.",Kismegszakító
+BAL-fed3815002f3691b,processed_20261002_094630.jpg,Hárompólusú kismegszakító,Három összekapcsolt kapcsolókarral ellátott védelmi készülék.,Kismegszakító
+BAL-03ef7f66d2438b97,processed_20261002_094630.jpg,DIN-sínre szerelhető csatlakozóaljzat,Moduláris elektromos csatlakozóaljzat kék aljzatbetéttelk.,Csatlakozóaljzat
+BAL-baba577cc0ec849f,processed_20261002_094630.jpg,EMOS LED munkalámpa – 1000 lm,Fekete-narancssárga hordozható munkalámpa,Munkalámpa
+BAL-8474c1bd10b4d377,processed_20261002_094630.jpg,Halogén ceruzaizzó – 60 W,"Kétvégű, egyenes halogén fényforrás.",Ceruzaizzó
+BAL-64df16843ee893a8,processed_20261002_094630.jpg,Halogén ceruzaizzó – 100 W,"Kétvégű, egyenes halogén fényforrás.",Ceruzaizzó
+BAL-8bf6eabc76ad709b,processed_20261002_094630.jpg,Halogén ceruzaizzó – 150 W,"Kétvégű, egyenes halogén fényforrás.",Ceruzaizzó
+BAL-ec74a18cbd2707c9,processed_20261002_094630.jpg,"Trixline LED spotizzó – GU10, 7 W",Dobozolt spot fényforrás.,Spotizzó
+BAL-aeee91bc069de496,processed_20261002_094630.jpg,"Trixline LED spotizzó – GU10, 10 W",Dobozolt spot fényforrás.,Spotizzó
+BAL-b5b3d5fcaf6645a6,processed_20261002_094630.jpg,EMOS LED spotizzó – 4 W,"Kis dobozos LED spot fényforrás biztosan.",Spotizzó
+BAL-004c917cf4dcbe0c,processed_20261002_094630.jpg,Kerámia csavaros biztosítófoglalat,Fehér kerámia olvadóbiztosító-foglalatok.,Biztosítófoglalat
 BAL-666bd7a0c38c046d,processed_20261002_094630.jpg,Csavaros biztosítóbetét,Hagyományos kerámia olvadóbiztosító-betétek; az olvashatatlan áramerősség-változatok összevonva.,Biztosítóbetét
-BAL-63cc60a24b12d8ed,processed_20261002_094646.jpg,LED fényfüzér – 40 LED,"Dobozolt fényfüzér; a csomagoláson 40-es darabszámjelölés olvasható, a fény színe nem azonosítható.",Fényfüzér
-BAL-af936306e4ce4145,processed_20261002_094646.jpg,LED fényfüzér – 80 LED,"Dobozolt fényfüzér; a csomagoláson 80-as darabszámjelölés olvasható, a fény színe nem azonosítható.",Fényfüzér
-BAL-9641d8916ac44189,processed_20261002_094646.jpg,LED fényfüzér – 120 LED,"Dobozolt fényfüzér; a csomagoláson 120-as darabszámjelölés olvasható, a fény színe nem azonosítható.",Fényfüzér
-BAL-be70cc41ca6fad95,processed_20261002_094646.jpg,LED fényfüzér – 180 LED,"Dobozolt fényfüzér; a csomagoláson 180-as darabszámjelölés olvasható, a fény színe nem azonosítható.",Fényfüzér
-BAL-8bf5f69037e6e525,processed_20261002_094646.jpg,Okos LED fényforrás,Színváltós izzót ábrázoló doboz a SMART/OKOS feliratú polcrészen; a pontos típus és vezérlési mód nem olvasható.,Okos LED fényforrás
+BAL-63cc60a24b12d8ed,processed_20261002_094646.jpg,LED fényfüzér – 40 LED,"Dobozolt fényfüzér, a fény színe nem azonosítható.",Fényfüzér
+BAL-af936306e4ce4145,processed_20261002_094646.jpg,LED fényfüzér – 80 LED,"Dobozolt fényfüzér, a fény színe nem azonosítható.",Fényfüzér
+BAL-9641d8916ac44189,processed_20261002_094646.jpg,LED fényfüzér – 120 LED,"Dobozolt fényfüzér, a fény színe nem azonosítható.",Fényfüzér
+BAL-be70cc41ca6fad95,processed_20261002_094646.jpg,LED fényfüzér – 180 LED,"Dobozolt fényfüzér, a fény színe nem azonosítható.",Fényfüzér
+BAL-8bf5f69037e6e525,processed_20261002_094646.jpg,Okos LED fényforrás,Színváltós izzó,Okos LED fényforrás
 BAL-fdc281f2dc160400,processed_20261002_094646.jpg,Falba süllyeszthető egyrészes kapcsoló – fehér,"Fehér keretes, egy billentyűs kapcsoló; a nem azonosítható gyártmányok és kapcsolási változatok összevonva.",Kapcsoló
-BAL-8591fe699593435d,processed_20261002_094646.jpg,Falba süllyeszthető egyrészes kapcsoló – fekete,"Fekete keretes, egy billentyűs kapcsoló; a márka és a kapcsolási mód nem olvasható.",Kapcsoló
-BAL-41edec0be6a17f93,processed_20261002_094646.jpg,Falba süllyeszthető kétrészes kapcsoló – fehér,"Fehér, két billentyűs kapcsoló; a pontos gyártmány és kapcsolási mód nem olvasható.",Kapcsoló
-BAL-61bbc8bf5dd3b865,processed_20261002_094646.jpg,Falba süllyeszthető kétrészes kapcsoló – fekete,"Fekete, két billentyűs kapcsoló; a pontos gyártmány és kapcsolási mód nem olvasható.",Kapcsoló
-BAL-ba0bd8e74b779c54,processed_20261002_094646.jpg,Földelt fali csatlakozóaljzat – fehér,"Fehér keretes, egyes hálózati aljzat; márka és pontos típus nem olvasható.",Csatlakozóaljzat
-BAL-c282ff57c1d4dabc,processed_20261002_094646.jpg,Fedeles falon kívüli csatlakozóaljzat – szürke,"Szürke házas, felhajtható fedéllel ellátott aljzat; IP-védettsége nem olvasható.",Csatlakozóaljzat
-BAL-25340a1f248c2f3c,processed_20261002_094646.jpg,Falon kívüli egyrészes kapcsoló – szürke,"Szürke házas, egy billentyűs kapcsoló; a pontos kapcsolási mód nem olvasható.",Kapcsoló
-BAL-d11bea8eb16bdaed,processed_20261002_094646.jpg,Falon kívüli kétrészes kapcsoló – szürke,"Szürke házas, két billentyűs kapcsoló; pontos típusa nem olvasható.",Kapcsoló
+BAL-8591fe699593435d,processed_20261002_094646.jpg,Falba süllyeszthető egyrészes kapcsoló – fekete,"Fekete keretes, egy billentyűs kapcsoló.",Kapcsoló
+BAL-41edec0be6a17f93,processed_20261002_094646.jpg,Falba süllyeszthető kétrészes kapcsoló – fehér,"Fehér, két billentyűs kapcsoló.",Kapcsoló
+BAL-61bbc8bf5dd3b865,processed_20261002_094646.jpg,Falba süllyeszthető kétrészes kapcsoló – fekete,"Fekete, két billentyűs kapcsoló.",Kapcsoló
+BAL-ba0bd8e74b779c54,processed_20261002_094646.jpg,Földelt fali csatlakozóaljzat – fehér,"Fehér keretes, egyes hálózati aljzat.",Csatlakozóaljzat
+BAL-c282ff57c1d4dabc,processed_20261002_094646.jpg,Fedeles falon kívüli csatlakozóaljzat – szürke,"Szürke házas, felhajtható fedéllel ellátott aljzat.",Csatlakozóaljzat
+BAL-25340a1f248c2f3c,processed_20261002_094646.jpg,Falon kívüli egyrészes kapcsoló – szürke,"Szürke házas, egy billentyűs kapcsoló.",Kapcsoló
+BAL-d11bea8eb16bdaed,processed_20261002_094646.jpg,Falon kívüli kétrészes kapcsoló – szürke,"Szürke házas, két billentyűs kapcsoló.",Kapcsoló
 BAL-1de126fc988f584e,processed_20261002_094646.jpg,Földelt hálózati dugvilla – fehér,Szerelhető fehér hálózati dugvillák; az ismétlődő és nem elkülöníthető változatok összevonva.,Dugvilla
-BAL-f1d875dc2b938979,processed_20261002_094646.jpg,Földelt hálózati dugvilla – fekete,Szerelhető fekete hálózati dugvillák; pontos terhelhetőségük nem olvasható.,Dugvilla
-BAL-658740f7a039cd47,processed_20261002_094646.jpg,Hálózati lengőaljzat – fehér,Kábel végére szerelhető fehér csatlakozóaljzat; pontos típusa nem olvasható.,Lengőaljzat
-BAL-27ba0e599668610b,processed_20261002_094646.jpg,Hálózati lengőaljzat – fekete,Kábel végére szerelhető fekete csatlakozóaljzat; pontos típusa nem olvasható.,Lengőaljzat
-BAL-deb0736298058e6c,processed_20261002_094646.jpg,Süllyesztett szerelvénydoboz – kék,Kerek kék műanyag villanyszerelési doboz; mérete nem olvasható.,Szerelvénydoboz
-BAL-078c62feda9683f8,processed_20261002_094646.jpg,Elektromos vezeték tekercsben – fehér,"Fehér külső burkolatú vezeték tekercselve; érszáma, keresztmetszete és hossza nem olvasható.",Vezeték
-BAL-c57232f8dc3fd0c5,processed_20261002_094646.jpg,Elektromos vezeték tekercsben – fekete,"Fekete külső burkolatú vezeték tekercselve; érszáma, keresztmetszete és hossza nem olvasható.",Vezeték
-BAL-45730d01e30c4009,processed_20261002_094653.jpg,Rábalux csuklós asztali lámpa – fekete,"Fekete, tagolt karú asztali lámpa dobozban; eltér az előző képek hajlítható szárú ANCO lámpáitól. Pontos modell nem olvasható.",Asztali lámpa
-BAL-c5196d6bf4af5a61,processed_20261002_094653.jpg,Rábalux csuklós asztali lámpa – fehér,"Fehér, tagolt karú asztali lámpa dobozban; pontos modell nem olvasható.",Asztali lámpa
-BAL-56911838de418974,processed_20261002_094653.jpg,Hordozható keresőlámpa – fekete-zöld,"Nagy kerek reflektorral és felső fogantyúval ellátott kézilámpa; a dobozokon látható méretváltozatok pontos adatai nem olvashatók, ezért összevonva.",Keresőlámpa
-BAL-3ac7dd86d17da072,processed_20261002_094653.jpg,Falon kívüli kötődoboz – fehér,Fedeles fehér villanyszerelési kötődobozok; az olvashatatlan méretváltozatok összevonva.,Kötődoboz
-BAL-37eb7b01657357d2,processed_20261002_094653.jpg,Lámpafoglalat – fehér,"Fehér lámpafoglalatok a nyitott tárolórekeszekben; a foglalatméret nem olvasható, a hasonló darabok összevonva.",Lámpafoglalat
-BAL-368d02d2ff000bd1,processed_20261002_094653.jpg,Lámpafoglalat – fekete,Fekete lámpafoglalatok a nyitott tárolórekeszekben; a foglalatméret nem olvasható.,Lámpafoglalat
-BAL-510b3526099324a7,processed_20261002_094653.jpg,Kerámia lámpafoglalat,Fehér kerámia izzófoglalatok; a pontos foglalatméret nem olvasható.,Lámpafoglalat
-BAL-9cb19560eaa8610d,processed_20261002_094708.jpg,Legrand Valena Life kapcsoló – fehér,Fehér billenőkapcsoló a Valena Life feliratú termékbemutatón; pontos cikkszáma és kapcsolási módja nem olvasható.,Kapcsoló
-BAL-2fd7dd3164dff7fa,processed_20261002_094708.jpg,Legrand Valena Allure kapcsoló – fehér,Fehér billenőkapcsoló ívelt kerettel a Valena Allure feliratú bemutatón; pontos cikkszáma és kapcsolási módja nem olvasható.,Kapcsoló
-BAL-384d230739cec064,processed_20261002_094711.jpg,Asztali ventilátor – fehér,"Fehér, védőráccsal és gombos talppal ellátott ventilátor átlátszó csomagolásban; a 094708 és 094711 képen ugyanaz a darab látható, csak egyszer szerepel. Márkája és mérete nem olvasható.",Ventilátor
+BAL-f1d875dc2b938979,processed_20261002_094646.jpg,Földelt hálózati dugvilla – fekete,Szerelhető fekete hálózati dugvillák.,Dugvilla
+BAL-658740f7a039cd47,processed_20261002_094646.jpg,Hálózati lengőaljzat – fehér,Kábel végére szerelhető fehér csatlakozóaljzat.,Lengőaljzat
+BAL-27ba0e599668610b,processed_20261002_094646.jpg,Hálózati lengőaljzat – fekete,Kábel végére szerelhető fekete csatlakozóaljzat.,Lengőaljzat
+BAL-deb0736298058e6c,processed_20261002_094646.jpg,Süllyesztett szerelvénydoboz – kék,Kerek kék műanyag villanyszerelési doboz,Szerelvénydoboz
+BAL-078c62feda9683f8,processed_20261002_094646.jpg,Elektromos vezeték tekercsben – fehér,"Fehér külső burkolatú vezeték tekercselve",Vezeték
+BAL-c57232f8dc3fd0c5,processed_20261002_094646.jpg,Elektromos vezeték tekercsben – fekete,"Fekete külső burkolatú vezeték tekercselve",Vezeték
+BAL-45730d01e30c4009,processed_20261002_094653.jpg,Rábalux csuklós asztali lámpa – fekete,"Fekete, tagolt karú asztali lámpa dobozban.",Asztali lámpa
+BAL-c5196d6bf4af5a61,processed_20261002_094653.jpg,Rábalux csuklós asztali lámpa – fehér,"Fehér, tagolt karú asztali lámpa dobozban",Asztali lámpa
+BAL-56911838de418974,processed_20261002_094653.jpg,Hordozható keresőlámpa – fekete-zöld,"Nagy kerek reflektorral és felső fogantyúval ellátott kézilámpa",Keresőlámpa
+BAL-3ac7dd86d17da072,processed_20261002_094653.jpg,Falon kívüli kötődoboz – fehér,Fedeles fehér villanyszerelési kötődobozok,Kötődoboz
+BAL-37eb7b01657357d2,processed_20261002_094653.jpg,Lámpafoglalat – fehér,"Fehér lámpafoglalatok a nyitott tárolórekeszekben",Lámpafoglalat
+BAL-368d02d2ff000bd1,processed_20261002_094653.jpg,Lámpafoglalat – fekete,Fekete lámpafoglalatok a nyitott tárolórekeszekben,Lámpafoglalat
+BAL-510b3526099324a7,processed_20261002_094653.jpg,Kerámia lámpafoglalat,Fehér kerámia izzófoglalatok,Lámpafoglalat
+BAL-9cb19560eaa8610d,processed_20261002_094708.jpg,Legrand Valena Life kapcsoló – fehér,Fehér billenőkapcsoló a Valena Life feliratú termékbemutatón.,Kapcsoló
+BAL-2fd7dd3164dff7fa,processed_20261002_094708.jpg,Legrand Valena Allure kapcsoló – fehér,Fehér billenőkapcsoló ívelt kerettel a Valena Allure feliratú bemutatón.,Kapcsoló
+BAL-384d230739cec064,processed_20261002_094711.jpg,Asztali ventilátor – fehér,"Fehér, védőráccsal és gombos talppal ellátott ventilátor átlátszó csomagolásban.",Ventilátor
+BAL-29c11c1e0bced973,web-processed-20261002_095015.jpg,Legrand Céliane Egypólusú kapcsoló,"Fehér egypólusú kapcsoló kerek billentyűvel, fehér négyzet alakú kerettel",Egypólusú kapcsoló
+BAL-d7ecd9cd5928925b,web-processed-20261002_095015.jpg,Legrand Céliane Alternatív kapcsoló,Alternatív kapcsoló fémhatású (acél/titán) kerettel és fogantyúszerű billentyűvel,Alternatív kapcsoló
+BAL-35b76e17c79c5bf6,web-processed-20261002_095015.jpg,Legrand Céliane Csillárkapcsoló,"Csillárkapcsoló (kettős billentyű), pezsgőarany billentyűkkel és porszínű rózsaszín kerettel",Csillárkapcsoló
+BAL-14ccf1d7a7e72423,web-processed-20261002_095015.jpg,Legrand Céliane USB A+C töltőaljzat,"Fali töltőaljzat USB-A és USB-C porttal, bézs/arany keretben",USB A+C töltőaljzat
+BAL-c675898beaf9b414,web-processed-20261002_095015.jpg,Legrand Céliane Csapfedeles csatlakozóaljzat,Csapófedeles csatlakozóaljzat tölgy hatású fa kerettel,Csapfedeles aljzat
+BAL-94b919437a55b612,web-processed-20261002_095015.jpg,Legrand Céliane Hangszóró csatlakozóaljzat,"Hangszóró-csatlakozóaljzat piros és fekete csatlakozókkal, sötét keretben",Hangszóró aljzat
+BAL-5b76cbdb3e8709b5,web-processed-20261002_095015.jpg,Legrand Céliane Hármas keret,"Függőleges, háromelemes fémhatású keret földelt aljzattal, adataljzattal és további aljzattal",Hármas keret
+BAL-8d1a5acc9981d6c0,web-processed-20261002_095015.jpg,Legrand SUNO Egypólusú kapcsoló,"Fehér egypólusú kapcsoló nagy felületű, letisztult billentyűvel",Egypólusú kapcsoló
+BAL-d38de2a163676378,web-processed-20261002_095015.jpg,"Legrand SUNO 2P+F biztonsági zsaluval, csapófedéllel",Fekete földelt aljzat gyermekvédelmi zsalus érintésvédelemmel és rugós csapófedéllel,2P+F fedeles aljzat
+BAL-ddf16cc037e5ac1c,web-processed-20261002_095015.jpg,Legrand SUNO RJ45 aljzat,"RJ45 hálózati (Ethernet) aljzat, fehér/világosszürke keretben",RJ45 aljzat
+BAL-3415859675c89dc4,web-processed-20261002_095015.jpg,Legrand SUNO Földelt csatlakozóaljzat,"Földelt (schuko) csatlakozóaljzat fehér betéttel, krém/bézs keretben",Földelt aljzat
+BAL-81f2f81bf1b1a8c0,web-processed-20261002_095015.jpg,Legrand SUNO Csillárkapcsoló,Csillárkapcsoló (kettős billentyű) szürke keretben,Csillárkapcsoló
+BAL-062f30e63501bd7b,web-processed-20261002_095015.jpg,Legrand SUNO Redőnykapcsoló,"Redőnykapcsoló nyíl jelzéssel, alumíniumhatású keretben",Redőnykapcsoló
+BAL-ab5b533f513e0855,web-processed-20261002_095015.jpg,Legrand SUNO Hármas keret,"Fehér háromelemes keret mozgásérzékelővel, kétbillentyűs kapcsolóval/szabályzóval és aljzattal",Hármas keret
+BAL-02d5a4f69ed4b121,web-processed-20261002_095015.jpg,Legrand Niloé Váltókapcsoló,Váltókapcsoló sötétbarna/fekete kerettel és fehér billentyűvel,Váltókapcsoló
+BAL-4a392ffc29ec9bc0,web-processed-20261002_095015.jpg,Legrand Niloé Dupla váltókapcsoló,"Fehér dupla váltókapcsoló, két billentyűvel",Dupla váltókapcsoló
+BAL-5be3f142c15d2ab9,web-processed-20261002_095015.jpg,Legrand Niloé Váltókapcsoló (fa hatású keret),Váltókapcsoló fa hatású bézs kerettel,Váltókapcsoló fa keretes
+BAL-84748db27d75d705,web-processed-20261002_095015.jpg,Legrand Niloé Kapcsoló (sötétbarna keret),Kapcsoló sötétbarna kerettel és fehér billentyűvel,Kapcsoló sötétbarna
+BAL-a8f35f75cba5ec92,web-processed-20261002_095015.jpg,Legrand Niloé Dupla földelt csatlakozóaljzat,Fehér dupla földelt csatlakozóaljzat,Dupla aljzat
+BAL-fe7de75c54067334,web-processed-20261002_095015.jpg,Legrand Niloé Fedeles csatlakozóaljzat,"Aljzat fehér csapófedéllel, fekete keretben",Fedeles aljzat
+BAL-6028ad2cba9029f9,web-processed-20261002_095015.jpg,Legrand Niloé Hármas keret,Piros háromelemes keret három aljzattal/csatlakozóval,Hármas keret
+BAL-48b7e1cd2153b4d7,web-processed-20261002_095015.jpg,Schneider Electric Sedna Elements Üveghatás,"Kapcsoló fehér betéttel és opál kerettel, üveghatású kivitel",Sedna Elements üveghatás
+BAL-2d434710f77e5476,web-processed-20261002_095015.jpg,Schneider Electric Sedna Elements Földszínek,Kapcsoló antracit betéttel és homokszínű kerettel,Sedna Elements földszín
+BAL-7136c024efe79669,web-processed-20261002_095015.jpg,Schneider Electric Sedna Design,Kapcsoló fehér betéttel és fehér kerettel,Sedna Design
+BAL-2ea6bd01a7633aab,web-processed-20261002_095015.jpg,Schneider Electric Asfora,Kapcsoló antracit betéttel és antracit kerettel,Asfora
+BAL-c0ecfe7b20b29b75,web-processed-20261002_095015.jpg,Schneider Electric IP védett szerelvény,"Felületre szerelhető fehér, IP védett (fröccsenésálló) kapcsoló/dugalj",IP védett szerelvény
+BAL-56f00eb048b51c4c,web-processed-20261002_095015.jpg,Schneider Electric kapcsolósor (piros oszlop),"Négy kapcsoló különböző keretszínekkel: fehér/ezüst, szürke, fekete",Schneider kapcsolósor
+BAL-2bb11b4554f35305,web-processed-20261002_095015.jpg,GTV asztali elosztó (kihúzható aljzat),"GTV asztali elosztó dobozban, kihúzható fekete aljzat",GTV kihúzható aljzat
+BAL-6c09b2e2fddfc86d,web-processed-20261002_095015.jpg,Hermetic 2x150 230V 50Hz G13 max. 2x22W,"Hermetikus (páramentes) lámpatest dobozban, G13 foglalat, max. 2x22 W",Hermetic lámpatest
+BAL-e33e68bed95a1189,web-processed-20261002_095015.jpg,PVC szigetelőszalag (színes),Vegyes színű PVC szigetelőszalag-tekercsek,Szigetelőszalag
+BAL-2ccf24463a21099a,web-processed-20261002_095015.jpg,Merida automata adagoló,"Fehér, érintésmentes automata szappan-/fertőtlenítőadagoló",Merida adagoló
+BAL-ca3894acb7dfa1c2,web-processed-20261002_095015.jpg,Legrand prospektustartó katalógusokkal,"Prospektustartó Céliane, SUNO és Niloé katalógusokkal",Legrand prospektus
+BAL-f38837f7daab3963,web_20261002_095026.jpg,Legrand Valena Allure Egypólusú kapcsoló,"Fehér egypólusú kapcsoló lekerekített, lágy vonalú kerettel",Egypólusú kapcsoló
+BAL-f59aaf3abbeee22a,web_20261002_095026.jpg,Legrand Valena Allure Csillárkapcsoló,"Fehér csillárkapcsoló (kettős billentyű), lekerekített kerettel",Csillárkapcsoló
+BAL-9b11f3d252b142c8,web_20261002_095026.jpg,Legrand Valena Allure Kettős USB töltőaljzat,"Kettős USB töltőaljzat kőhatású (bézs, márványos) kerettel",Kettős USB töltőaljzat
+BAL-7c29bf7f066a3d9e,web_20261002_095026.jpg,Legrand Valena Allure Redőnykapcsoló,"Redőnykapcsoló fel/le nyíl jelzéssel, sötét (fekete) keretben",Redőnykapcsoló
+BAL-b4f4817c67e09018,web_20261002_095026.jpg,Legrand Valena Allure Mozgásérzékelős akadályjelző,Mozgásérzékelős jelzőegység fa hatású kerettel,Mozgásérzékelős jelző
+BAL-480993b8b368a314,web_20261002_095026.jpg,Legrand Valena Allure Váltókapcsoló,"Váltókapcsoló fehér érintőfelülettel, barna/márványhatású kerettel",Váltókapcsoló
+BAL-6e9534af2e2599fc,web_20261002_095026.jpg,Legrand Valena Allure Hármas keret,"Függőleges háromelemes szürke keret földelt aljzattal, kerek (TV/koax) aljzattal és RJ45 adataljzattal",Hármas keret
+BAL-655ac06aa994115f,web_20261002_095026.jpg,Legrand Valena Life Egypólusú kapcsoló jelzőfénnyel,Fehér egypólusú kapcsoló jelzőfénnyel (megvilágított billentyű),Egypólusú kapcsoló jelzőfénnyel
+BAL-dc9bea34f481112f,web_20261002_095026.jpg,Legrand Valena Life Redőnykapcsoló,"Redőnykapcsoló fel/le nyíl jelzéssel, sötétbarna kerettel és szürke betéttel",Redőnykapcsoló
+BAL-9a0e317d9964085b,web_20261002_095026.jpg,Legrand Valena Life Csillárkapcsoló,"Csillárkapcsoló (kettős billentyű) krémszínű, díszmintás kerettel",Csillárkapcsoló
+BAL-3b60645ee7931ecd,web_20261002_095026.jpg,Legrand Valena Life Univerzális fényerőszabályzó,"Univerzális fényerőszabályzó fehér betéttel, zöld kerettel",Univerzális fényerőszabályzó
+BAL-80cfaf2dbea9a758,web_20261002_095026.jpg,Legrand Valena Life Kettős USB töltőaljzat,Kettős USB töltőaljzat fa hatású barna kerettel,Kettős USB töltőaljzat
+BAL-0e6cead08f73e0fb,web_20261002_095026.jpg,Legrand Valena Life Kettős csatlakozóaljzat,Fehér kettős földelt csatlakozóaljzat,Kettős csatlakozóaljzat
+BAL-abdb21f6483cb817,web_20261002_095026.jpg,Legrand Valena Life Hármas keret,"Függőleges fehér háromelemes keret földelt aljzattal, kerek (TV/koax) aljzattal és kettős RJ45 adataljzattal",Hármas keret
+BAL-4d4e0e0de8e542ca,web_20261002_095026.jpg,Legrand Valena Allure és Valena Life prospektus,Prospektustartók Valena Allure és Valena Life katalógusokkal,Valena prospektus
+BAL-9fa035ba76a22170,web_20261002_095030.jpg,Legrand Forix Kétpólusú kapcsoló IP44,"Falon kívüli (felületre szerelhető) fehér kétpólusú kapcsoló, IP44 védettséggel",Kétpólusú kapcsoló IP44
+BAL-2f9fa65ac27efe44,web_20261002_095030.jpg,Legrand Forix Kombinált szerelvény IP44,"Falon kívüli fehér kombinált szerelvény: csapófedeles aljzat és kapcsoló egy keretben, IP44",Kombinált szerelvény IP44
+BAL-45b43af8e48abcb7,web_20261002_095030.jpg,Legrand Forix Földelt csatlakozóaljzat gyermekvédelemmel IP44,"Falon kívüli fehér földelt aljzat csapófedéllel és gyermekvédelemmel, IP44",Földelt aljzat IP44
+BAL-30aa76b44c2109bd,web_20261002_095030.jpg,Legrand Forix Egypólusú kapcsoló,Falon kívüli krémfehér egypólusú kapcsoló,Egypólusú kapcsoló
+BAL-a544ec263c9c67b1,web_20261002_095030.jpg,Legrand Forix Kettős egypólusú kapcsoló (csillárkapcsoló),"Falon kívüli fehér kettős egypólusú kapcsoló (csillárkapcsoló), két billentyűvel",Csillárkapcsoló
+BAL-31daf7e73a7d66f0,web_20261002_095030.jpg,Legrand Forix Háromszoros földelt csatlakozóaljzat gyermekvédelemmel,Falon kívüli háromszoros földelt aljzat gyermekvédelemmel,Háromszoros aljzat
+BAL-55d4fbff030c8627,web_20261002_095030.jpg,Legrand Forix Hármas keret,"Függőlegesen egymásra szerelt három falon kívüli elem: földelt aljzat, telefon/RJ adataljzat és kerek (TV/koax) aljzat",Hármas keret
+BAL-60e19ea5f48e6d22,web_20261002_095030.jpg,LED reflektor (doboz),Dobozolt LED reflektor a háttérben,LED reflektor
+BAL-9e3f9380c41bf9d1,web_20261002_095030.jpg,Legrand Valena Life és Forix prospektus,Prospektustartók Valena Life és Forix katalógusokkal,Valena/Forix prospektus
+BAL-f5aa8b9cd15cac90,web_20261002_094801.jpg,Rabalux UFO mennyezeti lámpa (doboz),"Dobozolt Rabalux UFO kerek mennyezeti lámpatest, E27 foglalat, max. 60 W, 230 V",Rabalux UFO lámpa
+BAL-a6edaadc58300f62,web_20261002_094801.jpg,Kék dobozos LED mennyezeti lámpa (Ø335 mm),"Három egyforma kék dobozban kerek LED mennyezeti lámpatest, a dobozon Ø335 mm méret",LED mennyezeti lámpa Ø335
+BAL-35da027022adb3f1,web_20261002_094801.jpg,Fehér rácsos ovális hajólámpa,"Fehér műanyag, ovális, védőráccsal ellátott falon kívüli lámpatest, bordázott üvegburával, több darab",Fehér rácsos ovális lámpa
+BAL-35ec336b0af8568c,web_20261002_094801.jpg,Fekete rácsos ovális hajólámpa,"Fekete, ovális, védőráccsal ellátott falon kívüli lámpatest, bordázott üvegburával",Fekete rácsos ovális lámpa
+BAL-0872afa48a645df0,web_20261002_094801.jpg,Fekete téglalap alakú falon kívüli lámpatest,"Fekete, lekerekített téglalap alakú falon kívüli lámpatest, bordázott burával, több darab",Fekete téglalap lámpa
+BAL-f4ee5e691f7f985b,web_20261002_094801.jpg,Fehér téglalap alakú falon kívüli lámpatest,"Fehér, lekerekített téglalap alakú falon kívüli lámpatest, bordázott burával",Fehér téglalap lámpa
+BAL-c8b58aac35cfe21d,web_20261002_094801.jpg,"Haslámpa 60 W (szürke, rácsos, ovális)","Szürke műanyag testű, átlátszó burájú, fémrácsos ovális lámpa, 60 W",Haslámpa 60 W
+BAL-90ea8b8d787f469d,web_20261002_094801.jpg,"Haslámpa 40 W (rácsos, ovális, borostyán burával)","Fémrácsos ovális lámpa sötétebb/borostyán színű burával, 40 W",Haslámpa 40 W
+BAL-0812d176a2676aba,web_20261002_094801.jpg,"Hajó lámpa 100 W (kerek, fehér)","Fehér, kerek hajólámpa bordázott üvegburával, 100 W",Hajólámpa 100 W
+BAL-2c604cd05ffef158,web_20261002_094801.jpg,"Haslámpa 60 W (fehér, kerek, rácsos)","Fehér, kerek, védőráccsal ellátott lámpa, 60 W",Rácsos kerek lámpa 60 W
+BAL-533e0aa6bde5b622,web_20261002_094801.jpg,24W LED Shopproof Light IP65 Round,"Fekete dobozban kerek, fehér 24 W-os LED lámpatest (por- és páramentes kivitel)",24 W LED Shopproof lámpa
+BAL-9a42e4429220b11d,web_20261002_094801.jpg,Fekete dobozos LED Shopproof lámpák (bal felső polc),Egymásra rakott fekete dobozok LED Shopproof lámpákkal,LED Shopproof lámpák
+BAL-53fc01b68d0b544a,web_20261002_094801.jpg,Szürke falon kívüli kötődobozok,"Szürke műanyag, falon kívüli kötődobozok több méretben",Kötődobozok
+BAL-12c0445ca1b23402,web_20261002_094801.jpg,DII olvadóbiztosító-betét 6–25 A (színkódolt),"Színkódolt (piros, szürke, kék, sárga, fekete) biztosítóbetétek, 6–25 A",DII biztosítóbetét 6–25 A
+BAL-b993c4dfd5fc9418,web_20261002_094801.jpg,Fém csőbilincsek és csavaros rögzítőelemek,"Fém bilincsek, csavarok és rögzítőelemek a jobb oldali polcon","Bilincsek, csavarok"
+BAL-f7a76928d635386b,web_20261002_094801.jpg,Piros gégecső (védőcső),"Piros, gyűrűs hullámcső tekercsben (villanyszerelési védőcső)",Piros gégecső
+BAL-4a89103e0efde217,web_20261002_094801.jpg,Szürke gégecső (védőcső),"Szürke, gyűrűs hajlékony védőcső tekercsben",Szürke gégecső
+BAL-effb625b020443ec,web_20261002_094801.jpg,Szürke fém védőcsövek (padlón),Egymás mellett fekvő szürke acél/fém védőcsövek a kép alján,Fém védőcsövek
+BAL-90435418dabaf0ec,web_20261002_094812.jpg,SK 63 A,63 A-es SK sorozatú termék,SK 63 A
+BAL-5a4cc836561240b3,web_20261002_094812.jpg,SK 100 A,100 A-es SK sorozatú termék,SK 100 A
+BAL-960870893e8cca53,web_20261002_094812.jpg,SK 160 A,160 A-es SK sorozatú termék,SK 160 A
+BAL-8735c53b75b26405,web_20261002_094812.jpg,VNO-O 3F-160 A,"Háromfázisú, 160 A-es termék barna kartondobozokban (jobb oldali felső polc)",VNO-O 3F-160 A
+BAL-3963471f9ed2d7b0,web_20261002_094812.jpg,VNO-100,Barna kartondobozokban csomagolt termék (jobb oldali alsó polc),VNO-100
+BAL-67534518991c9c81,web_20261002_094812.jpg,DT M 50–80 A biztosítóbetét,"Fekete, fehér és bézs színű, nagyobb méretű biztosítóbetétek, 50–80 A",DT M 50–80 A biztosítóbetét
+BAL-fbf08414171b5a0f,web_20261002_094812.jpg,VDOL 6–25 A biztosítóbetét,"Kisebb, kék-fehér dobozokban csomagolt biztosítóbetétek, 6–25 A",VDOL 6–25 A biztosítóbetét
+BAL-d8a1571e4ed23828,web_20261002_094812.jpg,Fehér gégecső (védőcső),"Fehér, gyűrűs hajlékony védőcső tekercsben",Fehér gégecső
+BAL-6f2ee8074cd05e6f,web_20261002_094854.jpg,Rabalux kisebb dobozos lámpatestek,Fehér-rózsaszín Rabalux dobozok sorban a felső polcon,Rabalux kisdobozok
+BAL-f4cd493cfda620bc,web_20261002_094854.jpg,Fehér kerek mennyezeti lámpatestek,"Fehér, kerek, üvegburás mennyezeti lámpák a felső polcon",Kerek mennyezeti lámpák
+BAL-efc1e419b277a439,web_20261002_094854.jpg,Fa keretes kerek mennyezeti lámpa,"Kerek mennyezeti lámpa világos, fa hatású kerettel",Fa keretes lámpa
+BAL-3312e273350b4599,web_20261002_094854.jpg,Karácsonyi LED fényfüzér (doboz),"Karácsonyi LED fényfüzérek dobozban, többféle LED-számmal",LED fényfüzér
+BAL-9274ed57b9b81603,web_20261002_094854.jpg,Okos (Wi-Fi) színváltós LED izzó (doboz),"Fehér dobozban színváltós, Wi-Fi-s okos LED izzó",Okos LED izzó
+BAL-8b3bfbadd7f4a04c,web_20261002_094854.jpg,Szobatermosztát (kék-fehér dobozok),Kijelzős szobatermosztátok kék-fehér dobozban,Szobatermosztát
+BAL-3176821bb1d87caf,web_20261002_094854.jpg,Csupaszolófogó (narancssárga),Narancssárga fogantyús kábelcsupaszoló fogó akasztós csomagolásban,Csupaszolófogó
+BAL-f8ea25c22491fd1c,web_20261002_094854.jpg,Szigetelt csavarhúzó készlet,Piros-narancs színű szigetelt csavarhúzók akasztós csomagolásban,Csavarhúzó készlet
+BAL-fba81525f4a88901,web_20261002_094854.jpg,Szürke falon kívüli kapcsolók és aljzatok,"Szürke, felületre szerelhető kapcsolók és aljzatok",Szürke felületi szerelvények
+BAL-c60c7f6241143db4,web_20261002_094854.jpg,Nyomógombos kezelődoboz (zöld-piros gomb),Fekete házas nyomógombos kezelődoboz zöld és piros gombbal,Nyomógombos doboz
+BAL-b1a101b0c2e98304,web_20261002_094854.jpg,Fehér falon kívüli kapcsolók és dugaljak,"Fehér, felületre szerelhető kapcsolók és dugaljak",Fehér felületi szerelvények
+BAL-e257d44df3860d24,web_20261002_094854.jpg,Forgókapcsoló (fekete-fehér),Fekete-fehér forgókapcsolók,Forgókapcsoló
+BAL-c87ad319a577a03c,web_20261002_094854.jpg,DIN-sínre szerelhető moduláris készülékek,"Fehér, szürke és kék modulos készülékek sínre pattintva a jobb oldali polcon",Moduláris készülékek
+BAL-015a3fa75be1b4f6,web_20261002_094854.jpg,Varta elemek (doboz),Kék Varta dobozok elemekkel,Varta elemek
+BAL-979b6f3bf407700c,web_20261002_094854.jpg,GP elemek (doboz),GP feliratú elemcsomagok,GP elemek
+BAL-2d5547e8c01708c1,web-20261002_094744.jpg,tp electric 5x16A kombinált fali dugalj 3105-600-1600,"Falon kívüli kombinált dugalj öt darab 16 A-es aljzattal, IP44",tp electric kombinált dugalj
+BAL-30e3ee131a42c6b5,web-20261002_094744.jpg,Falon kívüli kék földelt aljzat szürke házban,"Kék földelt ipari aljzat szürke műanyag házban, felületre szerelhető",Kék ipari aljzat
+BAL-e457b7df2f263796,web-20261002_094744.jpg,Falon kívüli elosztódoboz négy kék aljzattal,Szürke műanyag elosztódoboz négy kék földelt aljzattal,Négyes kék aljzatdoboz
+BAL-12db112e77ecbc7f,web-20261002_094744.jpg,Tehnoplast falon kívüli kiselosztó átlátszó ajtóval,"Falon kívüli moduláris kiselosztó sötétített, átlátszó ajtóval",Tehnoplast kiselosztó
+BAL-5d608551a23cfd5b,web-20261002_094744.jpg,Falon kívüli kiselosztó világosszürke házban,"Világosszürke, falon kívüli moduláris kiselosztó átlátszó ajtóval",Világosszürke kiselosztó
+BAL-8367e8fcf1e1c1b9,web-20261002_094744.jpg,Asalite 18W LED Opal Round Ceiling Lamp IP44 4000K,"Kerek, opál burájú 18 W-os LED mennyezeti lámpa, IP44, 4000 K",Asalite 18 W LED lámpa
+BAL-2d312c2af678f038,web-20261002_094744.jpg,UltraTech LED mennyezeti lámpa 1700 lumen,"LED mennyezeti lámpa 220–240 V, 1700 lumen fényárammal",UltraTech LED 1700 lm
+BAL-c0b520eca603eed1,web-20261002_094744.jpg,UltraTech LED lámpa 950 lumen,LED lámpa 950 lumen fényárammal,UltraTech LED 950 lm
+BAL-de49341bf6e1c37a,web-20261002_094744.jpg,Avide LED mennyezeti lámpa (kerek),"Fehér, kerek Avide LED mennyezeti lámpatest dobozban",Avide LED lámpa

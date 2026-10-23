@@ -112,3 +112,13 @@ Use `discord:#setaljbe-hermes` when the target channel must be explicit.
 Only send messages when the user explicitly requests it.
 Do not claim Discord sending is unavailable merely because no model-facing
 send_message tool is exposed.
+
+## Opcionális Big Pickle használat
+
+Ha a felhasználói prompt `BIGPICKLE:` előtaggal kezdődik, a programozási feladatot az OpenCode CLI-nek delegáld, Big Pickle modellel. A projektkönyvtár `/workspace`, a parancs:
+
+`~/.opencode/bin/opencode run "<feladat>" --model opencode/big-pickle`
+
+A kódot az OpenCode módosítsa; Hermes ne végezzen közvetlen kódmódosítást. A végén foglald össze a változásokat és a tesztek eredményét.
+
+Ha a prompt nem `BIGPICKLE:` előtaggal kezdődik, ne indítsd el az OpenCode-ot; használd a szokásos munkamenetet.
