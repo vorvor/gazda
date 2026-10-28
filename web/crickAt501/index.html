@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Crick@501</title>
+<style>
+:root{color-scheme:dark;--bg:#09090d;--ink:#f4f4f8;--mut:#8d8d9b;--line:rgba(255,255,255,.08);--btn:#2a2a33;--lav:#c9b6f5;--p0:#7ee8a0;--p1:#f6ef8c;--p2:#c9b6f5;--p3:#ff9b8a;--p4:#7cc4ff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:radial-gradient(120% 55% at 15% 0%,#2a1650 0%,#12132b 45%,#09090d 85%) fixed,#09090d;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:6px}
+main{max-width:420px;margin:0 auto;display:grid;gap:6px}
+.p0{--c:var(--p0)}.p1{--c:var(--p1)}.p2{--c:var(--p2)}.p3{--c:var(--p3)}.p4{--c:var(--p4)}
+.sc,.pad{border-radius:24px;border:1px solid var(--line);background:linear-gradient(160deg,#25252d,#16161c);box-shadow:0 10px 30px rgba(0,0,0,.4);overflow:hidden}
+.pad{padding:10px;display:grid;gap:5px}
+.hd,.row{display:grid;grid-template-columns:var(--gt)}
+.pc{padding:4px 2px;text-align:center;min-width:0}
+.pc.on{background:linear-gradient(180deg,color-mix(in srgb,var(--c) 20%,transparent),transparent)}
+.pc.on .big{color:var(--c)}
+.pc input{width:100%;text-align:center;font-weight:500;font-size:12px;border:0;background:transparent;color:var(--ink);padding:0;min-width:0}
+.big{font-size:44px;font-weight:300;line-height:1.05;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.sc[data-n="3"] .big{font-size:34px}.sc[data-n="4"] .big{font-size:28px}.sc[data-n="5"] .big{font-size:23px}
+.sub{font-size:11px;color:var(--mut);letter-spacing:.02em}
+.sc[data-n="4"] .sub,.sc[data-n="5"] .sub{font-size:9.5px}
+.mid{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.03);font-size:10px;color:var(--mut);line-height:1.4}
+.mid b{color:var(--ink);font-weight:500}
+.row{height:30px;border-top:1px solid var(--line)}
+.lb{color:var(--mut);font-weight:500;font-size:16px;display:flex;align-items:center;justify-content:center}
+.mk{font-size:20px;font-weight:800;color:var(--c);display:flex;align-items:center;justify-content:center}
+.sc[data-n="5"] .mk{font-size:17px}
+.mk.cl{background:color-mix(in srgb,var(--c) 16%,transparent)}
+.turn{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px;gap:6px}
+.dts{display:flex;gap:4px}.dt{min-width:38px;text-align:center;padding:2px 4px;border-radius:999px;background:var(--btn);font-size:12px;font-weight:700}
+.dt.bust{background:#ff7a7a;color:#09090d}
+button{font:inherit;border:1px solid var(--line);border-radius:999px;background:var(--btn);color:var(--ink);padding:9px 0;font-weight:500;cursor:pointer;font-size:14px}
+button:active{transform:scale(.95)}button:disabled{opacity:.4}
+.ctl{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.ctl .sel{background:var(--c);color:#09090d;border-color:transparent}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.grid button{border-radius:14px}
+.grid.hot button{background:rgba(201,182,245,.14);color:var(--lav);border:1px solid rgba(201,182,245,.28);font-size:16px;padding:10px 0;font-weight:600}
+.grid.small button{padding:7px 0;font-size:13px;font-weight:400}
+#end{background:#fff;color:#09090d;border-color:transparent}
+#ban{background:#7ee8a0;color:#09090d;border-radius:999px;padding:5px 10px;font-weight:700;display:none;text-align:center;font-size:13px}
+.foot{display:flex;gap:4px;align-items:center}
+.foot .sub{flex:1}.foot button{padding:5px 0;width:34px;font-size:12px}
+.foot #new{width:auto;padding:5px 12px;background:transparent;color:var(--mut)}
+.foot .sel{background:#fff;color:#09090d;border-color:transparent}
+</style></head><body><main>
+<section class="sc" id="sc"><div class="hd" id="hd"></div><div id="board"></div></section>
+<section class="pad">
+ <div class="turn"><span id="who"></span><span class="dts" id="dts"></span></div>
+ <div id="ban"></div>
+ <div class="ctl" id="ctl">
+  <button data-m="1">Single</button><button data-m="2">Double</button><button data-m="3">Triple</button>
+  <button id="miss">Miss</button><button id="undo">↶ Undo</button><button id="end">End turn</button>
+ </div>
+ <div class="grid hot" id="hot"></div>
+ <div class="grid small" id="oth"></div>
+ <div class="foot" id="foot"><span class="sub">Players</span><button data-k="2">2</button><button data-k="3">3</button><button data-k="4">4</button><button data-k="5">5</button><button id="new">New game</button></div>
+</section>
+</main>
+<script>
+const N=[20,19,18,17,16,15,25],$=id=>document.getElementById(id);
+const mk=()=>Object.fromEntries(N.map(n=>[n,0]));
+const sym=v=>['','／','✕','Ⓧ'][Math.min(v,3)];
+const names=[1,2,3,4,5].map(i=>'Player '+i);let S,H=[],count=2,cols=[];
+function layout(){const n=count,mid=Math.ceil(n/2);cols=[];for(let i=0;i<n;i++){if(i==mid)cols.push('L');cols.push(i)}return cols}
+function buildHead(){
+ layout();
+ $('sc').dataset.n=count;
+ $('sc').style.setProperty('--gt',cols.map(x=>x=='L'?'46px':'minmax(0,1fr)').join(' '));
+ $('hd').innerHTML=cols.map(x=>x=='L'?'<div class="mid"><b>501</b><span>Cricket</span></div>':`<div class="pc p${x}" id="pc${x}"><input id="n${x}" value="${names[x]}" aria-label="Player ${x+1} name"><div class="big" id="b${x}"></div><div class="sub" id="c${x}"></div></div>`).join('');
+ for(let i=0;i<count;i++)$('n'+i).oninput=e=>{names[i]=e.target.value||'Player '+(i+1);render()};
+}
+function init(){S={p:Array.from({length:count},()=>({left:501,m:mk(),c:0})),cur:0,darts:[],start:501,mult:1,w501:null,wcr:null,over:false};H=[];buildHead();render()}
+function checkCricket(){
+ if(S.wcr!==null)return;
+ const n=S.p.length;
+ for(let k=0;k<n;k++){const i=(S.cur+k)%n,p=S.p[i];
+  if(N.every(x=>p.m[x]>=3)&&S.p.every((o,j)=>j==i||p.c>=o.c)){S.wcr=i;break}}
+}
+function endTurn(){S.darts=[];S.cur=(S.cur+1)%S.p.length;S.mult=1}
+function dart(n){
+ if(S.over)return;H.push(JSON.stringify(S));
+ let m=S.mult;if(n==25&&m==3)m=2;if(n==0)m=0;
+ const p=S.p[S.cur],others=S.p.filter((_,i)=>i!=S.cur);
+ const d={m,txt:n==0?'Miss':['','S','D','T'][m]+(n==25?'B':n)};
+ if(!S.darts.length)S.start=p.left;
+ if(m&&N.includes(n)&&S.wcr===null){
+  for(let i=0;i<m;i++){if(p.m[n]<3)p.m[n]++;else if(others.some(o=>o.m[n]<3))p.c+=n}
+ }
+ let bust=false;
+ if(m&&S.w501===null){
+  const r=p.left-m*n;
+  if(r<0||r==1||(r==0&&m!=2))bust=true;
+  else{p.left=r;if(r==0)S.w501=S.cur}
+ }
+ if(bust){d.bust=true;p.left=S.start}
+ S.darts.push(d);checkCricket();
+ S.over=S.w501!==null&&S.wcr!==null;
+ S.mult=1;
+ if(!S.over&&(bust||S.darts.length==3))endTurn();
+ render();
+}
+function render(){
+ const c=S.cur;
+ S.p.forEach((p,i)=>{
+  $('pc'+i).classList.toggle('on',c==i&&!S.over);
+  $('b'+i).textContent=p.left;
+  $('c'+i).innerHTML=`<div>Cr ${p.c} · ${N.filter(x=>p.m[x]>=3).length}/7</div><div>${S.w501===i?'🏆501 ':''}${S.wcr===i?'🏆CR':'&nbsp;'}</div>`});
+ $('board').innerHTML=N.map(n=>`<div class="row">${cols.map(x=>x=='L'?`<div class="lb">${n==25?'B':n}</div>`:`<div class="mk p${x} ${S.p[x].m[n]>=3?'cl':''}">${sym(S.p[x].m[n])}</div>`).join('')}</div>`).join('');
+ $('who').innerHTML=`<span class="p${c}" style="color:var(--c)">${names[c]}</span> <span class="sub">dart ${Math.min(S.darts.length+1,3)}/3</span>`;
+ $('dts').innerHTML=[0,1,2].map(i=>{const d=S.darts[i];return `<span class="dt ${d&&d.bust?'bust':''}">${d?d.txt+(d.bust?' ✕':''):'·'}</span>`}).join('');
+ document.querySelectorAll('#ctl [data-m]').forEach(b=>{b.classList.toggle('sel',+b.dataset.m==S.mult);b.style.setProperty('--c',`var(--p${c})`)});
+ document.querySelectorAll('#foot [data-k]').forEach(b=>b.classList.toggle('sel',+b.dataset.k==count));
+ $('hot').innerHTML=N.map(n=>`<button data-n="${n}">${n==25?'B':n}</button>`).join('');
+ $('oth').innerHTML=[1,2,3,4,5,6,7,8,9,10,11,12,13,14].map(n=>`<button data-n="${n}">${n}</button>`).join('');
+ document.querySelectorAll('.pad button').forEach(b=>{if(b.id!='new'&&b.id!='undo'&&!b.dataset.k)b.disabled=S.over});
+ $('undo').disabled=!H.length;
+ const w=[];
+ if(S.w501!==null)w.push(`${names[S.w501]} won 501`);
+ if(S.wcr!==null)w.push(`${names[S.wcr]} won Cricket`);
+ if(S.over&&S.w501===S.wcr)w.length=0,w.push(`🏆 ${names[S.w501]} won BOTH!`);
+ $('ban').style.display=w.length?'block':'none';$('ban').textContent=w.join(' · ');
+}
+$('ctl').onclick=e=>{const m=e.target.dataset.m;if(m){S.mult=S.mult==+m?1:+m;render()}};
+$('hot').onclick=$('oth').onclick=e=>{const n=e.target.dataset.n;if(n)dart(+n)};
+$('miss').onclick=()=>dart(0);
+$('end').onclick=()=>{if(!S.over){H.push(JSON.stringify(S));endTurn();render()}};
+$('undo').onclick=()=>{if(H.length){S=JSON.parse(H.pop());render()}};
+$('foot').onclick=e=>{const k=e.target.dataset.k;if(k){count=+k;init()}else if(e.target.id=='new')init()};
+init();
+</script></body></html>
