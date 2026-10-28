@@ -44,7 +44,27 @@ button:active{transform:scale(.95)}button:disabled{opacity:.4}
 .foot #new{width:auto;padding:5px 12px;background:transparent;color:var(--mut)}
 .foot .sel{background:#fff;color:#09090d;border-color:transparent}
 #ban{border-radius:14px;line-height:1.4}
-</style></head><body><main>
+body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 45%,#100e20 85%) fixed}
+#victory{position:relative;text-align:center;padding:22px 16px;border:2px solid #ffda73;border-radius:24px;background:linear-gradient(135deg,#49331d,#26163e);box-shadow:0 0 35px #ffcc5540;overflow-wrap:anywhere}
+#victory:not([hidden]){animation:champion-in .6s ease-out}
+#victory .trophy{font-size:52px;line-height:1.2}
+#victory h1{margin:6px 0;color:#ffdf83;font-size:30px;font-weight:900;line-height:1.15}
+#victory p{margin:8px 0 14px;color:#fff2c6;font-weight:700}
+#play-again{padding:10px 24px;background:#ffdf83;color:#201629;font-weight:800}
+.pc.champion{background:linear-gradient(180deg,color-mix(in srgb,var(--c) 35%,transparent),transparent);box-shadow:inset 0 0 0 2px var(--c);border-radius:14px}
+.pc.champion .big{color:var(--c)}
+#fireworks{position:fixed;inset:0;z-index:10;pointer-events:none;overflow:hidden}
+.spark{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--spark);box-shadow:0 0 8px var(--spark);opacity:0;animation:firework 1.4s ease-out var(--delay) 2 both}
+@keyframes firework{0%{opacity:0;transform:translate(0,0) scale(.3)}10%{opacity:1}75%{opacity:.8}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.2)}}
+@keyframes champion-in{from{opacity:0;transform:translateY(-18px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.spark{display:none}#victory:not([hidden]){animation:none}}
+</style></head><body id="page"><div id="fireworks" aria-hidden="true"></div><main>
+<section id="victory" hidden role="status" aria-live="polite">
+ <div class="trophy" aria-hidden="true">🏆</div>
+ <h1><span id="winner-name"></span><br>WINS THE GAME!</h1>
+ <p>501 checked out · All Cricket fields closed</p>
+ <button id="play-again">Play again</button>
+</section>
 <section class="sc" id="sc"><div class="hd" id="hd"></div><div id="board"></div></section>
 <section class="pad">
  <div class="turn"><span id="who"></span><span class="dts" id="dts"></span></div>
@@ -68,6 +88,25 @@ const sym=v=>['','／','✕','Ⓧ'][Math.min(v,3)];
 const names=[1,2,3,4,5].map(i=>'Player '+i);let S,H=[],count=2,cols=[];
 let computer=false,computerTimer=null,computerThrows=[];
 let difficulty='medium';
+let celebratedWinner=null;
+function celebrate(){
+ const over=S.win!==null;
+ $('page').classList.toggle('victorious',over);
+ $('victory').hidden=!over;
+ if(!over){celebratedWinner=null;$('fireworks').innerHTML='';return}
+ $('winner-name').textContent=playerName(S.win);
+ if(celebratedWinner===S.win)return;
+ celebratedWinner=S.win;
+ const colors=['#ffdf83','#7ee8a0','#c9b6f5','#ff9b8a','#7cc4ff'],sparks=[];
+ for(let burst=0;burst<6;burst++){
+  const x=15+Math.random()*70,y=10+Math.random()*50;
+  for(let i=0;i<24;i++){
+   const angle=i*Math.PI/12,distance=60+Math.random()*100;
+   sparks.push(`<i class="spark" style="left:${x}%;top:${y}%;--spark:${colors[burst%colors.length]};--delay:${burst*.3}s;--dx:${Math.cos(angle)*distance}px;--dy:${Math.sin(angle)*distance+40}px"></i>`);
+  }
+ }
+ $('fireworks').innerHTML=sparks.join('');
+}
 const levels={basic:{accuracy:.30,double:.06,triple:.02},medium:{accuracy:.55,double:.12,triple:.12},pro:{accuracy:.95,double:.20,triple:.70}};
 const isComputer=()=>computer&&S.cur===count-1;
 const playerName=i=>computer&&i===count-1?`Computer (${difficulty})`:names[i];
@@ -153,6 +192,7 @@ function render(){
  const c=S.cur,over=S.win!==null;
  S.p.forEach((p,i)=>{
   $('pc'+i).classList.toggle('on',c==i&&!over);
+  $('pc'+i).classList.toggle('champion',S.win===i);
   $('b'+i).textContent=p.left;
   $('c'+i).innerHTML=`<div>Cr ${p.c} · ${N.filter(x=>p.m[x]>=3).length}/7</div><div>${p.d501?'🏆501 ':''}${p.cr?'🏆CR':''}${p.d501||p.cr?'':'&nbsp;'}</div>`});
  $('board').innerHTML=N.map(n=>`<div class="row">${cols.map(x=>x=='L'?`<div class="lb">${n==25?'B':n}</div>`:`<div class="mk p${x} ${S.p[x].m[n]>=3?'cl':''}">${sym(S.p[x].m[n])}</div>`).join('')}</div>`).join('');
@@ -168,6 +208,7 @@ function render(){
  if(over)w.push(`🏆 ${playerName(S.win)} wins the game: 501 + Cricket!`);
  else{S.p.forEach((p,i)=>{if(p.d501)w.push(`${playerName(i)} finished 501`);if(p.cr)w.push(`${playerName(i)} won Cricket`)});if(w.length)w.push('first with both wins')}
  $('ban').style.display=w.length?'block':'none';$('ban').textContent=w.join(' · ');
+ celebrate();
  scheduleComputer();
 }
 $('ctl').onclick=e=>{const m=e.target.dataset.m;if(m){S.mult=S.mult==+m?1:+m;render()}};
@@ -176,6 +217,7 @@ $('miss').onclick=()=>dart(0);
 $('end').onclick=()=>{if(S.win===null){H.push(JSON.stringify(S));endTurn();render()}};
 $('undo').onclick=()=>{if(H.length){do{S=JSON.parse(H.pop())}while(isComputer()&&H.length);computerThrows=[];$('computer-result').textContent='';render()}};
 $('computer').onchange=()=>{computer=$('computer').checked;init()};
+$('play-again').onclick=()=>init();
 $('difficulty').onchange=()=>{difficulty=$('difficulty').value;if(computer)$('n'+(count-1)).value=playerName(count-1);render()};
 $('foot').onclick=e=>{const k=e.target.dataset.k;if(k){count=+k;init()}else if(e.target.id=='new')init()};
 init();

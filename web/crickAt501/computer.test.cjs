@@ -9,6 +9,29 @@ function game(){
  vm.runInContext(fs.readFileSync(__dirname+'/index.html','utf8').match(/<script>([\s\S]*?)<\/script>/)[1],context);
  return {run:code=>vm.runInContext(code,context),element,timers,tick(){const [id,fn]=timers.entries().next().value;timers.delete(id);fn()}};
 }
+test('winning celebrates once, and undo or new game clears the celebration',()=>{
+ const g=game();
+ assert.equal(g.element('victory').hidden,true);
+ g.run('S.p[0].left=40;N.forEach(n=>S.p[0].m[n]=3);S.mult=2;dart(20)');
+ assert.equal(g.element('victory').hidden,false);
+ assert.equal(g.element('winner-name').textContent,'Player 1');
+ assert.match(g.element('fireworks').innerHTML,/spark/);
+ const fireworks=g.element('fireworks').innerHTML;
+ g.run('render()');assert.equal(g.element('fireworks').innerHTML,fireworks);
+ g.element('undo').onclick();
+ assert.equal(g.element('victory').hidden,true);
+ assert.equal(g.element('fireworks').innerHTML,'');
+ g.run('S.mult=2;dart(20)');assert.equal(g.element('victory').hidden,false);
+ g.element('play-again').onclick();
+ assert.equal(g.element('victory').hidden,true);
+ assert.equal(g.element('fireworks').innerHTML,'');
+ assert.equal(g.run('S.p[0].left'),501);
+});
+test('finishing only one discipline does not trigger fireworks',()=>{
+ const g=game();g.run('S.p[0].left=40;S.mult=2;dart(20)');
+ assert.equal(g.element('victory').hidden,true);
+ assert.equal(g.element('fireworks').innerHTML,'');
+});
 test('computer automatically throws and uses the same Cricket and 501 scoring',()=>{
  const g=game();
  assert.equal(typeof g.element('computer').onchange,'function');
