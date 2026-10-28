@@ -31,7 +31,7 @@ test('all Cricket targets including bull update marks and deduct points',()=>{
   const m=g.run(`S.p[1].m[${n}]`);
   assert.ok(m>=1&&m<=(n===25?2:3));
   assert.equal(g.run('S.p[1].left'),501-n*m);
-  assert.match(g.element('computer-result').textContent,/Computer:/);
+  assert.match(g.element('computer-result').textContent,/Computer \(medium\):/);
  }
 });
 test('undo and new game cancel pending computer turns',()=>{
@@ -48,14 +48,14 @@ test('computer respects busts and double-out wins',()=>{
  g.run('S.p[1].left=50;N.forEach(n=>S.p[1].m[n]=3);computerDart=()=>({n:25,m:2})');
  g.element('end').onclick();g.tick();
  assert.equal(g.run('S.win'),1);assert.equal(g.timers.size,0);
- assert.match(g.element('ban').textContent,/Computer wins/);
+ assert.match(g.element('ban').textContent,/Computer \(medium\) wins/);
 });
 test('human-only mode stays manual and computer occupies last slot',()=>{
  const g=game();g.run('dart(20);dart(20);dart(20)');
  assert.equal(g.run('S.p[0].left'),441);assert.equal(g.run('S.cur'),1);assert.equal(g.timers.size,0);
  g.element('computer').checked=true;g.element('computer').onchange();
  g.element('foot').onclick({target:{dataset:{k:'5'}}});
- assert.equal(g.element('n4').value,'Computer');
+ assert.equal(g.element('n4').value,'Computer (medium)');
  for(let i=0;i<4;i++)g.element('end').onclick();
  assert.equal(g.run('S.cur'),4);assert.equal(g.timers.size,1);
  g.element('computer').checked=false;g.element('computer').onchange();
@@ -69,9 +69,24 @@ test('levels increasingly hit and close the remaining Cricket field',()=>{
   g.run('S.cur=1;N.forEach(n=>S.p[1].m[n]=3);S.p[1].m[18]=0;let seed=42;Math.random=()=>((seed=(1664525*seed+1013904223)>>>0)/4294967296)');
   totals.push(g.run('(()=>{let hits=0,marks=0;for(let i=0;i<2000;i++){const d=computerDart();if(d.n===18){hits++;marks+=d.m}if(d.n===25&&d.m===3)throw Error("Triple bull")}return {hits,marks}})()'));
  }
- assert.ok(totals[0].hits>1000);
+ assert.ok(totals[0].hits>500&&totals[0].hits<800,'Basic should hit its target roughly 30% of the time');
+ assert.ok(totals[1].hits>1000&&totals[1].hits<1250,'Medium should hit its target roughly 55% of the time');
+ assert.ok(totals[0].marks<950,'Basic should mostly hit singles');
+ assert.ok(totals[1].marks<1700,'Medium should have fewer multi-hits');
  assert.ok(totals[0].hits<totals[1].hits&&totals[1].hits<totals[2].hits);
  assert.ok(totals[0].marks<totals[1].marks&&totals[1].marks<totals[2].marks);
+});
+test('computer name includes the selected level in the scoreboard and turn display',()=>{
+ for(const level of ['basic','medium','pro']){
+  const g=game();g.element('difficulty').value=level;g.element('difficulty').onchange();
+  g.element('computer').checked=true;g.element('computer').onchange();
+  assert.equal(g.element('n1').value,`Computer (${level})`);
+  assert.equal(g.element('n0').value,'Player 1');
+  g.element('end').onclick();
+  assert.ok(g.element('who').innerHTML.includes(`Computer (${level})`));
+  g.element('difficulty').value='pro';g.element('difficulty').onchange();
+  assert.equal(g.element('n1').value,'Computer (pro)');
+ }
 });
 test('after Cricket all levels aim at double-out and safe setup shots',()=>{
  for(const level of ['basic','medium','pro']){

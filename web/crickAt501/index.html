@@ -68,9 +68,9 @@ const sym=v=>['','／','✕','Ⓧ'][Math.min(v,3)];
 const names=[1,2,3,4,5].map(i=>'Player '+i);let S,H=[],count=2,cols=[];
 let computer=false,computerTimer=null,computerThrows=[];
 let difficulty='medium';
-const levels={basic:{accuracy:.65,double:.15,triple:.10},medium:{accuracy:.82,double:.25,triple:.35},pro:{accuracy:.95,double:.20,triple:.70}};
+const levels={basic:{accuracy:.30,double:.06,triple:.02},medium:{accuracy:.55,double:.12,triple:.12},pro:{accuracy:.95,double:.20,triple:.70}};
 const isComputer=()=>computer&&S.cur===count-1;
-const playerName=i=>computer&&i===count-1?'Computer':names[i];
+const playerName=i=>computer&&i===count-1?`Computer (${difficulty})`:names[i];
 function computerDart(){
  const p=S.p[S.cur],level=levels[difficulty],open=N.filter(n=>p.m[n]<3);
  let n,m;
@@ -109,7 +109,7 @@ function scheduleComputer(){
   const m=n===0?0:S.mult;
   if(!S.darts.length)computerThrows=[];
   computerThrows.push(n===0?'Miss':['','S','D','T'][m]+(n===25?'B':n));
-  $('computer-result').textContent='Computer: '+computerThrows.join(' · ');
+  $('computer-result').textContent=playerName(S.cur)+': '+computerThrows.join(' · ');
   dart(n);
  },700);
 }
@@ -176,7 +176,7 @@ $('miss').onclick=()=>dart(0);
 $('end').onclick=()=>{if(S.win===null){H.push(JSON.stringify(S));endTurn();render()}};
 $('undo').onclick=()=>{if(H.length){do{S=JSON.parse(H.pop())}while(isComputer()&&H.length);computerThrows=[];$('computer-result').textContent='';render()}};
 $('computer').onchange=()=>{computer=$('computer').checked;init()};
-$('difficulty').onchange=()=>{difficulty=$('difficulty').value};
+$('difficulty').onchange=()=>{difficulty=$('difficulty').value;if(computer)$('n'+(count-1)).value=playerName(count-1);render()};
 $('foot').onclick=e=>{const k=e.target.dataset.k;if(k){count=+k;init()}else if(e.target.id=='new')init()};
 init();
 </script></body></html>
