@@ -118,7 +118,7 @@ function render(){
  const w=[];
  if(S.w501!==null)w.push(`${names[S.w501]} won 501`);
  if(S.wcr!==null)w.push(`${names[S.wcr]} won Cricket`);
- if(S.over&&S.w501===S.wcr)w.length=0,w.push(`🏆 ${names[S.w501]} won BOTH!`);
+ if(S.over)w.length=0,w.push(S.w501===S.wcr?`🏆 ${names[S.w501]} wins the game: 501 + Cricket!`:`No overall winner · ${names[S.w501]} won 501, ${names[S.wcr]} won Cricket`);
  $('ban').style.display=w.length?'block':'none';$('ban').textContent=w.join(' · ');
 }
 $('ctl').onclick=e=>{const m=e.target.dataset.m;if(m){S.mult=S.mult==+m?1:+m;render()}};
