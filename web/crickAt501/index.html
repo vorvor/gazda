@@ -56,6 +56,9 @@ button:active{transform:scale(.95)}button:disabled{opacity:.4}
  <div class="grid hot" id="hot"></div>
  <div class="grid small" id="oth"></div>
  <div class="foot" id="foot"><span class="sub">Players</span><button data-k="2">2</button><button data-k="3">3</button><button data-k="4">4</button><button data-k="5">5</button><button id="new">New game</button></div>
+ <label class="sub"><input type="checkbox" id="computer"> Play against computer (last player; starts a new game)</label>
+ <label class="sub">Computer level <select id="difficulty"><option value="basic">Basic</option><option value="medium" selected>Medium</option><option value="pro">Pro</option></select></label>
+ <div class="sub" id="computer-result" aria-live="polite"></div>
 </section>
 </main>
 <script>
@@ -63,15 +66,65 @@ const N=[20,19,18,17,16,15,25],$=id=>document.getElementById(id);
 const mk=()=>Object.fromEntries(N.map(n=>[n,0]));
 const sym=v=>['','／','✕','Ⓧ'][Math.min(v,3)];
 const names=[1,2,3,4,5].map(i=>'Player '+i);let S,H=[],count=2,cols=[];
+let computer=false,computerTimer=null,computerThrows=[];
+let difficulty='medium';
+const levels={basic:{accuracy:.65,double:.15,triple:.10},medium:{accuracy:.82,double:.25,triple:.35},pro:{accuracy:.95,double:.20,triple:.70}};
+const isComputer=()=>computer&&S.cur===count-1;
+const playerName=i=>computer&&i===count-1?'Computer':names[i];
+function computerDart(){
+ const p=S.p[S.cur],level=levels[difficulty],open=N.filter(n=>p.m[n]<3);
+ let n,m;
+ if(open.length){
+  // Close unfinished Cricket fields before chasing extra points.
+  n=open[0];
+  const roll=Math.random();
+  m=n===25?(roll<level.double+level.triple?2:1):(roll<level.triple?3:roll<level.triple+level.double?2:1);
+ }else if(p.left===50||p.left<=40&&p.left%2===0){
+  n=p.left/2;m=2;
+ }else{
+  // Reduce 501 without knowingly busting or leaving an unfinishable 1.
+  const shots=[];
+  for(let target=1;target<=25;target++){
+   if(target>20&&target!==25)continue;
+   for(let mult=1;mult<=(target===25?2:3);mult++){
+    if(p.left-target*mult>=2)shots.push({n:target,m:mult});
+   }
+  }
+  shots.sort((a,b)=>b.n*b.m-a.n*a.m);
+  ({n,m}=shots[0]||{n:0,m:0});
+ }
+ // Even Basic aims at Cricket; difficulty controls accuracy and multi-hits.
+ if(Math.random()>=level.accuracy){
+  n=Math.random()<.5?0:1+Math.floor(Math.random()*20);m=n?1:0;
+ }
+ return {n,m};
+}
+function scheduleComputer(){
+ clearTimeout(computerTimer);computerTimer=null;
+ if(S.win!==null||!isComputer())return;
+ computerTimer=setTimeout(()=>{
+  computerTimer=null;
+  const shot=computerDart(),n=shot.n;
+  S.mult=shot.m;
+  const m=n===0?0:S.mult;
+  if(!S.darts.length)computerThrows=[];
+  computerThrows.push(n===0?'Miss':['','S','D','T'][m]+(n===25?'B':n));
+  $('computer-result').textContent='Computer: '+computerThrows.join(' · ');
+  dart(n);
+ },700);
+}
 function layout(){const n=count,mid=Math.ceil(n/2);cols=[];for(let i=0;i<n;i++){if(i==mid)cols.push('L');cols.push(i)}return cols}
 function buildHead(){
  layout();
  $('sc').dataset.n=count;
  $('sc').style.setProperty('--gt',cols.map(x=>x=='L'?'46px':'minmax(0,1fr)').join(' '));
  $('hd').innerHTML=cols.map(x=>x=='L'?'<div class="mid"><b>501</b><span>Cricket</span></div>':`<div class="pc p${x}" id="pc${x}"><input id="n${x}" value="${names[x]}" aria-label="Player ${x+1} name"><div class="big" id="b${x}"></div><div class="sub" id="c${x}"></div></div>`).join('');
- for(let i=0;i<count;i++)$('n'+i).oninput=e=>{names[i]=e.target.value||'Player '+(i+1);render()};
+ for(let i=0;i<count;i++){
+  $('n'+i).value=playerName(i);$('n'+i).disabled=computer&&i===count-1;
+  $('n'+i).oninput=e=>{names[i]=e.target.value||'Player '+(i+1);render()};
+ }
 }
-function init(){S={p:Array.from({length:count},()=>({left:501,m:mk(),c:0,d501:false,cr:false})),cur:0,darts:[],start:501,mult:1,win:null};H=[];buildHead();render()}
+function init(){clearTimeout(computerTimer);computerThrows=[];$('computer-result').textContent='';S={p:Array.from({length:count},()=>({left:501,m:mk(),c:0,d501:false,cr:false})),cur:0,darts:[],start:501,mult:1,win:null};H=[];buildHead();render()}
 function endTurn(){S.darts=[];S.cur=(S.cur+1)%S.p.length;S.mult=1}
 function dart(n){
  if(S.win!==null)return;H.push(JSON.stringify(S));
@@ -103,24 +156,27 @@ function render(){
   $('b'+i).textContent=p.left;
   $('c'+i).innerHTML=`<div>Cr ${p.c} · ${N.filter(x=>p.m[x]>=3).length}/7</div><div>${p.d501?'🏆501 ':''}${p.cr?'🏆CR':''}${p.d501||p.cr?'':'&nbsp;'}</div>`});
  $('board').innerHTML=N.map(n=>`<div class="row">${cols.map(x=>x=='L'?`<div class="lb">${n==25?'B':n}</div>`:`<div class="mk p${x} ${S.p[x].m[n]>=3?'cl':''}">${sym(S.p[x].m[n])}</div>`).join('')}</div>`).join('');
- $('who').innerHTML=`<span class="p${c}" style="color:var(--c)">${names[c]}</span> <span class="sub">dart ${Math.min(S.darts.length+1,3)}/3</span>`;
+ $('who').innerHTML=`<span class="p${c}" style="color:var(--c)">${playerName(c)}</span> <span class="sub">dart ${Math.min(S.darts.length+1,3)}/3</span>`;
  $('dts').innerHTML=[0,1,2].map(i=>{const d=S.darts[i];return `<span class="dt ${d&&d.bust?'bust':''}">${d?d.txt+(d.bust?' ✕':''):'·'}</span>`}).join('');
  document.querySelectorAll('#ctl [data-m]').forEach(b=>{b.classList.toggle('sel',+b.dataset.m==S.mult);b.style.setProperty('--c',`var(--p${c})`)});
  document.querySelectorAll('#foot [data-k]').forEach(b=>b.classList.toggle('sel',+b.dataset.k==count));
  $('hot').innerHTML=N.map(n=>`<button data-n="${n}">${n==25?'B':n}</button>`).join('');
  $('oth').innerHTML=[1,2,3,4,5,6,7,8,9,10,11,12,13,14].map(n=>`<button data-n="${n}">${n}</button>`).join('');
- document.querySelectorAll('.pad button').forEach(b=>{if(b.id!='new'&&b.id!='undo'&&!b.dataset.k)b.disabled=over});
+ document.querySelectorAll('.pad button').forEach(b=>{if(b.id!='new'&&b.id!='undo'&&!b.dataset.k)b.disabled=over||isComputer()});
  $('undo').disabled=!H.length;
  const w=[];
- if(over)w.push(`🏆 ${names[S.win]} wins the game: 501 + Cricket!`);
- else{S.p.forEach((p,i)=>{if(p.d501)w.push(`${names[i]} finished 501`);if(p.cr)w.push(`${names[i]} won Cricket`)});if(w.length)w.push('first with both wins')}
+ if(over)w.push(`🏆 ${playerName(S.win)} wins the game: 501 + Cricket!`);
+ else{S.p.forEach((p,i)=>{if(p.d501)w.push(`${playerName(i)} finished 501`);if(p.cr)w.push(`${playerName(i)} won Cricket`)});if(w.length)w.push('first with both wins')}
  $('ban').style.display=w.length?'block':'none';$('ban').textContent=w.join(' · ');
+ scheduleComputer();
 }
 $('ctl').onclick=e=>{const m=e.target.dataset.m;if(m){S.mult=S.mult==+m?1:+m;render()}};
 $('hot').onclick=$('oth').onclick=e=>{const n=e.target.dataset.n;if(n)dart(+n)};
 $('miss').onclick=()=>dart(0);
 $('end').onclick=()=>{if(S.win===null){H.push(JSON.stringify(S));endTurn();render()}};
-$('undo').onclick=()=>{if(H.length){S=JSON.parse(H.pop());render()}};
+$('undo').onclick=()=>{if(H.length){do{S=JSON.parse(H.pop())}while(isComputer()&&H.length);computerThrows=[];$('computer-result').textContent='';render()}};
+$('computer').onchange=()=>{computer=$('computer').checked;init()};
+$('difficulty').onchange=()=>{difficulty=$('difficulty').value};
 $('foot').onclick=e=>{const k=e.target.dataset.k;if(k){count=+k;init()}else if(e.target.id=='new')init()};
 init();
 </script></body></html>
