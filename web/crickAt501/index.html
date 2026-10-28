@@ -90,7 +90,7 @@ function dart(n){
  }
  if(bust){d.bust=true;p.left=S.start}
  S.darts.push(d);
- if(!p.cr&&N.every(x=>p.m[x]>=3)&&others.every(o=>p.c>=o.c))p.cr=true;
+ if(!p.cr&&N.every(x=>p.m[x]>=3))p.cr=true;
  if(p.d501&&p.cr)S.win=S.cur;
  S.mult=1;
  if(S.win===null&&(bust||S.darts.length==3))endTurn();
