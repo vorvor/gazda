@@ -5,10 +5,42 @@ const vm=require('node:vm');
 function game(){
  const elements=new Map(),timers=new Map();let next=0;
  const element=id=>{if(!elements.has(id))elements.set(id,{dataset:{},style:{setProperty(){}},classList:{toggle(){}},checked:false});return elements.get(id)};
- const context=vm.createContext({document:{getElementById:element,querySelectorAll:()=>[]},setTimeout:fn=>{timers.set(++next,fn);return next},clearTimeout:id=>timers.delete(id)});
+ const context=vm.createContext({confirm:()=>true,document:{getElementById:element,querySelectorAll:()=>[]},setTimeout:fn=>{timers.set(++next,fn);return next},clearTimeout:id=>timers.delete(id)});
  vm.runInContext(fs.readFileSync(__dirname+'/index.html','utf8').match(/<script>([\s\S]*?)<\/script>/)[1],context);
  return {run:code=>vm.runInContext(code,context),element,timers,tick(){const [id,fn]=timers.entries().next().value;timers.delete(id);fn()}};
 }
+test('lower number buttons run from 14 down to 1',()=>{
+ const g=game();
+ const numbers=()=>Array.from(g.element('oth').innerHTML.matchAll(/data-n="(\d+)"/g),match=>Number(match[1]));
+ assert.deepEqual(numbers(),[14,13,12,11,10,9,8,7,6,5,4,3,2,1]);
+ g.element('oth').onclick({target:{dataset:{n:'14'}}});
+ assert.equal(g.run('S.p[0].left'),487);
+ assert.deepEqual(numbers(),[14,13,12,11,10,9,8,7,6,5,4,3,2,1]);
+});
+test('cancelled restart and settings changes preserve the entire active game',()=>{
+ const g=game();g.run('dart(20);let confirmations=0;confirm=()=>{confirmations++;return false}');
+ const before=g.run('JSON.stringify({S,H,count,computer})');
+ g.element('foot').onclick({target:{id:'new',dataset:{}}});
+ assert.equal(g.run('JSON.stringify({S,H,count,computer})'),before);
+ g.element('foot').onclick({target:{dataset:{k:'3'}}});
+ assert.equal(g.run('JSON.stringify({S,H,count,computer})'),before);
+ g.element('computer').checked=true;g.element('computer').onchange();
+ assert.equal(g.run('JSON.stringify({S,H,count,computer})'),before);
+ assert.equal(g.element('computer').checked,false);
+ assert.equal(g.run('confirmations'),3);
+ g.element('foot').onclick({target:{dataset:{k:'2'}}});
+ assert.equal(g.run('confirmations'),3,'Current player count is a no-op');
+ assert.equal(g.run('JSON.stringify({S,H,count,computer})'),before);
+ g.run('confirm=()=>true');g.element('foot').onclick({target:{dataset:{k:'3'}}});
+ assert.equal(g.run('S.p.length'),3);assert.equal(g.run('H.length'),0);
+ assert.equal(g.element('settings').open,false);
+});
+test('cancel during a computer turn preserves its pending dart',()=>{
+ const g=game();g.element('computer').checked=true;g.element('computer').onchange();
+ g.element('end').onclick();g.run('confirm=()=>false');
+ g.element('foot').onclick({target:{id:'new',dataset:{}}});
+ assert.equal(g.run('S.cur'),1);assert.equal(g.timers.size,1);
+});
 test('winning celebrates once, and undo or new game clears the celebration',()=>{
  const g=game();
  assert.equal(g.element('victory').hidden,true);
@@ -98,6 +130,30 @@ test('levels increasingly hit and close the remaining Cricket field',()=>{
  assert.ok(totals[1].marks<1700,'Medium should have fewer multi-hits');
  assert.ok(totals[0].hits<totals[1].hits&&totals[1].hits<totals[2].hits);
  assert.ok(totals[0].marks<totals[1].marks&&totals[1].marks<totals[2].marks);
+});
+test('all levels vary intended Cricket targets and favour nearly closed fields',()=>{
+ for(const level of ['basic','medium','pro']){
+  const g=game();g.element('difficulty').value=level;g.element('difficulty').onchange();
+  const hits={};
+  for(let i=0;i<140;i++){
+   g.run(`let rolls${i}=[${(i+.5)/140},.5,0];Math.random=()=>rolls${i}.shift()??0`);
+   const n=g.run('computerDart().n');hits[n]=(hits[n]||0)+1;
+  }
+  assert.equal(Object.keys(hits).length,7,'Every open Cricket field can be targeted');
+  g.run('S.p[0].m[20]=3;S.p[0].m[16]=2');
+  const focused={};
+  for(let i=0;i<140;i++){
+   g.run(`let focus${i}=[${(i+.5)/140},.5,0];Math.random=()=>focus${i}.shift()??0`);
+   const n=g.run('computerDart().n');focused[n]=(focused[n]||0)+1;
+  }
+  assert.equal(focused[20],undefined,'Do not deliberately target closed fields');
+  assert.ok(focused[16]>focused[19],'Prefer completing a nearly closed field');
+ }
+});
+test('off-target darts can land in neighbouring board segments',()=>{
+ const g=game();
+ g.run('let rolls=[0,.5,.99,.7,.1,0];Math.random=()=>rolls.shift()??0');
+ assert.equal(g.run('computerDart().n'),5,'A shot aimed at 20 can slip into adjacent 5');
 });
 test('computer name includes the selected level in the scoreboard and turn display',()=>{
  for(const level of ['basic','medium','pro']){

@@ -7,6 +7,7 @@
 *{box-sizing:border-box}html,body{margin:0}
 body{background:radial-gradient(120% 55% at 15% 0%,#2a1650 0%,#12132b 45%,#09090d 85%) fixed,#09090d;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:6px}
 main{max-width:420px;margin:0 auto;display:grid;gap:6px}
+#version{display:block;text-align:right;font-size:10px;line-height:14px;color:var(--mut);margin-bottom:4px;padding-right:env(safe-area-inset-right,0px);font-variant-numeric:tabular-nums}
 .p0{--c:var(--p0)}.p1{--c:var(--p1)}.p2{--c:var(--p2)}.p3{--c:var(--p3)}.p4{--c:var(--p4)}
 .sc,.pad{border-radius:24px;border:1px solid var(--line);background:linear-gradient(160deg,#25252d,#16161c);box-shadow:0 10px 30px rgba(0,0,0,.4);overflow:hidden}
 .pad{padding:10px;display:grid;gap:5px}
@@ -39,9 +40,14 @@ button:active{transform:scale(.95)}button:disabled{opacity:.4}
 .grid.small button{padding:7px 0;font-size:13px;font-weight:400}
 #end{background:#fff;color:#09090d;border-color:transparent}
 #ban{background:#7ee8a0;color:#09090d;border-radius:999px;padding:5px 10px;font-weight:700;display:none;text-align:center;font-size:13px}
-.foot{display:flex;gap:4px;align-items:center}
-.foot .sub{flex:1}.foot button{padding:5px 0;width:34px;font-size:12px}
-.foot #new{width:auto;padding:5px 12px;background:transparent;color:var(--mut)}
+.foot{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.foot .sub{flex:1}.foot button{min-height:44px;width:44px;font-size:14px}
+.foot #new{width:100%;margin-top:12px;padding:10px 12px;background:transparent;color:#ffb5a8;border-color:#ffb5a850}
+#settings{margin-top:16px;border:1px solid var(--line);border-radius:18px;background:#16161c;padding:0 12px}
+#settings summary{padding:14px 0;cursor:pointer;color:var(--mut);font-size:13px}
+.settings-content{display:grid;gap:16px;padding:4px 0 16px}
+.settings-content label{display:flex;align-items:center;gap:8px;min-height:44px}
+.settings-content select{padding:10px;border-radius:8px}
 .foot .sel{background:#fff;color:#09090d;border-color:transparent}
 #ban{border-radius:14px;line-height:1.4}
 body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 45%,#100e20 85%) fixed}
@@ -58,7 +64,10 @@ body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 
 @keyframes firework{0%{opacity:0;transform:translate(0,0) scale(.3)}10%{opacity:1}75%{opacity:.8}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.2)}}
 @keyframes champion-in{from{opacity:0;transform:translateY(-18px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce){.spark{display:none}#victory:not([hidden]){animation:none}}
-</style></head><body id="page"><div id="fireworks" aria-hidden="true"></div><main>
+</style></head><body id="page"><div id="fireworks" aria-hidden="true"></div>
+<!-- Increment this version when releasing game changes. -->
+<small id="version" aria-label="Game version">v1.1.1</small>
+<main>
 <section id="victory" hidden role="status" aria-live="polite">
  <div class="trophy" aria-hidden="true">🏆</div>
  <h1><span id="winner-name"></span><br>WINS THE GAME!</h1>
@@ -75,11 +84,17 @@ body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 
  </div>
  <div class="grid hot" id="hot"></div>
  <div class="grid small" id="oth"></div>
+ <div class="sub" id="computer-result" aria-live="polite"></div>
+</section>
+<details id="settings">
+ <summary>Game settings · Players &amp; restart</summary>
+ <div class="settings-content">
+ <div class="sub">Changing players or computer mode starts a new game. Active games require confirmation.</div>
  <div class="foot" id="foot"><span class="sub">Players</span><button data-k="2">2</button><button data-k="3">3</button><button data-k="4">4</button><button data-k="5">5</button><button id="new">New game</button></div>
  <label class="sub"><input type="checkbox" id="computer"> Play against computer (last player; starts a new game)</label>
  <label class="sub">Computer level <select id="difficulty"><option value="basic">Basic</option><option value="medium" selected>Medium</option><option value="pro">Pro</option></select></label>
- <div class="sub" id="computer-result" aria-live="polite"></div>
-</section>
+ </div>
+</details>
 </main>
 <script>
 const N=[20,19,18,17,16,15,25],$=id=>document.getElementById(id);
@@ -114,8 +129,14 @@ function computerDart(){
  const p=S.p[S.cur],level=levels[difficulty],open=N.filter(n=>p.m[n]<3);
  let n,m;
  if(open.length){
-  // Close unfinished Cricket fields before chasing extra points.
-  n=open[0];
+  // Vary the aim while favouring valuable and nearly closed Cricket fields.
+  const weights=open.map(target=>1+target/25+p.m[target]*.75);
+  let choice=Math.random()*weights.reduce((sum,weight)=>sum+weight,0);
+  n=open[open.length-1];
+  for(let i=0;i<open.length;i++){
+   choice-=weights[i];
+   if(choice<0){n=open[i];break}
+  }
   const roll=Math.random();
   m=n===25?(roll<level.double+level.triple?2:1):(roll<level.triple?3:roll<level.triple+level.double?2:1);
  }else if(p.left===50||p.left<=40&&p.left%2===0){
@@ -134,7 +155,19 @@ function computerDart(){
  }
  // Even Basic aims at Cricket; difficulty controls accuracy and multi-hits.
  if(Math.random()>=level.accuracy){
-  n=Math.random()<.5?0:1+Math.floor(Math.random()*20);m=n?1:0;
+  if(Math.random()<.5)n=0;
+  else{
+   // Most slips land next door on the actual dartboard; some go wider.
+   const ring=[20,1,18,4,13,6,10,15,2,17,3,19,7,16,8,11,14,9,12,5];
+   if(n!==25&&n!==0&&Math.random()<.7){
+    const index=ring.indexOf(n);
+    n=ring[(index+(Math.random()<.5?19:1))%20];
+   }else{
+    const scattered=[...ring,25];
+    n=scattered[Math.floor(Math.random()*scattered.length)];
+   }
+  }
+  m=n?1:0;
  }
  return {n,m};
 }
@@ -163,7 +196,8 @@ function buildHead(){
   $('n'+i).oninput=e=>{names[i]=e.target.value||'Player '+(i+1);render()};
  }
 }
-function init(){clearTimeout(computerTimer);computerThrows=[];$('computer-result').textContent='';S={p:Array.from({length:count},()=>({left:501,m:mk(),c:0,d501:false,cr:false})),cur:0,darts:[],start:501,mult:1,win:null};H=[];buildHead();render()}
+function confirmRestart(){return !H.length||S.win!==null||confirm('Discard the current game and start again? All scores, Cricket marks and undo history will be lost. Choose Cancel to keep playing.')}
+function init(){clearTimeout(computerTimer);$('settings').open=false;computerThrows=[];$('computer-result').textContent='';S={p:Array.from({length:count},()=>({left:501,m:mk(),c:0,d501:false,cr:false})),cur:0,darts:[],start:501,mult:1,win:null};H=[];buildHead();render()}
 function endTurn(){S.darts=[];S.cur=(S.cur+1)%S.p.length;S.mult=1}
 function dart(n){
  if(S.win!==null)return;H.push(JSON.stringify(S));
@@ -201,7 +235,7 @@ function render(){
  document.querySelectorAll('#ctl [data-m]').forEach(b=>{b.classList.toggle('sel',+b.dataset.m==S.mult);b.style.setProperty('--c',`var(--p${c})`)});
  document.querySelectorAll('#foot [data-k]').forEach(b=>b.classList.toggle('sel',+b.dataset.k==count));
  $('hot').innerHTML=N.map(n=>`<button data-n="${n}">${n==25?'B':n}</button>`).join('');
- $('oth').innerHTML=[1,2,3,4,5,6,7,8,9,10,11,12,13,14].map(n=>`<button data-n="${n}">${n}</button>`).join('');
+ $('oth').innerHTML=[14,13,12,11,10,9,8,7,6,5,4,3,2,1].map(n=>`<button data-n="${n}">${n}</button>`).join('');
  document.querySelectorAll('.pad button').forEach(b=>{if(b.id!='new'&&b.id!='undo'&&!b.dataset.k)b.disabled=over||isComputer()});
  $('undo').disabled=!H.length;
  const w=[];
@@ -216,9 +250,9 @@ $('hot').onclick=$('oth').onclick=e=>{const n=e.target.dataset.n;if(n)dart(+n)};
 $('miss').onclick=()=>dart(0);
 $('end').onclick=()=>{if(S.win===null){H.push(JSON.stringify(S));endTurn();render()}};
 $('undo').onclick=()=>{if(H.length){do{S=JSON.parse(H.pop())}while(isComputer()&&H.length);computerThrows=[];$('computer-result').textContent='';render()}};
-$('computer').onchange=()=>{computer=$('computer').checked;init()};
+$('computer').onchange=()=>{if($('computer').checked===computer)return;if(!confirmRestart()){$('computer').checked=computer;return}computer=$('computer').checked;init()};
 $('play-again').onclick=()=>init();
 $('difficulty').onchange=()=>{difficulty=$('difficulty').value;if(computer)$('n'+(count-1)).value=playerName(count-1);render()};
-$('foot').onclick=e=>{const k=e.target.dataset.k;if(k){count=+k;init()}else if(e.target.id=='new')init()};
+$('foot').onclick=e=>{const k=e.target.dataset.k;if(k){if(+k===count||!confirmRestart())return;count=+k;init()}else if(e.target.id=='new'&&confirmRestart())init()};
 init();
 </script></body></html>
