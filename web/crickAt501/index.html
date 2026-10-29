@@ -2,6 +2,7 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Crick@501</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap">
 <style>
 :root{color-scheme:dark;--bg:#09090d;--ink:#f4f4f8;--mut:#8d8d9b;--line:rgba(255,255,255,.08);--btn:#2a2a33;--lav:#c9b6f5;--p0:#7ee8a0;--p1:#f6ef8c;--p2:#c9b6f5;--p3:#ff9b8a;--p4:#7cc4ff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}html,body{margin:0}
@@ -20,8 +21,12 @@ main{max-width:420px;margin:0 auto;display:grid;gap:6px}
 .sc[data-n="3"] .big{font-size:34px}.sc[data-n="4"] .big{font-size:28px}.sc[data-n="5"] .big{font-size:23px}
 .sub{font-size:11px;color:var(--mut);letter-spacing:.02em}
 .sc[data-n="4"] .sub,.sc[data-n="5"] .sub{font-size:9.5px}
-.mid{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.03);font-size:10px;color:var(--mut);line-height:1.4}
-.mid b{color:var(--ink);font-weight:500}
+.mid{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;padding-top:7px;background:linear-gradient(180deg,#171d55,#0a0d28);font-size:10px;color:var(--mut);line-height:1.4}
+.brand{font-family:'Outfit',system-ui,sans-serif;font-weight:700;font-size:19px;line-height:1.1;letter-spacing:-.02em;color:var(--ink);text-align:center}
+.sc[data-n="4"] .brand,.sc[data-n="5"] .brand{font-size:17px}
+.brand{text-shadow:0 1px 2px #05071a}
+.brand .c1{color:#7df0b8}.brand .c2{color:#ff5a5a}.brand .c3{color:#fbf1e0}
+.sc{--mid:62px}.sc[data-n="4"],.sc[data-n="5"]{--mid:56px}
 .row{height:30px;border-top:1px solid var(--line)}
 .lb{color:var(--mut);font-weight:500;font-size:16px;display:flex;align-items:center;justify-content:center}
 .mk{font-size:20px;font-weight:800;color:var(--c);display:flex;align-items:center;justify-content:center}
@@ -29,12 +34,9 @@ main{max-width:420px;margin:0 auto;display:grid;gap:6px}
 .mk.cl{background:color-mix(in srgb,var(--c) 16%,transparent)}
 .score-detail{display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid var(--line)}
 .cricket-panel{min-width:0}
-#board .row,#cricket-key{grid-template-columns:var(--cricket-gt)}
 #board .row{height:26px}
 #board .mk{font-size:17px}
 #board .lb{font-size:13px}
-#cricket-key{display:grid;height:24px;align-items:center;text-align:center;font-size:10px}
-#cricket-key span{color:var(--c)}
 .history-panel{min-width:0;border:1px solid var(--line);border-radius:18px;background:#16161c;padding:10px 12px}
 #round{height:24px;display:flex;align-items:center;font-size:11px;font-weight:700;color:var(--lav)}
 #history{height:182px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;font-size:11px;line-height:1.4}
@@ -85,7 +87,7 @@ body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 
 .chip .del{padding:6px 10px 6px 2px;color:var(--mut)}
 </style></head><body id="page"><div id="fireworks" aria-hidden="true"></div>
 <!-- Increment this version when releasing game changes. -->
-<small id="version" aria-label="Game version">v1.3.0</small>
+<small id="version" aria-label="Game version">v1.4.3</small>
 <main>
 <section id="victory" hidden role="status" aria-live="polite">
  <div class="trophy" aria-hidden="true">🏆</div>
@@ -95,7 +97,7 @@ body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 
 </section>
 <section class="sc" id="sc"><div class="hd" id="hd"></div><div id="picker" hidden aria-label="Saved player names"></div>
  <div class="score-detail">
-  <div class="cricket-panel"><div id="cricket-key" aria-label="Cricket player columns"></div><div id="board"></div></div>
+  <div class="cricket-panel"><div id="board"></div></div>
  </div>
 </section>
 <section class="pad">
@@ -233,10 +235,8 @@ function layout(){const n=count,mid=Math.ceil(n/2);cols=[];for(let i=0;i<n;i++){
 function buildHead(){
  layout();
  hidePicker();$('sc').dataset.n=count;
- $('sc').style.setProperty('--gt',cols.map(x=>x=='L'?'46px':'minmax(0,1fr)').join(' '));
- $('sc').style.setProperty('--cricket-gt',cols.map(x=>x=='L'?'26px':'minmax(0,1fr)').join(' '));
- $('cricket-key').innerHTML=cols.map(x=>x=='L'?'<span>Cr</span>':`<span class="p${x}">P${x+1}</span>`).join('');
- $('hd').innerHTML=cols.map(x=>x=='L'?'<div class="mid"><b>501</b><span>Cricket</span></div>':`<div class="pc p${x}" id="pc${x}"><input id="n${x}" aria-label="Player ${x+1} name"><div class="big" id="b${x}"></div><div class="sub" id="c${x}"></div></div>`).join('');
+ $('sc').style.setProperty('--gt',cols.map(x=>x=='L'?'var(--mid)':'minmax(0,1fr)').join(' '));
+ $('hd').innerHTML=cols.map(x=>x=='L'?'<div class="mid" role="img" aria-label="Crick@501" title="Cricket + 501 · one game"><span class="brand"><span class="c1">Crick</span><br><span class="c2">@</span><span class="c3">501</span></span></div>':`<div class="pc p${x}" id="pc${x}"><input id="n${x}" aria-label="Player ${x+1} name"><div class="big" id="b${x}"></div><div class="sub" id="c${x}"></div></div>`).join('');
  for(let i=0;i<count;i++){
   $('n'+i).value=playerName(i);$('n'+i).disabled=computer&&i===count-1;
   const inp=$('n'+i);
