@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Crick@501</title>
+<style>
+:root{color-scheme:dark;--bg:#09090d;--ink:#f4f4f8;--mut:#8d8d9b;--line:rgba(255,255,255,.08);--btn:#2a2a33;--lav:#c9b6f5;--p0:#7ee8a0;--p1:#f6ef8c;--p2:#c9b6f5;--p3:#ff9b8a;--p4:#7cc4ff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:radial-gradient(120% 55% at 15% 0%,#2a1650 0%,#12132b 45%,#09090d 85%) fixed,#09090d;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:6px}
+main{max-width:420px;margin:0 auto;display:grid;gap:6px}
+#version{display:block;text-align:right;font-size:10px;line-height:14px;color:var(--mut);margin-bottom:4px;padding-right:env(safe-area-inset-right,0px);font-variant-numeric:tabular-nums}
+.p0{--c:var(--p0)}.p1{--c:var(--p1)}.p2{--c:var(--p2)}.p3{--c:var(--p3)}.p4{--c:var(--p4)}
+.sc,.pad{border-radius:24px;border:1px solid var(--line);background:linear-gradient(160deg,#25252d,#16161c);box-shadow:0 10px 30px rgba(0,0,0,.4);overflow:hidden}
+.pad{padding:10px;display:grid;gap:5px}
+.hd,.row{display:grid;grid-template-columns:var(--gt)}
+.pc{padding:4px 2px;text-align:center;min-width:0}
+.pc.on{background:linear-gradient(180deg,color-mix(in srgb,var(--c) 20%,transparent),transparent)}
+.pc.on .big{color:var(--c)}
+.pc input{width:100%;text-align:center;font-weight:500;font-size:12px;border:0;background:transparent;color:var(--ink);padding:0;min-width:0}
+.big{font-size:44px;font-weight:300;line-height:1.05;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.sc[data-n="3"] .big{font-size:34px}.sc[data-n="4"] .big{font-size:28px}.sc[data-n="5"] .big{font-size:23px}
+.sub{font-size:11px;color:var(--mut);letter-spacing:.02em}
+.sc[data-n="4"] .sub,.sc[data-n="5"] .sub{font-size:9.5px}
+.mid{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.03);font-size:10px;color:var(--mut);line-height:1.4}
+.mid b{color:var(--ink);font-weight:500}
+.row{height:30px;border-top:1px solid var(--line)}
+.lb{color:var(--mut);font-weight:500;font-size:16px;display:flex;align-items:center;justify-content:center}
+.mk{font-size:20px;font-weight:800;color:var(--c);display:flex;align-items:center;justify-content:center}
+.sc[data-n="5"] .mk{font-size:17px}
+.mk.cl{background:color-mix(in srgb,var(--c) 16%,transparent)}
+.score-detail{display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid var(--line)}
+.cricket-panel{min-width:0}
+#board .row,#cricket-key{grid-template-columns:var(--cricket-gt)}
+#board .row{height:26px}
+#board .mk{font-size:17px}
+#board .lb{font-size:13px}
+#cricket-key{display:grid;height:24px;align-items:center;text-align:center;font-size:10px}
+#cricket-key span{color:var(--c)}
+.history-panel{min-width:0;border:1px solid var(--line);border-radius:18px;background:#16161c;padding:10px 12px}
+#round{height:24px;display:flex;align-items:center;font-size:11px;font-weight:700;color:var(--lav)}
+#history{height:182px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;font-size:11px;line-height:1.4}
+.history-entry{padding:5px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.history-entry strong{color:var(--c);font-size:11px}
+.history-entry small{display:block;color:var(--mut);font-size:10px}
+.turn{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px;gap:6px}
+.dts{display:flex;gap:4px}.dt{min-width:38px;text-align:center;padding:2px 4px;border-radius:999px;background:var(--btn);font-size:12px;font-weight:700}
+.dt.bust{background:#ff7a7a;color:#09090d}
+button{font:inherit;border:1px solid var(--line);border-radius:999px;background:var(--btn);color:var(--ink);padding:9px 0;font-weight:500;cursor:pointer;font-size:14px}
+button:active{transform:scale(.95)}button:disabled{opacity:.4}
+.ctl{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.ctl .sel{background:var(--c);color:#09090d;border-color:transparent}
+.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.grid button{border-radius:14px;min-height:56px;padding:12px 0;font-size:20px;line-height:1.2;font-weight:600;touch-action:manipulation}
+.grid.hot button{background:rgba(201,182,245,.14);color:var(--lav);border:1px solid rgba(201,182,245,.28)}
+#end{background:#fff;color:#09090d;border-color:transparent}
+#ban{background:#7ee8a0;color:#09090d;border-radius:999px;padding:5px 10px;font-weight:700;display:none;text-align:center;font-size:13px}
+.foot{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.foot .sub{flex:1}.foot button{min-height:44px;width:44px;font-size:14px}
+.foot #new{width:100%;margin-top:12px;padding:10px 12px;background:transparent;color:#ffb5a8;border-color:#ffb5a850}
+#settings{margin-top:16px;border:1px solid var(--line);border-radius:18px;background:#16161c;padding:0 12px}
+#settings summary{padding:14px 0;cursor:pointer;color:var(--mut);font-size:13px}
+.settings-content{display:grid;gap:16px;padding:4px 0 16px}
+.settings-content label{display:flex;align-items:center;gap:8px;min-height:44px}
+.settings-content select{padding:10px;border-radius:8px}
+.foot .sel{background:#fff;color:#09090d;border-color:transparent}
+#ban{border-radius:14px;line-height:1.4}
+body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 45%,#100e20 85%) fixed}
+#victory{position:relative;text-align:center;padding:22px 16px;border:2px solid #ffda73;border-radius:24px;background:linear-gradient(135deg,#49331d,#26163e);box-shadow:0 0 35px #ffcc5540;overflow-wrap:anywhere}
+#victory:not([hidden]){animation:champion-in .6s ease-out}
+#victory .trophy{font-size:52px;line-height:1.2}
+#victory h1{margin:6px 0;color:#ffdf83;font-size:30px;font-weight:900;line-height:1.15}
+#victory p{margin:8px 0 14px;color:#fff2c6;font-weight:700}
+#play-again{padding:10px 24px;background:#ffdf83;color:#201629;font-weight:800}
+.pc.champion{background:linear-gradient(180deg,color-mix(in srgb,var(--c) 35%,transparent),transparent);box-shadow:inset 0 0 0 2px var(--c);border-radius:14px}
+.pc.champion .big{color:var(--c)}
+#fireworks{position:fixed;inset:0;z-index:10;pointer-events:none;overflow:hidden}
+.spark{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--spark);box-shadow:0 0 8px var(--spark);opacity:0;animation:firework 1.4s ease-out var(--delay) 2 both}
+@keyframes firework{0%{opacity:0;transform:translate(0,0) scale(.3)}10%{opacity:1}75%{opacity:.8}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.2)}}
+@keyframes champion-in{from{opacity:0;transform:translateY(-18px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.spark{display:none}#victory:not([hidden]){animation:none}}
+</style></head><body id="page"><div id="fireworks" aria-hidden="true"></div>
+<!-- Increment this version when releasing game changes. -->
+<small id="version" aria-label="Game version">v1.2.1</small>
+<main>
+<section id="victory" hidden role="status" aria-live="polite">
+ <div class="trophy" aria-hidden="true">🏆</div>
+ <h1><span id="winner-name"></span><br>WINS THE GAME!</h1>
+ <p>501 checked out · All Cricket fields closed</p>
+ <button id="play-again">Play again</button>
+</section>
+<section class="sc" id="sc"><div class="hd" id="hd"></div>
+ <div class="score-detail">
+  <div class="cricket-panel"><div id="cricket-key" aria-label="Cricket player columns"></div><div id="board"></div></div>
+
+ </div>
+</section>
+<section class="pad">
+ <div class="turn"><span id="who"></span><span class="dts" id="dts"></span></div>
+ <div id="ban"></div>
+ <div class="ctl" id="ctl">
+  <button data-m="1">Single</button><button data-m="2">Double</button><button data-m="3">Triple</button>
+  <button id="miss">Miss</button><button id="undo">↶ Undo</button><button id="end">End turn</button>
+ </div>
+ <div class="grid hot" id="hot"></div>
+ <div class="grid small" id="oth"></div>
+ <div class="sub" id="computer-result" aria-live="polite"></div>
+</section>
+<details id="settings">
+ <summary>Game settings · Players &amp; restart</summary>
+ <div class="settings-content">
+ <div class="sub">Changing players or computer mode starts a new game. Active games require confirmation.</div>
+ <div class="foot" id="foot"><span class="sub">Players</span><button data-k="2">2</button><button data-k="3">3</button><button data-k="4">4</button><button data-k="5">5</button><button id="new">New game</button></div>
+ <label class="sub"><input type="checkbox" id="computer"> Play against computer (last player; starts a new game)</label>
+ <label class="sub">Computer level <select id="difficulty"><option value="basic">Basic</option><option value="medium" selected>Medium</option><option value="pro">Pro</option></select></label>
+ </div>
+</details>
+<section class="history-panel" aria-label="Round and score history"><div id="round"></div><div id="history" tabindex="0" aria-label="Completed turns, newest first"></div></section>
+</main>
+<script>
+const N=[20,19,18,17,16,15,25],$=id=>document.getElementById(id);
+const mk=()=>Object.fromEntries(N.map(n=>[n,0]));
+const sym=v=>['','／','✕','Ⓧ'][Math.min(v,3)];
+const names=[1,2,3,4,5].map(i=>'Player '+i);let S,H=[],count=2,cols=[];
+let computer=false,computerTimer=null,computerThrows=[];
+let difficulty='medium';
+let celebratedWinner=null;
+function celebrate(){
+ const over=S.win!==null;
+ $('page').classList.toggle('victorious',over);
+ $('victory').hidden=!over;
+ if(!over){celebratedWinner=null;$('fireworks').innerHTML='';return}
+ $('winner-name').textContent=playerName(S.win);
+ if(celebratedWinner===S.win)return;
+ celebratedWinner=S.win;
+ const colors=['#ffdf83','#7ee8a0','#c9b6f5','#ff9b8a','#7cc4ff'],sparks=[];
+ for(let burst=0;burst<6;burst++){
+  const x=15+Math.random()*70,y=10+Math.random()*50;
+  for(let i=0;i<24;i++){
+   const angle=i*Math.PI/12,distance=60+Math.random()*100;
+   sparks.push(`<i class="spark" style="left:${x}%;top:${y}%;--spark:${colors[burst%colors.length]};--delay:${burst*.3}s;--dx:${Math.cos(angle)*distance}px;--dy:${Math.sin(angle)*distance+40}px"></i>`);
+  }
+ }
+ $('fireworks').innerHTML=sparks.join('');
+}
+const levels={basic:{accuracy:.30,double:.06,triple:.02},medium:{accuracy:.55,double:.12,triple:.12},pro:{accuracy:.95,double:.20,triple:.70}};
+const isComputer=()=>computer&&S.cur===count-1;
+const playerName=i=>computer&&i===count-1?`Computer (${difficulty})`:names[i];
+function computerDart(){
+ const p=S.p[S.cur],level=levels[difficulty],open=N.filter(n=>p.m[n]<3);
+ let n,m;
+ if(open.length){
+  // Vary the aim while favouring valuable and nearly closed Cricket fields.
+  const weights=open.map(target=>1+target/25+p.m[target]*.75);
+  let choice=Math.random()*weights.reduce((sum,weight)=>sum+weight,0);
+  n=open[open.length-1];
+  for(let i=0;i<open.length;i++){
+   choice-=weights[i];
+   if(choice<0){n=open[i];break}
+  }
+  const roll=Math.random();
+  m=n===25?(roll<level.double+level.triple?2:1):(roll<level.triple?3:roll<level.triple+level.double?2:1);
+ }else if(p.left===50||p.left<=40&&p.left%2===0){
+  n=p.left/2;m=2;
+ }else{
+  // Reduce 501 without knowingly busting or leaving an unfinishable 1.
+  const shots=[];
+  for(let target=1;target<=25;target++){
+   if(target>20&&target!==25)continue;
+   for(let mult=1;mult<=(target===25?2:3);mult++){
+    if(p.left-target*mult>=2)shots.push({n:target,m:mult});
+   }
+  }
+  shots.sort((a,b)=>b.n*b.m-a.n*a.m);
+  ({n,m}=shots[0]||{n:0,m:0});
+ }
+ // Even Basic aims at Cricket; difficulty controls accuracy and multi-hits.
+ if(Math.random()>=level.accuracy){
+  if(Math.random()<.5)n=0;
+  else{
+   // Most slips land next door on the actual dartboard; some go wider.
+   const ring=[20,1,18,4,13,6,10,15,2,17,3,19,7,16,8,11,14,9,12,5];
+   if(n!==25&&n!==0&&Math.random()<.7){
+    const index=ring.indexOf(n);
+    n=ring[(index+(Math.random()<.5?19:1))%20];
+   }else{
+    const scattered=[...ring,25];
+    n=scattered[Math.floor(Math.random()*scattered.length)];
+   }
+  }
+  m=n?1:0;
+ }
+ return {n,m};
+}
+function scheduleComputer(){
+ clearTimeout(computerTimer);computerTimer=null;
+ if(S.win!==null||!isComputer())return;
+ computerTimer=setTimeout(()=>{
+  computerTimer=null;
+  const shot=computerDart(),n=shot.n;
+  S.mult=shot.m;
+  const m=n===0?0:S.mult;
+  if(!S.darts.length)computerThrows=[];
+  computerThrows.push(n===0?'Miss':['','S','D','T'][m]+(n===25?'B':n));
+  $('computer-result').textContent=playerName(S.cur)+': '+computerThrows.join(' · ');
+  dart(n);
+ },700);
+}
+function layout(){const n=count,mid=Math.ceil(n/2);cols=[];for(let i=0;i<n;i++){if(i==mid)cols.push('L');cols.push(i)}return cols}
+function buildHead(){
+ layout();
+ $('sc').dataset.n=count;
+ $('sc').style.setProperty('--gt',cols.map(x=>x=='L'?'46px':'minmax(0,1fr)').join(' '));
+ $('sc').style.setProperty('--cricket-gt',cols.map(x=>x=='L'?'26px':'minmax(0,1fr)').join(' '));
+ $('cricket-key').innerHTML=cols.map(x=>x=='L'?'<span>Cr</span>':`<span class="p${x}">P${x+1}</span>`).join('');
+ $('hd').innerHTML=cols.map(x=>x=='L'?'<div class="mid"><b>501</b><span>Cricket</span></div>':`<div class="pc p${x}" id="pc${x}"><input id="n${x}" value="${names[x]}" aria-label="Player ${x+1} name"><div class="big" id="b${x}"></div><div class="sub" id="c${x}"></div></div>`).join('');
+ for(let i=0;i<count;i++){
+  $('n'+i).value=playerName(i);$('n'+i).disabled=computer&&i===count-1;
+  $('n'+i).oninput=e=>{names[i]=e.target.value||'Player '+(i+1);render()};
+ }
+}
+function confirmRestart(){return !H.length||S.win!==null||confirm('Discard the current game and start again? All scores, Cricket marks and undo history will be lost. Choose Cancel to keep playing.')}
+function init(){clearTimeout(computerTimer);$('settings').open=false;computerThrows=[];$('computer-result').textContent='';S={p:Array.from({length:count},()=>({left:501,m:mk(),c:0,d501:false,cr:false})),cur:0,darts:[],start:501,startCr:0,round:1,log:[],mult:1,win:null};H=[];buildHead();render()}
+function logTurn(){
+ const p=S.p[S.cur];
+ S.log.push({round:S.round,player:S.cur,throws:S.darts.map(d=>d.txt).join(' · ')||'Skipped',score:S.darts.length?S.start-p.left:0,left:p.left,cricket:S.darts.length?p.c-S.startCr:0,bust:S.darts.some(d=>d.bust)});
+}
+function endTurn(){logTurn();S.darts=[];S.cur=(S.cur+1)%S.p.length;if(S.cur===0)S.round++;S.mult=1}
+function dart(n){
+ if(S.win!==null)return;H.push(JSON.stringify(S));
+ let m=S.mult;if(n==25&&m==3)m=2;if(n==0)m=0;
+ const p=S.p[S.cur],others=S.p.filter((_,i)=>i!=S.cur);
+ const d={m,txt:n==0?'Miss':['','S','D','T'][m]+(n==25?'B':n)};
+ if(!S.darts.length){S.start=p.left;S.startCr=p.c}
+ if(m&&N.includes(n)){
+  for(let i=0;i<m;i++){if(p.m[n]<3)p.m[n]++;else if(others.some(o=>o.m[n]<3))p.c+=n}
+ }
+ let bust=false;
+ if(m&&!p.d501){
+  const r=p.left-m*n;
+  if(r<0||r==1||(r==0&&m!=2))bust=true;
+  else{p.left=r;if(r==0)p.d501=true}
+ }
+ if(bust){d.bust=true;p.left=S.start}
+ S.darts.push(d);
+ if(!p.cr&&N.every(x=>p.m[x]>=3))p.cr=true;
+ if(p.d501&&p.cr){S.win=S.cur;logTurn()}
+ S.mult=1;
+ if(S.win===null&&(bust||S.darts.length==3))endTurn();
+ render();
+}
+function render(){
+ const c=S.cur,over=S.win!==null;
+ const escape=text=>String(text).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+ $('round').textContent=`Round ${S.round} · History`;
+ $('history').innerHTML=S.log.length?S.log.slice().reverse().map(turn=>`<div class="history-entry p${turn.player}"><strong>R${turn.round} · P${turn.player+1} ${escape(playerName(turn.player))}</strong><div>${turn.bust?'Bust · ':''}${turn.score} pts → ${turn.left}</div><small>${turn.throws}${turn.cricket?' · Cr +'+turn.cricket:''}</small></div>`).join(''):'<div class="sub">Completed turns appear here.<br>501 points → remaining score.</div>';
+ S.p.forEach((p,i)=>{
+  $('pc'+i).classList.toggle('on',c==i&&!over);
+  $('pc'+i).classList.toggle('champion',S.win===i);
+  $('b'+i).textContent=p.left;
+  $('c'+i).innerHTML=`<div>Cr ${p.c} · ${N.filter(x=>p.m[x]>=3).length}/7</div><div>${p.d501?'🏆501 ':''}${p.cr?'🏆CR':''}${p.d501||p.cr?'':'&nbsp;'}</div>`});
+ $('board').innerHTML=N.map(n=>`<div class="row">${cols.map(x=>x=='L'?`<div class="lb">${n==25?'B':n}</div>`:`<div class="mk p${x} ${S.p[x].m[n]>=3?'cl':''}">${sym(S.p[x].m[n])}</div>`).join('')}</div>`).join('');
+ $('who').innerHTML=`<span class="p${c}" style="color:var(--c)">${playerName(c)}</span> <span class="sub">dart ${Math.min(S.darts.length+1,3)}/3</span>`;
+ $('dts').innerHTML=[0,1,2].map(i=>{const d=S.darts[i];return `<span class="dt ${d&&d.bust?'bust':''}">${d?d.txt+(d.bust?' ✕':''):'·'}</span>`}).join('');
+ document.querySelectorAll('#ctl [data-m]').forEach(b=>{b.classList.toggle('sel',+b.dataset.m==S.mult);b.style.setProperty('--c',`var(--p${c})`)});
+ document.querySelectorAll('#foot [data-k]').forEach(b=>b.classList.toggle('sel',+b.dataset.k==count));
+ $('hot').innerHTML=N.map(n=>`<button data-n="${n}">${n==25?'B':n}</button>`).join('');
+ $('oth').innerHTML=[14,13,12,11,10,9,8,7,6,5,4,3,2,1].map(n=>`<button data-n="${n}">${n}</button>`).join('');
+ document.querySelectorAll('.pad button').forEach(b=>{if(b.id!='new'&&b.id!='undo'&&!b.dataset.k)b.disabled=over||isComputer()});
+ $('undo').disabled=!H.length;
+ const w=[];
+ if(over)w.push(`🏆 ${playerName(S.win)} wins the game: 501 + Cricket!`);
+ else{S.p.forEach((p,i)=>{if(p.d501)w.push(`${playerName(i)} finished 501`);if(p.cr)w.push(`${playerName(i)} won Cricket`)});if(w.length)w.push('first with both wins')}
+ $('ban').style.display=w.length?'block':'none';$('ban').textContent=w.join(' · ');
+ celebrate();
+ scheduleComputer();
+}
+$('ctl').onclick=e=>{const m=e.target.dataset.m;if(m){S.mult=S.mult==+m?1:+m;render()}};
+$('hot').onclick=$('oth').onclick=e=>{const n=e.target.dataset.n;if(n)dart(+n)};
+$('miss').onclick=()=>dart(0);
+$('end').onclick=()=>{if(S.win===null){H.push(JSON.stringify(S));endTurn();render()}};
+$('undo').onclick=()=>{if(H.length){do{S=JSON.parse(H.pop())}while(isComputer()&&H.length);computerThrows=[];$('computer-result').textContent='';render()}};
+$('computer').onchange=()=>{if($('computer').checked===computer)return;if(!confirmRestart()){$('computer').checked=computer;return}computer=$('computer').checked;init()};
+$('play-again').onclick=()=>init();
+$('difficulty').onchange=()=>{difficulty=$('difficulty').value;if(computer)$('n'+(count-1)).value=playerName(count-1);render()};
+$('foot').onclick=e=>{const k=e.target.dataset.k;if(k){if(+k===count||!confirmRestart())return;count=+k;init()}else if(e.target.id=='new'&&confirmRestart())init()};
+init();
+</script></body></html>

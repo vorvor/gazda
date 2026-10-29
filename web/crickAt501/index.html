@@ -52,7 +52,7 @@ button:active{transform:scale(.95)}button:disabled{opacity:.4}
 .grid button{border-radius:14px;min-height:56px;padding:12px 0;font-size:20px;line-height:1.2;font-weight:600;touch-action:manipulation}
 .grid.hot button{background:rgba(201,182,245,.14);color:var(--lav);border:1px solid rgba(201,182,245,.28)}
 #end{background:#fff;color:#09090d;border-color:transparent}
-#ban{background:#7ee8a0;color:#09090d;border-radius:999px;padding:5px 10px;font-weight:700;display:none;text-align:center;font-size:13px}
+#ban{background:#7ee8a0;color:#09090d;border-radius:14px;line-height:1.4;padding:5px 10px;font-weight:700;display:none;text-align:center;font-size:13px}
 .foot{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .foot .sub{flex:1}.foot button{min-height:44px;width:44px;font-size:14px}
 .foot #new{width:100%;margin-top:12px;padding:10px 12px;background:transparent;color:#ffb5a8;border-color:#ffb5a850}
@@ -62,7 +62,6 @@ button:active{transform:scale(.95)}button:disabled{opacity:.4}
 .settings-content label{display:flex;align-items:center;gap:8px;min-height:44px}
 .settings-content select{padding:10px;border-radius:8px}
 .foot .sel{background:#fff;color:#09090d;border-color:transparent}
-#ban{border-radius:14px;line-height:1.4}
 body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 45%,#100e20 85%) fixed}
 #victory{position:relative;text-align:center;padding:22px 16px;border:2px solid #ffda73;border-radius:24px;background:linear-gradient(135deg,#49331d,#26163e);box-shadow:0 0 35px #ffcc5540;overflow-wrap:anywhere}
 #victory:not([hidden]){animation:champion-in .6s ease-out}
@@ -77,9 +76,16 @@ body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 
 @keyframes firework{0%{opacity:0;transform:translate(0,0) scale(.3)}10%{opacity:1}75%{opacity:.8}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.2)}}
 @keyframes champion-in{from{opacity:0;transform:translateY(-18px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce){.spark{display:none}#victory:not([hidden]){animation:none}}
+.pc input{border-bottom:1px dashed rgba(255,255,255,.28)}
+.pc input:focus{outline:none;border-bottom:1px solid var(--c)}
+#picker{display:flex;flex-wrap:wrap;align-items:center;gap:4px;padding:6px 8px;border-top:1px solid var(--line);background:rgba(255,255,255,.03)}
+#picker[hidden]{display:none}
+.chip{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:var(--btn);overflow:hidden}
+.chip button{border:0;border-radius:0;background:transparent;padding:6px 10px;font-size:13px;min-height:32px}
+.chip .del{padding:6px 10px 6px 2px;color:var(--mut)}
 </style></head><body id="page"><div id="fireworks" aria-hidden="true"></div>
 <!-- Increment this version when releasing game changes. -->
-<small id="version" aria-label="Game version">v1.2.1</small>
+<small id="version" aria-label="Game version">v1.3.0</small>
 <main>
 <section id="victory" hidden role="status" aria-live="polite">
  <div class="trophy" aria-hidden="true">🏆</div>
@@ -87,10 +93,9 @@ body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 
  <p>501 checked out · All Cricket fields closed</p>
  <button id="play-again">Play again</button>
 </section>
-<section class="sc" id="sc"><div class="hd" id="hd"></div>
+<section class="sc" id="sc"><div class="hd" id="hd"></div><div id="picker" hidden aria-label="Saved player names"></div>
  <div class="score-detail">
   <div class="cricket-panel"><div id="cricket-key" aria-label="Cricket player columns"></div><div id="board"></div></div>
-
  </div>
 </section>
 <section class="pad">
@@ -101,7 +106,7 @@ body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 
   <button id="miss">Miss</button><button id="undo">↶ Undo</button><button id="end">End turn</button>
  </div>
  <div class="grid hot" id="hot"></div>
- <div class="grid small" id="oth"></div>
+ <div class="grid" id="oth"></div>
  <div class="sub" id="computer-result" aria-live="polite"></div>
 </section>
 <details id="settings">
@@ -123,6 +128,7 @@ const names=[1,2,3,4,5].map(i=>'Player '+i);let S,H=[],count=2,cols=[];
 let computer=false,computerTimer=null,computerThrows=[];
 let difficulty='medium';
 let celebratedWinner=null;
+const esc=text=>String(text).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 function celebrate(){
  const over=S.win!==null;
  $('page').classList.toggle('victorious',over);
@@ -141,7 +147,26 @@ function celebrate(){
  }
  $('fireworks').innerHTML=sparks.join('');
 }
-const levels={basic:{accuracy:.30,double:.06,triple:.02},medium:{accuracy:.55,double:.12,triple:.12},pro:{accuracy:.95,double:.20,triple:.70}};
+let saved=[];
+try{const v=JSON.parse(localStorage.getItem('crick501.names')||'[]');if(Array.isArray(v))saved=v.filter(x=>typeof x==='string'&&x).slice(0,20)}catch(e){}
+let pickSeat=null;
+function persist(){try{localStorage.setItem('crick501.names',JSON.stringify(saved))}catch(e){}}
+function remember(name){const t=String(name).trim();if(!t||t.length>20||/^Player \d$/.test(t))return;saved=[t,...saved.filter(x=>x!==t)].slice(0,20);persist()}
+function showPicker(i,filter){
+ pickSeat=i;
+ const typed=filter?$('n'+i).value.trim().toLowerCase():'',used=names.slice(0,count);
+ const list=saved.filter(n=>!used.includes(n)&&(!typed||n.toLowerCase().includes(typed)));
+ $('picker').innerHTML=!saved.length?'<span class="sub">Type a name: it is saved for next time.</span>':list.length?list.map(n=>`<span class="chip"><button data-pick="${esc(n)}">${esc(n)}</button><button class="del" data-del="${esc(n)}" aria-label="Remove ${esc(n)} from saved names">×</button></span>`).join(''):'<span class="sub">No other saved names match.</span>';
+ $('picker').hidden=false;
+}
+function hidePicker(){pickSeat=null;$('picker').hidden=true}
+$('picker').onmousedown=$('picker').onpointerdown=e=>e.preventDefault();
+$('picker').onclick=e=>{
+ const t=e.target;
+ if('del' in t.dataset){saved=saved.filter(x=>x!==t.dataset.del);persist();if(pickSeat!==null)showPicker(pickSeat);return}
+ if('pick' in t.dataset&&pickSeat!==null){const i=pickSeat;names[i]=t.dataset.pick;$('n'+i).value=names[i];remember(names[i]);hidePicker();$('n'+i).blur();render()}
+};
+const levels={basic:{accuracy:.30,double:.06,triple:.02},medium:{accuracy:.55,double:.12,triple:.12},pro:{accuracy:.95,double:.20,triple:.45}};
 const isComputer=()=>computer&&S.cur===count-1;
 const playerName=i=>computer&&i===count-1?`Computer (${difficulty})`:names[i];
 function computerDart(){
@@ -200,21 +225,25 @@ function scheduleComputer(){
   const m=n===0?0:S.mult;
   if(!S.darts.length)computerThrows=[];
   computerThrows.push(n===0?'Miss':['','S','D','T'][m]+(n===25?'B':n));
-  $('computer-result').textContent=playerName(S.cur)+': '+computerThrows.join(' · ');
+  $('computer-result').textContent=playerName(S.cur)+' last turn: '+computerThrows.join(' · ');
   dart(n);
  },700);
 }
 function layout(){const n=count,mid=Math.ceil(n/2);cols=[];for(let i=0;i<n;i++){if(i==mid)cols.push('L');cols.push(i)}return cols}
 function buildHead(){
  layout();
- $('sc').dataset.n=count;
+ hidePicker();$('sc').dataset.n=count;
  $('sc').style.setProperty('--gt',cols.map(x=>x=='L'?'46px':'minmax(0,1fr)').join(' '));
  $('sc').style.setProperty('--cricket-gt',cols.map(x=>x=='L'?'26px':'minmax(0,1fr)').join(' '));
  $('cricket-key').innerHTML=cols.map(x=>x=='L'?'<span>Cr</span>':`<span class="p${x}">P${x+1}</span>`).join('');
- $('hd').innerHTML=cols.map(x=>x=='L'?'<div class="mid"><b>501</b><span>Cricket</span></div>':`<div class="pc p${x}" id="pc${x}"><input id="n${x}" value="${names[x]}" aria-label="Player ${x+1} name"><div class="big" id="b${x}"></div><div class="sub" id="c${x}"></div></div>`).join('');
+ $('hd').innerHTML=cols.map(x=>x=='L'?'<div class="mid"><b>501</b><span>Cricket</span></div>':`<div class="pc p${x}" id="pc${x}"><input id="n${x}" aria-label="Player ${x+1} name"><div class="big" id="b${x}"></div><div class="sub" id="c${x}"></div></div>`).join('');
  for(let i=0;i<count;i++){
   $('n'+i).value=playerName(i);$('n'+i).disabled=computer&&i===count-1;
-  $('n'+i).oninput=e=>{names[i]=e.target.value||'Player '+(i+1);render()};
+  const inp=$('n'+i);
+  inp.onfocus=()=>{setTimeout(()=>inp.select(),0);showPicker(i)};
+  inp.oninput=e=>{names[i]=e.target.value.trim()||'Player '+(i+1);render();showPicker(i,true)};
+  inp.onblur=()=>{if(!inp.value.trim())inp.value=names[i];remember(names[i]);hidePicker()};
+  inp.onkeydown=e=>{if(e.key==='Enter')inp.blur()};
  }
 }
 function confirmRestart(){return !H.length||S.win!==null||confirm('Discard the current game and start again? All scores, Cricket marks and undo history will be lost. Choose Cancel to keep playing.')}
@@ -249,16 +278,15 @@ function dart(n){
 }
 function render(){
  const c=S.cur,over=S.win!==null;
- const escape=text=>String(text).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
  $('round').textContent=`Round ${S.round} · History`;
- $('history').innerHTML=S.log.length?S.log.slice().reverse().map(turn=>`<div class="history-entry p${turn.player}"><strong>R${turn.round} · P${turn.player+1} ${escape(playerName(turn.player))}</strong><div>${turn.bust?'Bust · ':''}${turn.score} pts → ${turn.left}</div><small>${turn.throws}${turn.cricket?' · Cr +'+turn.cricket:''}</small></div>`).join(''):'<div class="sub">Completed turns appear here.<br>501 points → remaining score.</div>';
+ $('history').innerHTML=S.log.length?S.log.slice().reverse().map(turn=>`<div class="history-entry p${turn.player}"><strong>R${turn.round} · P${turn.player+1} ${esc(playerName(turn.player))}</strong><div>${turn.bust?'Bust · ':''}${turn.score} pts → ${turn.left}</div><small>${turn.throws}${turn.cricket?' · Cr +'+turn.cricket:''}</small></div>`).join(''):'<div class="sub">Completed turns appear here.<br>501 points → remaining score.</div>';
  S.p.forEach((p,i)=>{
   $('pc'+i).classList.toggle('on',c==i&&!over);
   $('pc'+i).classList.toggle('champion',S.win===i);
   $('b'+i).textContent=p.left;
   $('c'+i).innerHTML=`<div>Cr ${p.c} · ${N.filter(x=>p.m[x]>=3).length}/7</div><div>${p.d501?'🏆501 ':''}${p.cr?'🏆CR':''}${p.d501||p.cr?'':'&nbsp;'}</div>`});
  $('board').innerHTML=N.map(n=>`<div class="row">${cols.map(x=>x=='L'?`<div class="lb">${n==25?'B':n}</div>`:`<div class="mk p${x} ${S.p[x].m[n]>=3?'cl':''}">${sym(S.p[x].m[n])}</div>`).join('')}</div>`).join('');
- $('who').innerHTML=`<span class="p${c}" style="color:var(--c)">${playerName(c)}</span> <span class="sub">dart ${Math.min(S.darts.length+1,3)}/3</span>`;
+ $('who').innerHTML=`<span class="p${c}" style="color:var(--c)">${esc(playerName(c))}</span> <span class="sub">dart ${Math.min(S.darts.length+1,3)}/3</span>`;
  $('dts').innerHTML=[0,1,2].map(i=>{const d=S.darts[i];return `<span class="dt ${d&&d.bust?'bust':''}">${d?d.txt+(d.bust?' ✕':''):'·'}</span>`}).join('');
  document.querySelectorAll('#ctl [data-m]').forEach(b=>{b.classList.toggle('sel',+b.dataset.m==S.mult);b.style.setProperty('--c',`var(--p${c})`)});
  document.querySelectorAll('#foot [data-k]').forEach(b=>b.classList.toggle('sel',+b.dataset.k==count));
