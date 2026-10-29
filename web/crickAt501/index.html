@@ -34,10 +34,9 @@ button{font:inherit;border:1px solid var(--line);border-radius:999px;background:
 button:active{transform:scale(.95)}button:disabled{opacity:.4}
 .ctl{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
 .ctl .sel{background:var(--c);color:#09090d;border-color:transparent}
-.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-.grid button{border-radius:14px}
-.grid.hot button{background:rgba(201,182,245,.14);color:var(--lav);border:1px solid rgba(201,182,245,.28);font-size:16px;padding:10px 0;font-weight:600}
-.grid.small button{padding:7px 0;font-size:13px;font-weight:400}
+.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.grid button{border-radius:14px;min-height:56px;padding:12px 0;font-size:20px;line-height:1.2;font-weight:600;touch-action:manipulation}
+.grid.hot button{background:rgba(201,182,245,.14);color:var(--lav);border:1px solid rgba(201,182,245,.28)}
 #end{background:#fff;color:#09090d;border-color:transparent}
 #ban{background:#7ee8a0;color:#09090d;border-radius:999px;padding:5px 10px;font-weight:700;display:none;text-align:center;font-size:13px}
 .foot{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -66,7 +65,7 @@ body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 
 @media(prefers-reduced-motion:reduce){.spark{display:none}#victory:not([hidden]){animation:none}}
 </style></head><body id="page"><div id="fireworks" aria-hidden="true"></div>
 <!-- Increment this version when releasing game changes. -->
-<small id="version" aria-label="Game version">v1.1.1</small>
+<small id="version" aria-label="Game version">v1.1.2</small>
 <main>
 <section id="victory" hidden role="status" aria-live="polite">
  <div class="trophy" aria-hidden="true">🏆</div>
