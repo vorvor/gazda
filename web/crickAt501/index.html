@@ -27,6 +27,20 @@ main{max-width:420px;margin:0 auto;display:grid;gap:6px}
 .mk{font-size:20px;font-weight:800;color:var(--c);display:flex;align-items:center;justify-content:center}
 .sc[data-n="5"] .mk{font-size:17px}
 .mk.cl{background:color-mix(in srgb,var(--c) 16%,transparent)}
+.score-detail{display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid var(--line)}
+.cricket-panel{min-width:0}
+#board .row,#cricket-key{grid-template-columns:var(--cricket-gt)}
+#board .row{height:26px}
+#board .mk{font-size:17px}
+#board .lb{font-size:13px}
+#cricket-key{display:grid;height:24px;align-items:center;text-align:center;font-size:10px}
+#cricket-key span{color:var(--c)}
+.history-panel{min-width:0;border:1px solid var(--line);border-radius:18px;background:#16161c;padding:10px 12px}
+#round{height:24px;display:flex;align-items:center;font-size:11px;font-weight:700;color:var(--lav)}
+#history{height:182px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;font-size:11px;line-height:1.4}
+.history-entry{padding:5px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.history-entry strong{color:var(--c);font-size:11px}
+.history-entry small{display:block;color:var(--mut);font-size:10px}
 .turn{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px;gap:6px}
 .dts{display:flex;gap:4px}.dt{min-width:38px;text-align:center;padding:2px 4px;border-radius:999px;background:var(--btn);font-size:12px;font-weight:700}
 .dt.bust{background:#ff7a7a;color:#09090d}
@@ -65,7 +79,7 @@ body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 
 @media(prefers-reduced-motion:reduce){.spark{display:none}#victory:not([hidden]){animation:none}}
 </style></head><body id="page"><div id="fireworks" aria-hidden="true"></div>
 <!-- Increment this version when releasing game changes. -->
-<small id="version" aria-label="Game version">v1.1.2</small>
+<small id="version" aria-label="Game version">v1.2.1</small>
 <main>
 <section id="victory" hidden role="status" aria-live="polite">
  <div class="trophy" aria-hidden="true">🏆</div>
@@ -73,7 +87,12 @@ body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 
  <p>501 checked out · All Cricket fields closed</p>
  <button id="play-again">Play again</button>
 </section>
-<section class="sc" id="sc"><div class="hd" id="hd"></div><div id="board"></div></section>
+<section class="sc" id="sc"><div class="hd" id="hd"></div>
+ <div class="score-detail">
+  <div class="cricket-panel"><div id="cricket-key" aria-label="Cricket player columns"></div><div id="board"></div></div>
+
+ </div>
+</section>
 <section class="pad">
  <div class="turn"><span id="who"></span><span class="dts" id="dts"></span></div>
  <div id="ban"></div>
@@ -94,6 +113,7 @@ body.victorious{background:radial-gradient(ellipse at 50% 0%,#66501a 0%,#382052 
  <label class="sub">Computer level <select id="difficulty"><option value="basic">Basic</option><option value="medium" selected>Medium</option><option value="pro">Pro</option></select></label>
  </div>
 </details>
+<section class="history-panel" aria-label="Round and score history"><div id="round"></div><div id="history" tabindex="0" aria-label="Completed turns, newest first"></div></section>
 </main>
 <script>
 const N=[20,19,18,17,16,15,25],$=id=>document.getElementById(id);
@@ -189,6 +209,8 @@ function buildHead(){
  layout();
  $('sc').dataset.n=count;
  $('sc').style.setProperty('--gt',cols.map(x=>x=='L'?'46px':'minmax(0,1fr)').join(' '));
+ $('sc').style.setProperty('--cricket-gt',cols.map(x=>x=='L'?'26px':'minmax(0,1fr)').join(' '));
+ $('cricket-key').innerHTML=cols.map(x=>x=='L'?'<span>Cr</span>':`<span class="p${x}">P${x+1}</span>`).join('');
  $('hd').innerHTML=cols.map(x=>x=='L'?'<div class="mid"><b>501</b><span>Cricket</span></div>':`<div class="pc p${x}" id="pc${x}"><input id="n${x}" value="${names[x]}" aria-label="Player ${x+1} name"><div class="big" id="b${x}"></div><div class="sub" id="c${x}"></div></div>`).join('');
  for(let i=0;i<count;i++){
   $('n'+i).value=playerName(i);$('n'+i).disabled=computer&&i===count-1;
@@ -196,14 +218,18 @@ function buildHead(){
  }
 }
 function confirmRestart(){return !H.length||S.win!==null||confirm('Discard the current game and start again? All scores, Cricket marks and undo history will be lost. Choose Cancel to keep playing.')}
-function init(){clearTimeout(computerTimer);$('settings').open=false;computerThrows=[];$('computer-result').textContent='';S={p:Array.from({length:count},()=>({left:501,m:mk(),c:0,d501:false,cr:false})),cur:0,darts:[],start:501,mult:1,win:null};H=[];buildHead();render()}
-function endTurn(){S.darts=[];S.cur=(S.cur+1)%S.p.length;S.mult=1}
+function init(){clearTimeout(computerTimer);$('settings').open=false;computerThrows=[];$('computer-result').textContent='';S={p:Array.from({length:count},()=>({left:501,m:mk(),c:0,d501:false,cr:false})),cur:0,darts:[],start:501,startCr:0,round:1,log:[],mult:1,win:null};H=[];buildHead();render()}
+function logTurn(){
+ const p=S.p[S.cur];
+ S.log.push({round:S.round,player:S.cur,throws:S.darts.map(d=>d.txt).join(' · ')||'Skipped',score:S.darts.length?S.start-p.left:0,left:p.left,cricket:S.darts.length?p.c-S.startCr:0,bust:S.darts.some(d=>d.bust)});
+}
+function endTurn(){logTurn();S.darts=[];S.cur=(S.cur+1)%S.p.length;if(S.cur===0)S.round++;S.mult=1}
 function dart(n){
  if(S.win!==null)return;H.push(JSON.stringify(S));
  let m=S.mult;if(n==25&&m==3)m=2;if(n==0)m=0;
  const p=S.p[S.cur],others=S.p.filter((_,i)=>i!=S.cur);
  const d={m,txt:n==0?'Miss':['','S','D','T'][m]+(n==25?'B':n)};
- if(!S.darts.length)S.start=p.left;
+ if(!S.darts.length){S.start=p.left;S.startCr=p.c}
  if(m&&N.includes(n)){
   for(let i=0;i<m;i++){if(p.m[n]<3)p.m[n]++;else if(others.some(o=>o.m[n]<3))p.c+=n}
  }
@@ -216,13 +242,16 @@ function dart(n){
  if(bust){d.bust=true;p.left=S.start}
  S.darts.push(d);
  if(!p.cr&&N.every(x=>p.m[x]>=3))p.cr=true;
- if(p.d501&&p.cr)S.win=S.cur;
+ if(p.d501&&p.cr){S.win=S.cur;logTurn()}
  S.mult=1;
  if(S.win===null&&(bust||S.darts.length==3))endTurn();
  render();
 }
 function render(){
  const c=S.cur,over=S.win!==null;
+ const escape=text=>String(text).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+ $('round').textContent=`Round ${S.round} · History`;
+ $('history').innerHTML=S.log.length?S.log.slice().reverse().map(turn=>`<div class="history-entry p${turn.player}"><strong>R${turn.round} · P${turn.player+1} ${escape(playerName(turn.player))}</strong><div>${turn.bust?'Bust · ':''}${turn.score} pts → ${turn.left}</div><small>${turn.throws}${turn.cricket?' · Cr +'+turn.cricket:''}</small></div>`).join(''):'<div class="sub">Completed turns appear here.<br>501 points → remaining score.</div>';
  S.p.forEach((p,i)=>{
   $('pc'+i).classList.toggle('on',c==i&&!over);
   $('pc'+i).classList.toggle('champion',S.win===i);

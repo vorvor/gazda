@@ -9,6 +9,31 @@ function game(){
  vm.runInContext(fs.readFileSync(__dirname+'/index.html','utf8').match(/<script>([\s\S]*?)<\/script>/)[1],context);
  return {run:code=>vm.runInContext(code,context),element,timers,tick(){const [id,fn]=timers.entries().next().value;timers.delete(id);fn()}};
 }
+test('round history records turns, busts, undo and reset',()=>{
+ const g=game();assert.equal(g.run('S.round'),1);
+ g.run('dart(20);dart(20);dart(20)');
+ assert.equal(g.run('S.log[0].score'),60);assert.equal(g.run('S.log[0].left'),441);
+ assert.equal(g.run('S.log[0].round'),1);assert.equal(g.run('S.round'),1);
+ g.element('end').onclick();assert.equal(g.run('S.round'),2);
+ assert.equal(g.run('S.log[1].score'),0);
+ g.element('undo').onclick();assert.equal(g.run('S.round'),1);assert.equal(g.run('S.log.length'),1);
+ g.run('S.p[1].left=30;dart(20);dart(20)');
+ assert.equal(g.run('S.log[1].score'),0);assert.equal(g.run('S.log[1].left'),30);
+ assert.equal(g.run('S.log[1].bust'),true);
+ assert.match(g.element('history').innerHTML,/Bust/);
+ g.element('foot').onclick({target:{id:'new',dataset:{}}});
+ assert.equal(g.run('S.round'),1);assert.equal(g.run('S.log.length'),0);
+});
+test('history includes Cricket points, winning turns and computer turns',()=>{
+ const g=game();g.run('S.p[0].m[20]=3;dart(20)');g.element('end').onclick();
+ assert.equal(g.run('S.log[0].cricket'),20);
+ g.run('S.p[1].left=40;N.forEach(n=>S.p[1].m[n]=3);S.mult=2;dart(20)');
+ assert.equal(g.run('S.log[1].left'),0);assert.equal(g.run('S.log[1].score'),40);
+ g.element('computer').checked=true;g.element('computer').onchange();
+ g.run('computerDart=()=>({n:20,m:1})');g.element('end').onclick();g.tick();g.tick();g.tick();
+ assert.equal(g.run('S.log[1].player'),1);assert.equal(g.run('S.log[1].score'),60);
+ assert.match(g.element('history').innerHTML,/Computer/);
+});
 test('lower number buttons run from 14 down to 1',()=>{
  const g=game();
  const numbers=()=>Array.from(g.element('oth').innerHTML.matchAll(/data-n="(\d+)"/g),match=>Number(match[1]));
